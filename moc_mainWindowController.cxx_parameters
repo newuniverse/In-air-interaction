@@ -1,0 +1,8 @@
+-I/opt/local/include
+-I/opt/local/include/QtGui
+-I/opt/local/include/QtCore
+-DQT_GUI_LIB
+-DQT_CORE_LIB
+-o
+/Users/nEwUnivErsE/In-air-interaction/In-air/moc_mainWindowController.cxx
+/Users/nEwUnivErsE/In-air-interaction/In-air/mainWindowController.h
