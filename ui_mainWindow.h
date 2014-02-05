@@ -13,20 +13,22 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
+#include <QtGui/QComboBox>
 #include <QtGui/QGroupBox>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
-#include <QtGui/QLayout>
 #include <QtGui/QLineEdit>
 #include <QtGui/QMainWindow>
 #include <QtGui/QMenu>
 #include <QtGui/QMenuBar>
 #include <QtGui/QPushButton>
 #include <QtGui/QScrollArea>
+#include <QtGui/QSlider>
 #include <QtGui/QSpacerItem>
 #include <QtGui/QSpinBox>
 #include <QtGui/QStatusBar>
+#include <QtGui/QTextBrowser>
 #include <QtGui/QToolBox>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
@@ -44,6 +46,8 @@ public:
     QAction *actionSave_config;
     QAction *actionNew_gesture;
     QWidget *centralwidget;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout_37;
     QToolBox *toolBox;
     QWidget *setting1;
     QVBoxLayout *verticalLayout_14;
@@ -57,7 +61,7 @@ public:
     QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout;
     QGroupBox *groupBox;
-    QWidget *layoutWidget;
+    QHBoxLayout *horizontalLayout_26;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
@@ -70,7 +74,7 @@ public:
     QLabel *label_4;
     QLineEdit *keystone1;
     QGroupBox *groupBox_2;
-    QWidget *layoutWidget_3;
+    QHBoxLayout *horizontalLayout_27;
     QVBoxLayout *verticalLayout_4;
     QHBoxLayout *horizontalLayout_6;
     QLabel *label_8;
@@ -83,7 +87,7 @@ public:
     QLabel *label_10;
     QLineEdit *keystone2;
     QGroupBox *groupBox_3;
-    QWidget *layoutWidget_4;
+    QHBoxLayout *horizontalLayout_28;
     QVBoxLayout *verticalLayout_5;
     QHBoxLayout *horizontalLayout_8;
     QLabel *label_11;
@@ -96,7 +100,7 @@ public:
     QLabel *label_13;
     QLineEdit *keystone3;
     QGroupBox *groupBox_4;
-    QWidget *layoutWidget_5;
+    QHBoxLayout *horizontalLayout_29;
     QVBoxLayout *verticalLayout_6;
     QHBoxLayout *horizontalLayout_10;
     QLabel *label_14;
@@ -109,7 +113,7 @@ public:
     QLabel *label_16;
     QLineEdit *keystone4;
     QGroupBox *groupBox_5;
-    QWidget *layoutWidget_6;
+    QHBoxLayout *horizontalLayout_30;
     QVBoxLayout *verticalLayout_7;
     QHBoxLayout *horizontalLayout_12;
     QLabel *label_17;
@@ -122,7 +126,7 @@ public:
     QLabel *label_19;
     QLineEdit *keystone5;
     QGroupBox *groupBox_6;
-    QWidget *layoutWidget_7;
+    QHBoxLayout *horizontalLayout_31;
     QVBoxLayout *verticalLayout_8;
     QHBoxLayout *horizontalLayout_14;
     QLabel *label_20;
@@ -135,7 +139,7 @@ public:
     QLabel *label_22;
     QLineEdit *keystone6;
     QGroupBox *groupBox_7;
-    QWidget *layoutWidget_8;
+    QHBoxLayout *horizontalLayout_32;
     QVBoxLayout *verticalLayout_9;
     QHBoxLayout *horizontalLayout_16;
     QLabel *label_23;
@@ -148,7 +152,7 @@ public:
     QLabel *label_25;
     QLineEdit *keystone7;
     QGroupBox *groupBox_8;
-    QWidget *layoutWidget_9;
+    QHBoxLayout *horizontalLayout_33;
     QVBoxLayout *verticalLayout_10;
     QHBoxLayout *horizontalLayout_18;
     QLabel *label_26;
@@ -161,7 +165,7 @@ public:
     QLabel *label_28;
     QLineEdit *keystone8;
     QGroupBox *groupBox_9;
-    QWidget *layoutWidget_10;
+    QHBoxLayout *horizontalLayout_34;
     QVBoxLayout *verticalLayout_11;
     QHBoxLayout *horizontalLayout_20;
     QLabel *label_29;
@@ -174,7 +178,7 @@ public:
     QLabel *label_31;
     QLineEdit *keystone9;
     QGroupBox *groupBox_10;
-    QWidget *layoutWidget_11;
+    QHBoxLayout *horizontalLayout_35;
     QVBoxLayout *verticalLayout_12;
     QHBoxLayout *horizontalLayout_22;
     QLabel *label_32;
@@ -187,7 +191,7 @@ public:
     QLabel *label_34;
     QLineEdit *keystone10;
     QGroupBox *groupBox_11;
-    QWidget *layoutWidget_12;
+    QHBoxLayout *horizontalLayout_36;
     QVBoxLayout *verticalLayout_13;
     QHBoxLayout *horizontalLayout_24;
     QLabel *label_35;
@@ -200,14 +204,32 @@ public:
     QLabel *label_37;
     QLineEdit *keystone11;
     QWidget *setting2;
+    QVBoxLayout *verticalLayout_15;
+    QPushButton *leapActivateButton;
     QScrollArea *scrollArea_2;
     QWidget *scrollAreaWidgetContents_2;
     QWidget *setting3;
-    QScrollArea *scrollArea_3;
-    QWidget *scrollAreaWidgetContents_3;
+    QVBoxLayout *verticalLayout_16;
+    QLabel *label_5;
+    QHBoxLayout *horizontalLayout_38;
+    QSlider *numFrameSlider;
+    QSpinBox *numFrameSpinBox;
+    QLabel *label_6;
+    QHBoxLayout *horizontalLayout_39;
+    QSlider *numFrameSlider_2;
+    QSpinBox *numFrameSpinBox_2;
+    QHBoxLayout *horizontalLayout_5;
+    QLineEdit *newGestureNameLineEdit;
+    QPushButton *recordGestureButton;
+    QHBoxLayout *horizontalLayout_4;
+    QComboBox *gestureNameBox;
+    QPushButton *gestureSelectButton;
+    QTextBrowser *gestureEditBrowzer;
     QWidget *setting4;
+    QVBoxLayout *verticalLayout_17;
     QScrollArea *scrollArea_4;
     QWidget *scrollAreaWidgetContents_4;
+    QSpacerItem *horizontalSpacer_5;
     QVTKWidget *qvtkWidget;
     QMenuBar *menubar;
     QMenu *menuFile;
@@ -218,7 +240,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1282, 800);
+        MainWindow->resize(1338, 800);
         MainWindow->setMinimumSize(QSize(450, 800));
         actionNew = new QAction(MainWindow);
         actionNew->setObjectName(QString::fromUtf8("actionNew"));
@@ -234,13 +256,18 @@ public:
         actionNew_gesture->setObjectName(QString::fromUtf8("actionNew_gesture"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        toolBox = new QToolBox(centralwidget);
+        widget = new QWidget(centralwidget);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(21, 1, 1298, 752));
+        horizontalLayout_37 = new QHBoxLayout(widget);
+        horizontalLayout_37->setObjectName(QString::fromUtf8("horizontalLayout_37"));
+        horizontalLayout_37->setContentsMargins(0, 0, 0, 0);
+        toolBox = new QToolBox(widget);
         toolBox->setObjectName(QString::fromUtf8("toolBox"));
-        toolBox->setGeometry(QRect(20, 10, 400, 730));
         toolBox->setMinimumSize(QSize(400, 730));
         setting1 = new QWidget();
         setting1->setObjectName(QString::fromUtf8("setting1"));
-        setting1->setGeometry(QRect(0, 0, 400, 606));
+        setting1->setGeometry(QRect(0, 0, 400, 626));
         verticalLayout_14 = new QVBoxLayout(setting1);
         verticalLayout_14->setObjectName(QString::fromUtf8("verticalLayout_14"));
         horizontalLayout = new QHBoxLayout();
@@ -286,7 +313,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 359, 2116));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 359, 1988));
         verticalLayout_3 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout = new QVBoxLayout();
@@ -300,16 +327,14 @@ public:
         sizePolicy1.setHeightForWidth(groupBox->sizePolicy().hasHeightForWidth());
         groupBox->setSizePolicy(sizePolicy1);
         groupBox->setMinimumSize(QSize(279, 184));
-        layoutWidget = new QWidget(groupBox);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(30, 30, 212, 145));
-        verticalLayout_2 = new QVBoxLayout(layoutWidget);
+        horizontalLayout_26 = new QHBoxLayout(groupBox);
+        horizontalLayout_26->setObjectName(QString::fromUtf8("horizontalLayout_26"));
+        verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setSizeConstraint(QLayout::SetMinAndMaxSize);
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        label_2 = new QLabel(layoutWidget);
+        label_2 = new QLabel(groupBox);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
         horizontalLayout_2->addWidget(label_2);
@@ -318,7 +343,7 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer_2);
 
-        width1 = new QLineEdit(layoutWidget);
+        width1 = new QLineEdit(groupBox);
         width1->setObjectName(QString::fromUtf8("width1"));
 
         horizontalLayout_2->addWidget(width1);
@@ -328,7 +353,7 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        label_3 = new QLabel(layoutWidget);
+        label_3 = new QLabel(groupBox);
         label_3->setObjectName(QString::fromUtf8("label_3"));
 
         horizontalLayout_3->addWidget(label_3);
@@ -337,7 +362,7 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_3);
 
-        height1 = new QLineEdit(layoutWidget);
+        height1 = new QLineEdit(groupBox);
         height1->setObjectName(QString::fromUtf8("height1"));
 
         horizontalLayout_3->addWidget(height1);
@@ -345,15 +370,18 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_3);
 
-        label_4 = new QLabel(layoutWidget);
+        label_4 = new QLabel(groupBox);
         label_4->setObjectName(QString::fromUtf8("label_4"));
 
         verticalLayout_2->addWidget(label_4);
 
-        keystone1 = new QLineEdit(layoutWidget);
+        keystone1 = new QLineEdit(groupBox);
         keystone1->setObjectName(QString::fromUtf8("keystone1"));
 
         verticalLayout_2->addWidget(keystone1);
+
+
+        horizontalLayout_26->addLayout(verticalLayout_2);
 
 
         verticalLayout->addWidget(groupBox);
@@ -363,16 +391,14 @@ public:
         sizePolicy1.setHeightForWidth(groupBox_2->sizePolicy().hasHeightForWidth());
         groupBox_2->setSizePolicy(sizePolicy1);
         groupBox_2->setMinimumSize(QSize(279, 184));
-        layoutWidget_3 = new QWidget(groupBox_2);
-        layoutWidget_3->setObjectName(QString::fromUtf8("layoutWidget_3"));
-        layoutWidget_3->setGeometry(QRect(30, 30, 212, 145));
-        verticalLayout_4 = new QVBoxLayout(layoutWidget_3);
+        horizontalLayout_27 = new QHBoxLayout(groupBox_2);
+        horizontalLayout_27->setObjectName(QString::fromUtf8("horizontalLayout_27"));
+        verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         verticalLayout_4->setSizeConstraint(QLayout::SetMinAndMaxSize);
-        verticalLayout_4->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
-        label_8 = new QLabel(layoutWidget_3);
+        label_8 = new QLabel(groupBox_2);
         label_8->setObjectName(QString::fromUtf8("label_8"));
 
         horizontalLayout_6->addWidget(label_8);
@@ -381,7 +407,7 @@ public:
 
         horizontalLayout_6->addItem(horizontalSpacer_6);
 
-        width2 = new QLineEdit(layoutWidget_3);
+        width2 = new QLineEdit(groupBox_2);
         width2->setObjectName(QString::fromUtf8("width2"));
 
         horizontalLayout_6->addWidget(width2);
@@ -391,7 +417,7 @@ public:
 
         horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
-        label_9 = new QLabel(layoutWidget_3);
+        label_9 = new QLabel(groupBox_2);
         label_9->setObjectName(QString::fromUtf8("label_9"));
 
         horizontalLayout_7->addWidget(label_9);
@@ -400,7 +426,7 @@ public:
 
         horizontalLayout_7->addItem(horizontalSpacer_7);
 
-        height2 = new QLineEdit(layoutWidget_3);
+        height2 = new QLineEdit(groupBox_2);
         height2->setObjectName(QString::fromUtf8("height2"));
 
         horizontalLayout_7->addWidget(height2);
@@ -408,15 +434,18 @@ public:
 
         verticalLayout_4->addLayout(horizontalLayout_7);
 
-        label_10 = new QLabel(layoutWidget_3);
+        label_10 = new QLabel(groupBox_2);
         label_10->setObjectName(QString::fromUtf8("label_10"));
 
         verticalLayout_4->addWidget(label_10);
 
-        keystone2 = new QLineEdit(layoutWidget_3);
+        keystone2 = new QLineEdit(groupBox_2);
         keystone2->setObjectName(QString::fromUtf8("keystone2"));
 
         verticalLayout_4->addWidget(keystone2);
+
+
+        horizontalLayout_27->addLayout(verticalLayout_4);
 
 
         verticalLayout->addWidget(groupBox_2);
@@ -426,16 +455,14 @@ public:
         sizePolicy1.setHeightForWidth(groupBox_3->sizePolicy().hasHeightForWidth());
         groupBox_3->setSizePolicy(sizePolicy1);
         groupBox_3->setMinimumSize(QSize(279, 184));
-        layoutWidget_4 = new QWidget(groupBox_3);
-        layoutWidget_4->setObjectName(QString::fromUtf8("layoutWidget_4"));
-        layoutWidget_4->setGeometry(QRect(30, 30, 212, 145));
-        verticalLayout_5 = new QVBoxLayout(layoutWidget_4);
+        horizontalLayout_28 = new QHBoxLayout(groupBox_3);
+        horizontalLayout_28->setObjectName(QString::fromUtf8("horizontalLayout_28"));
+        verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         verticalLayout_5->setSizeConstraint(QLayout::SetMinAndMaxSize);
-        verticalLayout_5->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
-        label_11 = new QLabel(layoutWidget_4);
+        label_11 = new QLabel(groupBox_3);
         label_11->setObjectName(QString::fromUtf8("label_11"));
 
         horizontalLayout_8->addWidget(label_11);
@@ -444,7 +471,7 @@ public:
 
         horizontalLayout_8->addItem(horizontalSpacer_8);
 
-        width3 = new QLineEdit(layoutWidget_4);
+        width3 = new QLineEdit(groupBox_3);
         width3->setObjectName(QString::fromUtf8("width3"));
 
         horizontalLayout_8->addWidget(width3);
@@ -454,7 +481,7 @@ public:
 
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
-        label_12 = new QLabel(layoutWidget_4);
+        label_12 = new QLabel(groupBox_3);
         label_12->setObjectName(QString::fromUtf8("label_12"));
 
         horizontalLayout_9->addWidget(label_12);
@@ -463,7 +490,7 @@ public:
 
         horizontalLayout_9->addItem(horizontalSpacer_9);
 
-        height3 = new QLineEdit(layoutWidget_4);
+        height3 = new QLineEdit(groupBox_3);
         height3->setObjectName(QString::fromUtf8("height3"));
 
         horizontalLayout_9->addWidget(height3);
@@ -471,15 +498,18 @@ public:
 
         verticalLayout_5->addLayout(horizontalLayout_9);
 
-        label_13 = new QLabel(layoutWidget_4);
+        label_13 = new QLabel(groupBox_3);
         label_13->setObjectName(QString::fromUtf8("label_13"));
 
         verticalLayout_5->addWidget(label_13);
 
-        keystone3 = new QLineEdit(layoutWidget_4);
+        keystone3 = new QLineEdit(groupBox_3);
         keystone3->setObjectName(QString::fromUtf8("keystone3"));
 
         verticalLayout_5->addWidget(keystone3);
+
+
+        horizontalLayout_28->addLayout(verticalLayout_5);
 
 
         verticalLayout->addWidget(groupBox_3);
@@ -492,16 +522,14 @@ public:
         sizePolicy1.setHeightForWidth(groupBox_4->sizePolicy().hasHeightForWidth());
         groupBox_4->setSizePolicy(sizePolicy1);
         groupBox_4->setMinimumSize(QSize(279, 184));
-        layoutWidget_5 = new QWidget(groupBox_4);
-        layoutWidget_5->setObjectName(QString::fromUtf8("layoutWidget_5"));
-        layoutWidget_5->setGeometry(QRect(30, 30, 212, 145));
-        verticalLayout_6 = new QVBoxLayout(layoutWidget_5);
+        horizontalLayout_29 = new QHBoxLayout(groupBox_4);
+        horizontalLayout_29->setObjectName(QString::fromUtf8("horizontalLayout_29"));
+        verticalLayout_6 = new QVBoxLayout();
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         verticalLayout_6->setSizeConstraint(QLayout::SetMinAndMaxSize);
-        verticalLayout_6->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_10 = new QHBoxLayout();
         horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
-        label_14 = new QLabel(layoutWidget_5);
+        label_14 = new QLabel(groupBox_4);
         label_14->setObjectName(QString::fromUtf8("label_14"));
 
         horizontalLayout_10->addWidget(label_14);
@@ -510,7 +538,7 @@ public:
 
         horizontalLayout_10->addItem(horizontalSpacer_10);
 
-        width4 = new QLineEdit(layoutWidget_5);
+        width4 = new QLineEdit(groupBox_4);
         width4->setObjectName(QString::fromUtf8("width4"));
 
         horizontalLayout_10->addWidget(width4);
@@ -520,7 +548,7 @@ public:
 
         horizontalLayout_11 = new QHBoxLayout();
         horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
-        label_15 = new QLabel(layoutWidget_5);
+        label_15 = new QLabel(groupBox_4);
         label_15->setObjectName(QString::fromUtf8("label_15"));
 
         horizontalLayout_11->addWidget(label_15);
@@ -529,7 +557,7 @@ public:
 
         horizontalLayout_11->addItem(horizontalSpacer_11);
 
-        height4 = new QLineEdit(layoutWidget_5);
+        height4 = new QLineEdit(groupBox_4);
         height4->setObjectName(QString::fromUtf8("height4"));
 
         horizontalLayout_11->addWidget(height4);
@@ -537,15 +565,18 @@ public:
 
         verticalLayout_6->addLayout(horizontalLayout_11);
 
-        label_16 = new QLabel(layoutWidget_5);
+        label_16 = new QLabel(groupBox_4);
         label_16->setObjectName(QString::fromUtf8("label_16"));
 
         verticalLayout_6->addWidget(label_16);
 
-        keystone4 = new QLineEdit(layoutWidget_5);
+        keystone4 = new QLineEdit(groupBox_4);
         keystone4->setObjectName(QString::fromUtf8("keystone4"));
 
         verticalLayout_6->addWidget(keystone4);
+
+
+        horizontalLayout_29->addLayout(verticalLayout_6);
 
 
         verticalLayout_3->addWidget(groupBox_4);
@@ -555,16 +586,14 @@ public:
         sizePolicy1.setHeightForWidth(groupBox_5->sizePolicy().hasHeightForWidth());
         groupBox_5->setSizePolicy(sizePolicy1);
         groupBox_5->setMinimumSize(QSize(279, 184));
-        layoutWidget_6 = new QWidget(groupBox_5);
-        layoutWidget_6->setObjectName(QString::fromUtf8("layoutWidget_6"));
-        layoutWidget_6->setGeometry(QRect(30, 30, 212, 145));
-        verticalLayout_7 = new QVBoxLayout(layoutWidget_6);
+        horizontalLayout_30 = new QHBoxLayout(groupBox_5);
+        horizontalLayout_30->setObjectName(QString::fromUtf8("horizontalLayout_30"));
+        verticalLayout_7 = new QVBoxLayout();
         verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
         verticalLayout_7->setSizeConstraint(QLayout::SetMinAndMaxSize);
-        verticalLayout_7->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_12 = new QHBoxLayout();
         horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
-        label_17 = new QLabel(layoutWidget_6);
+        label_17 = new QLabel(groupBox_5);
         label_17->setObjectName(QString::fromUtf8("label_17"));
 
         horizontalLayout_12->addWidget(label_17);
@@ -573,7 +602,7 @@ public:
 
         horizontalLayout_12->addItem(horizontalSpacer_12);
 
-        width5 = new QLineEdit(layoutWidget_6);
+        width5 = new QLineEdit(groupBox_5);
         width5->setObjectName(QString::fromUtf8("width5"));
 
         horizontalLayout_12->addWidget(width5);
@@ -583,7 +612,7 @@ public:
 
         horizontalLayout_13 = new QHBoxLayout();
         horizontalLayout_13->setObjectName(QString::fromUtf8("horizontalLayout_13"));
-        label_18 = new QLabel(layoutWidget_6);
+        label_18 = new QLabel(groupBox_5);
         label_18->setObjectName(QString::fromUtf8("label_18"));
 
         horizontalLayout_13->addWidget(label_18);
@@ -592,7 +621,7 @@ public:
 
         horizontalLayout_13->addItem(horizontalSpacer_13);
 
-        height5 = new QLineEdit(layoutWidget_6);
+        height5 = new QLineEdit(groupBox_5);
         height5->setObjectName(QString::fromUtf8("height5"));
 
         horizontalLayout_13->addWidget(height5);
@@ -600,15 +629,18 @@ public:
 
         verticalLayout_7->addLayout(horizontalLayout_13);
 
-        label_19 = new QLabel(layoutWidget_6);
+        label_19 = new QLabel(groupBox_5);
         label_19->setObjectName(QString::fromUtf8("label_19"));
 
         verticalLayout_7->addWidget(label_19);
 
-        keystone5 = new QLineEdit(layoutWidget_6);
+        keystone5 = new QLineEdit(groupBox_5);
         keystone5->setObjectName(QString::fromUtf8("keystone5"));
 
         verticalLayout_7->addWidget(keystone5);
+
+
+        horizontalLayout_30->addLayout(verticalLayout_7);
 
 
         verticalLayout_3->addWidget(groupBox_5);
@@ -618,16 +650,14 @@ public:
         sizePolicy1.setHeightForWidth(groupBox_6->sizePolicy().hasHeightForWidth());
         groupBox_6->setSizePolicy(sizePolicy1);
         groupBox_6->setMinimumSize(QSize(279, 184));
-        layoutWidget_7 = new QWidget(groupBox_6);
-        layoutWidget_7->setObjectName(QString::fromUtf8("layoutWidget_7"));
-        layoutWidget_7->setGeometry(QRect(30, 30, 212, 145));
-        verticalLayout_8 = new QVBoxLayout(layoutWidget_7);
+        horizontalLayout_31 = new QHBoxLayout(groupBox_6);
+        horizontalLayout_31->setObjectName(QString::fromUtf8("horizontalLayout_31"));
+        verticalLayout_8 = new QVBoxLayout();
         verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
         verticalLayout_8->setSizeConstraint(QLayout::SetMinAndMaxSize);
-        verticalLayout_8->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_14 = new QHBoxLayout();
         horizontalLayout_14->setObjectName(QString::fromUtf8("horizontalLayout_14"));
-        label_20 = new QLabel(layoutWidget_7);
+        label_20 = new QLabel(groupBox_6);
         label_20->setObjectName(QString::fromUtf8("label_20"));
 
         horizontalLayout_14->addWidget(label_20);
@@ -636,7 +666,7 @@ public:
 
         horizontalLayout_14->addItem(horizontalSpacer_14);
 
-        width6 = new QLineEdit(layoutWidget_7);
+        width6 = new QLineEdit(groupBox_6);
         width6->setObjectName(QString::fromUtf8("width6"));
 
         horizontalLayout_14->addWidget(width6);
@@ -646,7 +676,7 @@ public:
 
         horizontalLayout_15 = new QHBoxLayout();
         horizontalLayout_15->setObjectName(QString::fromUtf8("horizontalLayout_15"));
-        label_21 = new QLabel(layoutWidget_7);
+        label_21 = new QLabel(groupBox_6);
         label_21->setObjectName(QString::fromUtf8("label_21"));
 
         horizontalLayout_15->addWidget(label_21);
@@ -655,7 +685,7 @@ public:
 
         horizontalLayout_15->addItem(horizontalSpacer_15);
 
-        height6 = new QLineEdit(layoutWidget_7);
+        height6 = new QLineEdit(groupBox_6);
         height6->setObjectName(QString::fromUtf8("height6"));
 
         horizontalLayout_15->addWidget(height6);
@@ -663,15 +693,18 @@ public:
 
         verticalLayout_8->addLayout(horizontalLayout_15);
 
-        label_22 = new QLabel(layoutWidget_7);
+        label_22 = new QLabel(groupBox_6);
         label_22->setObjectName(QString::fromUtf8("label_22"));
 
         verticalLayout_8->addWidget(label_22);
 
-        keystone6 = new QLineEdit(layoutWidget_7);
+        keystone6 = new QLineEdit(groupBox_6);
         keystone6->setObjectName(QString::fromUtf8("keystone6"));
 
         verticalLayout_8->addWidget(keystone6);
+
+
+        horizontalLayout_31->addLayout(verticalLayout_8);
 
 
         verticalLayout_3->addWidget(groupBox_6);
@@ -681,16 +714,14 @@ public:
         sizePolicy1.setHeightForWidth(groupBox_7->sizePolicy().hasHeightForWidth());
         groupBox_7->setSizePolicy(sizePolicy1);
         groupBox_7->setMinimumSize(QSize(279, 184));
-        layoutWidget_8 = new QWidget(groupBox_7);
-        layoutWidget_8->setObjectName(QString::fromUtf8("layoutWidget_8"));
-        layoutWidget_8->setGeometry(QRect(30, 30, 212, 145));
-        verticalLayout_9 = new QVBoxLayout(layoutWidget_8);
+        horizontalLayout_32 = new QHBoxLayout(groupBox_7);
+        horizontalLayout_32->setObjectName(QString::fromUtf8("horizontalLayout_32"));
+        verticalLayout_9 = new QVBoxLayout();
         verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
         verticalLayout_9->setSizeConstraint(QLayout::SetMinAndMaxSize);
-        verticalLayout_9->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_16 = new QHBoxLayout();
         horizontalLayout_16->setObjectName(QString::fromUtf8("horizontalLayout_16"));
-        label_23 = new QLabel(layoutWidget_8);
+        label_23 = new QLabel(groupBox_7);
         label_23->setObjectName(QString::fromUtf8("label_23"));
 
         horizontalLayout_16->addWidget(label_23);
@@ -699,7 +730,7 @@ public:
 
         horizontalLayout_16->addItem(horizontalSpacer_16);
 
-        width7 = new QLineEdit(layoutWidget_8);
+        width7 = new QLineEdit(groupBox_7);
         width7->setObjectName(QString::fromUtf8("width7"));
 
         horizontalLayout_16->addWidget(width7);
@@ -709,7 +740,7 @@ public:
 
         horizontalLayout_17 = new QHBoxLayout();
         horizontalLayout_17->setObjectName(QString::fromUtf8("horizontalLayout_17"));
-        label_24 = new QLabel(layoutWidget_8);
+        label_24 = new QLabel(groupBox_7);
         label_24->setObjectName(QString::fromUtf8("label_24"));
 
         horizontalLayout_17->addWidget(label_24);
@@ -718,7 +749,7 @@ public:
 
         horizontalLayout_17->addItem(horizontalSpacer_17);
 
-        height7 = new QLineEdit(layoutWidget_8);
+        height7 = new QLineEdit(groupBox_7);
         height7->setObjectName(QString::fromUtf8("height7"));
 
         horizontalLayout_17->addWidget(height7);
@@ -726,15 +757,18 @@ public:
 
         verticalLayout_9->addLayout(horizontalLayout_17);
 
-        label_25 = new QLabel(layoutWidget_8);
+        label_25 = new QLabel(groupBox_7);
         label_25->setObjectName(QString::fromUtf8("label_25"));
 
         verticalLayout_9->addWidget(label_25);
 
-        keystone7 = new QLineEdit(layoutWidget_8);
+        keystone7 = new QLineEdit(groupBox_7);
         keystone7->setObjectName(QString::fromUtf8("keystone7"));
 
         verticalLayout_9->addWidget(keystone7);
+
+
+        horizontalLayout_32->addLayout(verticalLayout_9);
 
 
         verticalLayout_3->addWidget(groupBox_7);
@@ -744,16 +778,14 @@ public:
         sizePolicy1.setHeightForWidth(groupBox_8->sizePolicy().hasHeightForWidth());
         groupBox_8->setSizePolicy(sizePolicy1);
         groupBox_8->setMinimumSize(QSize(279, 184));
-        layoutWidget_9 = new QWidget(groupBox_8);
-        layoutWidget_9->setObjectName(QString::fromUtf8("layoutWidget_9"));
-        layoutWidget_9->setGeometry(QRect(30, 30, 212, 145));
-        verticalLayout_10 = new QVBoxLayout(layoutWidget_9);
+        horizontalLayout_33 = new QHBoxLayout(groupBox_8);
+        horizontalLayout_33->setObjectName(QString::fromUtf8("horizontalLayout_33"));
+        verticalLayout_10 = new QVBoxLayout();
         verticalLayout_10->setObjectName(QString::fromUtf8("verticalLayout_10"));
         verticalLayout_10->setSizeConstraint(QLayout::SetMinAndMaxSize);
-        verticalLayout_10->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_18 = new QHBoxLayout();
         horizontalLayout_18->setObjectName(QString::fromUtf8("horizontalLayout_18"));
-        label_26 = new QLabel(layoutWidget_9);
+        label_26 = new QLabel(groupBox_8);
         label_26->setObjectName(QString::fromUtf8("label_26"));
 
         horizontalLayout_18->addWidget(label_26);
@@ -762,7 +794,7 @@ public:
 
         horizontalLayout_18->addItem(horizontalSpacer_18);
 
-        width8 = new QLineEdit(layoutWidget_9);
+        width8 = new QLineEdit(groupBox_8);
         width8->setObjectName(QString::fromUtf8("width8"));
 
         horizontalLayout_18->addWidget(width8);
@@ -772,7 +804,7 @@ public:
 
         horizontalLayout_19 = new QHBoxLayout();
         horizontalLayout_19->setObjectName(QString::fromUtf8("horizontalLayout_19"));
-        label_27 = new QLabel(layoutWidget_9);
+        label_27 = new QLabel(groupBox_8);
         label_27->setObjectName(QString::fromUtf8("label_27"));
 
         horizontalLayout_19->addWidget(label_27);
@@ -781,7 +813,7 @@ public:
 
         horizontalLayout_19->addItem(horizontalSpacer_19);
 
-        height8 = new QLineEdit(layoutWidget_9);
+        height8 = new QLineEdit(groupBox_8);
         height8->setObjectName(QString::fromUtf8("height8"));
 
         horizontalLayout_19->addWidget(height8);
@@ -789,15 +821,18 @@ public:
 
         verticalLayout_10->addLayout(horizontalLayout_19);
 
-        label_28 = new QLabel(layoutWidget_9);
+        label_28 = new QLabel(groupBox_8);
         label_28->setObjectName(QString::fromUtf8("label_28"));
 
         verticalLayout_10->addWidget(label_28);
 
-        keystone8 = new QLineEdit(layoutWidget_9);
+        keystone8 = new QLineEdit(groupBox_8);
         keystone8->setObjectName(QString::fromUtf8("keystone8"));
 
         verticalLayout_10->addWidget(keystone8);
+
+
+        horizontalLayout_33->addLayout(verticalLayout_10);
 
 
         verticalLayout_3->addWidget(groupBox_8);
@@ -807,16 +842,14 @@ public:
         sizePolicy1.setHeightForWidth(groupBox_9->sizePolicy().hasHeightForWidth());
         groupBox_9->setSizePolicy(sizePolicy1);
         groupBox_9->setMinimumSize(QSize(279, 184));
-        layoutWidget_10 = new QWidget(groupBox_9);
-        layoutWidget_10->setObjectName(QString::fromUtf8("layoutWidget_10"));
-        layoutWidget_10->setGeometry(QRect(30, 30, 212, 145));
-        verticalLayout_11 = new QVBoxLayout(layoutWidget_10);
+        horizontalLayout_34 = new QHBoxLayout(groupBox_9);
+        horizontalLayout_34->setObjectName(QString::fromUtf8("horizontalLayout_34"));
+        verticalLayout_11 = new QVBoxLayout();
         verticalLayout_11->setObjectName(QString::fromUtf8("verticalLayout_11"));
         verticalLayout_11->setSizeConstraint(QLayout::SetMinAndMaxSize);
-        verticalLayout_11->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_20 = new QHBoxLayout();
         horizontalLayout_20->setObjectName(QString::fromUtf8("horizontalLayout_20"));
-        label_29 = new QLabel(layoutWidget_10);
+        label_29 = new QLabel(groupBox_9);
         label_29->setObjectName(QString::fromUtf8("label_29"));
 
         horizontalLayout_20->addWidget(label_29);
@@ -825,7 +858,7 @@ public:
 
         horizontalLayout_20->addItem(horizontalSpacer_20);
 
-        width9 = new QLineEdit(layoutWidget_10);
+        width9 = new QLineEdit(groupBox_9);
         width9->setObjectName(QString::fromUtf8("width9"));
 
         horizontalLayout_20->addWidget(width9);
@@ -835,7 +868,7 @@ public:
 
         horizontalLayout_21 = new QHBoxLayout();
         horizontalLayout_21->setObjectName(QString::fromUtf8("horizontalLayout_21"));
-        label_30 = new QLabel(layoutWidget_10);
+        label_30 = new QLabel(groupBox_9);
         label_30->setObjectName(QString::fromUtf8("label_30"));
 
         horizontalLayout_21->addWidget(label_30);
@@ -844,7 +877,7 @@ public:
 
         horizontalLayout_21->addItem(horizontalSpacer_21);
 
-        height9 = new QLineEdit(layoutWidget_10);
+        height9 = new QLineEdit(groupBox_9);
         height9->setObjectName(QString::fromUtf8("height9"));
 
         horizontalLayout_21->addWidget(height9);
@@ -852,15 +885,18 @@ public:
 
         verticalLayout_11->addLayout(horizontalLayout_21);
 
-        label_31 = new QLabel(layoutWidget_10);
+        label_31 = new QLabel(groupBox_9);
         label_31->setObjectName(QString::fromUtf8("label_31"));
 
         verticalLayout_11->addWidget(label_31);
 
-        keystone9 = new QLineEdit(layoutWidget_10);
+        keystone9 = new QLineEdit(groupBox_9);
         keystone9->setObjectName(QString::fromUtf8("keystone9"));
 
         verticalLayout_11->addWidget(keystone9);
+
+
+        horizontalLayout_34->addLayout(verticalLayout_11);
 
 
         verticalLayout_3->addWidget(groupBox_9);
@@ -870,16 +906,14 @@ public:
         sizePolicy1.setHeightForWidth(groupBox_10->sizePolicy().hasHeightForWidth());
         groupBox_10->setSizePolicy(sizePolicy1);
         groupBox_10->setMinimumSize(QSize(279, 184));
-        layoutWidget_11 = new QWidget(groupBox_10);
-        layoutWidget_11->setObjectName(QString::fromUtf8("layoutWidget_11"));
-        layoutWidget_11->setGeometry(QRect(30, 30, 212, 145));
-        verticalLayout_12 = new QVBoxLayout(layoutWidget_11);
+        horizontalLayout_35 = new QHBoxLayout(groupBox_10);
+        horizontalLayout_35->setObjectName(QString::fromUtf8("horizontalLayout_35"));
+        verticalLayout_12 = new QVBoxLayout();
         verticalLayout_12->setObjectName(QString::fromUtf8("verticalLayout_12"));
         verticalLayout_12->setSizeConstraint(QLayout::SetMinAndMaxSize);
-        verticalLayout_12->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_22 = new QHBoxLayout();
         horizontalLayout_22->setObjectName(QString::fromUtf8("horizontalLayout_22"));
-        label_32 = new QLabel(layoutWidget_11);
+        label_32 = new QLabel(groupBox_10);
         label_32->setObjectName(QString::fromUtf8("label_32"));
 
         horizontalLayout_22->addWidget(label_32);
@@ -888,7 +922,7 @@ public:
 
         horizontalLayout_22->addItem(horizontalSpacer_22);
 
-        width10 = new QLineEdit(layoutWidget_11);
+        width10 = new QLineEdit(groupBox_10);
         width10->setObjectName(QString::fromUtf8("width10"));
 
         horizontalLayout_22->addWidget(width10);
@@ -898,7 +932,7 @@ public:
 
         horizontalLayout_23 = new QHBoxLayout();
         horizontalLayout_23->setObjectName(QString::fromUtf8("horizontalLayout_23"));
-        label_33 = new QLabel(layoutWidget_11);
+        label_33 = new QLabel(groupBox_10);
         label_33->setObjectName(QString::fromUtf8("label_33"));
 
         horizontalLayout_23->addWidget(label_33);
@@ -907,7 +941,7 @@ public:
 
         horizontalLayout_23->addItem(horizontalSpacer_23);
 
-        height10 = new QLineEdit(layoutWidget_11);
+        height10 = new QLineEdit(groupBox_10);
         height10->setObjectName(QString::fromUtf8("height10"));
 
         horizontalLayout_23->addWidget(height10);
@@ -915,15 +949,18 @@ public:
 
         verticalLayout_12->addLayout(horizontalLayout_23);
 
-        label_34 = new QLabel(layoutWidget_11);
+        label_34 = new QLabel(groupBox_10);
         label_34->setObjectName(QString::fromUtf8("label_34"));
 
         verticalLayout_12->addWidget(label_34);
 
-        keystone10 = new QLineEdit(layoutWidget_11);
+        keystone10 = new QLineEdit(groupBox_10);
         keystone10->setObjectName(QString::fromUtf8("keystone10"));
 
         verticalLayout_12->addWidget(keystone10);
+
+
+        horizontalLayout_35->addLayout(verticalLayout_12);
 
 
         verticalLayout_3->addWidget(groupBox_10);
@@ -933,16 +970,14 @@ public:
         sizePolicy1.setHeightForWidth(groupBox_11->sizePolicy().hasHeightForWidth());
         groupBox_11->setSizePolicy(sizePolicy1);
         groupBox_11->setMinimumSize(QSize(279, 184));
-        layoutWidget_12 = new QWidget(groupBox_11);
-        layoutWidget_12->setObjectName(QString::fromUtf8("layoutWidget_12"));
-        layoutWidget_12->setGeometry(QRect(30, 30, 212, 145));
-        verticalLayout_13 = new QVBoxLayout(layoutWidget_12);
+        horizontalLayout_36 = new QHBoxLayout(groupBox_11);
+        horizontalLayout_36->setObjectName(QString::fromUtf8("horizontalLayout_36"));
+        verticalLayout_13 = new QVBoxLayout();
         verticalLayout_13->setObjectName(QString::fromUtf8("verticalLayout_13"));
         verticalLayout_13->setSizeConstraint(QLayout::SetMinAndMaxSize);
-        verticalLayout_13->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_24 = new QHBoxLayout();
         horizontalLayout_24->setObjectName(QString::fromUtf8("horizontalLayout_24"));
-        label_35 = new QLabel(layoutWidget_12);
+        label_35 = new QLabel(groupBox_11);
         label_35->setObjectName(QString::fromUtf8("label_35"));
 
         horizontalLayout_24->addWidget(label_35);
@@ -951,7 +986,7 @@ public:
 
         horizontalLayout_24->addItem(horizontalSpacer_24);
 
-        width11 = new QLineEdit(layoutWidget_12);
+        width11 = new QLineEdit(groupBox_11);
         width11->setObjectName(QString::fromUtf8("width11"));
 
         horizontalLayout_24->addWidget(width11);
@@ -961,7 +996,7 @@ public:
 
         horizontalLayout_25 = new QHBoxLayout();
         horizontalLayout_25->setObjectName(QString::fromUtf8("horizontalLayout_25"));
-        label_36 = new QLabel(layoutWidget_12);
+        label_36 = new QLabel(groupBox_11);
         label_36->setObjectName(QString::fromUtf8("label_36"));
 
         horizontalLayout_25->addWidget(label_36);
@@ -970,7 +1005,7 @@ public:
 
         horizontalLayout_25->addItem(horizontalSpacer_25);
 
-        height11 = new QLineEdit(layoutWidget_12);
+        height11 = new QLineEdit(groupBox_11);
         height11->setObjectName(QString::fromUtf8("height11"));
 
         horizontalLayout_25->addWidget(height11);
@@ -978,15 +1013,18 @@ public:
 
         verticalLayout_13->addLayout(horizontalLayout_25);
 
-        label_37 = new QLabel(layoutWidget_12);
+        label_37 = new QLabel(groupBox_11);
         label_37->setObjectName(QString::fromUtf8("label_37"));
 
         verticalLayout_13->addWidget(label_37);
 
-        keystone11 = new QLineEdit(layoutWidget_12);
+        keystone11 = new QLineEdit(groupBox_11);
         keystone11->setObjectName(QString::fromUtf8("keystone11"));
 
         verticalLayout_13->addWidget(keystone11);
+
+
+        horizontalLayout_36->addLayout(verticalLayout_13);
 
 
         verticalLayout_3->addWidget(groupBox_11);
@@ -998,48 +1036,158 @@ public:
         toolBox->addItem(setting1, QString::fromUtf8("Output Setting"));
         setting2 = new QWidget();
         setting2->setObjectName(QString::fromUtf8("setting2"));
-        setting2->setGeometry(QRect(0, 0, 400, 606));
+        setting2->setGeometry(QRect(0, 0, 400, 626));
+        verticalLayout_15 = new QVBoxLayout(setting2);
+        verticalLayout_15->setObjectName(QString::fromUtf8("verticalLayout_15"));
+        leapActivateButton = new QPushButton(setting2);
+        leapActivateButton->setObjectName(QString::fromUtf8("leapActivateButton"));
+        leapActivateButton->setMinimumSize(QSize(150, 32));
+
+        verticalLayout_15->addWidget(leapActivateButton);
+
         scrollArea_2 = new QScrollArea(setting2);
         scrollArea_2->setObjectName(QString::fromUtf8("scrollArea_2"));
-        scrollArea_2->setGeometry(QRect(20, 10, 350, 400));
         scrollArea_2->setMinimumSize(QSize(350, 400));
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 348, 398));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 374, 566));
         scrollArea_2->setWidget(scrollAreaWidgetContents_2);
+
+        verticalLayout_15->addWidget(scrollArea_2);
+
         toolBox->addItem(setting2, QString::fromUtf8("Input Setting"));
         setting3 = new QWidget();
         setting3->setObjectName(QString::fromUtf8("setting3"));
-        setting3->setGeometry(QRect(0, 0, 400, 606));
-        scrollArea_3 = new QScrollArea(setting3);
-        scrollArea_3->setObjectName(QString::fromUtf8("scrollArea_3"));
-        scrollArea_3->setGeometry(QRect(20, 10, 301, 231));
-        scrollArea_3->setWidgetResizable(true);
-        scrollAreaWidgetContents_3 = new QWidget();
-        scrollAreaWidgetContents_3->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_3"));
-        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 299, 229));
-        scrollArea_3->setWidget(scrollAreaWidgetContents_3);
+        setting3->setGeometry(QRect(0, 0, 400, 626));
+        verticalLayout_16 = new QVBoxLayout(setting3);
+        verticalLayout_16->setObjectName(QString::fromUtf8("verticalLayout_16"));
+        label_5 = new QLabel(setting3);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+
+        verticalLayout_16->addWidget(label_5);
+
+        horizontalLayout_38 = new QHBoxLayout();
+        horizontalLayout_38->setObjectName(QString::fromUtf8("horizontalLayout_38"));
+        numFrameSlider = new QSlider(setting3);
+        numFrameSlider->setObjectName(QString::fromUtf8("numFrameSlider"));
+        numFrameSlider->setMinimum(5);
+        numFrameSlider->setMaximum(25);
+        numFrameSlider->setOrientation(Qt::Horizontal);
+        numFrameSlider->setTickPosition(QSlider::TicksAbove);
+
+        horizontalLayout_38->addWidget(numFrameSlider);
+
+        numFrameSpinBox = new QSpinBox(setting3);
+        numFrameSpinBox->setObjectName(QString::fromUtf8("numFrameSpinBox"));
+        numFrameSpinBox->setMinimum(5);
+        numFrameSpinBox->setMaximum(25);
+
+        horizontalLayout_38->addWidget(numFrameSpinBox);
+
+
+        verticalLayout_16->addLayout(horizontalLayout_38);
+
+        label_6 = new QLabel(setting3);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+
+        verticalLayout_16->addWidget(label_6);
+
+        horizontalLayout_39 = new QHBoxLayout();
+        horizontalLayout_39->setObjectName(QString::fromUtf8("horizontalLayout_39"));
+        numFrameSlider_2 = new QSlider(setting3);
+        numFrameSlider_2->setObjectName(QString::fromUtf8("numFrameSlider_2"));
+        numFrameSlider_2->setMinimum(5);
+        numFrameSlider_2->setMaximum(55);
+        numFrameSlider_2->setOrientation(Qt::Horizontal);
+        numFrameSlider_2->setTickPosition(QSlider::TicksAbove);
+
+        horizontalLayout_39->addWidget(numFrameSlider_2);
+
+        numFrameSpinBox_2 = new QSpinBox(setting3);
+        numFrameSpinBox_2->setObjectName(QString::fromUtf8("numFrameSpinBox_2"));
+        numFrameSpinBox_2->setMinimum(5);
+        numFrameSpinBox_2->setMaximum(55);
+
+        horizontalLayout_39->addWidget(numFrameSpinBox_2);
+
+
+        verticalLayout_16->addLayout(horizontalLayout_39);
+
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        newGestureNameLineEdit = new QLineEdit(setting3);
+        newGestureNameLineEdit->setObjectName(QString::fromUtf8("newGestureNameLineEdit"));
+        newGestureNameLineEdit->setMinimumSize(QSize(200, 26));
+
+        horizontalLayout_5->addWidget(newGestureNameLineEdit);
+
+        recordGestureButton = new QPushButton(setting3);
+        recordGestureButton->setObjectName(QString::fromUtf8("recordGestureButton"));
+
+        horizontalLayout_5->addWidget(recordGestureButton);
+
+
+        verticalLayout_16->addLayout(horizontalLayout_5);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        gestureNameBox = new QComboBox(setting3);
+        gestureNameBox->setObjectName(QString::fromUtf8("gestureNameBox"));
+        gestureNameBox->setMinimumSize(QSize(300, 26));
+
+        horizontalLayout_4->addWidget(gestureNameBox);
+
+        gestureSelectButton = new QPushButton(setting3);
+        gestureSelectButton->setObjectName(QString::fromUtf8("gestureSelectButton"));
+        gestureSelectButton->setMinimumSize(QSize(70, 32));
+
+        horizontalLayout_4->addWidget(gestureSelectButton);
+
+
+        verticalLayout_16->addLayout(horizontalLayout_4);
+
+        gestureEditBrowzer = new QTextBrowser(setting3);
+        gestureEditBrowzer->setObjectName(QString::fromUtf8("gestureEditBrowzer"));
+
+        verticalLayout_16->addWidget(gestureEditBrowzer);
+
         toolBox->addItem(setting3, QString::fromUtf8("Gesture Setting"));
         setting4 = new QWidget();
         setting4->setObjectName(QString::fromUtf8("setting4"));
-        setting4->setGeometry(QRect(0, 0, 400, 606));
+        setting4->setGeometry(QRect(0, 0, 400, 626));
+        verticalLayout_17 = new QVBoxLayout(setting4);
+        verticalLayout_17->setObjectName(QString::fromUtf8("verticalLayout_17"));
         scrollArea_4 = new QScrollArea(setting4);
         scrollArea_4->setObjectName(QString::fromUtf8("scrollArea_4"));
-        scrollArea_4->setGeometry(QRect(20, 10, 301, 221));
         scrollArea_4->setWidgetResizable(true);
         scrollAreaWidgetContents_4 = new QWidget();
         scrollAreaWidgetContents_4->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_4"));
-        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 299, 219));
+        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 374, 600));
         scrollArea_4->setWidget(scrollAreaWidgetContents_4);
+
+        verticalLayout_17->addWidget(scrollArea_4);
+
         toolBox->addItem(setting4, QString::fromUtf8("Resoning Setting"));
-        qvtkWidget = new QVTKWidget(centralwidget);
+
+        horizontalLayout_37->addWidget(toolBox);
+
+        horizontalSpacer_5 = new QSpacerItem(13, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_37->addItem(horizontalSpacer_5);
+
+        qvtkWidget = new QVTKWidget(widget);
         qvtkWidget->setObjectName(QString::fromUtf8("qvtkWidget"));
-        qvtkWidget->setGeometry(QRect(450, 10, 811, 711));
+        sizePolicy.setHeightForWidth(qvtkWidget->sizePolicy().hasHeightForWidth());
+        qvtkWidget->setSizePolicy(sizePolicy);
+        qvtkWidget->setMinimumSize(QSize(840, 750));
+
+        horizontalLayout_37->addWidget(qvtkWidget);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1282, 22));
+        menubar->setGeometry(QRect(0, 0, 1338, 22));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuEdit = new QMenu(menubar);
@@ -1097,7 +1245,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        toolBox->setCurrentIndex(2);
+        toolBox->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -1170,7 +1318,17 @@ public:
         height11->setText(QString());
         label_37->setText(QApplication::translate("MainWindow", "Keystone correlation:", 0, QApplication::UnicodeUTF8));
         toolBox->setItemText(toolBox->indexOf(setting1), QApplication::translate("MainWindow", "Output Setting", 0, QApplication::UnicodeUTF8));
+        leapActivateButton->setText(QApplication::translate("MainWindow", "Enable Leap Motion", 0, QApplication::UnicodeUTF8));
         toolBox->setItemText(toolBox->indexOf(setting2), QApplication::translate("MainWindow", "Input Setting", 0, QApplication::UnicodeUTF8));
+        label_5->setText(QApplication::translate("MainWindow", "Number of input gesture frames (sparse):", 0, QApplication::UnicodeUTF8));
+        label_6->setText(QApplication::translate("MainWindow", "Number of recording gesture frames (dense):", 0, QApplication::UnicodeUTF8));
+        recordGestureButton->setText(QApplication::translate("MainWindow", "Record New Gesture", 0, QApplication::UnicodeUTF8));
+        gestureSelectButton->setText(QApplication::translate("MainWindow", "Select", 0, QApplication::UnicodeUTF8));
+        gestureEditBrowzer->setHtml(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'.Lucida Grande UI'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", 0, QApplication::UnicodeUTF8));
         toolBox->setItemText(toolBox->indexOf(setting3), QApplication::translate("MainWindow", "Gesture Setting", 0, QApplication::UnicodeUTF8));
         toolBox->setItemText(toolBox->indexOf(setting4), QApplication::translate("MainWindow", "Resoning Setting", 0, QApplication::UnicodeUTF8));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0, QApplication::UnicodeUTF8));

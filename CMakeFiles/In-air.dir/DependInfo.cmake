@@ -29,7 +29,7 @@ SET(CMAKE_C_TARGET_INCLUDE_PATH
   "/opt/local/include"
   "/opt/local/include/QtGui"
   "/opt/local/include/QtCore"
-  "/usr/local/include/vtk-6.1"
+  "/usr/local/include/vtk-6.2"
   "/Users/nEwUnivErsE/In-air-interaction/In-air,"
   "includes"
   )

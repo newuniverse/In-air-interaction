@@ -23,4 +23,7 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR}, ${MY_INCLUDE_DIRECTORY})
 
 ADD_EXECUTABLE(In-air main.cxx ${FORM_HEADERS} ${MOCS} ${CXX})
 
-TARGET_LINK_LIBRARIES(In-air ${QT_LIBRARIES})
+#SET(VTK_LIBRARIES -lvtkCommonExecutionModel-6.2 -lvtkCommonDataModel-6.2 -lvtkCommonMath-6.2 -lvtkCommonCore-6.2 -lvtkGUISupportQtOpenGL-6.2 -lvtkGUISupportQt-6.2 -lvtkCommonCore-6.2 -lvtkInteractionStyle-6.2 -lvtkRenderingFreeType-6.2 -lvtkRenderingFreeTypeOpenGL-6.2 -lvtkRenderingCore-6.2 -lvtkRenderingOpenGL-6.2)
+
+TARGET_LINK_LIBRARIES(In-air ${QT_LIBRARIES} -L/usr/local/lib ${VTK_LIBRARIES} )
+

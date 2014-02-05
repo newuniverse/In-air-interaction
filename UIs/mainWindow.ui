@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1282</width>
+    <width>1338</width>
     <height>800</height>
    </rect>
   </property>
@@ -20,1484 +20,1560 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QToolBox" name="toolBox">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>10</y>
-      <width>400</width>
-      <height>730</height>
+      <x>21</x>
+      <y>1</y>
+      <width>1298</width>
+      <height>752</height>
      </rect>
     </property>
-    <property name="minimumSize">
-     <size>
-      <width>400</width>
-      <height>730</height>
-     </size>
-    </property>
-    <property name="currentIndex">
-     <number>2</number>
-    </property>
-    <widget class="QWidget" name="setting1">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>400</width>
-       <height>606</height>
-      </rect>
-     </property>
-     <attribute name="label">
-      <string>Output Setting</string>
-     </attribute>
-     <layout class="QVBoxLayout" name="verticalLayout_14">
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>&amp;Number of windows:</string>
-          </property>
-          <property name="buddy">
-           <cstring>windowNumSpinBox</cstring>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>18</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QSpinBox" name="windowNumSpinBox">
-          <property name="wrapping">
-           <bool>false</bool>
-          </property>
-          <property name="readOnly">
-           <bool>false</bool>
-          </property>
-          <property name="buttonSymbols">
-           <enum>QAbstractSpinBox::UpDownArrows</enum>
-          </property>
-          <property name="keyboardTracking">
-           <bool>true</bool>
-          </property>
-          <property name="minimum">
-           <number>1</number>
-          </property>
-          <property name="maximum">
-           <number>11</number>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="createWindowButton">
-          <property name="text">
-           <string>&amp;Create</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <widget class="QScrollArea" name="scrollArea">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
+    <layout class="QHBoxLayout" name="horizontalLayout_37">
+     <item>
+      <widget class="QToolBox" name="toolBox">
+       <property name="minimumSize">
+        <size>
+         <width>400</width>
+         <height>730</height>
+        </size>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="setting1">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>400</width>
+          <height>626</height>
+         </rect>
         </property>
-        <property name="minimumSize">
-         <size>
-          <width>350</width>
-          <height>400</height>
-         </size>
-        </property>
-        <property name="verticalScrollBarPolicy">
-         <enum>Qt::ScrollBarAsNeeded</enum>
-        </property>
-        <property name="widgetResizable">
-         <bool>true</bool>
-        </property>
-        <widget class="QWidget" name="scrollAreaWidgetContents">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>359</width>
-           <height>2116</height>
-          </rect>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout">
-            <property name="sizeConstraint">
-             <enum>QLayout::SetMinimumSize</enum>
+        <attribute name="label">
+         <string>Output Setting</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_14">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>&amp;Number of windows:</string>
+             </property>
+             <property name="buddy">
+              <cstring>windowNumSpinBox</cstring>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>18</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="windowNumSpinBox">
+             <property name="wrapping">
+              <bool>false</bool>
+             </property>
+             <property name="readOnly">
+              <bool>false</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::UpDownArrows</enum>
+             </property>
+             <property name="keyboardTracking">
+              <bool>true</bool>
+             </property>
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>11</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="createWindowButton">
+             <property name="text">
+              <string>&amp;Create</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QScrollArea" name="scrollArea">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>350</width>
+             <height>400</height>
+            </size>
+           </property>
+           <property name="verticalScrollBarPolicy">
+            <enum>Qt::ScrollBarAsNeeded</enum>
+           </property>
+           <property name="widgetResizable">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="scrollAreaWidgetContents">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>359</width>
+              <height>1988</height>
+             </rect>
             </property>
-            <item>
-             <widget class="QGroupBox" name="groupBox">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>279</width>
-                <height>184</height>
-               </size>
-              </property>
-              <property name="title">
-               <string>Window 1:</string>
-              </property>
-              <widget class="QWidget" name="layoutWidget">
-               <property name="geometry">
-                <rect>
-                 <x>30</x>
-                 <y>30</y>
-                 <width>212</width>
-                 <height>145</height>
-                </rect>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout">
+               <property name="sizeConstraint">
+                <enum>QLayout::SetMinimumSize</enum>
                </property>
-               <layout class="QVBoxLayout" name="verticalLayout_2">
-                <property name="sizeConstraint">
-                 <enum>QLayout::SetMinAndMaxSize</enum>
-                </property>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <item>
+                <widget class="QGroupBox" name="groupBox">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>279</width>
+                   <height>184</height>
+                  </size>
+                 </property>
+                 <property name="title">
+                  <string>Window 1:</string>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_26">
                   <item>
-                   <widget class="QLabel" name="label_2">
-                    <property name="text">
-                     <string>Width:  </string>
+                   <layout class="QVBoxLayout" name="verticalLayout_2">
+                    <property name="sizeConstraint">
+                     <enum>QLayout::SetMinAndMaxSize</enum>
                     </property>
-                    <property name="buddy">
-                     <cstring>width1</cstring>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_2">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>18</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="width1"/>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_2">
+                      <item>
+                       <widget class="QLabel" name="label_2">
+                        <property name="text">
+                         <string>Width:  </string>
+                        </property>
+                        <property name="buddy">
+                         <cstring>width1</cstring>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_2">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>18</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLineEdit" name="width1"/>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_3">
+                      <item>
+                       <widget class="QLabel" name="label_3">
+                        <property name="text">
+                         <string>Height:</string>
+                        </property>
+                        <property name="buddy">
+                         <cstring>height1</cstring>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_3">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>18</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLineEdit" name="height1">
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_4">
+                      <property name="text">
+                       <string>Keystone correlation:</string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>keystone1</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="keystone1"/>
+                    </item>
+                   </layout>
                   </item>
                  </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_3">
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_2">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>279</width>
+                   <height>184</height>
+                  </size>
+                 </property>
+                 <property name="title">
+                  <string>Window 2:</string>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_27">
                   <item>
-                   <widget class="QLabel" name="label_3">
-                    <property name="text">
-                     <string>Height:</string>
+                   <layout class="QVBoxLayout" name="verticalLayout_4">
+                    <property name="sizeConstraint">
+                     <enum>QLayout::SetMinAndMaxSize</enum>
                     </property>
-                    <property name="buddy">
-                     <cstring>height1</cstring>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_3">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>18</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="height1">
-                    <property name="text">
-                     <string/>
-                    </property>
-                   </widget>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_6">
+                      <item>
+                       <widget class="QLabel" name="label_8">
+                        <property name="text">
+                         <string>Width:  </string>
+                        </property>
+                        <property name="buddy">
+                         <cstring>width1</cstring>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_6">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>18</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLineEdit" name="width2"/>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_7">
+                      <item>
+                       <widget class="QLabel" name="label_9">
+                        <property name="text">
+                         <string>Height:</string>
+                        </property>
+                        <property name="buddy">
+                         <cstring>height1</cstring>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_7">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>18</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLineEdit" name="height2">
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_10">
+                      <property name="text">
+                       <string>Keystone correlation:</string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>keystone1</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="keystone2"/>
+                    </item>
+                   </layout>
                   </item>
                  </layout>
-                </item>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_3">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>279</width>
+                   <height>184</height>
+                  </size>
+                 </property>
+                 <property name="title">
+                  <string>Window 3:</string>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_28">
+                  <item>
+                   <layout class="QVBoxLayout" name="verticalLayout_5">
+                    <property name="sizeConstraint">
+                     <enum>QLayout::SetMinAndMaxSize</enum>
+                    </property>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_8">
+                      <item>
+                       <widget class="QLabel" name="label_11">
+                        <property name="text">
+                         <string>Width:  </string>
+                        </property>
+                        <property name="buddy">
+                         <cstring>width1</cstring>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_8">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>18</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLineEdit" name="width3"/>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_9">
+                      <item>
+                       <widget class="QLabel" name="label_12">
+                        <property name="text">
+                         <string>Height:</string>
+                        </property>
+                        <property name="buddy">
+                         <cstring>height1</cstring>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_9">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>18</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLineEdit" name="height3">
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_13">
+                      <property name="text">
+                       <string>Keystone correlation:</string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>keystone1</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="keystone3"/>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_4">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>279</width>
+                 <height>184</height>
+                </size>
+               </property>
+               <property name="title">
+                <string>Window 4:</string>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_29">
                 <item>
-                 <widget class="QLabel" name="label_4">
-                  <property name="text">
-                   <string>Keystone correlation:</string>
+                 <layout class="QVBoxLayout" name="verticalLayout_6">
+                  <property name="sizeConstraint">
+                   <enum>QLayout::SetMinAndMaxSize</enum>
                   </property>
-                  <property name="buddy">
-                   <cstring>keystone1</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="keystone1"/>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_10">
+                    <item>
+                     <widget class="QLabel" name="label_14">
+                      <property name="text">
+                       <string>Width:  </string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>width1</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_10">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>18</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="width4"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_11">
+                    <item>
+                     <widget class="QLabel" name="label_15">
+                      <property name="text">
+                       <string>Height:</string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>height1</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_11">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>18</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="height4">
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_16">
+                    <property name="text">
+                     <string>Keystone correlation:</string>
+                    </property>
+                    <property name="buddy">
+                     <cstring>keystone1</cstring>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="keystone4"/>
+                  </item>
+                 </layout>
                 </item>
                </layout>
               </widget>
-             </widget>
-            </item>
-            <item>
-             <widget class="QGroupBox" name="groupBox_2">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>279</width>
-                <height>184</height>
-               </size>
-              </property>
-              <property name="title">
-               <string>Window 2:</string>
-              </property>
-              <widget class="QWidget" name="layoutWidget_3">
-               <property name="geometry">
-                <rect>
-                 <x>30</x>
-                 <y>30</y>
-                 <width>212</width>
-                 <height>145</height>
-                </rect>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_5">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
                </property>
-               <layout class="QVBoxLayout" name="verticalLayout_4">
-                <property name="sizeConstraint">
-                 <enum>QLayout::SetMinAndMaxSize</enum>
-                </property>
+               <property name="minimumSize">
+                <size>
+                 <width>279</width>
+                 <height>184</height>
+                </size>
+               </property>
+               <property name="title">
+                <string>Window 5:</string>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_30">
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_6">
+                 <layout class="QVBoxLayout" name="verticalLayout_7">
+                  <property name="sizeConstraint">
+                   <enum>QLayout::SetMinAndMaxSize</enum>
+                  </property>
                   <item>
-                   <widget class="QLabel" name="label_8">
+                   <layout class="QHBoxLayout" name="horizontalLayout_12">
+                    <item>
+                     <widget class="QLabel" name="label_17">
+                      <property name="text">
+                       <string>Width:  </string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>width1</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_12">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>18</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="width5"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_13">
+                    <item>
+                     <widget class="QLabel" name="label_18">
+                      <property name="text">
+                       <string>Height:</string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>height1</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_13">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>18</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="height5">
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_19">
                     <property name="text">
-                     <string>Width:  </string>
+                     <string>Keystone correlation:</string>
                     </property>
                     <property name="buddy">
-                     <cstring>width1</cstring>
+                     <cstring>keystone1</cstring>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <spacer name="horizontalSpacer_6">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>18</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="width2"/>
+                   <widget class="QLineEdit" name="keystone5"/>
                   </item>
                  </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_7">
-                  <item>
-                   <widget class="QLabel" name="label_9">
-                    <property name="text">
-                     <string>Height:</string>
-                    </property>
-                    <property name="buddy">
-                     <cstring>height1</cstring>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_7">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>18</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="height2">
-                    <property name="text">
-                     <string/>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_10">
-                  <property name="text">
-                   <string>Keystone correlation:</string>
-                  </property>
-                  <property name="buddy">
-                   <cstring>keystone1</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="keystone2"/>
                 </item>
                </layout>
               </widget>
-             </widget>
-            </item>
-            <item>
-             <widget class="QGroupBox" name="groupBox_3">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>279</width>
-                <height>184</height>
-               </size>
-              </property>
-              <property name="title">
-               <string>Window 3:</string>
-              </property>
-              <widget class="QWidget" name="layoutWidget_4">
-               <property name="geometry">
-                <rect>
-                 <x>30</x>
-                 <y>30</y>
-                 <width>212</width>
-                 <height>145</height>
-                </rect>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_6">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
                </property>
-               <layout class="QVBoxLayout" name="verticalLayout_5">
-                <property name="sizeConstraint">
-                 <enum>QLayout::SetMinAndMaxSize</enum>
-                </property>
+               <property name="minimumSize">
+                <size>
+                 <width>279</width>
+                 <height>184</height>
+                </size>
+               </property>
+               <property name="title">
+                <string>Window 6:</string>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_31">
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_8">
+                 <layout class="QVBoxLayout" name="verticalLayout_8">
+                  <property name="sizeConstraint">
+                   <enum>QLayout::SetMinAndMaxSize</enum>
+                  </property>
                   <item>
-                   <widget class="QLabel" name="label_11">
+                   <layout class="QHBoxLayout" name="horizontalLayout_14">
+                    <item>
+                     <widget class="QLabel" name="label_20">
+                      <property name="text">
+                       <string>Width:  </string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>width1</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_14">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>18</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="width6"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_15">
+                    <item>
+                     <widget class="QLabel" name="label_21">
+                      <property name="text">
+                       <string>Height:</string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>height1</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_15">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>18</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="height6">
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_22">
                     <property name="text">
-                     <string>Width:  </string>
+                     <string>Keystone correlation:</string>
                     </property>
                     <property name="buddy">
-                     <cstring>width1</cstring>
+                     <cstring>keystone1</cstring>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <spacer name="horizontalSpacer_8">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>18</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="width3"/>
+                   <widget class="QLineEdit" name="keystone6"/>
                   </item>
                  </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_9">
-                  <item>
-                   <widget class="QLabel" name="label_12">
-                    <property name="text">
-                     <string>Height:</string>
-                    </property>
-                    <property name="buddy">
-                     <cstring>height1</cstring>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_9">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>18</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="height3">
-                    <property name="text">
-                     <string/>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_13">
-                  <property name="text">
-                   <string>Keystone correlation:</string>
-                  </property>
-                  <property name="buddy">
-                   <cstring>keystone1</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="keystone3"/>
                 </item>
                </layout>
               </widget>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <widget class="QGroupBox" name="groupBox_4">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>279</width>
-              <height>184</height>
-             </size>
-            </property>
-            <property name="title">
-             <string>Window 4:</string>
-            </property>
-            <widget class="QWidget" name="layoutWidget_5">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>30</y>
-               <width>212</width>
-               <height>145</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_6">
-              <property name="sizeConstraint">
-               <enum>QLayout::SetMinAndMaxSize</enum>
-              </property>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_10">
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_7">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>279</width>
+                 <height>184</height>
+                </size>
+               </property>
+               <property name="title">
+                <string>Window 7:</string>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_32">
                 <item>
-                 <widget class="QLabel" name="label_14">
-                  <property name="text">
-                   <string>Width:  </string>
+                 <layout class="QVBoxLayout" name="verticalLayout_9">
+                  <property name="sizeConstraint">
+                   <enum>QLayout::SetMinAndMaxSize</enum>
                   </property>
-                  <property name="buddy">
-                   <cstring>width1</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_10">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>18</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="width4"/>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_16">
+                    <item>
+                     <widget class="QLabel" name="label_23">
+                      <property name="text">
+                       <string>Width:  </string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>width1</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_16">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>18</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="width7"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_17">
+                    <item>
+                     <widget class="QLabel" name="label_24">
+                      <property name="text">
+                       <string>Height:</string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>height1</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_17">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>18</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="height7">
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_25">
+                    <property name="text">
+                     <string>Keystone correlation:</string>
+                    </property>
+                    <property name="buddy">
+                     <cstring>keystone1</cstring>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="keystone7"/>
+                  </item>
+                 </layout>
                 </item>
                </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_11">
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_8">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>279</width>
+                 <height>184</height>
+                </size>
+               </property>
+               <property name="title">
+                <string>Window 8:</string>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_33">
                 <item>
-                 <widget class="QLabel" name="label_15">
-                  <property name="text">
-                   <string>Height:</string>
+                 <layout class="QVBoxLayout" name="verticalLayout_10">
+                  <property name="sizeConstraint">
+                   <enum>QLayout::SetMinAndMaxSize</enum>
                   </property>
-                  <property name="buddy">
-                   <cstring>height1</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_11">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>18</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="height4">
-                  <property name="text">
-                   <string/>
-                  </property>
-                 </widget>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_18">
+                    <item>
+                     <widget class="QLabel" name="label_26">
+                      <property name="text">
+                       <string>Width:  </string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>width1</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_18">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>18</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="width8"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_19">
+                    <item>
+                     <widget class="QLabel" name="label_27">
+                      <property name="text">
+                       <string>Height:</string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>height1</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_19">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>18</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="height8">
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_28">
+                    <property name="text">
+                     <string>Keystone correlation:</string>
+                    </property>
+                    <property name="buddy">
+                     <cstring>keystone1</cstring>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="keystone8"/>
+                  </item>
+                 </layout>
                 </item>
                </layout>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_16">
-                <property name="text">
-                 <string>Keystone correlation:</string>
-                </property>
-                <property name="buddy">
-                 <cstring>keystone1</cstring>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="keystone4"/>
-              </item>
-             </layout>
-            </widget>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_9">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>279</width>
+                 <height>184</height>
+                </size>
+               </property>
+               <property name="title">
+                <string>Window 9:</string>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_34">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_11">
+                  <property name="sizeConstraint">
+                   <enum>QLayout::SetMinAndMaxSize</enum>
+                  </property>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_20">
+                    <item>
+                     <widget class="QLabel" name="label_29">
+                      <property name="text">
+                       <string>Width:  </string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>width1</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_20">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>18</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="width9"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_21">
+                    <item>
+                     <widget class="QLabel" name="label_30">
+                      <property name="text">
+                       <string>Height:</string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>height1</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_21">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>18</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="height9">
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_31">
+                    <property name="text">
+                     <string>Keystone correlation:</string>
+                    </property>
+                    <property name="buddy">
+                     <cstring>keystone1</cstring>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="keystone9"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_10">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>279</width>
+                 <height>184</height>
+                </size>
+               </property>
+               <property name="title">
+                <string>Window 10:</string>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_35">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_12">
+                  <property name="sizeConstraint">
+                   <enum>QLayout::SetMinAndMaxSize</enum>
+                  </property>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_22">
+                    <item>
+                     <widget class="QLabel" name="label_32">
+                      <property name="text">
+                       <string>Width:  </string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>width1</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_22">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>18</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="width10"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_23">
+                    <item>
+                     <widget class="QLabel" name="label_33">
+                      <property name="text">
+                       <string>Height:</string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>height1</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_23">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>18</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="height10">
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_34">
+                    <property name="text">
+                     <string>Keystone correlation:</string>
+                    </property>
+                    <property name="buddy">
+                     <cstring>keystone1</cstring>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="keystone10"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_11">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>279</width>
+                 <height>184</height>
+                </size>
+               </property>
+               <property name="title">
+                <string>Window 11:</string>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_36">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_13">
+                  <property name="sizeConstraint">
+                   <enum>QLayout::SetMinAndMaxSize</enum>
+                  </property>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_24">
+                    <item>
+                     <widget class="QLabel" name="label_35">
+                      <property name="text">
+                       <string>Width:  </string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>width1</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_24">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>18</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="width11"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_25">
+                    <item>
+                     <widget class="QLabel" name="label_36">
+                      <property name="text">
+                       <string>Height:</string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>height1</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_25">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>18</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="height11">
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_37">
+                    <property name="text">
+                     <string>Keystone correlation:</string>
+                    </property>
+                    <property name="buddy">
+                     <cstring>keystone1</cstring>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="keystone11"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
            </widget>
-          </item>
-          <item>
-           <widget class="QGroupBox" name="groupBox_5">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>279</width>
-              <height>184</height>
-             </size>
-            </property>
-            <property name="title">
-             <string>Window 5:</string>
-            </property>
-            <widget class="QWidget" name="layoutWidget_6">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>30</y>
-               <width>212</width>
-               <height>145</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_7">
-              <property name="sizeConstraint">
-               <enum>QLayout::SetMinAndMaxSize</enum>
-              </property>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_12">
-                <item>
-                 <widget class="QLabel" name="label_17">
-                  <property name="text">
-                   <string>Width:  </string>
-                  </property>
-                  <property name="buddy">
-                   <cstring>width1</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_12">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>18</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="width5"/>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_13">
-                <item>
-                 <widget class="QLabel" name="label_18">
-                  <property name="text">
-                   <string>Height:</string>
-                  </property>
-                  <property name="buddy">
-                   <cstring>height1</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_13">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>18</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="height5">
-                  <property name="text">
-                   <string/>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_19">
-                <property name="text">
-                 <string>Keystone correlation:</string>
-                </property>
-                <property name="buddy">
-                 <cstring>keystone1</cstring>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="keystone5"/>
-              </item>
-             </layout>
-            </widget>
-           </widget>
-          </item>
-          <item>
-           <widget class="QGroupBox" name="groupBox_6">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>279</width>
-              <height>184</height>
-             </size>
-            </property>
-            <property name="title">
-             <string>Window 6:</string>
-            </property>
-            <widget class="QWidget" name="layoutWidget_7">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>30</y>
-               <width>212</width>
-               <height>145</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_8">
-              <property name="sizeConstraint">
-               <enum>QLayout::SetMinAndMaxSize</enum>
-              </property>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_14">
-                <item>
-                 <widget class="QLabel" name="label_20">
-                  <property name="text">
-                   <string>Width:  </string>
-                  </property>
-                  <property name="buddy">
-                   <cstring>width1</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_14">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>18</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="width6"/>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_15">
-                <item>
-                 <widget class="QLabel" name="label_21">
-                  <property name="text">
-                   <string>Height:</string>
-                  </property>
-                  <property name="buddy">
-                   <cstring>height1</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_15">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>18</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="height6">
-                  <property name="text">
-                   <string/>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_22">
-                <property name="text">
-                 <string>Keystone correlation:</string>
-                </property>
-                <property name="buddy">
-                 <cstring>keystone1</cstring>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="keystone6"/>
-              </item>
-             </layout>
-            </widget>
-           </widget>
-          </item>
-          <item>
-           <widget class="QGroupBox" name="groupBox_7">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>279</width>
-              <height>184</height>
-             </size>
-            </property>
-            <property name="title">
-             <string>Window 7:</string>
-            </property>
-            <widget class="QWidget" name="layoutWidget_8">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>30</y>
-               <width>212</width>
-               <height>145</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_9">
-              <property name="sizeConstraint">
-               <enum>QLayout::SetMinAndMaxSize</enum>
-              </property>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_16">
-                <item>
-                 <widget class="QLabel" name="label_23">
-                  <property name="text">
-                   <string>Width:  </string>
-                  </property>
-                  <property name="buddy">
-                   <cstring>width1</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_16">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>18</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="width7"/>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_17">
-                <item>
-                 <widget class="QLabel" name="label_24">
-                  <property name="text">
-                   <string>Height:</string>
-                  </property>
-                  <property name="buddy">
-                   <cstring>height1</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_17">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>18</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="height7">
-                  <property name="text">
-                   <string/>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_25">
-                <property name="text">
-                 <string>Keystone correlation:</string>
-                </property>
-                <property name="buddy">
-                 <cstring>keystone1</cstring>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="keystone7"/>
-              </item>
-             </layout>
-            </widget>
-           </widget>
-          </item>
-          <item>
-           <widget class="QGroupBox" name="groupBox_8">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>279</width>
-              <height>184</height>
-             </size>
-            </property>
-            <property name="title">
-             <string>Window 8:</string>
-            </property>
-            <widget class="QWidget" name="layoutWidget_9">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>30</y>
-               <width>212</width>
-               <height>145</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_10">
-              <property name="sizeConstraint">
-               <enum>QLayout::SetMinAndMaxSize</enum>
-              </property>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_18">
-                <item>
-                 <widget class="QLabel" name="label_26">
-                  <property name="text">
-                   <string>Width:  </string>
-                  </property>
-                  <property name="buddy">
-                   <cstring>width1</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_18">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>18</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="width8"/>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_19">
-                <item>
-                 <widget class="QLabel" name="label_27">
-                  <property name="text">
-                   <string>Height:</string>
-                  </property>
-                  <property name="buddy">
-                   <cstring>height1</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_19">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>18</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="height8">
-                  <property name="text">
-                   <string/>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_28">
-                <property name="text">
-                 <string>Keystone correlation:</string>
-                </property>
-                <property name="buddy">
-                 <cstring>keystone1</cstring>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="keystone8"/>
-              </item>
-             </layout>
-            </widget>
-           </widget>
-          </item>
-          <item>
-           <widget class="QGroupBox" name="groupBox_9">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>279</width>
-              <height>184</height>
-             </size>
-            </property>
-            <property name="title">
-             <string>Window 9:</string>
-            </property>
-            <widget class="QWidget" name="layoutWidget_10">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>30</y>
-               <width>212</width>
-               <height>145</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_11">
-              <property name="sizeConstraint">
-               <enum>QLayout::SetMinAndMaxSize</enum>
-              </property>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_20">
-                <item>
-                 <widget class="QLabel" name="label_29">
-                  <property name="text">
-                   <string>Width:  </string>
-                  </property>
-                  <property name="buddy">
-                   <cstring>width1</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_20">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>18</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="width9"/>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_21">
-                <item>
-                 <widget class="QLabel" name="label_30">
-                  <property name="text">
-                   <string>Height:</string>
-                  </property>
-                  <property name="buddy">
-                   <cstring>height1</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_21">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>18</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="height9">
-                  <property name="text">
-                   <string/>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_31">
-                <property name="text">
-                 <string>Keystone correlation:</string>
-                </property>
-                <property name="buddy">
-                 <cstring>keystone1</cstring>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="keystone9"/>
-              </item>
-             </layout>
-            </widget>
-           </widget>
-          </item>
-          <item>
-           <widget class="QGroupBox" name="groupBox_10">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>279</width>
-              <height>184</height>
-             </size>
-            </property>
-            <property name="title">
-             <string>Window 10:</string>
-            </property>
-            <widget class="QWidget" name="layoutWidget_11">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>30</y>
-               <width>212</width>
-               <height>145</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_12">
-              <property name="sizeConstraint">
-               <enum>QLayout::SetMinAndMaxSize</enum>
-              </property>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_22">
-                <item>
-                 <widget class="QLabel" name="label_32">
-                  <property name="text">
-                   <string>Width:  </string>
-                  </property>
-                  <property name="buddy">
-                   <cstring>width1</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_22">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>18</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="width10"/>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_23">
-                <item>
-                 <widget class="QLabel" name="label_33">
-                  <property name="text">
-                   <string>Height:</string>
-                  </property>
-                  <property name="buddy">
-                   <cstring>height1</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_23">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>18</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="height10">
-                  <property name="text">
-                   <string/>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_34">
-                <property name="text">
-                 <string>Keystone correlation:</string>
-                </property>
-                <property name="buddy">
-                 <cstring>keystone1</cstring>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="keystone10"/>
-              </item>
-             </layout>
-            </widget>
-           </widget>
-          </item>
-          <item>
-           <widget class="QGroupBox" name="groupBox_11">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>279</width>
-              <height>184</height>
-             </size>
-            </property>
-            <property name="title">
-             <string>Window 11:</string>
-            </property>
-            <widget class="QWidget" name="layoutWidget_12">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>30</y>
-               <width>212</width>
-               <height>145</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_13">
-              <property name="sizeConstraint">
-               <enum>QLayout::SetMinAndMaxSize</enum>
-              </property>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_24">
-                <item>
-                 <widget class="QLabel" name="label_35">
-                  <property name="text">
-                   <string>Width:  </string>
-                  </property>
-                  <property name="buddy">
-                   <cstring>width1</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_24">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>18</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="width11"/>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_25">
-                <item>
-                 <widget class="QLabel" name="label_36">
-                  <property name="text">
-                   <string>Height:</string>
-                  </property>
-                  <property name="buddy">
-                   <cstring>height1</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_25">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>18</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="height11">
-                  <property name="text">
-                   <string/>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_37">
-                <property name="text">
-                 <string>Keystone correlation:</string>
-                </property>
-                <property name="buddy">
-                 <cstring>keystone1</cstring>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="keystone11"/>
-              </item>
-             </layout>
-            </widget>
-           </widget>
-          </item>
-         </layout>
-        </widget>
+          </widget>
+         </item>
+        </layout>
        </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="setting2">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>400</width>
-       <height>606</height>
-      </rect>
-     </property>
-     <attribute name="label">
-      <string>Input Setting</string>
-     </attribute>
-     <widget class="QScrollArea" name="scrollArea_2">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>10</y>
-        <width>350</width>
-        <height>400</height>
-       </rect>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>350</width>
-        <height>400</height>
-       </size>
-      </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents_2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>348</width>
-         <height>398</height>
-        </rect>
+       <widget class="QWidget" name="setting2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>400</width>
+          <height>626</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Input Setting</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_15">
+         <item>
+          <widget class="QPushButton" name="leapActivateButton">
+           <property name="minimumSize">
+            <size>
+             <width>150</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Enable Leap Motion</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QScrollArea" name="scrollArea_2">
+           <property name="minimumSize">
+            <size>
+             <width>350</width>
+             <height>400</height>
+            </size>
+           </property>
+           <property name="widgetResizable">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="scrollAreaWidgetContents_2">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>374</width>
+              <height>566</height>
+             </rect>
+            </property>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="setting3">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>400</width>
+          <height>626</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Gesture Setting</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_16">
+         <item>
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>Number of input gesture frames (sparse):</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_38">
+           <item>
+            <widget class="QSlider" name="numFrameSlider">
+             <property name="minimum">
+              <number>5</number>
+             </property>
+             <property name="maximum">
+              <number>25</number>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="tickPosition">
+              <enum>QSlider::TicksAbove</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="numFrameSpinBox">
+             <property name="minimum">
+              <number>5</number>
+             </property>
+             <property name="maximum">
+              <number>25</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>Number of recording gesture frames (dense):</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_39">
+           <item>
+            <widget class="QSlider" name="numFrameSlider_2">
+             <property name="minimum">
+              <number>5</number>
+             </property>
+             <property name="maximum">
+              <number>55</number>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="tickPosition">
+              <enum>QSlider::TicksAbove</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="numFrameSpinBox_2">
+             <property name="minimum">
+              <number>5</number>
+             </property>
+             <property name="maximum">
+              <number>55</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QLineEdit" name="newGestureNameLineEdit">
+             <property name="minimumSize">
+              <size>
+               <width>200</width>
+               <height>26</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="recordGestureButton">
+             <property name="text">
+              <string>Record New Gesture</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QComboBox" name="gestureNameBox">
+             <property name="minimumSize">
+              <size>
+               <width>300</width>
+               <height>26</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="gestureSelectButton">
+             <property name="minimumSize">
+              <size>
+               <width>70</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Select</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QTextBrowser" name="gestureEditBrowzer">
+           <property name="html">
+            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.Lucida Grande UI'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="setting4">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>400</width>
+          <height>626</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Resoning Setting</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_17">
+         <item>
+          <widget class="QScrollArea" name="scrollArea_4">
+           <property name="widgetResizable">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="scrollAreaWidgetContents_4">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>374</width>
+              <height>600</height>
+             </rect>
+            </property>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_5">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>13</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QVTKWidget" name="qvtkWidget">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>840</width>
+         <height>750</height>
+        </size>
        </property>
       </widget>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="setting3">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>400</width>
-       <height>606</height>
-      </rect>
-     </property>
-     <attribute name="label">
-      <string>Gesture Setting</string>
-     </attribute>
-     <widget class="QScrollArea" name="scrollArea_3">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>10</y>
-        <width>301</width>
-        <height>231</height>
-       </rect>
-      </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents_3">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>299</width>
-         <height>229</height>
-        </rect>
-       </property>
-      </widget>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="setting4">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>400</width>
-       <height>606</height>
-      </rect>
-     </property>
-     <attribute name="label">
-      <string>Resoning Setting</string>
-     </attribute>
-     <widget class="QScrollArea" name="scrollArea_4">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>10</y>
-        <width>301</width>
-        <height>221</height>
-       </rect>
-      </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents_4">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>299</width>
-         <height>219</height>
-        </rect>
-       </property>
-      </widget>
-     </widget>
-    </widget>
-   </widget>
-   <widget class="QVTKWidget" name="qvtkWidget">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>10</y>
-      <width>811</width>
-      <height>711</height>
-     </rect>
-    </property>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -1505,7 +1581,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1282</width>
+     <width>1338</width>
      <height>22</height>
     </rect>
    </property>

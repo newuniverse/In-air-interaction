@@ -1,0 +1,88 @@
+#ifndef LEAPLISTENER_H_
+#define LEAPLISTENER_H_
+
+#include "Leap.h"
+
+#include "VirtualHand.h"
+#include "LeapGestureTrainer.h"
+
+#include "Shared.h"
+#include <string>
+#include <chrono>
+#include <ratio>
+#include <ctime>
+#include <mutex>
+#include <deque>
+
+using namespace Leap;
+
+class LeapListener : public Listener 
+{
+public:
+    LeapListener();
+    virtual void         onInit(const Controller&);
+    virtual void         onConnect(const Controller&);
+    virtual void         onDisconnect(const Controller&);
+    virtual void         onExit(const Controller&);
+    virtual void         onFrame(const Controller&);
+    virtual void         onFocusGained(const Controller&);
+    virtual void         onFocusLost(const Controller&);
+    enum STATUS {
+        PAUSE = 0,
+        RUNNING = 1
+    };
+    enum MODE {
+        SELECTION = 1,
+        MANIPULATION = 2,
+        PHYSICS = 3
+    };
+    void                  switchListener();
+    int                   getStatus();
+    int                   getMode();
+    Vector                getTranslation();
+    Matrix                getRotation();
+    float                 getScaleFactor();
+    GraphicalObject*      getSelectedObject();
+    
+    LeapGestureTrainer*   gTrainer;
+    VirtualHand           virtualHand;
+    HANDINFO*             hand_info;
+    std::mutex            renderMutex;
+
+    void                  setGraphicalObjectsInScene (std::vector<GraphicalObject*> go );  
+
+private:
+    
+    std::chrono::high_resolution_clock::time_point           currentTime;
+    std::chrono::high_resolution_clock::time_point           lastTime;
+    
+
+    enum STATUS           status;
+    enum MODE             mode;
+   
+    Frame                 lastFrame;
+    bool                  enableLeap;
+    Matrix                mtxTotalMotionRotation;
+    Vector                vTotalMotionTranslation;
+    float                 fTotalMotionScale;
+
+    GraphicalObject*      selectedObject;
+    std::vector<GraphicalObject*> sceneObjects;
+
+    void                  update(const Frame frame);
+    void                  setMode(const Frame frame);
+    void                  initParameters();
+    void                  updateParameters(const Frame& frame);
+    void                  updateRayHitObject(const Frame& frame);
+    void                  updateGestures(const Frame& frame);
+    void                  getHandInfo(const Frame& frame);
+    void                  calcDataFPS();
+    void                  createBresenhamLine();
+    bool                  checkSameSign(float* nums, int size);
+    
+    static std::deque<int>         handNum;
+    static std::deque<int>         fingerNum;
+    float                          avg_numHands;
+    float                          avg_numFingers;
+};
+#endif
