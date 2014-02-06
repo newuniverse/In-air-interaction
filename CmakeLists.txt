@@ -9,21 +9,23 @@ FIND_PACKAGE(VTK REQUIRED)
 INCLUDE(${VTK_USE_FILE})
 
 SET(MY_INCLUDE_DIRECTORY includes)
+SET(LM_INCLUDE_DIRECTORY includesLM)
 SET(MY_SOURCE_DIRECTORY sources)
-
 
 SET(FORMS UIs/mainWindow.ui)
 SET(HEADERS ui_mainWindow.h ${MY_INCLUDE_DIRECTORY}/mainWindowController.h)
-SET(CXX ${MY_SOURCE_DIRECTORY}/mainWindowController.cxx)
+SET(CXX ${MY_SOURCE_DIRECTORY}/mainWindowController.cxx ${MY_SOURCE_DIRECTORY}/LeapListener.cpp)
 
 QT4_WRAP_UI(FORMS_HEADERS ${FORMS})
 QT4_WRAP_CPP(MOCS ${HEADERS})
 
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR}, ${MY_INCLUDE_DIRECTORY})
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR}, ${MY_INCLUDE_DIRECTORY} ${LM_INCLUDE_DIRECTORY})
 
 ADD_EXECUTABLE(In-air main.cxx ${FORM_HEADERS} ${MOCS} ${CXX})
 
-#SET(VTK_LIBRARIES -lvtkCommonExecutionModel-6.2 -lvtkCommonDataModel-6.2 -lvtkCommonMath-6.2 -lvtkCommonCore-6.2 -lvtkGUISupportQtOpenGL-6.2 -lvtkGUISupportQt-6.2 -lvtkCommonCore-6.2 -lvtkInteractionStyle-6.2 -lvtkRenderingFreeType-6.2 -lvtkRenderingFreeTypeOpenGL-6.2 -lvtkRenderingCore-6.2 -lvtkRenderingOpenGL-6.2)
+SET(LEAP_LIBRARIES -lLeap)
 
-TARGET_LINK_LIBRARIES(In-air ${QT_LIBRARIES} -L/usr/local/lib ${VTK_LIBRARIES} )
+#SET(VTK_LIBRARIES -lvtkCommonExecutionModel-6.2 -lvtkCommonDataModel-6.2 -lvtkCommonMath-6.2 -lvtkCommonCore-6.2 -lvtkGUISupportQtOpenGL-6.2 -lvtkGUISupportQt-6.2 -lvtkCommonCore-6.2 -lvtkInteractionStyle-6.2 -lvtkRenderingFreeType-6.2 -lvtkRenderingFreeTypeOpenGL-6.2 -lvtkRenderingCore-6.2 -lvtkRenderingOpenGL-6.2)-L/usr/local/lib
+
+TARGET_LINK_LIBRARIES(In-air ${QT_LIBRARIES}  ${VTK_LIBRARIES} -L/Users/nEwUnivErsE/LeapDeveloperKit/LeapSDK/lib/ ${LEAP_LIBRARIES})
 

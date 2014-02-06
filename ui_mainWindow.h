@@ -46,7 +46,7 @@ public:
     QAction *actionSave_config;
     QAction *actionNew_gesture;
     QWidget *centralwidget;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout_37;
     QToolBox *toolBox;
     QWidget *setting1;
@@ -240,8 +240,8 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1338, 800);
-        MainWindow->setMinimumSize(QSize(450, 800));
+        MainWindow->resize(1333, 800);
+        MainWindow->setMinimumSize(QSize(1330, 800));
         actionNew = new QAction(MainWindow);
         actionNew->setObjectName(QString::fromUtf8("actionNew"));
         actionOpen_File = new QAction(MainWindow);
@@ -256,13 +256,13 @@ public:
         actionNew_gesture->setObjectName(QString::fromUtf8("actionNew_gesture"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        widget = new QWidget(centralwidget);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(21, 1, 1298, 752));
-        horizontalLayout_37 = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(21, 1, 1298, 752));
+        horizontalLayout_37 = new QHBoxLayout(layoutWidget);
         horizontalLayout_37->setObjectName(QString::fromUtf8("horizontalLayout_37"));
         horizontalLayout_37->setContentsMargins(0, 0, 0, 0);
-        toolBox = new QToolBox(widget);
+        toolBox = new QToolBox(layoutWidget);
         toolBox->setObjectName(QString::fromUtf8("toolBox"));
         toolBox->setMinimumSize(QSize(400, 730));
         setting1 = new QWidget();
@@ -1059,7 +1059,7 @@ public:
         toolBox->addItem(setting2, QString::fromUtf8("Input Setting"));
         setting3 = new QWidget();
         setting3->setObjectName(QString::fromUtf8("setting3"));
-        setting3->setGeometry(QRect(0, 0, 400, 626));
+        setting3->setGeometry(QRect(0, 0, 408, 626));
         verticalLayout_16 = new QVBoxLayout(setting3);
         verticalLayout_16->setObjectName(QString::fromUtf8("verticalLayout_16"));
         label_5 = new QLabel(setting3);
@@ -1176,7 +1176,7 @@ public:
 
         horizontalLayout_37->addItem(horizontalSpacer_5);
 
-        qvtkWidget = new QVTKWidget(widget);
+        qvtkWidget = new QVTKWidget(layoutWidget);
         qvtkWidget->setObjectName(QString::fromUtf8("qvtkWidget"));
         sizePolicy.setHeightForWidth(qvtkWidget->sizePolicy().hasHeightForWidth());
         qvtkWidget->setSizePolicy(sizePolicy);
@@ -1187,7 +1187,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1338, 22));
+        menubar->setGeometry(QRect(0, 0, 1333, 22));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuEdit = new QMenu(menubar);

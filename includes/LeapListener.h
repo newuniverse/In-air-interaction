@@ -3,10 +3,9 @@
 
 #include "Leap.h"
 
-#include "VirtualHand.h"
-#include "LeapGestureTrainer.h"
+//#include "VirtualHand.h"
+//#include "LeapGestureTrainer.h"
 
-#include "Shared.h"
 #include <string>
 #include <chrono>
 #include <ratio>
@@ -36,20 +35,35 @@ public:
         MANIPULATION = 2,
         PHYSICS = 3
     };
+
+    struct FINGERINFO {
+        Leap::Vector tipPos;
+        Leap::Vector tipDir;
+    };
+
+    struct HANDINFO {
+        Leap::Vector palmPos;
+        Leap::Vector palmNor;
+        Leap::Vector palmDir;
+        FINGERINFO fingers[5];
+    };  
+
     void                  switchListener();
     int                   getStatus();
     int                   getMode();
     Vector                getTranslation();
     Matrix                getRotation();
     float                 getScaleFactor();
-    GraphicalObject*      getSelectedObject();
+    float                 getFPS();
+
+    //GraphicalObject*      getSelectedObject();
     
-    LeapGestureTrainer*   gTrainer;
-    VirtualHand           virtualHand;
+    //LeapGestureTrainer*   gTrainer;
+    //VirtualHand           virtualHand;
     HANDINFO*             hand_info;
     std::mutex            renderMutex;
 
-    void                  setGraphicalObjectsInScene (std::vector<GraphicalObject*> go );  
+    //void                  setGraphicalObjectsInScene (std::vector<GraphicalObject*> go );  
 
 private:
     
@@ -66,8 +80,10 @@ private:
     Vector                vTotalMotionTranslation;
     float                 fTotalMotionScale;
 
-    GraphicalObject*      selectedObject;
-    std::vector<GraphicalObject*> sceneObjects;
+    float                 fUpdateFPS;
+
+    //GraphicalObject*      selectedObject;
+    //std::vector<GraphicalObject*> sceneObjects;
 
     void                  update(const Frame frame);
     void                  setMode(const Frame frame);

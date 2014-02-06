@@ -159,12 +159,36 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o.provides: CMakeFiles/In
 
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o.provides.build: CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o
 
+CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: CMakeFiles/In-air.dir/flags.make
+CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: sources/LeapListener.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles $(CMAKE_PROGRESS_8)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/In-air.dir/sources/LeapListener.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/In-air.dir/sources/LeapListener.cpp.o -c /Users/nEwUnivErsE/In-air-interaction/In-air/sources/LeapListener.cpp
+
+CMakeFiles/In-air.dir/sources/LeapListener.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/In-air.dir/sources/LeapListener.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/nEwUnivErsE/In-air-interaction/In-air/sources/LeapListener.cpp > CMakeFiles/In-air.dir/sources/LeapListener.cpp.i
+
+CMakeFiles/In-air.dir/sources/LeapListener.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/In-air.dir/sources/LeapListener.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/nEwUnivErsE/In-air-interaction/In-air/sources/LeapListener.cpp -o CMakeFiles/In-air.dir/sources/LeapListener.cpp.s
+
+CMakeFiles/In-air.dir/sources/LeapListener.cpp.o.requires:
+.PHONY : CMakeFiles/In-air.dir/sources/LeapListener.cpp.o.requires
+
+CMakeFiles/In-air.dir/sources/LeapListener.cpp.o.provides: CMakeFiles/In-air.dir/sources/LeapListener.cpp.o.requires
+	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/sources/LeapListener.cpp.o.provides.build
+.PHONY : CMakeFiles/In-air.dir/sources/LeapListener.cpp.o.provides
+
+CMakeFiles/In-air.dir/sources/LeapListener.cpp.o.provides.build: CMakeFiles/In-air.dir/sources/LeapListener.cpp.o
+
 # Object files for target In-air
 In__air_OBJECTS = \
 "CMakeFiles/In-air.dir/main.cxx.o" \
 "CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.o" \
 "CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o" \
-"CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o"
+"CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o" \
+"CMakeFiles/In-air.dir/sources/LeapListener.cpp.o"
 
 # External object files for target In-air
 In__air_EXTERNAL_OBJECTS =
@@ -173,6 +197,7 @@ In-air: CMakeFiles/In-air.dir/main.cxx.o
 In-air: CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.o
 In-air: CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o
 In-air: CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o
+In-air: CMakeFiles/In-air.dir/sources/LeapListener.cpp.o
 In-air: CMakeFiles/In-air.dir/build.make
 In-air: /opt/local/lib/libQtGui.dylib
 In-air: /opt/local/lib/libQtCore.dylib
@@ -382,6 +407,7 @@ CMakeFiles/In-air.dir/requires: CMakeFiles/In-air.dir/main.cxx.o.requires
 CMakeFiles/In-air.dir/requires: CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.o.requires
 CMakeFiles/In-air.dir/requires: CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o.requires
 CMakeFiles/In-air.dir/requires: CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o.requires
+CMakeFiles/In-air.dir/requires: CMakeFiles/In-air.dir/sources/LeapListener.cpp.o.requires
 .PHONY : CMakeFiles/In-air.dir/requires
 
 CMakeFiles/In-air.dir/clean:

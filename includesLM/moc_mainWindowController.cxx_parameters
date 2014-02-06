@@ -7,5 +7,5 @@
 -DvtkRenderingCore_AUTOINIT=4(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingFreeTypeOpenGL,vtkRenderingOpenGL)
 -DvtkRenderingVolume_AUTOINIT=1(vtkRenderingVolumeOpenGL)
 -o
-/Users/nEwUnivErsE/In-air-interaction/In-air/includes/moc_mainWindowController.cxx
-/Users/nEwUnivErsE/In-air-interaction/In-air/includes/mainWindowController.h
+/Users/nEwUnivErsE/In-air-interaction/In-air/includesLM/moc_mainWindowController.cxx
+/Users/nEwUnivErsE/In-air-interaction/In-air/includesLM/mainWindowController.h

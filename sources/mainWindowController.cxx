@@ -2,7 +2,8 @@
 #include "mainWindowController.h"
 
 
-MainWindowController::MainWindowController(QWidget *parent)
+
+MainWindowController::MainWindowController(LeapListener &listener, QWidget *parent) : _listener(listener)
 {
 	setupUi(this);
 	
@@ -58,6 +59,17 @@ void MainWindowController::on_createWindowButton_clicked()
 			height = le->text().toInt();
 		}
 		createWindow(width, height, i);
+	}
+}
+
+void MainWindowController::on_leapActivateButton_clicked()
+{
+	_listener.switchListener();
+	if (_listener.getStatus() == 1) { //running
+		leapActivateButton->setText(QString("Disable Leap Motion"));
+		statusbar->showMessage(QString("FPS: ") + QString::number(_listener.getFPS()));
+	} else {
+		leapActivateButton->setText(QString("Enable Leap Motion"));
 	}
 }
 /*

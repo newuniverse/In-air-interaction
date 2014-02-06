@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1338</width>
+    <width>1333</width>
     <height>800</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>450</width>
+    <width>1330</width>
     <height>800</height>
    </size>
   </property>
@@ -20,7 +20,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>21</x>
@@ -1367,7 +1367,7 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>400</width>
+          <width>408</width>
           <height>626</height>
          </rect>
         </property>
@@ -1581,7 +1581,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1338</width>
+     <width>1333</width>
      <height>22</height>
     </rect>
    </property>

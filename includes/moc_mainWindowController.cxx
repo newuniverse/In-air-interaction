@@ -22,7 +22,7 @@ static const uint qt_meta_data_MainWindowController[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -31,6 +31,7 @@ static const uint qt_meta_data_MainWindowController[] = {
 
  // slots: signature, parameters, type, tag, flags
       21,   53,   53,   53, 0x08,
+      54,   53,   53,   53, 0x08,
 
        0        // eod
 };
@@ -38,6 +39,7 @@ static const uint qt_meta_data_MainWindowController[] = {
 static const char qt_meta_stringdata_MainWindowController[] = {
     "MainWindowController\0"
     "on_createWindowButton_clicked()\0\0"
+    "on_leapActivateButton_clicked()\0"
 };
 
 void MainWindowController::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -47,6 +49,7 @@ void MainWindowController::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
         MainWindowController *_t = static_cast<MainWindowController *>(_o);
         switch (_id) {
         case 0: _t->on_createWindowButton_clicked(); break;
+        case 1: _t->on_leapActivateButton_clicked(); break;
         default: ;
         }
     }
@@ -85,9 +88,9 @@ int MainWindowController::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }

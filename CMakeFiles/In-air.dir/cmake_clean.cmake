@@ -6,6 +6,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.o"
   "CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o"
   "CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o"
+  "CMakeFiles/In-air.dir/sources/LeapListener.cpp.o"
   "In-air.pdb"
   "In-air"
 )

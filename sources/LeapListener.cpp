@@ -1,5 +1,5 @@
 #include "LeapListener.h"
-#include "Leap.h"
+
 #include <iostream>
 #include <deque>
 #include <string>
@@ -11,7 +11,7 @@ std::deque<int>         LeapListener::fingerNum;
 
 LeapListener::LeapListener() 
 {
-    gTrainer = new LeapGestureTrainer();
+    //gTrainer = new LeapGestureTrainer();
 }
 
 Leap::Vector LeapListener::getTranslation() 
@@ -29,7 +29,6 @@ float LeapListener::getScaleFactor()
 
 void LeapListener::onFrame(const Leap::Controller& controller)
 {
-    //std::cout << "onFrame!" << std::endl;
     if ( enableLeap )
     {
         const Leap::Frame frame = controller.frame();
@@ -67,7 +66,6 @@ void  LeapListener::onInit(const Leap::Controller&)
     status = PAUSE;
     mode = PHYSICS;    
     initParameters();
-    
 }
 
 void LeapListener::onConnect(const Leap::Controller&)
@@ -103,6 +101,12 @@ int LeapListener::getMode()
 {
     return mode;
 }
+
+float LeapListener::getFPS()
+{
+    return this->fUpdateFPS;
+}
+
 void LeapListener::setMode(const Frame frame) 
 {
     int lastMode = mode;
@@ -131,7 +135,8 @@ void LeapListener::getHandInfo(const Leap::Frame& frame)
     if (handNum == 0)
         return;  
     std::cout << "hand num: "<< handNum << std::endl;
-    HANDINFO hi[handNum];
+    HANDINFO* hi;
+    hi = new HANDINFO[handNum];
     int handCounter = 0;
     for ( Leap::HandList::const_iterator hit = hands.begin(); hit != hands.end(); ++hit ) {      
         //std::cout << (*hit) << std::endl;
@@ -152,7 +157,8 @@ void LeapListener::getHandInfo(const Leap::Frame& frame)
         }       
         handCounter++;
     }
-    virtualHand.setHands(hi, handNum);
+    delete hi;
+    //virtualHand.setHands(hi, handNum);
 }
 
 void LeapListener::initParameters() 
@@ -160,7 +166,7 @@ void LeapListener::initParameters()
     vTotalMotionTranslation = Leap::Vector::zero();
     mtxTotalMotionRotation = Leap::Matrix::identity();
     fTotalMotionScale = 1.0f;
-    selectedObject = NULL;
+    //selectedObject = NULL;
 }
 
 /* update translation vector, rotation matrix, scale factor from every frame if mode is MANIPULATION*/
@@ -179,7 +185,7 @@ void LeapListener::updateParameters(const Frame& frame)
 /*main update function*/
 void LeapListener::update(const Leap::Frame frame)
 {
-    renderMutex.lock();
+    //renderMutex.lock();
     if(!frame.isValid())
         return;
     calcDataFPS();
@@ -190,16 +196,16 @@ void LeapListener::update(const Leap::Frame frame)
     
     switch (mode) {
         case SELECTION:
-            updateRayHitObject(frame);
+            //updateRayHitObject(frame);
             break;
         case MANIPULATION:
             updateParameters(frame);
             break;
         case PHYSICS:
-            updateGestures(frame);
+            //updateGestures(frame);
             break;
     }
-    renderMutex.unlock();
+    //renderMutex.unlock();
 }
 
 /* calculate frame rates from leapmotion */
@@ -207,15 +213,17 @@ void LeapListener::calcDataFPS()
 {
     currentTime = std::chrono::high_resolution_clock::now();
 
-    std::chrono::duration<double> time_span =  std::chrono::duration_cast< std::chrono::duration<double>> (currentTime - lastTime);
+    std::chrono::duration<double> time_span =  std::chrono::duration_cast< std::chrono::duration<double> > (currentTime - lastTime);
     
     lastTime = currentTime;    
 
     float fUpdateDT = time_span.count();
-    float fUpdateFPS = (fUpdateDT > 0) ? 1.0/fUpdateDT : 0.0;
+    this->fUpdateFPS = (fUpdateDT > 0) ? 1.0/fUpdateDT : 0.0;
     //std::cout << "data FPS: " << fUpdateFPS <<std::endl;
 }
 
+
+/*
 void LeapListener::updateGestures(const Frame& frame) 
 {
     LeapGestureTrainer* temp = gTrainer;
@@ -243,8 +251,10 @@ void LeapListener::updateGestures(const Frame& frame)
         }
     }
 }
+*/
 
 /*update selected object if mode is SELECTION*/
+/*
 void LeapListener::updateRayHitObject(const Frame& frame)
 {
     selectedObject = NULL;
@@ -333,18 +343,23 @@ void LeapListener::updateRayHitObject(const Frame& frame)
         selectedObject = NULL;
     }
 }
+*/
 
+/*
 void LeapListener::setGraphicalObjectsInScene ( std::vector<GraphicalObject*> go )
 {
     sceneObjects.clear();
     sceneObjects.reserve(go.size());
     std::copy(go.begin(), go.end(), std::back_inserter(sceneObjects));
 }
+*/
 
+/*
 GraphicalObject* LeapListener::getSelectedObject()
 {
     return selectedObject;
 }
+*/
 
 bool LeapListener::checkSameSign(float* nums, int size){
     if(nums[0] > 0.0)
