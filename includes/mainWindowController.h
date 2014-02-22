@@ -1,38 +1,63 @@
 #ifndef MAINWINDOWCONTROLLER_H
 #define MAINWINDOWCONTROLLER_H
 
+//Qt ui header automatically generated in root directory
 #include "../ui_mainWindow.h"
-#include "vtkConeSource.h"
-#include "vtkPolyDataMapper.h"
-#include "vtkRenderWindow.h"
-#include "vtkRenderWindowInteractor.h"
-#include "vtkCamera.h"
-#include "vtkActor.h"
-#include "vtkRenderer.h"
 
+//all vtk headers are included in here
+#include "vtkInclude.h" 
+
+//Leap listener class wrapper
 #include "LeapListener.h"
-#include <vtkSmartPointer.h>
+
+class vtkTimerCallback : public vtkCommand
+{
+  public:
+    static vtkTimerCallback *New()
+    {
+      vtkTimerCallback *cb = new vtkTimerCallback;
+      return cb;
+    }
+    virtual void Execute(vtkObject *caller, unsigned long eventId, void *callData) {
+      if (vtkCommand::TimerEvent == eventId) {
+        	vtkRenderWindowInteractor *renderWinIn = reinterpret_cast<vtkRenderWindowInteractor*>(caller);
+      		renderWinIn->GetRenderWindow()->Render();
+        	cout << "rendering update" << endl;
+        }
+        //cout << this->TimerCount << endl;
+    }
+  private:
+};
 
 class MainWindowController : public QMainWindow, private Ui::MainWindow
 {
 	Q_OBJECT
 public:
 	MainWindowController(QWidget *parent = 0);
-	MainWindowController(LeapListener& listener, QWidget *parent = 0);
 	~MainWindowController();
-private:
-	void createWindow(int width, int height, int index);
 
 private slots:
 	void on_createWindowButton_clicked();
 	void on_leapActivateButton_clicked();
+
 private:
+	void createWindow(int width, int height, int index);
+
+private:
+	LeapListener     *g_lmListener;
+	Leap::Controller *g_lmController;
+
 	vtkSmartPointer<vtkConeSource> cone;
 	vtkSmartPointer<vtkPolyDataMapper> coneMapper;
-	vtkSmartPointer<vtkActor> coneActor;
+	vtkSmartPointer<vtkLODActor> coneActor;
 	vtkSmartPointer<vtkRenderer> ren1;
 	vtkSmartPointer<vtkRenderWindow> renWin;
-	LeapListener& _listener;
+
+
+	vtkSmartPointer<vtkTimerCallback> g_vtkCallback;
+
+	std::chrono::high_resolution_clock::time_point currentTime;
+    std::chrono::high_resolution_clock::time_point lastTime;
 };
 
 #endif

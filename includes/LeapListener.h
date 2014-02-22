@@ -3,8 +3,7 @@
 
 #include "Leap.h"
 
-//#include "VirtualHand.h"
-//#include "LeapGestureTrainer.h"
+#include "vtkInclude.h" 
 
 #include <string>
 #include <chrono>
@@ -64,12 +63,13 @@ public:
     std::mutex            renderMutex;
 
     //void                  setGraphicalObjectsInScene (std::vector<GraphicalObject*> go );  
-
+    vtkActor* _actor;
+    void addActor(vtkActor* actor) {
+        _actor = actor;
+    }
 private:
-    
     std::chrono::high_resolution_clock::time_point           currentTime;
     std::chrono::high_resolution_clock::time_point           lastTime;
-    
 
     enum STATUS           status;
     enum MODE             mode;
@@ -81,11 +81,7 @@ private:
     float                 fTotalMotionScale;
 
     float                 fUpdateFPS;
-
-    //GraphicalObject*      selectedObject;
-    //std::vector<GraphicalObject*> sceneObjects;
-
-    void                  update(const Frame frame);
+    virtual void                  update(const Frame frame);
     void                  setMode(const Frame frame);
     void                  initParameters();
     void                  updateParameters(const Frame& frame);

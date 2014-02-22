@@ -25,7 +25,7 @@
      <rect>
       <x>21</x>
       <y>1</y>
-      <width>1298</width>
+      <width>1275</width>
       <height>752</height>
      </rect>
     </property>
@@ -39,7 +39,7 @@
         </size>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>3</number>
        </property>
        <widget class="QWidget" name="setting1">
         <property name="geometry">
@@ -1367,7 +1367,7 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>408</width>
+          <width>404</width>
           <height>626</height>
          </rect>
         </property>
@@ -1537,6 +1537,52 @@ p, li { white-space: pre-wrap; }
               <height>600</height>
              </rect>
             </property>
+            <widget class="QVTKWidget" name="vtkChart1">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>40</y>
+               <width>350</width>
+               <height>161</height>
+              </rect>
+             </property>
+            </widget>
+            <widget class="QVTKWidget" name="vtkChart2">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>260</y>
+               <width>351</width>
+               <height>241</height>
+              </rect>
+             </property>
+            </widget>
+            <widget class="QLabel" name="label_7">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>10</y>
+               <width>56</width>
+               <height>16</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>Chart 1:</string>
+             </property>
+            </widget>
+            <widget class="QLabel" name="label_38">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>220</y>
+               <width>56</width>
+               <height>16</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>Chart 2:</string>
+             </property>
+            </widget>
            </widget>
           </widget>
          </item>

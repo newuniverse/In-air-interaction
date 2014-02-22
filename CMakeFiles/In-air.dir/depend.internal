@@ -5,6 +5,7 @@ CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o
  /Users/nEwUnivErsE/In-air-interaction/In-air/includes/LeapListener.h
  /Users/nEwUnivErsE/In-air-interaction/In-air/includes/mainWindowController.h
  /Users/nEwUnivErsE/In-air-interaction/In-air/includes/moc_mainWindowController.cxx
+ /Users/nEwUnivErsE/In-air-interaction/In-air/includes/vtkInclude.h
  /Users/nEwUnivErsE/In-air-interaction/In-air/ui_mainWindow.h
  /opt/local/include/Qt3Support/q3cstring.h
  /opt/local/include/Qt3Support/q3valuelist.h
@@ -192,8 +193,10 @@ CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o
  /usr/local/include/vtk-6.2/QVTKWin32Header.h
  /usr/local/include/vtk-6.2/vtkABI.h
  /usr/local/include/vtk-6.2/vtkAbstractArray.h
+ /usr/local/include/vtk-6.2/vtkAbstractContextItem.h
  /usr/local/include/vtk-6.2/vtkAbstractMapper.h
  /usr/local/include/vtk-6.2/vtkAbstractMapper3D.h
+ /usr/local/include/vtk-6.2/vtkAbstractTransform.h
  /usr/local/include/vtk-6.2/vtkActor.h
  /usr/local/include/vtk-6.2/vtkActorCollection.h
  /usr/local/include/vtk-6.2/vtkAlgorithm.h
@@ -203,19 +206,29 @@ CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o
  /usr/local/include/vtk-6.2/vtkArrayIteratorTemplateImplicit.txx
  /usr/local/include/vtk-6.2/vtkAtomicInt.h
  /usr/local/include/vtk-6.2/vtkAutoInit.h
+ /usr/local/include/vtk-6.2/vtkCallbackCommand.h
  /usr/local/include/vtk-6.2/vtkCamera.h
  /usr/local/include/vtk-6.2/vtkCell.h
  /usr/local/include/vtk-6.2/vtkCellLinks.h
  /usr/local/include/vtk-6.2/vtkCellType.h
  /usr/local/include/vtk-6.2/vtkCellTypes.h
+ /usr/local/include/vtk-6.2/vtkChart.h
+ /usr/local/include/vtk-6.2/vtkChartXY.h
+ /usr/local/include/vtk-6.2/vtkChartsCoreModule.h
  /usr/local/include/vtk-6.2/vtkCollection.h
  /usr/local/include/vtk-6.2/vtkCommand.h
  /usr/local/include/vtk-6.2/vtkCommonCoreModule.h
  /usr/local/include/vtk-6.2/vtkCommonDataModelModule.h
  /usr/local/include/vtk-6.2/vtkCommonExecutionModelModule.h
  /usr/local/include/vtk-6.2/vtkCommonInformationKeyManager.h
+ /usr/local/include/vtk-6.2/vtkCommonMathModule.h
+ /usr/local/include/vtk-6.2/vtkCommonTransformsModule.h
  /usr/local/include/vtk-6.2/vtkConeSource.h
  /usr/local/include/vtk-6.2/vtkConfigure.h
+ /usr/local/include/vtk-6.2/vtkContextItem.h
+ /usr/local/include/vtk-6.2/vtkContextPolygon.h
+ /usr/local/include/vtk-6.2/vtkContextScene.h
+ /usr/local/include/vtk-6.2/vtkContextView.h
  /usr/local/include/vtk-6.2/vtkDataArray.h
  /usr/local/include/vtk-6.2/vtkDataArrayTemplate.h
  /usr/local/include/vtk-6.2/vtkDataArrayTemplate.txx
@@ -223,12 +236,17 @@ CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o
  /usr/local/include/vtk-6.2/vtkDataObject.h
  /usr/local/include/vtk-6.2/vtkDataSet.h
  /usr/local/include/vtk-6.2/vtkDebugLeaksManager.h
+ /usr/local/include/vtk-6.2/vtkFiltersGeneralModule.h
+ /usr/local/include/vtk-6.2/vtkFiltersHybridModule.h
  /usr/local/include/vtk-6.2/vtkFiltersSourcesModule.h
  /usr/local/include/vtk-6.2/vtkGUISupportQtModule.h
+ /usr/local/include/vtk-6.2/vtkHomogeneousTransform.h
+ /usr/local/include/vtk-6.2/vtkIOImageModule.h
  /usr/local/include/vtk-6.2/vtkIOStream.h
  /usr/local/include/vtk-6.2/vtkIOStreamFwd.h
  /usr/local/include/vtk-6.2/vtkIdList.h
  /usr/local/include/vtk-6.2/vtkImageAlgorithm.h
+ /usr/local/include/vtk-6.2/vtkImagingHybridModule.h
  /usr/local/include/vtk-6.2/vtkIndent.h
  /usr/local/include/vtk-6.2/vtkInformation.h
  /usr/local/include/vtk-6.2/vtkInformationDoubleVectorKey.h
@@ -237,9 +255,13 @@ CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o
  /usr/local/include/vtk-6.2/vtkInformationVector.h
  /usr/local/include/vtk-6.2/vtkIntArray.h
  /usr/local/include/vtk-6.2/vtkInteractionStyleModule.h
+ /usr/local/include/vtk-6.2/vtkInteractionWidgetsModule.h
+ /usr/local/include/vtk-6.2/vtkLODActor.h
+ /usr/local/include/vtk-6.2/vtkLinearTransform.h
  /usr/local/include/vtk-6.2/vtkMappedDataArray.h
  /usr/local/include/vtk-6.2/vtkMappedDataArray.txx
  /usr/local/include/vtk-6.2/vtkMapper.h
+ /usr/local/include/vtk-6.2/vtkMatrix4x4.h
  /usr/local/include/vtk-6.2/vtkOStrStreamWrapper.h
  /usr/local/include/vtk-6.2/vtkOStreamWrapper.h
  /usr/local/include/vtk-6.2/vtkObject.h
@@ -253,12 +275,21 @@ CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o
  /usr/local/include/vtk-6.2/vtkProp.h
  /usr/local/include/vtk-6.2/vtkProp3D.h
  /usr/local/include/vtk-6.2/vtkPropCollection.h
+ /usr/local/include/vtk-6.2/vtkProperty.h
+ /usr/local/include/vtk-6.2/vtkRect.h
+ /usr/local/include/vtk-6.2/vtkRenderViewBase.h
  /usr/local/include/vtk-6.2/vtkRenderWindow.h
  /usr/local/include/vtk-6.2/vtkRenderWindowInteractor.h
  /usr/local/include/vtk-6.2/vtkRenderer.h
+ /usr/local/include/vtk-6.2/vtkRendererCollection.h
+ /usr/local/include/vtk-6.2/vtkRenderingAnnotationModule.h
+ /usr/local/include/vtk-6.2/vtkRenderingContext2DModule.h
  /usr/local/include/vtk-6.2/vtkRenderingCoreModule.h
+ /usr/local/include/vtk-6.2/vtkRenderingFreeTypeModule.h
+ /usr/local/include/vtk-6.2/vtkRenderingLODModule.h
  /usr/local/include/vtk-6.2/vtkRenderingOpenGLConfigure.h
  /usr/local/include/vtk-6.2/vtkRenderingOpenGLModule.h
+ /usr/local/include/vtk-6.2/vtkRenderingVolumeModule.h
  /usr/local/include/vtk-6.2/vtkScalarsToColors.h
  /usr/local/include/vtk-6.2/vtkSetGet.h
  /usr/local/include/vtk-6.2/vtkSmartPointer.h
@@ -270,6 +301,9 @@ CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o
  /usr/local/include/vtk-6.2/vtkTexture.h
  /usr/local/include/vtk-6.2/vtkTimeStamp.h
  /usr/local/include/vtk-6.2/vtkToolkits.h
+ /usr/local/include/vtk-6.2/vtkTransform.h
+ /usr/local/include/vtk-6.2/vtkTransformPolyDataFilter.h
+ /usr/local/include/vtk-6.2/vtkTuple.h
  /usr/local/include/vtk-6.2/vtkType.h
  /usr/local/include/vtk-6.2/vtkTypeTemplate.h
  /usr/local/include/vtk-6.2/vtkTypeTraits.h
@@ -281,10 +315,15 @@ CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o
  /usr/local/include/vtk-6.2/vtkVariant.h
  /usr/local/include/vtk-6.2/vtkVariantCast.h
  /usr/local/include/vtk-6.2/vtkVariantInlineOperators.h
+ /usr/local/include/vtk-6.2/vtkVector.h
  /usr/local/include/vtk-6.2/vtkVersionMacros.h
+ /usr/local/include/vtk-6.2/vtkView.h
  /usr/local/include/vtk-6.2/vtkViewport.h
+ /usr/local/include/vtk-6.2/vtkViewsContext2DModule.h
+ /usr/local/include/vtk-6.2/vtkViewsCoreModule.h
  /usr/local/include/vtk-6.2/vtkVolume.h
  /usr/local/include/vtk-6.2/vtkVolumeCollection.h
+ /usr/local/include/vtk-6.2/vtkWeakPointer.h
  /usr/local/include/vtk-6.2/vtkWeakPointerBase.h
  /usr/local/include/vtk-6.2/vtkWin32Header.h
  /usr/local/include/vtk-6.2/vtkWindow.h
@@ -478,8 +517,10 @@ CMakeFiles/In-air.dir/main.cxx.o
  /usr/local/include/vtk-6.2/QVTKWin32Header.h
  /usr/local/include/vtk-6.2/vtkABI.h
  /usr/local/include/vtk-6.2/vtkAbstractArray.h
+ /usr/local/include/vtk-6.2/vtkAbstractContextItem.h
  /usr/local/include/vtk-6.2/vtkAbstractMapper.h
  /usr/local/include/vtk-6.2/vtkAbstractMapper3D.h
+ /usr/local/include/vtk-6.2/vtkAbstractTransform.h
  /usr/local/include/vtk-6.2/vtkActor.h
  /usr/local/include/vtk-6.2/vtkActorCollection.h
  /usr/local/include/vtk-6.2/vtkAlgorithm.h
@@ -489,19 +530,29 @@ CMakeFiles/In-air.dir/main.cxx.o
  /usr/local/include/vtk-6.2/vtkArrayIteratorTemplateImplicit.txx
  /usr/local/include/vtk-6.2/vtkAtomicInt.h
  /usr/local/include/vtk-6.2/vtkAutoInit.h
+ /usr/local/include/vtk-6.2/vtkCallbackCommand.h
  /usr/local/include/vtk-6.2/vtkCamera.h
  /usr/local/include/vtk-6.2/vtkCell.h
  /usr/local/include/vtk-6.2/vtkCellLinks.h
  /usr/local/include/vtk-6.2/vtkCellType.h
  /usr/local/include/vtk-6.2/vtkCellTypes.h
+ /usr/local/include/vtk-6.2/vtkChart.h
+ /usr/local/include/vtk-6.2/vtkChartXY.h
+ /usr/local/include/vtk-6.2/vtkChartsCoreModule.h
  /usr/local/include/vtk-6.2/vtkCollection.h
  /usr/local/include/vtk-6.2/vtkCommand.h
  /usr/local/include/vtk-6.2/vtkCommonCoreModule.h
  /usr/local/include/vtk-6.2/vtkCommonDataModelModule.h
  /usr/local/include/vtk-6.2/vtkCommonExecutionModelModule.h
  /usr/local/include/vtk-6.2/vtkCommonInformationKeyManager.h
+ /usr/local/include/vtk-6.2/vtkCommonMathModule.h
+ /usr/local/include/vtk-6.2/vtkCommonTransformsModule.h
  /usr/local/include/vtk-6.2/vtkConeSource.h
  /usr/local/include/vtk-6.2/vtkConfigure.h
+ /usr/local/include/vtk-6.2/vtkContextItem.h
+ /usr/local/include/vtk-6.2/vtkContextPolygon.h
+ /usr/local/include/vtk-6.2/vtkContextScene.h
+ /usr/local/include/vtk-6.2/vtkContextView.h
  /usr/local/include/vtk-6.2/vtkDataArray.h
  /usr/local/include/vtk-6.2/vtkDataArrayTemplate.h
  /usr/local/include/vtk-6.2/vtkDataArrayTemplate.txx
@@ -509,12 +560,17 @@ CMakeFiles/In-air.dir/main.cxx.o
  /usr/local/include/vtk-6.2/vtkDataObject.h
  /usr/local/include/vtk-6.2/vtkDataSet.h
  /usr/local/include/vtk-6.2/vtkDebugLeaksManager.h
+ /usr/local/include/vtk-6.2/vtkFiltersGeneralModule.h
+ /usr/local/include/vtk-6.2/vtkFiltersHybridModule.h
  /usr/local/include/vtk-6.2/vtkFiltersSourcesModule.h
  /usr/local/include/vtk-6.2/vtkGUISupportQtModule.h
+ /usr/local/include/vtk-6.2/vtkHomogeneousTransform.h
+ /usr/local/include/vtk-6.2/vtkIOImageModule.h
  /usr/local/include/vtk-6.2/vtkIOStream.h
  /usr/local/include/vtk-6.2/vtkIOStreamFwd.h
  /usr/local/include/vtk-6.2/vtkIdList.h
  /usr/local/include/vtk-6.2/vtkImageAlgorithm.h
+ /usr/local/include/vtk-6.2/vtkImagingHybridModule.h
  /usr/local/include/vtk-6.2/vtkIndent.h
  /usr/local/include/vtk-6.2/vtkInformation.h
  /usr/local/include/vtk-6.2/vtkInformationDoubleVectorKey.h
@@ -523,9 +579,13 @@ CMakeFiles/In-air.dir/main.cxx.o
  /usr/local/include/vtk-6.2/vtkInformationVector.h
  /usr/local/include/vtk-6.2/vtkIntArray.h
  /usr/local/include/vtk-6.2/vtkInteractionStyleModule.h
+ /usr/local/include/vtk-6.2/vtkInteractionWidgetsModule.h
+ /usr/local/include/vtk-6.2/vtkLODActor.h
+ /usr/local/include/vtk-6.2/vtkLinearTransform.h
  /usr/local/include/vtk-6.2/vtkMappedDataArray.h
  /usr/local/include/vtk-6.2/vtkMappedDataArray.txx
  /usr/local/include/vtk-6.2/vtkMapper.h
+ /usr/local/include/vtk-6.2/vtkMatrix4x4.h
  /usr/local/include/vtk-6.2/vtkOStrStreamWrapper.h
  /usr/local/include/vtk-6.2/vtkOStreamWrapper.h
  /usr/local/include/vtk-6.2/vtkObject.h
@@ -539,12 +599,21 @@ CMakeFiles/In-air.dir/main.cxx.o
  /usr/local/include/vtk-6.2/vtkProp.h
  /usr/local/include/vtk-6.2/vtkProp3D.h
  /usr/local/include/vtk-6.2/vtkPropCollection.h
+ /usr/local/include/vtk-6.2/vtkProperty.h
+ /usr/local/include/vtk-6.2/vtkRect.h
+ /usr/local/include/vtk-6.2/vtkRenderViewBase.h
  /usr/local/include/vtk-6.2/vtkRenderWindow.h
  /usr/local/include/vtk-6.2/vtkRenderWindowInteractor.h
  /usr/local/include/vtk-6.2/vtkRenderer.h
+ /usr/local/include/vtk-6.2/vtkRendererCollection.h
+ /usr/local/include/vtk-6.2/vtkRenderingAnnotationModule.h
+ /usr/local/include/vtk-6.2/vtkRenderingContext2DModule.h
  /usr/local/include/vtk-6.2/vtkRenderingCoreModule.h
+ /usr/local/include/vtk-6.2/vtkRenderingFreeTypeModule.h
+ /usr/local/include/vtk-6.2/vtkRenderingLODModule.h
  /usr/local/include/vtk-6.2/vtkRenderingOpenGLConfigure.h
  /usr/local/include/vtk-6.2/vtkRenderingOpenGLModule.h
+ /usr/local/include/vtk-6.2/vtkRenderingVolumeModule.h
  /usr/local/include/vtk-6.2/vtkScalarsToColors.h
  /usr/local/include/vtk-6.2/vtkSetGet.h
  /usr/local/include/vtk-6.2/vtkSmartPointer.h
@@ -556,6 +625,9 @@ CMakeFiles/In-air.dir/main.cxx.o
  /usr/local/include/vtk-6.2/vtkTexture.h
  /usr/local/include/vtk-6.2/vtkTimeStamp.h
  /usr/local/include/vtk-6.2/vtkToolkits.h
+ /usr/local/include/vtk-6.2/vtkTransform.h
+ /usr/local/include/vtk-6.2/vtkTransformPolyDataFilter.h
+ /usr/local/include/vtk-6.2/vtkTuple.h
  /usr/local/include/vtk-6.2/vtkType.h
  /usr/local/include/vtk-6.2/vtkTypeTemplate.h
  /usr/local/include/vtk-6.2/vtkTypeTraits.h
@@ -567,15 +639,21 @@ CMakeFiles/In-air.dir/main.cxx.o
  /usr/local/include/vtk-6.2/vtkVariant.h
  /usr/local/include/vtk-6.2/vtkVariantCast.h
  /usr/local/include/vtk-6.2/vtkVariantInlineOperators.h
+ /usr/local/include/vtk-6.2/vtkVector.h
  /usr/local/include/vtk-6.2/vtkVersionMacros.h
+ /usr/local/include/vtk-6.2/vtkView.h
  /usr/local/include/vtk-6.2/vtkViewport.h
+ /usr/local/include/vtk-6.2/vtkViewsContext2DModule.h
+ /usr/local/include/vtk-6.2/vtkViewsCoreModule.h
  /usr/local/include/vtk-6.2/vtkVolume.h
  /usr/local/include/vtk-6.2/vtkVolumeCollection.h
+ /usr/local/include/vtk-6.2/vtkWeakPointer.h
  /usr/local/include/vtk-6.2/vtkWeakPointerBase.h
  /usr/local/include/vtk-6.2/vtkWin32Header.h
  /usr/local/include/vtk-6.2/vtkWindow.h
  includes/LeapListener.h
  includes/mainWindowController.h
+ includes/vtkInclude.h
  includesLM/Leap.h
  includesLM/LeapMath.h
  ui_mainWindow.h
@@ -583,7 +661,139 @@ CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.o
  /Users/nEwUnivErsE/In-air-interaction/In-air/moc_ui_mainWindow.cxx
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o
  /Users/nEwUnivErsE/In-air-interaction/In-air/sources/LeapListener.cpp
+ /usr/local/include/vtk-6.2/vtkABI.h
+ /usr/local/include/vtk-6.2/vtkAbstractArray.h
+ /usr/local/include/vtk-6.2/vtkAbstractContextItem.h
+ /usr/local/include/vtk-6.2/vtkAbstractMapper.h
+ /usr/local/include/vtk-6.2/vtkAbstractMapper3D.h
+ /usr/local/include/vtk-6.2/vtkAbstractTransform.h
+ /usr/local/include/vtk-6.2/vtkActor.h
+ /usr/local/include/vtk-6.2/vtkActorCollection.h
+ /usr/local/include/vtk-6.2/vtkAlgorithm.h
+ /usr/local/include/vtk-6.2/vtkArrayIterator.h
+ /usr/local/include/vtk-6.2/vtkArrayIteratorTemplate.h
+ /usr/local/include/vtk-6.2/vtkArrayIteratorTemplate.txx
+ /usr/local/include/vtk-6.2/vtkArrayIteratorTemplateImplicit.txx
+ /usr/local/include/vtk-6.2/vtkAtomicInt.h
+ /usr/local/include/vtk-6.2/vtkAutoInit.h
+ /usr/local/include/vtk-6.2/vtkCallbackCommand.h
+ /usr/local/include/vtk-6.2/vtkCamera.h
+ /usr/local/include/vtk-6.2/vtkCell.h
+ /usr/local/include/vtk-6.2/vtkCellLinks.h
+ /usr/local/include/vtk-6.2/vtkCellType.h
+ /usr/local/include/vtk-6.2/vtkCellTypes.h
+ /usr/local/include/vtk-6.2/vtkChart.h
+ /usr/local/include/vtk-6.2/vtkChartXY.h
+ /usr/local/include/vtk-6.2/vtkChartsCoreModule.h
+ /usr/local/include/vtk-6.2/vtkCollection.h
+ /usr/local/include/vtk-6.2/vtkCommand.h
+ /usr/local/include/vtk-6.2/vtkCommonCoreModule.h
+ /usr/local/include/vtk-6.2/vtkCommonDataModelModule.h
+ /usr/local/include/vtk-6.2/vtkCommonExecutionModelModule.h
+ /usr/local/include/vtk-6.2/vtkCommonInformationKeyManager.h
+ /usr/local/include/vtk-6.2/vtkCommonMathModule.h
+ /usr/local/include/vtk-6.2/vtkCommonTransformsModule.h
+ /usr/local/include/vtk-6.2/vtkConeSource.h
+ /usr/local/include/vtk-6.2/vtkConfigure.h
+ /usr/local/include/vtk-6.2/vtkContextItem.h
+ /usr/local/include/vtk-6.2/vtkContextPolygon.h
+ /usr/local/include/vtk-6.2/vtkContextScene.h
+ /usr/local/include/vtk-6.2/vtkContextView.h
+ /usr/local/include/vtk-6.2/vtkDataArray.h
+ /usr/local/include/vtk-6.2/vtkDataArrayTemplate.h
+ /usr/local/include/vtk-6.2/vtkDataArrayTemplate.txx
+ /usr/local/include/vtk-6.2/vtkDataArrayTemplateImplicit.txx
+ /usr/local/include/vtk-6.2/vtkDataObject.h
+ /usr/local/include/vtk-6.2/vtkDataSet.h
+ /usr/local/include/vtk-6.2/vtkDebugLeaksManager.h
+ /usr/local/include/vtk-6.2/vtkFiltersGeneralModule.h
+ /usr/local/include/vtk-6.2/vtkFiltersHybridModule.h
+ /usr/local/include/vtk-6.2/vtkFiltersSourcesModule.h
+ /usr/local/include/vtk-6.2/vtkHomogeneousTransform.h
+ /usr/local/include/vtk-6.2/vtkIOImageModule.h
+ /usr/local/include/vtk-6.2/vtkIOStream.h
+ /usr/local/include/vtk-6.2/vtkIOStreamFwd.h
+ /usr/local/include/vtk-6.2/vtkIdList.h
+ /usr/local/include/vtk-6.2/vtkImageAlgorithm.h
+ /usr/local/include/vtk-6.2/vtkImagingHybridModule.h
+ /usr/local/include/vtk-6.2/vtkIndent.h
+ /usr/local/include/vtk-6.2/vtkInformation.h
+ /usr/local/include/vtk-6.2/vtkInformationDoubleVectorKey.h
+ /usr/local/include/vtk-6.2/vtkInformationInformationVectorKey.h
+ /usr/local/include/vtk-6.2/vtkInformationKey.h
+ /usr/local/include/vtk-6.2/vtkInformationVector.h
+ /usr/local/include/vtk-6.2/vtkIntArray.h
+ /usr/local/include/vtk-6.2/vtkInteractionStyleModule.h
+ /usr/local/include/vtk-6.2/vtkInteractionWidgetsModule.h
+ /usr/local/include/vtk-6.2/vtkLODActor.h
+ /usr/local/include/vtk-6.2/vtkLinearTransform.h
+ /usr/local/include/vtk-6.2/vtkMappedDataArray.h
+ /usr/local/include/vtk-6.2/vtkMappedDataArray.txx
+ /usr/local/include/vtk-6.2/vtkMapper.h
+ /usr/local/include/vtk-6.2/vtkMatrix4x4.h
+ /usr/local/include/vtk-6.2/vtkOStrStreamWrapper.h
+ /usr/local/include/vtk-6.2/vtkOStreamWrapper.h
+ /usr/local/include/vtk-6.2/vtkObject.h
+ /usr/local/include/vtk-6.2/vtkObjectBase.h
+ /usr/local/include/vtk-6.2/vtkObjectFactory.h
+ /usr/local/include/vtk-6.2/vtkPointSet.h
+ /usr/local/include/vtk-6.2/vtkPoints.h
+ /usr/local/include/vtk-6.2/vtkPolyData.h
+ /usr/local/include/vtk-6.2/vtkPolyDataAlgorithm.h
+ /usr/local/include/vtk-6.2/vtkPolyDataMapper.h
+ /usr/local/include/vtk-6.2/vtkProp.h
+ /usr/local/include/vtk-6.2/vtkProp3D.h
+ /usr/local/include/vtk-6.2/vtkPropCollection.h
+ /usr/local/include/vtk-6.2/vtkProperty.h
+ /usr/local/include/vtk-6.2/vtkRect.h
+ /usr/local/include/vtk-6.2/vtkRenderViewBase.h
+ /usr/local/include/vtk-6.2/vtkRenderWindow.h
+ /usr/local/include/vtk-6.2/vtkRenderWindowInteractor.h
+ /usr/local/include/vtk-6.2/vtkRenderer.h
+ /usr/local/include/vtk-6.2/vtkRendererCollection.h
+ /usr/local/include/vtk-6.2/vtkRenderingAnnotationModule.h
+ /usr/local/include/vtk-6.2/vtkRenderingContext2DModule.h
+ /usr/local/include/vtk-6.2/vtkRenderingCoreModule.h
+ /usr/local/include/vtk-6.2/vtkRenderingFreeTypeModule.h
+ /usr/local/include/vtk-6.2/vtkRenderingLODModule.h
+ /usr/local/include/vtk-6.2/vtkRenderingVolumeModule.h
+ /usr/local/include/vtk-6.2/vtkScalarsToColors.h
+ /usr/local/include/vtk-6.2/vtkSetGet.h
+ /usr/local/include/vtk-6.2/vtkSmartPointer.h
+ /usr/local/include/vtk-6.2/vtkSmartPointerBase.h
+ /usr/local/include/vtk-6.2/vtkSortDataArray.h
+ /usr/local/include/vtk-6.2/vtkStdString.h
+ /usr/local/include/vtk-6.2/vtkSystemIncludes.h
+ /usr/local/include/vtk-6.2/vtkTexture.h
+ /usr/local/include/vtk-6.2/vtkTimeStamp.h
+ /usr/local/include/vtk-6.2/vtkTransform.h
+ /usr/local/include/vtk-6.2/vtkTransformPolyDataFilter.h
+ /usr/local/include/vtk-6.2/vtkTuple.h
+ /usr/local/include/vtk-6.2/vtkType.h
+ /usr/local/include/vtk-6.2/vtkTypeTemplate.h
+ /usr/local/include/vtk-6.2/vtkTypeTraits.h
+ /usr/local/include/vtk-6.2/vtkTypedDataArray.h
+ /usr/local/include/vtk-6.2/vtkTypedDataArray.txx
+ /usr/local/include/vtk-6.2/vtkTypedDataArrayIterator.h
+ /usr/local/include/vtk-6.2/vtkUnicodeString.h
+ /usr/local/include/vtk-6.2/vtkUnsignedCharArray.h
+ /usr/local/include/vtk-6.2/vtkVariant.h
+ /usr/local/include/vtk-6.2/vtkVariantCast.h
+ /usr/local/include/vtk-6.2/vtkVariantInlineOperators.h
+ /usr/local/include/vtk-6.2/vtkVector.h
+ /usr/local/include/vtk-6.2/vtkVersionMacros.h
+ /usr/local/include/vtk-6.2/vtkView.h
+ /usr/local/include/vtk-6.2/vtkViewport.h
+ /usr/local/include/vtk-6.2/vtkViewsContext2DModule.h
+ /usr/local/include/vtk-6.2/vtkViewsCoreModule.h
+ /usr/local/include/vtk-6.2/vtkVolume.h
+ /usr/local/include/vtk-6.2/vtkVolumeCollection.h
+ /usr/local/include/vtk-6.2/vtkWeakPointer.h
+ /usr/local/include/vtk-6.2/vtkWeakPointerBase.h
+ /usr/local/include/vtk-6.2/vtkWin32Header.h
+ /usr/local/include/vtk-6.2/vtkWindow.h
  includes/LeapListener.h
+ includes/vtkInclude.h
  includesLM/Leap.h
  includesLM/LeapMath.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o
@@ -1033,8 +1243,10 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o
  /usr/local/include/vtk-6.2/QVTKWin32Header.h
  /usr/local/include/vtk-6.2/vtkABI.h
  /usr/local/include/vtk-6.2/vtkAbstractArray.h
+ /usr/local/include/vtk-6.2/vtkAbstractContextItem.h
  /usr/local/include/vtk-6.2/vtkAbstractMapper.h
  /usr/local/include/vtk-6.2/vtkAbstractMapper3D.h
+ /usr/local/include/vtk-6.2/vtkAbstractTransform.h
  /usr/local/include/vtk-6.2/vtkActor.h
  /usr/local/include/vtk-6.2/vtkActorCollection.h
  /usr/local/include/vtk-6.2/vtkAlgorithm.h
@@ -1044,19 +1256,29 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o
  /usr/local/include/vtk-6.2/vtkArrayIteratorTemplateImplicit.txx
  /usr/local/include/vtk-6.2/vtkAtomicInt.h
  /usr/local/include/vtk-6.2/vtkAutoInit.h
+ /usr/local/include/vtk-6.2/vtkCallbackCommand.h
  /usr/local/include/vtk-6.2/vtkCamera.h
  /usr/local/include/vtk-6.2/vtkCell.h
  /usr/local/include/vtk-6.2/vtkCellLinks.h
  /usr/local/include/vtk-6.2/vtkCellType.h
  /usr/local/include/vtk-6.2/vtkCellTypes.h
+ /usr/local/include/vtk-6.2/vtkChart.h
+ /usr/local/include/vtk-6.2/vtkChartXY.h
+ /usr/local/include/vtk-6.2/vtkChartsCoreModule.h
  /usr/local/include/vtk-6.2/vtkCollection.h
  /usr/local/include/vtk-6.2/vtkCommand.h
  /usr/local/include/vtk-6.2/vtkCommonCoreModule.h
  /usr/local/include/vtk-6.2/vtkCommonDataModelModule.h
  /usr/local/include/vtk-6.2/vtkCommonExecutionModelModule.h
  /usr/local/include/vtk-6.2/vtkCommonInformationKeyManager.h
+ /usr/local/include/vtk-6.2/vtkCommonMathModule.h
+ /usr/local/include/vtk-6.2/vtkCommonTransformsModule.h
  /usr/local/include/vtk-6.2/vtkConeSource.h
  /usr/local/include/vtk-6.2/vtkConfigure.h
+ /usr/local/include/vtk-6.2/vtkContextItem.h
+ /usr/local/include/vtk-6.2/vtkContextPolygon.h
+ /usr/local/include/vtk-6.2/vtkContextScene.h
+ /usr/local/include/vtk-6.2/vtkContextView.h
  /usr/local/include/vtk-6.2/vtkDataArray.h
  /usr/local/include/vtk-6.2/vtkDataArrayTemplate.h
  /usr/local/include/vtk-6.2/vtkDataArrayTemplate.txx
@@ -1064,12 +1286,17 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o
  /usr/local/include/vtk-6.2/vtkDataObject.h
  /usr/local/include/vtk-6.2/vtkDataSet.h
  /usr/local/include/vtk-6.2/vtkDebugLeaksManager.h
+ /usr/local/include/vtk-6.2/vtkFiltersGeneralModule.h
+ /usr/local/include/vtk-6.2/vtkFiltersHybridModule.h
  /usr/local/include/vtk-6.2/vtkFiltersSourcesModule.h
  /usr/local/include/vtk-6.2/vtkGUISupportQtModule.h
+ /usr/local/include/vtk-6.2/vtkHomogeneousTransform.h
+ /usr/local/include/vtk-6.2/vtkIOImageModule.h
  /usr/local/include/vtk-6.2/vtkIOStream.h
  /usr/local/include/vtk-6.2/vtkIOStreamFwd.h
  /usr/local/include/vtk-6.2/vtkIdList.h
  /usr/local/include/vtk-6.2/vtkImageAlgorithm.h
+ /usr/local/include/vtk-6.2/vtkImagingHybridModule.h
  /usr/local/include/vtk-6.2/vtkIndent.h
  /usr/local/include/vtk-6.2/vtkInformation.h
  /usr/local/include/vtk-6.2/vtkInformationDoubleVectorKey.h
@@ -1078,9 +1305,13 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o
  /usr/local/include/vtk-6.2/vtkInformationVector.h
  /usr/local/include/vtk-6.2/vtkIntArray.h
  /usr/local/include/vtk-6.2/vtkInteractionStyleModule.h
+ /usr/local/include/vtk-6.2/vtkInteractionWidgetsModule.h
+ /usr/local/include/vtk-6.2/vtkLODActor.h
+ /usr/local/include/vtk-6.2/vtkLinearTransform.h
  /usr/local/include/vtk-6.2/vtkMappedDataArray.h
  /usr/local/include/vtk-6.2/vtkMappedDataArray.txx
  /usr/local/include/vtk-6.2/vtkMapper.h
+ /usr/local/include/vtk-6.2/vtkMatrix4x4.h
  /usr/local/include/vtk-6.2/vtkOStrStreamWrapper.h
  /usr/local/include/vtk-6.2/vtkOStreamWrapper.h
  /usr/local/include/vtk-6.2/vtkObject.h
@@ -1094,12 +1325,21 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o
  /usr/local/include/vtk-6.2/vtkProp.h
  /usr/local/include/vtk-6.2/vtkProp3D.h
  /usr/local/include/vtk-6.2/vtkPropCollection.h
+ /usr/local/include/vtk-6.2/vtkProperty.h
+ /usr/local/include/vtk-6.2/vtkRect.h
+ /usr/local/include/vtk-6.2/vtkRenderViewBase.h
  /usr/local/include/vtk-6.2/vtkRenderWindow.h
  /usr/local/include/vtk-6.2/vtkRenderWindowInteractor.h
  /usr/local/include/vtk-6.2/vtkRenderer.h
+ /usr/local/include/vtk-6.2/vtkRendererCollection.h
+ /usr/local/include/vtk-6.2/vtkRenderingAnnotationModule.h
+ /usr/local/include/vtk-6.2/vtkRenderingContext2DModule.h
  /usr/local/include/vtk-6.2/vtkRenderingCoreModule.h
+ /usr/local/include/vtk-6.2/vtkRenderingFreeTypeModule.h
+ /usr/local/include/vtk-6.2/vtkRenderingLODModule.h
  /usr/local/include/vtk-6.2/vtkRenderingOpenGLConfigure.h
  /usr/local/include/vtk-6.2/vtkRenderingOpenGLModule.h
+ /usr/local/include/vtk-6.2/vtkRenderingVolumeModule.h
  /usr/local/include/vtk-6.2/vtkScalarsToColors.h
  /usr/local/include/vtk-6.2/vtkSetGet.h
  /usr/local/include/vtk-6.2/vtkSmartPointer.h
@@ -1111,6 +1351,9 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o
  /usr/local/include/vtk-6.2/vtkTexture.h
  /usr/local/include/vtk-6.2/vtkTimeStamp.h
  /usr/local/include/vtk-6.2/vtkToolkits.h
+ /usr/local/include/vtk-6.2/vtkTransform.h
+ /usr/local/include/vtk-6.2/vtkTransformPolyDataFilter.h
+ /usr/local/include/vtk-6.2/vtkTuple.h
  /usr/local/include/vtk-6.2/vtkType.h
  /usr/local/include/vtk-6.2/vtkTypeTemplate.h
  /usr/local/include/vtk-6.2/vtkTypeTraits.h
@@ -1122,15 +1365,21 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o
  /usr/local/include/vtk-6.2/vtkVariant.h
  /usr/local/include/vtk-6.2/vtkVariantCast.h
  /usr/local/include/vtk-6.2/vtkVariantInlineOperators.h
+ /usr/local/include/vtk-6.2/vtkVector.h
  /usr/local/include/vtk-6.2/vtkVersionMacros.h
+ /usr/local/include/vtk-6.2/vtkView.h
  /usr/local/include/vtk-6.2/vtkViewport.h
+ /usr/local/include/vtk-6.2/vtkViewsContext2DModule.h
+ /usr/local/include/vtk-6.2/vtkViewsCoreModule.h
  /usr/local/include/vtk-6.2/vtkVolume.h
  /usr/local/include/vtk-6.2/vtkVolumeCollection.h
+ /usr/local/include/vtk-6.2/vtkWeakPointer.h
  /usr/local/include/vtk-6.2/vtkWeakPointerBase.h
  /usr/local/include/vtk-6.2/vtkWin32Header.h
  /usr/local/include/vtk-6.2/vtkWindow.h
  includes/LeapListener.h
  includes/mainWindowController.h
+ includes/vtkInclude.h
  includesLM/Leap.h
  includesLM/LeapMath.h
  ui_mainWindow.h

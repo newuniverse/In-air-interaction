@@ -229,6 +229,10 @@ public:
     QVBoxLayout *verticalLayout_17;
     QScrollArea *scrollArea_4;
     QWidget *scrollAreaWidgetContents_4;
+    QVTKWidget *vtkChart1;
+    QVTKWidget *vtkChart2;
+    QLabel *label_7;
+    QLabel *label_38;
     QSpacerItem *horizontalSpacer_5;
     QVTKWidget *qvtkWidget;
     QMenuBar *menubar;
@@ -258,7 +262,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(21, 1, 1298, 752));
+        layoutWidget->setGeometry(QRect(21, 1, 1275, 752));
         horizontalLayout_37 = new QHBoxLayout(layoutWidget);
         horizontalLayout_37->setObjectName(QString::fromUtf8("horizontalLayout_37"));
         horizontalLayout_37->setContentsMargins(0, 0, 0, 0);
@@ -1059,7 +1063,7 @@ public:
         toolBox->addItem(setting2, QString::fromUtf8("Input Setting"));
         setting3 = new QWidget();
         setting3->setObjectName(QString::fromUtf8("setting3"));
-        setting3->setGeometry(QRect(0, 0, 408, 626));
+        setting3->setGeometry(QRect(0, 0, 404, 626));
         verticalLayout_16 = new QVBoxLayout(setting3);
         verticalLayout_16->setObjectName(QString::fromUtf8("verticalLayout_16"));
         label_5 = new QLabel(setting3);
@@ -1164,6 +1168,18 @@ public:
         scrollAreaWidgetContents_4 = new QWidget();
         scrollAreaWidgetContents_4->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_4"));
         scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 374, 600));
+        vtkChart1 = new QVTKWidget(scrollAreaWidgetContents_4);
+        vtkChart1->setObjectName(QString::fromUtf8("vtkChart1"));
+        vtkChart1->setGeometry(QRect(10, 40, 350, 161));
+        vtkChart2 = new QVTKWidget(scrollAreaWidgetContents_4);
+        vtkChart2->setObjectName(QString::fromUtf8("vtkChart2"));
+        vtkChart2->setGeometry(QRect(10, 260, 351, 241));
+        label_7 = new QLabel(scrollAreaWidgetContents_4);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
+        label_7->setGeometry(QRect(10, 10, 56, 16));
+        label_38 = new QLabel(scrollAreaWidgetContents_4);
+        label_38->setObjectName(QString::fromUtf8("label_38"));
+        label_38->setGeometry(QRect(10, 220, 56, 16));
         scrollArea_4->setWidget(scrollAreaWidgetContents_4);
 
         verticalLayout_17->addWidget(scrollArea_4);
@@ -1245,7 +1261,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        toolBox->setCurrentIndex(0);
+        toolBox->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -1330,6 +1346,8 @@ public:
 "</style></head><body style=\" font-family:'.Lucida Grande UI'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", 0, QApplication::UnicodeUTF8));
         toolBox->setItemText(toolBox->indexOf(setting3), QApplication::translate("MainWindow", "Gesture Setting", 0, QApplication::UnicodeUTF8));
+        label_7->setText(QApplication::translate("MainWindow", "Chart 1:", 0, QApplication::UnicodeUTF8));
+        label_38->setText(QApplication::translate("MainWindow", "Chart 2:", 0, QApplication::UnicodeUTF8));
         toolBox->setItemText(toolBox->indexOf(setting4), QApplication::translate("MainWindow", "Resoning Setting", 0, QApplication::UnicodeUTF8));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0, QApplication::UnicodeUTF8));
         menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", 0, QApplication::UnicodeUTF8));

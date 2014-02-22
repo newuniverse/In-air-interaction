@@ -13,11 +13,7 @@ int main(int argc, char** argv)
 {
 	QApplication app(argc, argv);
 
-	LeapListener *listener = new LeapListener;
-	Leap::Controller *controller = new Leap::Controller;
-	controller->addListener(*listener); 
-
-	MainWindowController *mainWindow = new MainWindowController(*listener);
+	MainWindowController *mainWindow = new MainWindowController();
 	mainWindow->show();
 
 	return app.exec();

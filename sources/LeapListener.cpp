@@ -134,7 +134,7 @@ void LeapListener::getHandInfo(const Leap::Frame& frame)
 
     if (handNum == 0)
         return;  
-    std::cout << "hand num: "<< handNum << std::endl;
+    //std::cout << "hand num: "<< handNum << std::endl;
     HANDINFO* hi;
     hi = new HANDINFO[handNum];
     int handCounter = 0;
@@ -146,7 +146,7 @@ void LeapListener::getHandInfo(const Leap::Frame& frame)
         hi[handCounter].palmNor = hand.palmNormal();
         
         Leap::FingerList fingers = hand.fingers();
-        std::cout << "finger num: "<<fingers.count() << std::endl;
+        //std::cout << "finger num: "<<fingers.count() << std::endl;
         int fingerCounter = 0;
         for (Leap::FingerList::const_iterator fit = fingers.begin(); fit != fingers.end(); ++fit ) {
             if(fingerCounter>=5) break;             
@@ -188,6 +188,11 @@ void LeapListener::update(const Leap::Frame frame)
     //renderMutex.lock();
     if(!frame.isValid())
         return;
+
+    updateParameters(frame);
+
+    _actor->AddPosition(vTotalMotionTranslation.x/1000, vTotalMotionTranslation.y/1000, vTotalMotionTranslation.z/1000);
+
     calcDataFPS();
     
     getHandInfo(frame);
@@ -199,7 +204,7 @@ void LeapListener::update(const Leap::Frame frame)
             //updateRayHitObject(frame);
             break;
         case MANIPULATION:
-            updateParameters(frame);
+            //updateParameters(frame);
             break;
         case PHYSICS:
             //updateGestures(frame);
@@ -219,7 +224,7 @@ void LeapListener::calcDataFPS()
 
     float fUpdateDT = time_span.count();
     this->fUpdateFPS = (fUpdateDT > 0) ? 1.0/fUpdateDT : 0.0;
-    //std::cout << "data FPS: " << fUpdateFPS <<std::endl;
+    std::cout << "data FPS: " << fUpdateFPS <<std::endl;
 }
 
 
