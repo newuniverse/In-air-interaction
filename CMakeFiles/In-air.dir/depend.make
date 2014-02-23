@@ -1246,6 +1246,7 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkAbstractMapper.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkAbstractMapper3D.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkAbstractTransform.h
+CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkAbstractVolumeMapper.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkActor.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkActorCollection.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkAlgorithm.h
@@ -1253,6 +1254,7 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkArrayIteratorTemplate.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkArrayIteratorTemplate.txx
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkArrayIteratorTemplateImplicit.txx
+CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkArrowSource.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkAtomicInt.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkAutoInit.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkCallbackCommand.h
@@ -1278,6 +1280,7 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkContextPolygon.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkContextScene.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkContextView.h
+CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkCylinderSource.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkDataArray.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkDataArrayTemplate.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkDataArrayTemplate.txx
@@ -1290,6 +1293,7 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkFiltersSourcesModule.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkGUISupportQtModule.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkHomogeneousTransform.h
+CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkIOGeometryModule.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkIOImageModule.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkIOStream.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkIOStreamFwd.h
@@ -1311,6 +1315,7 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkMappedDataArray.txx
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkMapper.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkMatrix4x4.h
+CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkOBJReader.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkOStrStreamWrapper.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkOStreamWrapper.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkObject.h
@@ -1339,11 +1344,13 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkRenderingOpenGLConfigure.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkRenderingOpenGLModule.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkRenderingVolumeModule.h
+CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkSTLReader.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkScalarsToColors.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkSetGet.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkSmartPointer.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkSmartPointerBase.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkSortDataArray.h
+CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkSphereSource.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkStdString.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkSystemIncludes.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkTDxConfigure.h
@@ -1372,13 +1379,16 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkViewsCoreModule.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkVolume.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkVolumeCollection.h
+CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkVolumeMapper.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkWeakPointer.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkWeakPointerBase.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkWin32Header.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkWindow.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includes/LeapListener.h
+CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includes/graphicalModel.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includes/mainWindowController.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includes/vtkInclude.h
+CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includes/vtkIncludeModel.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includesLM/Leap.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includesLM/LeapMath.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: ui_mainWindow.h

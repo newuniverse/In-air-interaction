@@ -9,10 +9,7 @@ using namespace Leap;
 std::deque<int>         LeapListener::handNum;
 std::deque<int>         LeapListener::fingerNum;
 
-LeapListener::LeapListener() 
-{
-    //gTrainer = new LeapGestureTrainer();
-}
+LeapListener::LeapListener() {}
 
 Leap::Vector LeapListener::getTranslation() 
 {
@@ -166,6 +163,7 @@ void LeapListener::initParameters()
     vTotalMotionTranslation = Leap::Vector::zero();
     mtxTotalMotionRotation = Leap::Matrix::identity();
     fTotalMotionScale = 1.0f;
+    vRotationAngle = Leap::Vector::zero();
     //selectedObject = NULL;
 }
 
@@ -179,6 +177,10 @@ void LeapListener::updateParameters(const Frame& frame)
     mtxTotalMotionRotation = leftHand.rotationMatrix(lastFrame);
     vTotalMotionTranslation = rightHand.translation(lastFrame);
     
+    if (leftHand.rotationProbability(lastFrame) > 0.3f) {
+        vRotationAngle = Vector(leftHand.rotationAngle(lastFrame, Vector::xAxis()),
+        -1*leftHand.rotationAngle(lastFrame, Vector::yAxis()), -1*leftHand.rotationAngle(lastFrame, Vector::zAxis()) );
+    } 
     fTotalMotionScale = frame.scaleFactor(lastFrame);
 }
 
@@ -191,9 +193,10 @@ void LeapListener::update(const Leap::Frame frame)
 
     updateParameters(frame);
 
-    _actor->AddPosition(vTotalMotionTranslation.x/1000, vTotalMotionTranslation.y/1000, vTotalMotionTranslation.z/1000);
-
-    calcDataFPS();
+    _actor->AddPosition(vTotalMotionTranslation.x/300, vTotalMotionTranslation.y/300, vTotalMotionTranslation.z/300);
+    //std::cout<< "\nrotation matrix" + mtxTotalMotionRotation.toString() << std::endl;
+    _actor->RotateWXYZ(1.0, vRotationAngle.x, vRotationAngle.y, vRotationAngle.z);
+    //calcDataFPS();
     
     getHandInfo(frame);
     
@@ -228,36 +231,23 @@ void LeapListener::calcDataFPS()
 }
 
 
-/*
-void LeapListener::updateGestures(const Frame& frame) 
-{
-    LeapGestureTrainer* temp = gTrainer;
-    if(temp->recordableFrame(frame)) {
-        
-        if( !temp->recording ) {
-            temp->recording = true;
-            temp->frameCount = 0;
-            //temp->detectedGesture = NULL;
-        }
-        temp->frameCount++;
-        temp->record(frame);
 
-    } else if (temp->recording) {
-        temp->recording = false;
-        std::cout << "recording stopped!" << std::endl; 
 
-        if (temp->frameCount >= LeapGestureTrainer::minGestureFrames) {
-            std::string gName; //=
-            if (gName!="") {
-                temp->save();
-            } else {
-                temp->recognize();
-            }
-        }
-    }
+
+bool LeapListener::checkSameSign(float* nums, int size){
+    if(nums[0] > 0.0)
+        if(nums[1] > 0.0)
+            if(nums[3] > 0.0)
+                if(nums[4] > 0.0)
+                    return true;
+    if(nums[0] < 0.0)
+        if(nums[1] < 0.0)
+            if(nums[3] < 0.0)
+                if(nums[4] < 0.0)
+                    return true;
+
+    return false;
 }
-*/
-
 /*update selected object if mode is SELECTION*/
 /*
 void LeapListener::updateRayHitObject(const Frame& frame)
@@ -351,32 +341,32 @@ void LeapListener::updateRayHitObject(const Frame& frame)
 */
 
 /*
-void LeapListener::setGraphicalObjectsInScene ( std::vector<GraphicalObject*> go )
+void LeapListener::updateGestures(const Frame& frame) 
 {
-    sceneObjects.clear();
-    sceneObjects.reserve(go.size());
-    std::copy(go.begin(), go.end(), std::back_inserter(sceneObjects));
+    LeapGestureTrainer* temp = gTrainer;
+    if(temp->recordableFrame(frame)) {
+        
+        if( !temp->recording ) {
+            temp->recording = true;
+            temp->frameCount = 0;
+            //temp->detectedGesture = NULL;
+        }
+        temp->frameCount++;
+        temp->record(frame);
+
+    } else if (temp->recording) {
+        temp->recording = false;
+        std::cout << "recording stopped!" << std::endl; 
+
+        if (temp->frameCount >= LeapGestureTrainer::minGestureFrames) {
+            std::string gName; //=
+            if (gName!="") {
+                temp->save();
+            } else {
+                temp->recognize();
+            }
+        }
+    }
 }
 */
 
-/*
-GraphicalObject* LeapListener::getSelectedObject()
-{
-    return selectedObject;
-}
-*/
-
-bool LeapListener::checkSameSign(float* nums, int size){
-    if(nums[0] > 0.0)
-        if(nums[1] > 0.0)
-            if(nums[3] > 0.0)
-                if(nums[4] > 0.0)
-                    return true;
-    if(nums[0] < 0.0)
-        if(nums[1] < 0.0)
-            if(nums[3] < 0.0)
-                if(nums[4] < 0.0)
-                    return true;
-
-    return false;
-}

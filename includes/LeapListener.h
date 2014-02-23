@@ -62,9 +62,11 @@ public:
     HANDINFO*             hand_info;
     std::mutex            renderMutex;
 
-    //void                  setGraphicalObjectsInScene (std::vector<GraphicalObject*> go );  
-    vtkActor* _actor;
-    void addActor(vtkActor* actor) {
+    //void                  setGraphicalObjectsInScene (std::vector<GraphicalObject*> go ); 
+    vtkSmartPointer<vtkActor> _actor; 
+    //vtkActor* _actor;
+    void addActor(vtkSmartPointer<vtkActor> actor) {
+        //_actor = vtkSmartPointer<vtkActor>::New();
         _actor = actor;
     }
 private:
@@ -79,6 +81,7 @@ private:
     Matrix                mtxTotalMotionRotation;
     Vector                vTotalMotionTranslation;
     float                 fTotalMotionScale;
+    Vector                vRotationAngle;
 
     float                 fUpdateFPS;
     virtual void                  update(const Frame frame);

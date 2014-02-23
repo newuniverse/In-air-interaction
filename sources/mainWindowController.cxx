@@ -1,6 +1,8 @@
 #include <QtGui>
 #include "mainWindowController.h"
 
+#include "graphicalModel.h"
+
 #define DELTATIME 1.0/60.0
 
 MainWindowController::MainWindowController(QWidget *parent)
@@ -9,29 +11,26 @@ MainWindowController::MainWindowController(QWidget *parent)
 	currentTime = std::chrono::high_resolution_clock::now();
 	lastTime    = currentTime;
 
-	cone = vtkSmartPointer<vtkConeSource>::New();
-  	cone->SetHeight( 3.0 );
-  	cone->SetRadius( 1.0 );
-  	cone->SetResolution( 10 );
+	vtkSmartPointer<vtkArrowSource> arrow = vtkSmartPointer<vtkArrowSource>::New();
+	
+	GraphicalModel* model = new GraphicalModel(arrow);
 
-  	coneMapper = vtkSmartPointer<vtkPolyDataMapper>::New();
-  	coneMapper->SetInputConnection( cone->GetOutputPort() );
-
-  	coneActor = vtkSmartPointer<vtkLODActor>::New();
-  	coneActor->SetMapper( coneMapper );
-
+	arrow->SetTipLength(0.2);
+  	arrow->SetTipRadius( 0.2 );
+  	arrow->SetTipResolution( 10 );
+  	arrow->SetShaftResolution( 10 );
+  	arrow->SetShaftRadius( 0.1 );
+  
   	ren1= vtkSmartPointer<vtkRenderer>::New();
-  	ren1->AddActor( coneActor );
+  	ren1->AddActor(model->getModelActor());
   	ren1->SetBackground( 0.0, 0.0, 0.0 );
 
   	renWin = vtkSmartPointer<vtkRenderWindow>::New();
-  	renWin->AddRenderer( ren1 );
+  	renWin->AddRenderer(ren1);
   	renWin->SetSize( 300, 300 );
 
-  
   	qvtkWidget->SetRenderWindow(renWin);
   	
-
   	renWin->SetInteractor(qvtkWidget->GetInteractor());
   	g_vtkCallback = vtkSmartPointer<vtkTimerCallback>::New();
  	 	
@@ -51,7 +50,7 @@ MainWindowController::MainWindowController(QWidget *parent)
 	g_lmListener   = new LeapListener;
 	g_lmController = new Leap::Controller;
 	g_lmController->addListener(*g_lmListener); 
-	g_lmListener->addActor(coneActor);
+	g_lmListener->addActor(model->getModelActor());
 }
 
 MainWindowController::~MainWindowController() {
@@ -90,7 +89,35 @@ MainWindowController::~MainWindowController() {
 
 
 
+void MainWindowController::on_actionOpen_File_triggered() 
+{
+	QString filename = QFileDialog::getOpenFileName(this, tr("Open graphical model"), ".", tr("STL files (*.stl *.STL)\n" "OBJ files (*.obj *.OBJ)"));
+	if (!filename.isEmpty()) {
+		int lastPoint = filename.lastIndexOf(".");
+		QString extention = filename.right(lastPoint);
+		GraphicalModel* model = new GraphicalModel();
 
+		if (extention.contains("stl", Qt::CaseInsensitive)) {
+			vtkSmartPointer<vtkSTLReader> reader = vtkSmartPointer<vtkSTLReader>::New();
+  			reader->SetFileName(filename.toStdString().c_str());
+  			reader->Update();
+  			
+  			model->setModel(reader);
+  			
+		}
+
+		if (extention.contains("obj", Qt::CaseInsensitive)) {
+			vtkSmartPointer<vtkOBJReader> reader = vtkSmartPointer<vtkOBJReader>::New();
+  			reader->SetFileName(filename.toStdString().c_str());
+  			reader->Update();
+
+  			model->setModel(reader);
+		}
+		ren1->AddActor(model->getModelActor());
+		statusbar->showMessage(filename);
+		renWin->Render();
+	}
+}
 
 
 /*
@@ -108,8 +135,6 @@ void MainWindowController::on_leapActivateButton_clicked()
 		//vtk reaction
 		renWin->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
 		int timerId = renWin->GetInteractor()->CreateRepeatingTimer(50);
-  	    std::cout << "timerId: " << timerId << std::endl;
-
 	} else {	//stop
 		//qt reaction
 		leapActivateButton->setText(QString("Enable Leap Motion"));
@@ -148,7 +173,7 @@ void MainWindowController::on_createWindowButton_clicked()
 */
 void MainWindowController::createWindow(int width, int height, int index = 0)
 {
-	QVTKWidget *newWindow = new QVTKWidget();
+	QVTKWidget *newWidget = new QVTKWidget();
 	vtkSmartPointer<vtkRenderer> ren2 = vtkSmartPointer<vtkRenderer>::New();
   	ren2->AddActor( coneActor );
   	ren2->SetBackground( 0.0, 0.0, 0.0 );
@@ -158,9 +183,12 @@ void MainWindowController::createWindow(int width, int height, int index = 0)
   	renWin2->SetSize( 300, 300 );
   	ren2->SetActiveCamera(ren1->GetActiveCamera());
 
-    newWindow->setObjectName(QString::fromUtf8("newWindow"));
+    newWidget->setObjectName(QString::fromUtf8("newWidget"));
 	QRect rect(1200*(index+1), 0, width, height);
-	newWindow->setGeometry(rect);
-	newWindow->SetRenderWindow(renWin2);
-	newWindow->show();
+	newWidget->setGeometry(rect);
+	newWidget->SetRenderWindow(renWin2);
+
+	renWin2->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
+	int timerId = renWin2->GetInteractor()->CreateRepeatingTimer(50);
+	newWidget->show();
 }

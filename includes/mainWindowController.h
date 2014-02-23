@@ -22,9 +22,7 @@ class vtkTimerCallback : public vtkCommand
       if (vtkCommand::TimerEvent == eventId) {
         	vtkRenderWindowInteractor *renderWinIn = reinterpret_cast<vtkRenderWindowInteractor*>(caller);
       		renderWinIn->GetRenderWindow()->Render();
-        	cout << "rendering update" << endl;
         }
-        //cout << this->TimerCount << endl;
     }
   private:
 };
@@ -39,6 +37,7 @@ public:
 private slots:
 	void on_createWindowButton_clicked();
 	void on_leapActivateButton_clicked();
+	void on_actionOpen_File_triggered();
 
 private:
 	void createWindow(int width, int height, int index);
@@ -53,6 +52,8 @@ private:
 	vtkSmartPointer<vtkRenderer> ren1;
 	vtkSmartPointer<vtkRenderWindow> renWin;
 
+	//vtkSmartPointer<vtkRenderer> rens;
+	//vtkSmartPointer<vtkRenderer> renWins;
 
 	vtkSmartPointer<vtkTimerCallback> g_vtkCallback;
 
