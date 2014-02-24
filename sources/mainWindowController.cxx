@@ -2,39 +2,29 @@
 #include "mainWindowController.h"
 
 #include "graphicalModel.h"
+#include "Shared.h"
+#define DELTATIME 30 //ms
 
-#define DELTATIME 1.0/60.0
 
 MainWindowController::MainWindowController(QWidget *parent)
 {
 	setupUi(this);
+
 	currentTime = std::chrono::high_resolution_clock::now();
 	lastTime    = currentTime;
 
-	vtkSmartPointer<vtkArrowSource> arrow = vtkSmartPointer<vtkArrowSource>::New();
-	
-	GraphicalModel* model = new GraphicalModel(arrow);
-
-	arrow->SetTipLength(0.2);
-  	arrow->SetTipRadius( 0.2 );
-  	arrow->SetTipResolution( 10 );
-  	arrow->SetShaftResolution( 10 );
-  	arrow->SetShaftRadius( 0.1 );
-  
   	ren1= vtkSmartPointer<vtkRenderer>::New();
-  	ren1->AddActor(model->getModelActor());
   	ren1->SetBackground( 0.0, 0.0, 0.0 );
 
   	renWin = vtkSmartPointer<vtkRenderWindow>::New();
   	renWin->AddRenderer(ren1);
-  	renWin->SetSize( 300, 300 );
+  	renWin->SetSize(300, 300);
 
   	qvtkWidget->SetRenderWindow(renWin);
   	
   	renWin->SetInteractor(qvtkWidget->GetInteractor());
   	g_vtkCallback = vtkSmartPointer<vtkTimerCallback>::New();
  	 	
-  	
   	//chart rendering example
   	vtkSmartPointer<vtkContextView> view = vtkSmartPointer<vtkContextView>::New();
 	vtkSmartPointer<vtkChartXY> chart = vtkSmartPointer<vtkChartXY>::New();
@@ -50,43 +40,11 @@ MainWindowController::MainWindowController(QWidget *parent)
 	g_lmListener   = new LeapListener;
 	g_lmController = new Leap::Controller;
 	g_lmController->addListener(*g_lmListener); 
-	g_lmListener->addActor(model->getModelActor());
 }
 
 MainWindowController::~MainWindowController() {
 	
 }
-
-
-
-/*
-	call it in main.cxx while{}
-*/
-/*void MainWindowController::update(vtkObject*, unsigned long eid, void* clientdata, void *calldata)
-{
-	currentTime = std::chrono::high_resolution_clock::now();
-	std::chrono::duration<double> timeSpan =  std::chrono::duration_cast< std::chrono::duration<double> > (currentTime - lastTime);
-	if (timeSpan.count() < DELTATIME) {
-		return;
-	}
-
-	vtkSmartPointer<vtkTransform> translation = vtkSmartPointer<vtkTransform>::New();
-  	Leap::Vector vec = Leap::Vector::zero();//_listener.getTranslation();
-  	translation->Translate(vec.x, vec.y, vec.z);
- 
-  	vtkSmartPointer<vtkTransformPolyDataFilter> transformFilter = vtkSmartPointer<vtkTransformPolyDataFilter>::New();
-  	transformFilter->SetInputConnection(cone->GetOutputPort());
-  	transformFilter->SetTransform(translation);
-  	transformFilter->Update();
- 
-  	coneMapper->SetInputConnection(cone->GetOutputPort());
-
-	lastTime = currentTime;
-}*/
-
-
-
-
 
 
 void MainWindowController::on_actionOpen_File_triggered() 
@@ -103,9 +61,7 @@ void MainWindowController::on_actionOpen_File_triggered()
   			reader->Update();
   			
   			model->setModel(reader);
-  			
 		}
-
 		if (extention.contains("obj", Qt::CaseInsensitive)) {
 			vtkSmartPointer<vtkOBJReader> reader = vtkSmartPointer<vtkOBJReader>::New();
   			reader->SetFileName(filename.toStdString().c_str());
@@ -115,6 +71,7 @@ void MainWindowController::on_actionOpen_File_triggered()
 		}
 		ren1->AddActor(model->getModelActor());
 		statusbar->showMessage(filename);
+		ren1->ResetCamera();
 		renWin->Render();
 	}
 }
@@ -127,20 +84,54 @@ void MainWindowController::on_leapActivateButton_clicked()
 {
 	//enable or disable leap
 	g_lmListener->switchListener();
-
+	
 	if (g_lmListener->getStatus() == 1) { //running
+		//leap reaction 
+		HandModel* rightHand = g_lmListener->getRightHand();
+		HandModel* leftHand  = g_lmListener->getLeftHand();
+
+		ren1->AddActor(leftHand->getPalmModel()->getModelActor());
+		for (int i = 0, n = leftHand->getTipsModel().size(); i < n; ++i)
+		{
+			ren1->AddActor(leftHand->getTipsModel().at(i)->getModelActor());
+		}
+		ren1->AddActor(rightHand->getPalmModel()->getModelActor());
+		for (int i = 0, n = rightHand->getTipsModel().size(); i < n; ++i)
+		{
+			ren1->AddActor(rightHand->getTipsModel().at(i)->getModelActor());
+		}
+
+		ren1->AddActor(g_lmListener->getLeapDeviceModel()->getModelActor());
+
 		//qt reaction
 		leapActivateButton->setText(QString("Disable Leap Motion"));
 		statusbar->showMessage(QString("FPS: ") + QString::number(g_lmListener->getFPS()));
 		//vtk reaction
 		renWin->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
-		int timerId = renWin->GetInteractor()->CreateRepeatingTimer(50);
+		int timerId = renWin->GetInteractor()->CreateRepeatingTimer(DELTATIME);
 	} else {	//stop
+		//leap reaction 
+		HandModel* rightHand = g_lmListener->getRightHand();
+		HandModel* leftHand  = g_lmListener->getLeftHand();
+
+		ren1->RemoveActor(leftHand->getPalmModel()->getModelActor());
+		for (int i = 0, n = leftHand->getTipsModel().size(); i < n; ++i)
+		{
+			ren1->RemoveActor(leftHand->getTipsModel().at(i)->getModelActor());
+		}
+		ren1->RemoveActor(rightHand->getPalmModel()->getModelActor());
+		for (int i = 0, n = rightHand->getTipsModel().size(); i < n; ++i)
+		{
+			ren1->RemoveActor(rightHand->getTipsModel().at(i)->getModelActor());
+		}
+		ren1->RemoveActor(g_lmListener->getLeapDeviceModel()->getModelActor());
 		//qt reaction
 		leapActivateButton->setText(QString("Enable Leap Motion"));
 		//vtk reaction
 		renWin->GetInteractor()->RemoveObserver(g_vtkCallback);
 	}
+	ren1->ResetCamera();
+	renWin->Render();
 }
 
 /*
@@ -175,7 +166,7 @@ void MainWindowController::createWindow(int width, int height, int index = 0)
 {
 	QVTKWidget *newWidget = new QVTKWidget();
 	vtkSmartPointer<vtkRenderer> ren2 = vtkSmartPointer<vtkRenderer>::New();
-  	ren2->AddActor( coneActor );
+  	ren2->AddActor( _actor );
   	ren2->SetBackground( 0.0, 0.0, 0.0 );
 
   	vtkSmartPointer<vtkRenderWindow> renWin2 = vtkSmartPointer<vtkRenderWindow>::New();
@@ -189,6 +180,6 @@ void MainWindowController::createWindow(int width, int height, int index = 0)
 	newWidget->SetRenderWindow(renWin2);
 
 	renWin2->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
-	int timerId = renWin2->GetInteractor()->CreateRepeatingTimer(50);
+	int timerId = renWin2->GetInteractor()->CreateRepeatingTimer(DELTATIME);
 	newWidget->show();
 }

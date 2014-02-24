@@ -5,6 +5,9 @@
 
 #include "Leap.h"
 
+#define TIP_SPHERE_SIZE 0.5//cm
+
+namespace Shared {
 struct FINGERINFO {
     Leap::Vector tipPos;
     Leap::Vector tipDir;
@@ -53,11 +56,13 @@ static Mat4 matrixMultiplication(Mat4 a, Mat4 b){
 
 };
 
-
+static void ErrorPlace(int i = 1) {
+    std::cout << "\nerror " << i <<std::endl;
+}
 
 struct KeystoneSetting{
     float k[8];
 };
 
-
+}
 #endif

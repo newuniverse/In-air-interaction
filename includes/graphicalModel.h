@@ -4,12 +4,13 @@
 #include "vtkIncludeModel.h"
 
 /*
-	Model class of the first half of vtk rendering pipeline
-	this class receive vtk***Source, vtk***Reader as input 
-	and automatically create vtkSource -> vtkMapper -> vtkActor
+	Model class for the first half of vtk rendering pipeline
+	this class receive vtk***Source or vtk***Reader as input 
+	and automatically create from vtkSource -> vtkMapper -> vtkActor
 
-	Controller class should call getModelActor() and attach the actor like:
-	vtkRenderer->AddActor(actor)
+	Controller class should call getModelActor() and attach the actor to 
+	Viewer class like:
+		vtkRenderer->AddActor(actor)
 */
 
 class GraphicalModel
@@ -40,7 +41,8 @@ public://methods
 	}
 
 	vtkSmartPointer<vtkActor> getModelActor() {
-		return _modelActor;
+		vtkSmartPointer<vtkActor> myActor = _modelActor;
+		return myActor;
 	}
 
 	vtkSmartPointer<vtkPolyDataMapper> getModelMapper() {

@@ -7,25 +7,14 @@
 //all vtk headers are included in here
 #include "vtkInclude.h" 
 
+//vtk headers about rendering process
+#include "vtkIncludeViewer.h"
+
 //Leap listener class wrapper
 #include "LeapListener.h"
 
-class vtkTimerCallback : public vtkCommand
-{
-  public:
-    static vtkTimerCallback *New()
-    {
-      vtkTimerCallback *cb = new vtkTimerCallback;
-      return cb;
-    }
-    virtual void Execute(vtkObject *caller, unsigned long eventId, void *callData) {
-      if (vtkCommand::TimerEvent == eventId) {
-        	vtkRenderWindowInteractor *renderWinIn = reinterpret_cast<vtkRenderWindowInteractor*>(caller);
-      		renderWinIn->GetRenderWindow()->Render();
-        }
-    }
-  private:
-};
+#include "graphicalViewer.h"
+
 
 class MainWindowController : public QMainWindow, private Ui::MainWindow
 {
@@ -46,14 +35,12 @@ private:
 	LeapListener     *g_lmListener;
 	Leap::Controller *g_lmController;
 
-	vtkSmartPointer<vtkConeSource> cone;
-	vtkSmartPointer<vtkPolyDataMapper> coneMapper;
-	vtkSmartPointer<vtkLODActor> coneActor;
+	vtkSmartPointer<vtkActor> _actor;
+	
 	vtkSmartPointer<vtkRenderer> ren1;
 	vtkSmartPointer<vtkRenderWindow> renWin;
 
-	//vtkSmartPointer<vtkRenderer> rens;
-	//vtkSmartPointer<vtkRenderer> renWins;
+	GraphicalViewer* viewer;
 
 	vtkSmartPointer<vtkTimerCallback> g_vtkCallback;
 

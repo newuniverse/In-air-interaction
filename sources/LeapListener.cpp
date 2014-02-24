@@ -3,13 +3,13 @@
 #include <iostream>
 #include <deque>
 #include <string>
+#include "Shared.h"
 
 using namespace Leap;
 
 std::deque<int>         LeapListener::handNum;
 std::deque<int>         LeapListener::fingerNum;
-
-LeapListener::LeapListener() {}
+#define HAND_AND_FINGER_MAX_NUM 12
 
 Leap::Vector LeapListener::getTranslation() 
 {
@@ -184,6 +184,61 @@ void LeapListener::updateParameters(const Frame& frame)
     fTotalMotionScale = frame.scaleFactor(lastFrame);
 }
 
+/*
+    
+*/
+void LeapListener::updateHandModelProps(const Frame& frame) 
+{
+    currentTime = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> time_span =  std::chrono::duration_cast< std::chrono::duration<double> > (currentTime - lastTime);
+    lastTime = currentTime; 
+
+    if (time_span.count() < 1 / 60)
+        return;
+
+    int handNum = frame.hands().count();
+
+    leftHand->initTransforms();
+    rightHand->initTransforms();
+    if (handNum == 0) return;
+
+    Leap::Hand left = frame.hands().leftmost();
+    Vector palmPos = left.stabilizedPalmPosition();
+    Vector palmDir = left.direction();
+    Vector palmNor = left.palmNormal();
+    //std::cout<< "\norientation: " <<" X. "<< palmDir.pitch()*180.0/3.14 <<" Y. "<< palmDir.yaw()*180.0/3.14<<" Z. "<< palmNor.roll()*180.0/3.14<<std::endl;
+    //double x = palmDir.pitch()*180.0/3.14;
+    //double y = palmDir.yaw()*180.0/3.14;
+    //double z = palmNor.roll()*180.0/3.14;
+    //leftHand->getPalmModel()->getModelActor()->SetOrientation(x, y, z);
+    leftHand->getPalmModel()->getModelActor()->SetPosition(palmPos.x/10, palmPos.y/10, palmPos.z/10);
+    Leap::FingerList fingers = left.fingers();
+    
+    int counter = 0;
+    for (Leap::FingerList::const_iterator fit = fingers.begin(); fit != fingers.end(); ++fit ) {    
+        Leap::Finger finger = (*fit);
+        Vector tipPos = finger.stabilizedTipPosition();
+        leftHand->getTipsModel().at(counter)->getModelActor()->SetPosition(tipPos.x/10, tipPos.y/10, tipPos.z/10);
+        counter++;
+    }      
+
+    if (handNum == 1) return; 
+
+    Leap::Hand right = frame.hands().rightmost();
+    palmPos = right.stabilizedPalmPosition();
+    rightHand->getPalmModel()->getModelActor()->SetPosition(palmPos.x/10, palmPos.y/10, palmPos.z/10);
+
+    fingers = right.fingers();
+    counter = 0;
+    for (Leap::FingerList::const_iterator fit = fingers.begin(); fit != fingers.end(); ++fit ) {
+        Leap::Finger finger = (*fit);
+        Vector tipPos = finger.stabilizedTipPosition();
+        rightHand->getTipsModel().at(counter)->getModelActor()->SetPosition(tipPos.x/10, tipPos.y/10, tipPos.z/10);
+        counter++;
+    }      
+}
+
+
 /*main update function*/
 void LeapListener::update(const Leap::Frame frame)
 {
@@ -192,11 +247,7 @@ void LeapListener::update(const Leap::Frame frame)
         return;
 
     updateParameters(frame);
-
-    _actor->AddPosition(vTotalMotionTranslation.x/300, vTotalMotionTranslation.y/300, vTotalMotionTranslation.z/300);
-    //std::cout<< "\nrotation matrix" + mtxTotalMotionRotation.toString() << std::endl;
-    _actor->RotateWXYZ(1.0, vRotationAngle.x, vRotationAngle.y, vRotationAngle.z);
-    //calcDataFPS();
+    updateHandModelProps(frame);
     
     getHandInfo(frame);
     
