@@ -3,10 +3,12 @@
 
 #include <vtkActor.h>
 #include <vtkCamera.h>
+#include <vtkTransform.h>
+#include <vtkHomogeneousTransform.h>
 #include <vtkRenderer.h>
 #include <vtkRenderWindow.h>
 #include <vtkRenderWindowInteractor.h>
-
+#include <QVTKInteractor.h>
 /*
 	callback class which update renderwindow in constant frame rate
 */
@@ -26,5 +28,4 @@ class vtkTimerCallback : public vtkCommand
     }
   private:
 };
-
 #endif

@@ -2,9 +2,7 @@
 #define LEAPLISTENER_H_
 
 #include "Leap.h"
-
 #include "graphicalModel.h"
-
 #include "Shared.h"
 
 #include <string>
@@ -57,11 +55,15 @@ class LeapListener : public Listener
 public://method 
     LeapListener() {
         vtkSmartPointer<vtkCubeSource> cube = vtkSmartPointer<vtkCubeSource>::New();
-        cube->SetCenter(0,0,0);
+        cube->SetCenter(0, 0, 0);
         cube->SetXLength(8);
         cube->SetYLength(1);
         cube->SetZLength(3);
         leapDeviceModel = new GraphicalModel(cube);
+
+        vtkSmartPointer<vtkOutlineCornerSource> corner = vtkSmartPointer<vtkOutlineCornerSource>::New();
+        corner->SetBounds(-30.0, 30.0, -30.0, 30.0, -30.0, 30.0);
+        keystoneFrame = new GraphicalModel(corner);
 
         leftHand = new HandModel;
         rightHand = new HandModel;
@@ -90,6 +92,10 @@ public://method
 
     GraphicalModel* getLeapDeviceModel() {
         return leapDeviceModel;
+    }
+
+    GraphicalModel* getKeystoneFrameModel() {
+        return keystoneFrame;
     }
 
     HandModel* getRightHand() {
@@ -147,6 +153,7 @@ private://arguments
     HandModel* leftHand;
     HandModel* rightHand;
     GraphicalModel* leapDeviceModel;
+    GraphicalModel* keystoneFrame;
 
     vtkSmartPointer<vtkActor> _actor; 
 

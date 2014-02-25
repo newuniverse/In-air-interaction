@@ -57,19 +57,29 @@ moc_ui_mainWindow.cxx: ui_mainWindow.h
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating moc_ui_mainWindow.cxx"
 	/opt/local/bin/moc @/Users/nEwUnivErsE/In-air-interaction/In-air/moc_ui_mainWindow.cxx_parameters
 
-includes/moc_mainWindowController.cxx: includes/mainWindowController.h
+moc_ui_subWindow.cxx: ui_subWindow.h
 	$(CMAKE_COMMAND) -E cmake_progress_report /Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating moc_ui_subWindow.cxx"
+	/opt/local/bin/moc @/Users/nEwUnivErsE/In-air-interaction/In-air/moc_ui_subWindow.cxx_parameters
+
+includes/moc_mainWindowController.cxx: includes/mainWindowController.h
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating includes/moc_mainWindowController.cxx"
 	cd /Users/nEwUnivErsE/In-air-interaction/In-air/includes && /opt/local/bin/moc @/Users/nEwUnivErsE/In-air-interaction/In-air/includes/moc_mainWindowController.cxx_parameters
 
 ui_mainWindow.h: UIs/mainWindow.ui
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ui_mainWindow.h"
 	/opt/local/bin/uic -o /Users/nEwUnivErsE/In-air-interaction/In-air/ui_mainWindow.h /Users/nEwUnivErsE/In-air-interaction/In-air/UIs/mainWindow.ui
 
+ui_subWindow.h: UIs/subWindow.ui
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ui_subWindow.h"
+	/opt/local/bin/uic -o /Users/nEwUnivErsE/In-air-interaction/In-air/ui_subWindow.h /Users/nEwUnivErsE/In-air-interaction/In-air/UIs/subWindow.ui
+
 CMakeFiles/In-air.dir/main.cxx.o: CMakeFiles/In-air.dir/flags.make
 CMakeFiles/In-air.dir/main.cxx.o: main.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/In-air.dir/main.cxx.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/In-air.dir/main.cxx.o -c /Users/nEwUnivErsE/In-air-interaction/In-air/main.cxx
 
@@ -92,7 +102,7 @@ CMakeFiles/In-air.dir/main.cxx.o.provides.build: CMakeFiles/In-air.dir/main.cxx.
 
 CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.o: CMakeFiles/In-air.dir/flags.make
 CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.o: moc_ui_mainWindow.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.o -c /Users/nEwUnivErsE/In-air-interaction/In-air/moc_ui_mainWindow.cxx
 
@@ -113,9 +123,32 @@ CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.o.provides: CMakeFiles/In-air.dir/mo
 
 CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.o.provides.build: CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.o
 
+CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o: CMakeFiles/In-air.dir/flags.make
+CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o: moc_ui_subWindow.cxx
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles $(CMAKE_PROGRESS_8)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o -c /Users/nEwUnivErsE/In-air-interaction/In-air/moc_ui_subWindow.cxx
+
+CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/nEwUnivErsE/In-air-interaction/In-air/moc_ui_subWindow.cxx > CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.i
+
+CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/nEwUnivErsE/In-air-interaction/In-air/moc_ui_subWindow.cxx -o CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.s
+
+CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o.requires:
+.PHONY : CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o.requires
+
+CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o.provides: CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o.requires
+	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o.provides.build
+.PHONY : CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o.provides
+
+CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o.provides.build: CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o
+
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: CMakeFiles/In-air.dir/flags.make
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: includes/moc_mainWindowController.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o -c /Users/nEwUnivErsE/In-air-interaction/In-air/includes/moc_mainWindowController.cxx
 
@@ -138,7 +171,7 @@ CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o.provides.build: CM
 
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: CMakeFiles/In-air.dir/flags.make
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: sources/mainWindowController.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o -c /Users/nEwUnivErsE/In-air-interaction/In-air/sources/mainWindowController.cxx
 
@@ -161,7 +194,7 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o.provides.build: CMakeFi
 
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: CMakeFiles/In-air.dir/flags.make
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: sources/LeapListener.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/In-air.dir/sources/LeapListener.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/In-air.dir/sources/LeapListener.cpp.o -c /Users/nEwUnivErsE/In-air-interaction/In-air/sources/LeapListener.cpp
 
@@ -186,6 +219,7 @@ CMakeFiles/In-air.dir/sources/LeapListener.cpp.o.provides.build: CMakeFiles/In-a
 In__air_OBJECTS = \
 "CMakeFiles/In-air.dir/main.cxx.o" \
 "CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.o" \
+"CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o" \
 "CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o" \
 "CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o" \
 "CMakeFiles/In-air.dir/sources/LeapListener.cpp.o"
@@ -195,6 +229,7 @@ In__air_EXTERNAL_OBJECTS =
 
 In-air: CMakeFiles/In-air.dir/main.cxx.o
 In-air: CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.o
+In-air: CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o
 In-air: CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o
 In-air: CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o
 In-air: CMakeFiles/In-air.dir/sources/LeapListener.cpp.o
@@ -405,6 +440,7 @@ CMakeFiles/In-air.dir/build: In-air
 
 CMakeFiles/In-air.dir/requires: CMakeFiles/In-air.dir/main.cxx.o.requires
 CMakeFiles/In-air.dir/requires: CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.o.requires
+CMakeFiles/In-air.dir/requires: CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o.requires
 CMakeFiles/In-air.dir/requires: CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o.requires
 CMakeFiles/In-air.dir/requires: CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o.requires
 CMakeFiles/In-air.dir/requires: CMakeFiles/In-air.dir/sources/LeapListener.cpp.o.requires
@@ -415,8 +451,10 @@ CMakeFiles/In-air.dir/clean:
 .PHONY : CMakeFiles/In-air.dir/clean
 
 CMakeFiles/In-air.dir/depend: moc_ui_mainWindow.cxx
+CMakeFiles/In-air.dir/depend: moc_ui_subWindow.cxx
 CMakeFiles/In-air.dir/depend: includes/moc_mainWindowController.cxx
 CMakeFiles/In-air.dir/depend: ui_mainWindow.h
+CMakeFiles/In-air.dir/depend: ui_subWindow.h
 	cd /Users/nEwUnivErsE/In-air-interaction/In-air && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/nEwUnivErsE/In-air-interaction/In-air /Users/nEwUnivErsE/In-air-interaction/In-air /Users/nEwUnivErsE/In-air-interaction/In-air /Users/nEwUnivErsE/In-air-interaction/In-air /Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles/In-air.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/In-air.dir/depend
 

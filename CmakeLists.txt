@@ -12,8 +12,8 @@ SET(MY_INCLUDE_DIRECTORY includes)
 SET(LM_INCLUDE_DIRECTORY includesLM)
 SET(MY_SOURCE_DIRECTORY sources)
 
-SET(FORMS UIs/mainWindow.ui)
-SET(HEADERS ui_mainWindow.h ${MY_INCLUDE_DIRECTORY}/mainWindowController.h)
+SET(FORMS UIs/mainWindow.ui UIs/subWindow.ui)
+SET(HEADERS ui_mainWindow.h ui_subWindow.h ${MY_INCLUDE_DIRECTORY}/mainWindowController.h)
 SET(CXX ${MY_SOURCE_DIRECTORY}/mainWindowController.cxx ${MY_SOURCE_DIRECTORY}/LeapListener.cpp)
 
 QT4_WRAP_UI(FORMS_HEADERS ${FORMS})

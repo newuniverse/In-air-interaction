@@ -8,6 +8,7 @@
 #include <vtkSphereSource.h>
 #include <vtkCubeSource.h>
 #include <vtkDiskSource.h>
+#include <vtkOutlineCornerSource.h>
 
 #include <vtkOBJReader.h>
 #include <vtkSTLReader.h>

@@ -7,6 +7,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/Users/nEwUnivErsE/In-air-interaction/In-air/includes/moc_mainWindowController.cxx" "/Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o"
   "/Users/nEwUnivErsE/In-air-interaction/In-air/main.cxx" "/Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles/In-air.dir/main.cxx.o"
   "/Users/nEwUnivErsE/In-air-interaction/In-air/moc_ui_mainWindow.cxx" "/Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.o"
+  "/Users/nEwUnivErsE/In-air-interaction/In-air/moc_ui_subWindow.cxx" "/Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o"
   "/Users/nEwUnivErsE/In-air-interaction/In-air/sources/LeapListener.cpp" "/Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles/In-air.dir/sources/LeapListener.cpp.o"
   "/Users/nEwUnivErsE/In-air-interaction/In-air/sources/mainWindowController.cxx" "/Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o"
   )

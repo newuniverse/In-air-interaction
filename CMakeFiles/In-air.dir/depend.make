@@ -6,10 +6,12 @@ CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: includes/graphica
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: includes/graphicalViewer.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: includes/mainWindowController.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: includes/moc_mainWindowController.cxx
+CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: includes/subWindowController.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: includes/vtkInclude.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: includes/vtkIncludeModel.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: includes/vtkIncludeViewer.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: ui_mainWindow.h
+CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: ui_subWindow.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /opt/local/include/Qt3Support/q3cstring.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /opt/local/include/Qt3Support/q3valuelist.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /opt/local/include/QtCore/QObject
@@ -93,6 +95,7 @@ CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /opt/local/includ
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /opt/local/include/QtGui/QApplication
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /opt/local/include/QtGui/QButtonGroup
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /opt/local/include/QtGui/QComboBox
+CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /opt/local/include/QtGui/QDoubleSpinBox
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /opt/local/include/QtGui/QGroupBox
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /opt/local/include/QtGui/QHBoxLayout
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /opt/local/include/QtGui/QHeaderView
@@ -276,6 +279,8 @@ CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/includ
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkObject.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkObjectBase.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkObjectFactory.h
+CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkOutlineCornerSource.h
+CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkOutlineSource.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkPointSet.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkPoints.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkPolyData.h
@@ -426,6 +431,7 @@ CMakeFiles/In-air.dir/main.cxx.o: /opt/local/include/QtGui/QAction
 CMakeFiles/In-air.dir/main.cxx.o: /opt/local/include/QtGui/QApplication
 CMakeFiles/In-air.dir/main.cxx.o: /opt/local/include/QtGui/QButtonGroup
 CMakeFiles/In-air.dir/main.cxx.o: /opt/local/include/QtGui/QComboBox
+CMakeFiles/In-air.dir/main.cxx.o: /opt/local/include/QtGui/QDoubleSpinBox
 CMakeFiles/In-air.dir/main.cxx.o: /opt/local/include/QtGui/QGroupBox
 CMakeFiles/In-air.dir/main.cxx.o: /opt/local/include/QtGui/QHBoxLayout
 CMakeFiles/In-air.dir/main.cxx.o: /opt/local/include/QtGui/QHeaderView
@@ -609,6 +615,8 @@ CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkOStreamWrapper.h
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkObject.h
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkObjectBase.h
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkObjectFactory.h
+CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkOutlineCornerSource.h
+CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkOutlineSource.h
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkPointSet.h
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkPoints.h
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkPolyData.h
@@ -675,6 +683,7 @@ CMakeFiles/In-air.dir/main.cxx.o: includes/LeapListener.h
 CMakeFiles/In-air.dir/main.cxx.o: includes/graphicalModel.h
 CMakeFiles/In-air.dir/main.cxx.o: includes/graphicalViewer.h
 CMakeFiles/In-air.dir/main.cxx.o: includes/mainWindowController.h
+CMakeFiles/In-air.dir/main.cxx.o: includes/subWindowController.h
 CMakeFiles/In-air.dir/main.cxx.o: includes/vtkInclude.h
 CMakeFiles/In-air.dir/main.cxx.o: includes/vtkIncludeModel.h
 CMakeFiles/In-air.dir/main.cxx.o: includes/vtkIncludeViewer.h
@@ -682,8 +691,11 @@ CMakeFiles/In-air.dir/main.cxx.o: includesLM/Leap.h
 CMakeFiles/In-air.dir/main.cxx.o: includesLM/LeapMath.h
 CMakeFiles/In-air.dir/main.cxx.o: includesLM/Shared.h
 CMakeFiles/In-air.dir/main.cxx.o: ui_mainWindow.h
+CMakeFiles/In-air.dir/main.cxx.o: ui_subWindow.h
 
 CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.o: moc_ui_mainWindow.cxx
+
+CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o: moc_ui_subWindow.cxx
 
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: sources/LeapListener.cpp
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkABI.h
@@ -749,6 +761,8 @@ CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtk
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkObject.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkObjectBase.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkObjectFactory.h
+CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkOutlineCornerSource.h
+CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkOutlineSource.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkPointSet.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkPoints.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkPolyData.h
@@ -975,6 +989,7 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /opt/local/include/QtG
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /opt/local/include/QtGui/QCleanlooksStyle
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /opt/local/include/QtGui/QComboBox
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /opt/local/include/QtGui/QCommonStyle
+CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /opt/local/include/QtGui/QDoubleSpinBox
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /opt/local/include/QtGui/QFileDialog
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /opt/local/include/QtGui/QFont
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /opt/local/include/QtGui/QGroupBox
@@ -1321,6 +1336,8 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkObject.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkObjectBase.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkObjectFactory.h
+CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkOutlineCornerSource.h
+CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkOutlineSource.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkPointSet.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkPoints.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkPolyData.h
@@ -1387,6 +1404,7 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includes/LeapListener.
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includes/graphicalModel.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includes/graphicalViewer.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includes/mainWindowController.h
+CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includes/subWindowController.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includes/vtkInclude.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includes/vtkIncludeModel.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includes/vtkIncludeViewer.h
@@ -1394,4 +1412,5 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includesLM/Leap.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includesLM/LeapMath.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includesLM/Shared.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: ui_mainWindow.h
+CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: ui_subWindow.h
 

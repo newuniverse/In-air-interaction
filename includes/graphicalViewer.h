@@ -40,7 +40,7 @@ public://methods
 
   		_viewerWindow = vtkSmartPointer<vtkRenderWindow>::New();
   		_viewerWindow->AddRenderer(_viewerRenderer);
-  		_viewerWindow->SetSize(300, 300);
+  		_viewerWindow->SetSize(800, 600);
 
   		//_viewerWinInteractor = ia;
   		_viewerWindow->SetInteractor(ia);

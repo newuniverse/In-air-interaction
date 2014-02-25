@@ -14,6 +14,7 @@
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QComboBox>
+#include <QtGui/QDoubleSpinBox>
 #include <QtGui/QGroupBox>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
@@ -56,6 +57,34 @@ public:
     QSpacerItem *horizontalSpacer;
     QSpinBox *windowNumSpinBox;
     QPushButton *createWindowButton;
+    QHBoxLayout *horizontalLayout_46;
+    QLabel *label_39;
+    QSpinBox *windowIndexSpinBox;
+    QPushButton *setKeystoneButton;
+    QHBoxLayout *horizontalLayout_40;
+    QLabel *label_40;
+    QLabel *label_48;
+    QDoubleSpinBox *x1SpinBox;
+    QLabel *label_49;
+    QDoubleSpinBox *y1SpinBox;
+    QHBoxLayout *horizontalLayout_43;
+    QLabel *label_41;
+    QLabel *label_50;
+    QDoubleSpinBox *x2SpinBox;
+    QLabel *label_53;
+    QDoubleSpinBox *y2SpinBox;
+    QHBoxLayout *horizontalLayout_44;
+    QLabel *label_42;
+    QLabel *label_51;
+    QDoubleSpinBox *x3SpinBox;
+    QLabel *label_54;
+    QDoubleSpinBox *y3SpinBox;
+    QHBoxLayout *horizontalLayout_45;
+    QLabel *label_47;
+    QLabel *label_52;
+    QDoubleSpinBox *x4SpinBox;
+    QLabel *label_55;
+    QDoubleSpinBox *y4SpinBox;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QVBoxLayout *verticalLayout_3;
@@ -233,8 +262,9 @@ public:
     QVTKWidget *vtkChart2;
     QLabel *label_7;
     QLabel *label_38;
-    QSpacerItem *horizontalSpacer_5;
     QVTKWidget *qvtkWidget;
+    QSpacerItem *horizontalSpacer_5;
+    QSpinBox *windowNumSpinBox_2;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuEdit;
@@ -271,7 +301,7 @@ public:
         toolBox->setMinimumSize(QSize(400, 730));
         setting1 = new QWidget();
         setting1->setObjectName(QString::fromUtf8("setting1"));
-        setting1->setGeometry(QRect(0, 0, 400, 626));
+        setting1->setGeometry(QRect(0, 0, 385, 660));
         verticalLayout_14 = new QVBoxLayout(setting1);
         verticalLayout_14->setObjectName(QString::fromUtf8("verticalLayout_14"));
         horizontalLayout = new QHBoxLayout();
@@ -305,6 +335,181 @@ public:
 
         verticalLayout_14->addLayout(horizontalLayout);
 
+        horizontalLayout_46 = new QHBoxLayout();
+        horizontalLayout_46->setObjectName(QString::fromUtf8("horizontalLayout_46"));
+        label_39 = new QLabel(setting1);
+        label_39->setObjectName(QString::fromUtf8("label_39"));
+
+        horizontalLayout_46->addWidget(label_39);
+
+        windowIndexSpinBox = new QSpinBox(setting1);
+        windowIndexSpinBox->setObjectName(QString::fromUtf8("windowIndexSpinBox"));
+        windowIndexSpinBox->setMinimum(1);
+        windowIndexSpinBox->setMaximum(11);
+
+        horizontalLayout_46->addWidget(windowIndexSpinBox);
+
+        setKeystoneButton = new QPushButton(setting1);
+        setKeystoneButton->setObjectName(QString::fromUtf8("setKeystoneButton"));
+
+        horizontalLayout_46->addWidget(setKeystoneButton);
+
+
+        verticalLayout_14->addLayout(horizontalLayout_46);
+
+        horizontalLayout_40 = new QHBoxLayout();
+        horizontalLayout_40->setObjectName(QString::fromUtf8("horizontalLayout_40"));
+        label_40 = new QLabel(setting1);
+        label_40->setObjectName(QString::fromUtf8("label_40"));
+
+        horizontalLayout_40->addWidget(label_40);
+
+        label_48 = new QLabel(setting1);
+        label_48->setObjectName(QString::fromUtf8("label_48"));
+
+        horizontalLayout_40->addWidget(label_48);
+
+        x1SpinBox = new QDoubleSpinBox(setting1);
+        x1SpinBox->setObjectName(QString::fromUtf8("x1SpinBox"));
+        x1SpinBox->setMinimum(-2);
+        x1SpinBox->setMaximum(2);
+        x1SpinBox->setSingleStep(0.01);
+        x1SpinBox->setValue(1);
+
+        horizontalLayout_40->addWidget(x1SpinBox);
+
+        label_49 = new QLabel(setting1);
+        label_49->setObjectName(QString::fromUtf8("label_49"));
+
+        horizontalLayout_40->addWidget(label_49);
+
+        y1SpinBox = new QDoubleSpinBox(setting1);
+        y1SpinBox->setObjectName(QString::fromUtf8("y1SpinBox"));
+        y1SpinBox->setDecimals(2);
+        y1SpinBox->setMinimum(-2);
+        y1SpinBox->setMaximum(2);
+        y1SpinBox->setSingleStep(0.01);
+        y1SpinBox->setValue(1);
+
+        horizontalLayout_40->addWidget(y1SpinBox);
+
+
+        verticalLayout_14->addLayout(horizontalLayout_40);
+
+        horizontalLayout_43 = new QHBoxLayout();
+        horizontalLayout_43->setObjectName(QString::fromUtf8("horizontalLayout_43"));
+        label_41 = new QLabel(setting1);
+        label_41->setObjectName(QString::fromUtf8("label_41"));
+
+        horizontalLayout_43->addWidget(label_41);
+
+        label_50 = new QLabel(setting1);
+        label_50->setObjectName(QString::fromUtf8("label_50"));
+
+        horizontalLayout_43->addWidget(label_50);
+
+        x2SpinBox = new QDoubleSpinBox(setting1);
+        x2SpinBox->setObjectName(QString::fromUtf8("x2SpinBox"));
+        x2SpinBox->setMinimum(-2);
+        x2SpinBox->setMaximum(2);
+        x2SpinBox->setSingleStep(0.01);
+        x2SpinBox->setValue(-1);
+
+        horizontalLayout_43->addWidget(x2SpinBox);
+
+        label_53 = new QLabel(setting1);
+        label_53->setObjectName(QString::fromUtf8("label_53"));
+
+        horizontalLayout_43->addWidget(label_53);
+
+        y2SpinBox = new QDoubleSpinBox(setting1);
+        y2SpinBox->setObjectName(QString::fromUtf8("y2SpinBox"));
+        y2SpinBox->setMinimum(-2);
+        y2SpinBox->setMaximum(2);
+        y2SpinBox->setSingleStep(0.01);
+        y2SpinBox->setValue(1);
+
+        horizontalLayout_43->addWidget(y2SpinBox);
+
+
+        verticalLayout_14->addLayout(horizontalLayout_43);
+
+        horizontalLayout_44 = new QHBoxLayout();
+        horizontalLayout_44->setObjectName(QString::fromUtf8("horizontalLayout_44"));
+        label_42 = new QLabel(setting1);
+        label_42->setObjectName(QString::fromUtf8("label_42"));
+
+        horizontalLayout_44->addWidget(label_42);
+
+        label_51 = new QLabel(setting1);
+        label_51->setObjectName(QString::fromUtf8("label_51"));
+
+        horizontalLayout_44->addWidget(label_51);
+
+        x3SpinBox = new QDoubleSpinBox(setting1);
+        x3SpinBox->setObjectName(QString::fromUtf8("x3SpinBox"));
+        x3SpinBox->setMinimum(-2);
+        x3SpinBox->setMaximum(2);
+        x3SpinBox->setSingleStep(0.01);
+        x3SpinBox->setValue(-1);
+
+        horizontalLayout_44->addWidget(x3SpinBox);
+
+        label_54 = new QLabel(setting1);
+        label_54->setObjectName(QString::fromUtf8("label_54"));
+
+        horizontalLayout_44->addWidget(label_54);
+
+        y3SpinBox = new QDoubleSpinBox(setting1);
+        y3SpinBox->setObjectName(QString::fromUtf8("y3SpinBox"));
+        y3SpinBox->setMinimum(-2);
+        y3SpinBox->setMaximum(2);
+        y3SpinBox->setSingleStep(0.01);
+        y3SpinBox->setValue(-1);
+
+        horizontalLayout_44->addWidget(y3SpinBox);
+
+
+        verticalLayout_14->addLayout(horizontalLayout_44);
+
+        horizontalLayout_45 = new QHBoxLayout();
+        horizontalLayout_45->setObjectName(QString::fromUtf8("horizontalLayout_45"));
+        label_47 = new QLabel(setting1);
+        label_47->setObjectName(QString::fromUtf8("label_47"));
+
+        horizontalLayout_45->addWidget(label_47);
+
+        label_52 = new QLabel(setting1);
+        label_52->setObjectName(QString::fromUtf8("label_52"));
+
+        horizontalLayout_45->addWidget(label_52);
+
+        x4SpinBox = new QDoubleSpinBox(setting1);
+        x4SpinBox->setObjectName(QString::fromUtf8("x4SpinBox"));
+        x4SpinBox->setMinimum(-2);
+        x4SpinBox->setMaximum(2);
+        x4SpinBox->setSingleStep(0.01);
+        x4SpinBox->setValue(1);
+
+        horizontalLayout_45->addWidget(x4SpinBox);
+
+        label_55 = new QLabel(setting1);
+        label_55->setObjectName(QString::fromUtf8("label_55"));
+
+        horizontalLayout_45->addWidget(label_55);
+
+        y4SpinBox = new QDoubleSpinBox(setting1);
+        y4SpinBox->setObjectName(QString::fromUtf8("y4SpinBox"));
+        y4SpinBox->setMinimum(-2);
+        y4SpinBox->setMaximum(2);
+        y4SpinBox->setSingleStep(0.01);
+        y4SpinBox->setValue(-1);
+
+        horizontalLayout_45->addWidget(y4SpinBox);
+
+
+        verticalLayout_14->addLayout(horizontalLayout_45);
+
         scrollArea = new QScrollArea(setting1);
         scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -317,7 +522,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 359, 1988));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 344, 1988));
         verticalLayout_3 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout = new QVBoxLayout();
@@ -1188,10 +1393,6 @@ public:
 
         horizontalLayout_37->addWidget(toolBox);
 
-        horizontalSpacer_5 = new QSpacerItem(13, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_37->addItem(horizontalSpacer_5);
-
         qvtkWidget = new QVTKWidget(layoutWidget);
         qvtkWidget->setObjectName(QString::fromUtf8("qvtkWidget"));
         sizePolicy.setHeightForWidth(qvtkWidget->sizePolicy().hasHeightForWidth());
@@ -1200,6 +1401,19 @@ public:
 
         horizontalLayout_37->addWidget(qvtkWidget);
 
+        horizontalSpacer_5 = new QSpacerItem(13, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_37->addItem(horizontalSpacer_5);
+
+        windowNumSpinBox_2 = new QSpinBox(centralwidget);
+        windowNumSpinBox_2->setObjectName(QString::fromUtf8("windowNumSpinBox_2"));
+        windowNumSpinBox_2->setGeometry(QRect(560, 730, 53, 24));
+        windowNumSpinBox_2->setWrapping(false);
+        windowNumSpinBox_2->setReadOnly(false);
+        windowNumSpinBox_2->setButtonSymbols(QAbstractSpinBox::UpDownArrows);
+        windowNumSpinBox_2->setKeyboardTracking(true);
+        windowNumSpinBox_2->setMinimum(1);
+        windowNumSpinBox_2->setMaximum(11);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -1261,7 +1475,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        toolBox->setCurrentIndex(3);
+        toolBox->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -1278,6 +1492,20 @@ public:
         actionNew_gesture->setText(QApplication::translate("MainWindow", "New gesture", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("MainWindow", "&Number of windows:", 0, QApplication::UnicodeUTF8));
         createWindowButton->setText(QApplication::translate("MainWindow", "&Create", 0, QApplication::UnicodeUTF8));
+        label_39->setText(QApplication::translate("MainWindow", "Keystone setting Window number:", 0, QApplication::UnicodeUTF8));
+        setKeystoneButton->setText(QApplication::translate("MainWindow", "&Set", 0, QApplication::UnicodeUTF8));
+        label_40->setText(QApplication::translate("MainWindow", "Corner 1:", 0, QApplication::UnicodeUTF8));
+        label_48->setText(QApplication::translate("MainWindow", "x:", 0, QApplication::UnicodeUTF8));
+        label_49->setText(QApplication::translate("MainWindow", "y:", 0, QApplication::UnicodeUTF8));
+        label_41->setText(QApplication::translate("MainWindow", "Corner 2:", 0, QApplication::UnicodeUTF8));
+        label_50->setText(QApplication::translate("MainWindow", "x:", 0, QApplication::UnicodeUTF8));
+        label_53->setText(QApplication::translate("MainWindow", "y:", 0, QApplication::UnicodeUTF8));
+        label_42->setText(QApplication::translate("MainWindow", "Corner 3:", 0, QApplication::UnicodeUTF8));
+        label_51->setText(QApplication::translate("MainWindow", "x:", 0, QApplication::UnicodeUTF8));
+        label_54->setText(QApplication::translate("MainWindow", "y:", 0, QApplication::UnicodeUTF8));
+        label_47->setText(QApplication::translate("MainWindow", "Corner 4:", 0, QApplication::UnicodeUTF8));
+        label_52->setText(QApplication::translate("MainWindow", "x:", 0, QApplication::UnicodeUTF8));
+        label_55->setText(QApplication::translate("MainWindow", "y:", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QApplication::translate("MainWindow", "Window 1:", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("MainWindow", "Width:  ", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("MainWindow", "Height:", 0, QApplication::UnicodeUTF8));

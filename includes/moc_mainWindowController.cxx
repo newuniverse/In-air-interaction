@@ -22,7 +22,7 @@ static const uint qt_meta_data_MainWindowController[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+      15,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -33,6 +33,18 @@ static const uint qt_meta_data_MainWindowController[] = {
       21,   53,   53,   53, 0x08,
       54,   53,   53,   53, 0x08,
       86,   53,   53,   53, 0x08,
+     117,   53,   53,   53, 0x08,
+     142,   53,   53,   53, 0x08,
+     179,   53,   53,   53, 0x08,
+     210,  244,   53,   53, 0x08,
+     246,  244,   53,   53, 0x08,
+     280,  244,   53,   53, 0x08,
+     314,  244,   53,   53, 0x08,
+     348,  244,   53,   53, 0x08,
+     382,  244,   53,   53, 0x08,
+     416,  244,   53,   53, 0x08,
+     450,  244,   53,   53, 0x08,
+     484,   53,   53,   53, 0x08,
 
        0        // eod
 };
@@ -42,6 +54,18 @@ static const char qt_meta_stringdata_MainWindowController[] = {
     "on_createWindowButton_clicked()\0\0"
     "on_leapActivateButton_clicked()\0"
     "on_actionOpen_File_triggered()\0"
+    "on_actionNew_triggered()\0"
+    "on_windowIndexSpinBox_valueChanged()\0"
+    "on_setKeystoneButton_clicked()\0"
+    "on_x1SpinBox_valueChanged(double)\0d\0"
+    "on_y1SpinBox_valueChanged(double)\0"
+    "on_x2SpinBox_valueChanged(double)\0"
+    "on_y2SpinBox_valueChanged(double)\0"
+    "on_x3SpinBox_valueChanged(double)\0"
+    "on_y3SpinBox_valueChanged(double)\0"
+    "on_x4SpinBox_valueChanged(double)\0"
+    "on_y4SpinBox_valueChanged(double)\0"
+    "keystoneSpinBoxCommon()\0"
 };
 
 void MainWindowController::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -53,10 +77,21 @@ void MainWindowController::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
         case 0: _t->on_createWindowButton_clicked(); break;
         case 1: _t->on_leapActivateButton_clicked(); break;
         case 2: _t->on_actionOpen_File_triggered(); break;
+        case 3: _t->on_actionNew_triggered(); break;
+        case 4: _t->on_windowIndexSpinBox_valueChanged(); break;
+        case 5: _t->on_setKeystoneButton_clicked(); break;
+        case 6: _t->on_x1SpinBox_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 7: _t->on_y1SpinBox_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 8: _t->on_x2SpinBox_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 9: _t->on_y2SpinBox_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 10: _t->on_x3SpinBox_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 11: _t->on_y3SpinBox_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 12: _t->on_x4SpinBox_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 13: _t->on_y4SpinBox_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 14: _t->keystoneSpinBoxCommon(); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObjectExtraData MainWindowController::staticMetaObjectExtraData = {
@@ -91,9 +126,9 @@ int MainWindowController::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 15)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 15;
     }
     return _id;
 }
