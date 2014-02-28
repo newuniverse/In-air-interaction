@@ -15,8 +15,15 @@
 
 #include "graphicalViewer.h"
 
-#include "subWindowController.h"
+////////////////
+#include "OVR.h"
+#include <Kernel/OVR_SysFile.h>
+#include <Kernel/OVR_Log.h>
+#include <Kernel/OVR_Timer.h>
+////////////////
 
+#include "tinyxml2.h"
+using namespace OVR;
 class MainWindowController : public QMainWindow, private Ui::MainWindow
 {
 	Q_OBJECT
@@ -29,7 +36,8 @@ private slots:
 	void on_leapActivateButton_clicked();
 	void on_actionOpen_File_triggered();
 	void on_actionNew_triggered();
-
+	void on_setKeystoneButton_clicked();
+	void on_saveKeystoneButton_clicked();
 	void on_windowIndexSpinBox_valueChanged() {
 		x1SpinBox->setValue(1.0);
 		y1SpinBox->setValue(1.0);
@@ -41,14 +49,6 @@ private slots:
 		y4SpinBox->setValue(-1.0);
 	}
 
-	void on_setKeystoneButton_clicked() {
-		int index = windowIndexSpinBox->value();
-		if (index > subCameras.size())
-			return;
-		index = index - 1;
-		subCameras.at(index)->SetViewShear(index*0.1, 0.1, 1);
-		subRenWindows.at(index)->Render();
-	}
 
 	void on_x1SpinBox_valueChanged(double d) {
 		X1 = d;
@@ -95,19 +95,15 @@ private slots:
 		//vtkSmartPointer<vtkHomogeneousTransform> keystone = vtkSmartPointer<vtkHomogeneousTransform>::New();
 		vtkSmartPointer<vtkTransform> keystone = vtkSmartPointer<vtkTransform>::New();
 		vtkSmartPointer<vtkMatrix4x4> mat = vtkSmartPointer<vtkMatrix4x4>::New();
-		for (int i = 0; i < 4; ++i)
-		{
-			for (int j = 0; j < 4; ++j)
-			{
-				//mat->SetElement(i, j, matH[i*4+j]);
-			}
-		}
 		keystone->SetMatrix(matH);
 		//vtkHomogeneousTransform* keystone = vtkHomogeneousTransform::New();
 		subCameras.at(index)->SetUserTransform(keystone);
 		subRenWindows.at(index)->Render();
 	}
 
+protected: 
+	Ptr<DeviceManager>  pManager;
+	Ptr<HMDDevice>      pHMD;
 private://methods
 	void createWindow(int width, int height, int index);
 	void addActorsToScene(vtkSmartPointer<vtkActor> actor);
@@ -121,8 +117,9 @@ private://methods
 private://members
 	double X1, X2, X3, X4, Y1, Y2, Y3, Y4;//keystones
 
-	LeapListener     *g_lmListener;
-	Leap::Controller *g_lmController;
+	tinyxml2::XMLDocument*   conf_xml;
+	LeapListener*     g_lmListener;
+	Leap::Controller* g_lmController;
 	
 	vtkSmartPointer<vtkRenderer> mainRenderer;
 	vtkSmartPointer<vtkRenderWindow> mainWindow;

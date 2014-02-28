@@ -114,6 +114,30 @@ In-air/fast:
 	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/build
 .PHONY : In-air/fast
 
+ThirdParty/tinyxml2/tinyxml2.o: ThirdParty/tinyxml2/tinyxml2.cpp.o
+.PHONY : ThirdParty/tinyxml2/tinyxml2.o
+
+# target to build an object file
+ThirdParty/tinyxml2/tinyxml2.cpp.o:
+	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/ThirdParty/tinyxml2/tinyxml2.cpp.o
+.PHONY : ThirdParty/tinyxml2/tinyxml2.cpp.o
+
+ThirdParty/tinyxml2/tinyxml2.i: ThirdParty/tinyxml2/tinyxml2.cpp.i
+.PHONY : ThirdParty/tinyxml2/tinyxml2.i
+
+# target to preprocess a source file
+ThirdParty/tinyxml2/tinyxml2.cpp.i:
+	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/ThirdParty/tinyxml2/tinyxml2.cpp.i
+.PHONY : ThirdParty/tinyxml2/tinyxml2.cpp.i
+
+ThirdParty/tinyxml2/tinyxml2.s: ThirdParty/tinyxml2/tinyxml2.cpp.s
+.PHONY : ThirdParty/tinyxml2/tinyxml2.s
+
+# target to generate assembly for a file
+ThirdParty/tinyxml2/tinyxml2.cpp.s:
+	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/ThirdParty/tinyxml2/tinyxml2.cpp.s
+.PHONY : ThirdParty/tinyxml2/tinyxml2.cpp.s
+
 includes/moc_mainWindowController.o: includes/moc_mainWindowController.cxx.o
 .PHONY : includes/moc_mainWindowController.o
 
@@ -186,30 +210,6 @@ moc_ui_mainWindow.cxx.s:
 	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.s
 .PHONY : moc_ui_mainWindow.cxx.s
 
-moc_ui_subWindow.o: moc_ui_subWindow.cxx.o
-.PHONY : moc_ui_subWindow.o
-
-# target to build an object file
-moc_ui_subWindow.cxx.o:
-	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o
-.PHONY : moc_ui_subWindow.cxx.o
-
-moc_ui_subWindow.i: moc_ui_subWindow.cxx.i
-.PHONY : moc_ui_subWindow.i
-
-# target to preprocess a source file
-moc_ui_subWindow.cxx.i:
-	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.i
-.PHONY : moc_ui_subWindow.cxx.i
-
-moc_ui_subWindow.s: moc_ui_subWindow.cxx.s
-.PHONY : moc_ui_subWindow.s
-
-# target to generate assembly for a file
-moc_ui_subWindow.cxx.s:
-	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.s
-.PHONY : moc_ui_subWindow.cxx.s
-
 sources/LeapListener.o: sources/LeapListener.cpp.o
 .PHONY : sources/LeapListener.o
 
@@ -267,6 +267,9 @@ help:
 	@echo "... In-air"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... ThirdParty/tinyxml2/tinyxml2.o"
+	@echo "... ThirdParty/tinyxml2/tinyxml2.i"
+	@echo "... ThirdParty/tinyxml2/tinyxml2.s"
 	@echo "... includes/moc_mainWindowController.o"
 	@echo "... includes/moc_mainWindowController.i"
 	@echo "... includes/moc_mainWindowController.s"
@@ -276,9 +279,6 @@ help:
 	@echo "... moc_ui_mainWindow.o"
 	@echo "... moc_ui_mainWindow.i"
 	@echo "... moc_ui_mainWindow.s"
-	@echo "... moc_ui_subWindow.o"
-	@echo "... moc_ui_subWindow.i"
-	@echo "... moc_ui_subWindow.s"
 	@echo "... sources/LeapListener.o"
 	@echo "... sources/LeapListener.i"
 	@echo "... sources/LeapListener.s"

@@ -4,10 +4,10 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/nEwUnivErsE/In-air-interaction/In-air/ThirdParty/tinyxml2/tinyxml2.cpp" "/Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles/In-air.dir/ThirdParty/tinyxml2/tinyxml2.cpp.o"
   "/Users/nEwUnivErsE/In-air-interaction/In-air/includes/moc_mainWindowController.cxx" "/Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o"
   "/Users/nEwUnivErsE/In-air-interaction/In-air/main.cxx" "/Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles/In-air.dir/main.cxx.o"
   "/Users/nEwUnivErsE/In-air-interaction/In-air/moc_ui_mainWindow.cxx" "/Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.o"
-  "/Users/nEwUnivErsE/In-air-interaction/In-air/moc_ui_subWindow.cxx" "/Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o"
   "/Users/nEwUnivErsE/In-air-interaction/In-air/sources/LeapListener.cpp" "/Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles/In-air.dir/sources/LeapListener.cpp.o"
   "/Users/nEwUnivErsE/In-air-interaction/In-air/sources/mainWindowController.cxx" "/Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o"
   )
@@ -32,9 +32,12 @@ SET(CMAKE_C_TARGET_INCLUDE_PATH
   "/opt/local/include/QtGui"
   "/opt/local/include/QtCore"
   "/usr/local/include/vtk-6.2"
-  "/Users/nEwUnivErsE/In-air-interaction/In-air,"
+  "."
   "includes"
   "includesLM"
+  "/Users/nEwUnivErsE/OculusSDK/LibOVR/Include"
+  "/Users/nEwUnivErsE/OculusSDK/LibOVR/Src"
+  "ThirdParty/tinyxml2"
   )
 SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
 SET(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

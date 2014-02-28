@@ -1,15 +1,13 @@
 FILE(REMOVE_RECURSE
   "moc_ui_mainWindow.cxx"
-  "moc_ui_subWindow.cxx"
   "includes/moc_mainWindowController.cxx"
   "ui_mainWindow.h"
-  "ui_subWindow.h"
   "CMakeFiles/In-air.dir/main.cxx.o"
   "CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.o"
-  "CMakeFiles/In-air.dir/moc_ui_subWindow.cxx.o"
   "CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o"
   "CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o"
   "CMakeFiles/In-air.dir/sources/LeapListener.cpp.o"
+  "CMakeFiles/In-air.dir/ThirdParty/tinyxml2/tinyxml2.cpp.o"
   "In-air.pdb"
   "In-air"
 )

@@ -9,7 +9,11 @@
 MainWindowController::MainWindowController(QWidget *parent)
 {
 	setupUi(this);
-
+	//OVR for future use
+	pManager = *DeviceManager::Create();
+	//pHMD = *pManager->EnumerateDevices<HMDDevice>().CreateDevice();
+	conf_xml = new tinyxml2::XMLDocument();
+	
   	mainRenderer= vtkSmartPointer<vtkRenderer>::New();
   	mainRenderer->SetBackground( 0.0, 0.0, 0.0 );
 
@@ -24,15 +28,24 @@ MainWindowController::MainWindowController(QWidget *parent)
  	 	
   	//chart rendering example
   	vtkSmartPointer<vtkContextView> view = vtkSmartPointer<vtkContextView>::New();
+  	vtkSmartPointer<vtkContextView> view2 = vtkSmartPointer<vtkContextView>::New();
+  	
 	vtkSmartPointer<vtkChartXY> chart = vtkSmartPointer<vtkChartXY>::New();
+	vtkSmartPointer<vtkChartXY> chart2 = vtkSmartPointer<vtkChartXY>::New();
 
 	chart->SetRenderEmpty(true);
 	chart->SetAutoAxes(false);
-	view->GetScene()->AddItem(chart.GetPointer());
-	view->SetInteractor(vtkChart1->GetInteractor());
+	chart2->SetRenderEmpty(true);
+	chart2->SetAutoAxes(false);
 
+	view->GetScene()->AddItem(chart.GetPointer());
+	view2->GetScene()->AddItem(chart2.GetPointer());
+
+	view->SetInteractor(vtkChart1->GetInteractor());
+	view2->SetInteractor(vtkChart2->GetInteractor());
+	
 	vtkChart1->SetRenderWindow(view->GetRenderWindow());
-	vtkChart2->SetRenderWindow(view->GetRenderWindow());
+	vtkChart2->SetRenderWindow(view2->GetRenderWindow());
 
 	g_lmListener   = new LeapListener;
 	g_lmController = new Leap::Controller;
@@ -44,6 +57,42 @@ MainWindowController::MainWindowController(QWidget *parent)
 MainWindowController::~MainWindowController() {
 	delete g_lmListener;
 	delete g_lmController;
+}
+
+void MainWindowController::on_saveKeystoneButton_clicked() {
+	if (createWindowButton->isEnabled()) {
+		return;
+	}
+	/*
+	tinyxml2::XMLDeclaration* decl = new tinyxml2::XMLDeclaration( "1.0");  
+	conf_xml->LinkEndChild(decl);
+	tinyxml2::XMLElement* root = new XMLElement("IN-AIR-CONFIG");
+	conf_xml->LinkEndChild(root);
+
+	tinyxml2::XMLComment* comment = new tinyxml2::XMLComment();
+	comment->SetValue("Configuration for MyApp");  
+	root->LinkEndChild(comment);
+ 	
+	tinyxml2::XMLElement* windows = new tinyxml2::XMLElement("Windows");  
+	root->LinkEndChild(windows);
+
+	tinyxml2::XMLElement* total = new tinyxml2::XMLElement("Total");  
+
+	QString str = QString::number(windowNumSpinBox->value());
+
+	total->LinkEndChild(new tinyxml2::XMLText(str.toStdString()));
+	windows->LinkEndChild(total);
+	conf_xml->SaveFile("Config.xml");*/
+}
+
+void MainWindowController::on_setKeystoneButton_clicked() {
+	int index = windowIndexSpinBox->value();
+	if (index > subCameras.size()) {
+		return;
+	}
+	index = index - 1;
+	subCameras.at(index)->SetViewShear(index*0.1, 0.1, 1);
+	subRenWindows.at(index)->Render();
 }
 
 
@@ -296,7 +345,6 @@ void MainWindowController::on_createWindowButton_clicked()
 {
 	int winNum = windowNumSpinBox->value();
 	int width, height;
-
 	subInteractors.reserve(winNum);
 	subRenderers.reserve(winNum);
 	subRenWindows.reserve(winNum);
@@ -306,14 +354,12 @@ void MainWindowController::on_createWindowButton_clicked()
 	{
 		width = 500;
 		height = 500;
-		QLineEdit* le = this->findChild<QLineEdit*>(QString("width").append(QString::number(i+1)));
-		if (!(le->text().isEmpty())) {
-			width = le->text().toInt();
+		if (!(widthLineEdit->text().isEmpty())) {
+			width = widthLineEdit->text().toInt();
 		}
-
-		le = this->findChild<QLineEdit*>(QString("height").append(QString::number(i+1)));
-		if (!(le->text().isEmpty())) {
-			height = le->text().toInt();
+		//le = this->findChild<QLineEdit*>(QString("height"));
+		if (!(heightLineEdit->text().isEmpty())) {
+			height = heightLineEdit->text().toInt();
 		}
 		createWindow(width, height, i);
 	}
@@ -339,18 +385,19 @@ void MainWindowController::createWindow(int width, int height, int index = 0)
   	std::stringstream ss;
     ss << "Window " << index;
     renWindow->SetWindowName(ss.str().c_str());
-    renWindow->SetPosition((index+1)*1200, 0);
+    renWindow->SetPosition((index+1)*1200, 100);
   	
-
 	vtkSmartPointer<vtkRenderWindowInteractor> renderWindowInteractor = vtkSmartPointer<vtkRenderWindowInteractor>::New();
 	subInteractors.push_back(renderWindowInteractor);
 
 	renderWindowInteractor->SetRenderWindow(renWindow);
 	renWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
 	int timerId = renWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
-	renWindow->FullScreenOff();
-
+	//renWindow->FullScreenOn();
+	//renWindow->BordersOff();
 	vtkSmartPointer<vtkCamera> camera = vtkSmartPointer<vtkCamera>::New();
 	subCameras.push_back(camera);
 	renderer->SetActiveCamera(camera);
+
+	std::cout << "window " << index <<": diplayid = " << renWindow->GetGenericDisplayId() << std::endl;
 }
