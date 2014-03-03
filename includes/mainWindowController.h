@@ -36,8 +36,10 @@ private slots:
 	void on_leapActivateButton_clicked();
 	void on_actionOpen_File_triggered();
 	void on_actionNew_triggered();
+	void on_actionOpen_Config_triggered();
 	void on_setKeystoneButton_clicked();
 	void on_saveKeystoneButton_clicked();
+	
 	void on_windowIndexSpinBox_valueChanged() {
 		x1SpinBox->setValue(1.0);
 		y1SpinBox->setValue(1.0);
@@ -83,35 +85,20 @@ private slots:
 		keystoneSpinBoxCommon();
 	}
 	
-	void keystoneSpinBoxCommon() {
-		int index = windowIndexSpinBox->value();
-		if (index > subCameras.size())
-			return;
+	void keystoneSpinBoxCommon();
 
-		index = index - 1;
-		double* matH = new double[16];
-		matH = calcKeystones();
-
-		//vtkSmartPointer<vtkHomogeneousTransform> keystone = vtkSmartPointer<vtkHomogeneousTransform>::New();
-		vtkSmartPointer<vtkTransform> keystone = vtkSmartPointer<vtkTransform>::New();
-		vtkSmartPointer<vtkMatrix4x4> mat = vtkSmartPointer<vtkMatrix4x4>::New();
-		keystone->SetMatrix(matH);
-		//vtkHomogeneousTransform* keystone = vtkHomogeneousTransform::New();
-		subCameras.at(index)->SetUserTransform(keystone);
-		subRenWindows.at(index)->Render();
-	}
-
-protected: 
-	Ptr<DeviceManager>  pManager;
-	Ptr<HMDDevice>      pHMD;
 private://methods
-	void createWindow(int width, int height, int index);
+	void createOne(int width, int height, int index);
 	void addActorsToScene(vtkSmartPointer<vtkActor> actor);
 	void removeAllActorsFromScene();
 
 	void refreshAllWindows();
 	void addAllLeapModels();
 	void removeAllLeapModels();
+
+	void setWindowConfigurations();
+
+	void createWindowFromConfig();
 
 	double* calcKeystones();
 private://members
@@ -134,6 +121,13 @@ private://members
 
 	std::chrono::high_resolution_clock::time_point currentTime;
     std::chrono::high_resolution_clock::time_point lastTime;
+
+protected: //methods and members
+	Ptr<DeviceManager>  pManager;
+	Ptr<HMDDevice>      pHMD;
+
+	void initConfigFile();
 };
+
 
 #endif

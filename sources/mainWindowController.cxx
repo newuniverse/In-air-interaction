@@ -3,8 +3,11 @@
 
 #include "graphicalModel.h"
 #include "Shared.h"
-#define DELTATIME 30 //ms
+#include <boost/algorithm/string.hpp>
+#include <sstream>
 
+#define DELTATIME 30 //ms
+#define CONFIGFILENAME "conf.xml"
 
 MainWindowController::MainWindowController(QWidget *parent)
 {
@@ -12,8 +15,8 @@ MainWindowController::MainWindowController(QWidget *parent)
 	//OVR for future use
 	pManager = *DeviceManager::Create();
 	//pHMD = *pManager->EnumerateDevices<HMDDevice>().CreateDevice();
-	conf_xml = new tinyxml2::XMLDocument();
-	
+	this->initConfigFile();
+
   	mainRenderer= vtkSmartPointer<vtkRenderer>::New();
   	mainRenderer->SetBackground( 0.0, 0.0, 0.0 );
 
@@ -57,39 +60,69 @@ MainWindowController::MainWindowController(QWidget *parent)
 MainWindowController::~MainWindowController() {
 	delete g_lmListener;
 	delete g_lmController;
+	delete conf_xml;
+}
+
+void MainWindowController::initConfigFile ()
+{
+	conf_xml = new tinyxml2::XMLDocument();
+	if (conf_xml->LoadFile(CONFIGFILENAME) == 0) {
+		return;
+	}
+
+	//create new config file if there is not
+	tinyxml2::XMLDeclaration* decl = conf_xml->NewDeclaration();
+	conf_xml->InsertFirstChild(decl);
+	tinyxml2::XMLComment* comment = conf_xml->NewComment("Configuration for MyApp");
+	conf_xml->InsertAfterChild(decl, comment);
+
+	//insert elements of holo-table
+	tinyxml2::XMLElement* holo_table = conf_xml->NewElement("Holo_table");
+	conf_xml->InsertAfterChild(comment, holo_table);
+	tinyxml2::XMLElement* windows = conf_xml->NewElement("Windows");
+	holo_table->InsertFirstChild(windows);
+	/*
+		insert new elements 
+	*/	
+	//insert elements of OVR
+	tinyxml2::XMLElement* ovr = conf_xml->NewElement("OVR");
+	conf_xml->InsertAfterChild(holo_table, ovr);
+
+	//conf_xml->SaveFile(CONFIGFILENAME);
 }
 
 void MainWindowController::on_saveKeystoneButton_clicked() {
 	if (createWindowButton->isEnabled()) {
 		return;
 	}
-	/*
-	tinyxml2::XMLDeclaration* decl = new tinyxml2::XMLDeclaration( "1.0");  
-	conf_xml->LinkEndChild(decl);
-	tinyxml2::XMLElement* root = new XMLElement("IN-AIR-CONFIG");
-	conf_xml->LinkEndChild(root);
-
-	tinyxml2::XMLComment* comment = new tinyxml2::XMLComment();
-	comment->SetValue("Configuration for MyApp");  
-	root->LinkEndChild(comment);
- 	
-	tinyxml2::XMLElement* windows = new tinyxml2::XMLElement("Windows");  
-	root->LinkEndChild(windows);
-
-	tinyxml2::XMLElement* total = new tinyxml2::XMLElement("Total");  
-
-	QString str = QString::number(windowNumSpinBox->value());
-
-	total->LinkEndChild(new tinyxml2::XMLText(str.toStdString()));
-	windows->LinkEndChild(total);
-	conf_xml->SaveFile("Config.xml");*/
+	conf_xml->SaveFile("conf.xml");
 }
 
-void MainWindowController::on_setKeystoneButton_clicked() {
+void MainWindowController::setWindowConfigurations() 
+{
+	
+}
+
+void MainWindowController::on_setKeystoneButton_clicked() 
+{
 	int index = windowIndexSpinBox->value();
 	if (index > subCameras.size()) {
 		return;
 	}
+		
+	std::string keystone_str = QString::number(X1).toStdString() + "," +
+							   QString::number(Y1).toStdString() + "," +
+							   QString::number(X2).toStdString() + "," +
+							   QString::number(Y2).toStdString() + "," +
+							   QString::number(X3).toStdString() + "," +
+							   QString::number(Y3).toStdString() + "," +
+							   QString::number(X4).toStdString() + "," +
+							   QString::number(Y4).toStdString();
+
+	tinyxml2::XMLElement* holo_table = conf_xml->FirstChildElement();
+	tinyxml2::XMLElement* window = holo_table->FirstChildElement();
+	window->SetAttribute(("Keystone"+QString::number(index).toStdString()).c_str(), keystone_str.c_str());
+
 	index = index - 1;
 	subCameras.at(index)->SetViewShear(index*0.1, 0.1, 1);
 	subRenWindows.at(index)->Render();
@@ -99,6 +132,7 @@ void MainWindowController::on_setKeystoneButton_clicked() {
 void MainWindowController::addActorsToScene(vtkSmartPointer<vtkActor> actor) 
 {
 	mainRenderer->AddActor(actor);
+	std::cout<<"number of renderer: " << subRenderers.size() <<std::endl;
 	for (int i = 0, n = subRenderers.size(); i < n; ++i)
 	{
 		subRenderers.at(i)->AddActor(actor);
@@ -271,10 +305,105 @@ double* MainWindowController::calcKeystones()
     return h;
 }
 
+void MainWindowController::keystoneSpinBoxCommon() {
+	int index = windowIndexSpinBox->value();
+	if (index > subCameras.size())
+		return;
+
+	index = index - 1;
+	double* matH = new double[16];
+	matH = calcKeystones();
+
+	//vtkSmartPointer<vtkHomogeneousTransform> keystone = vtkSmartPointer<vtkHomogeneousTransform>::New();
+	vtkSmartPointer<vtkTransform> keystone = vtkSmartPointer<vtkTransform>::New();
+	vtkSmartPointer<vtkMatrix4x4> mat = vtkSmartPointer<vtkMatrix4x4>::New();
+	keystone->SetMatrix(matH);
+	//vtkHomogeneousTransform* keystone = vtkHomogeneousTransform::New();
+	subCameras.at(index)->SetUserTransform(keystone);
+	subRenWindows.at(index)->Render();
+}
+
 void MainWindowController::on_actionNew_triggered() 
 {
 	this->removeAllActorsFromScene();
 	this->refreshAllWindows();
+}
+
+void MainWindowController::on_actionOpen_Config_triggered()
+{
+	QString filename = QFileDialog::getOpenFileName(this, tr("Open config file"), ".", tr("XML files (*.xml *.XML)"));
+	if (filename.isEmpty()) {
+		return;
+	}
+
+	if (conf_xml->LoadFile(filename.toStdString().c_str()) != 0) {
+		return;
+	}
+
+	tinyxml2::XMLElement* holo_table = conf_xml->FirstChildElement();
+	tinyxml2::XMLElement* window = holo_table->FirstChildElement();
+
+	int width = 800;
+	int	height = 600;
+
+	const char* str = window->Attribute("Total");
+	int winNum = atoi(str);
+	str = window->Attribute("Width");
+	width = atoi(str);
+	str = window->Attribute("Height");
+	height = atoi(str);
+
+	subInteractors.reserve(winNum);
+	subRenderers.reserve(winNum);
+	subRenWindows.reserve(winNum);
+	subCameras.reserve(winNum);
+
+	for (int i = 0; i < winNum; ++i)
+	{
+		createOne(width, height, i);
+	}
+	subInteractors.at(winNum-1)->Start();
+	createWindowButton->setEnabled(false);
+
+	double keystones[winNum][8];
+
+	for (int i = 0; i < winNum; ++i) {
+		std::stringstream ss;
+		ss << i+1;
+		str = window->Attribute(("Keystone"+ss.str()).c_str());
+		cout << "keystone str: " << str << std::endl;
+		std::string delim (",");
+ 		std::list<std::string> list_string;
+ 		boost::split(list_string, str, boost::is_any_of(delim), boost::algorithm::token_compress_on);
+ 		if (list_string.size() != 8) {
+ 			//throw "InvalidKeystoneSettingException";
+ 			return;
+ 		}
+		std::list<std::string>::iterator it = list_string.begin();
+		int counter = 0;
+		while (it != list_string.end()) {
+			cout << "keystone each: " << atof((*it).c_str()) << std::endl;;
+			keystones[i][counter] = atof((*it).c_str());
+			++counter;
+			++it;
+		}
+	}
+
+	for (int i = 0; i < winNum; ++i)
+	{
+		X1 = keystones[i][0]; Y1 = keystones[i][1]; 
+		X2 = keystones[i][2]; Y2 = keystones[i][3];
+		X3 = keystones[i][4]; Y3 = keystones[i][5];
+		X4 = keystones[i][6]; Y4 = keystones[i][7];
+		double* matH = new double[16];
+		matH = calcKeystones();
+		vtkSmartPointer<vtkTransform> keystone = vtkSmartPointer<vtkTransform>::New();
+		vtkSmartPointer<vtkMatrix4x4> mat = vtkSmartPointer<vtkMatrix4x4>::New();
+		keystone->SetMatrix(matH);
+		subCameras.at(i)->SetUserTransform(keystone);
+		subCameras.at(i)->SetViewShear(i*0.1, 0.1, 1);
+		subRenWindows.at(i)->Render();
+	}
 }
 
 void MainWindowController::on_actionOpen_File_triggered() 
@@ -361,18 +490,29 @@ void MainWindowController::on_createWindowButton_clicked()
 		if (!(heightLineEdit->text().isEmpty())) {
 			height = heightLineEdit->text().toInt();
 		}
-		createWindow(width, height, i);
+		createOne(width, height, i);
 	}
 	subInteractors.at(winNum-1)->Start();
 	createWindowButton->setEnabled(false);
 	this->refreshAllWindows();
+
+	tinyxml2::XMLElement* holo_table = conf_xml->FirstChildElement();
+	tinyxml2::XMLElement* window = holo_table->FirstChildElement();
+	window->SetAttribute("Total", winNum);
+	window->SetAttribute("Width", width);
+	window->SetAttribute("Height", height);
+}
+
+
+void MainWindowController::createWindowFromConfig()
+{
 }
 
 
 /*
 	Create new window for projector
 */
-void MainWindowController::createWindow(int width, int height, int index = 0)
+void MainWindowController::createOne(int width, int height, int index = 0)
 {	
 	vtkSmartPointer<vtkRenderer> renderer = vtkSmartPointer<vtkRenderer>::New();
   	renderer->SetBackground( 0.0, 0.0, 0.0 );
@@ -384,6 +524,7 @@ void MainWindowController::createWindow(int width, int height, int index = 0)
   	renWindow->SetSize( width, height );
   	std::stringstream ss;
     ss << "Window " << index;
+    std::cout << "create index:" << index << std::endl;
     renWindow->SetWindowName(ss.str().c_str());
     renWindow->SetPosition((index+1)*1200, 100);
   	
@@ -398,6 +539,5 @@ void MainWindowController::createWindow(int width, int height, int index = 0)
 	vtkSmartPointer<vtkCamera> camera = vtkSmartPointer<vtkCamera>::New();
 	subCameras.push_back(camera);
 	renderer->SetActiveCamera(camera);
-
-	std::cout << "window " << index <<": diplayid = " << renWindow->GetGenericDisplayId() << std::endl;
+	//std::cout << "window " << index <<": diplayid = " << renWindow->GetGenericDisplayId() << std::endl;
 }

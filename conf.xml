@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Configuration for MyApp-->
+<Holo_table>
+    <Windows Total="5" Keystone1="1.1,0.95,-1,0.89,-1,-1,1,-1" Keystone2="1,1,-0.93,1,-1,-0.92,1,-1" Keystone3="1,1,-1,1,-1,-1,0.91,-0.89" Keystone4="1,1.04,-1,0.92,-1.06,-1,1,-1" Keystone6="1,1,-1.05,1,-1,-1,1,-0.95" Keystone5="1,1.04,-1,1,-1,-1,0.96,-1" Width="500" Height="500"/>
+</Holo_table>
+
+<OVR/>
