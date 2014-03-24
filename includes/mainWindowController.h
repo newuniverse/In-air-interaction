@@ -39,7 +39,8 @@ private slots:
 	void on_actionOpen_Config_triggered();
 	void on_setKeystoneButton_clicked();
 	void on_saveKeystoneButton_clicked();
-	
+	void on_parallaxSlider_valueChanged(int value);
+
 	void on_windowIndexSpinBox_valueChanged() {
 		x1SpinBox->setValue(1.0);
 		y1SpinBox->setValue(1.0);
@@ -89,14 +90,13 @@ private slots:
 
 private://methods
 	void createOne(int width, int height, int index);
+	void setKeystoneTransform(double* ks_array, int index);
 	void addActorsToScene(vtkSmartPointer<vtkActor> actor);
 	void removeAllActorsFromScene();
 
 	void refreshAllWindows();
 	void addAllLeapModels();
 	void removeAllLeapModels();
-
-	void setWindowConfigurations();
 
 	void createWindowFromConfig();
 
@@ -116,6 +116,7 @@ private://members
 	std::vector<vtkSmartPointer<vtkRenderWindow> > subRenWindows;
 	std::vector<vtkSmartPointer<vtkRenderWindowInteractor> > subInteractors;
 	std::vector<vtkSmartPointer<vtkCamera> > subCameras;
+	std::vector<vtkSmartPointer<vtkTransform> > keystoneTsf;
 
 	std::vector<vtkSmartPointer<vtkActor> > allActors;
 

@@ -51,6 +51,10 @@ public:
     QToolBox *toolBox;
     QWidget *setting1;
     QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_8;
+    QSpacerItem *horizontalSpacer_4;
+    QSlider *parallaxSlider;
     QLabel *label_15;
     QHBoxLayout *horizontalLayout_42;
     QLabel *label_2;
@@ -167,6 +171,30 @@ public:
         setting1->setGeometry(QRect(0, 0, 400, 626));
         verticalLayout = new QVBoxLayout(setting1);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        label_8 = new QLabel(setting1);
+        label_8->setObjectName(QString::fromUtf8("label_8"));
+
+        horizontalLayout_2->addWidget(label_8);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_4);
+
+        parallaxSlider = new QSlider(setting1);
+        parallaxSlider->setObjectName(QString::fromUtf8("parallaxSlider"));
+        parallaxSlider->setMinimum(0);
+        parallaxSlider->setMaximum(100);
+        parallaxSlider->setSingleStep(5);
+        parallaxSlider->setValue(50);
+        parallaxSlider->setOrientation(Qt::Horizontal);
+
+        horizontalLayout_2->addWidget(parallaxSlider);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
+
         label_15 = new QLabel(setting1);
         label_15->setObjectName(QString::fromUtf8("label_15"));
 
@@ -427,14 +455,11 @@ public:
         verticalLayout->addWidget(saveKeystoneButton);
 
         toolBox->addItem(setting1, QString::fromUtf8("Output Setting"));
-        label_2->raise();
-        label_2->raise();
-        widthLineEdit->raise();
-        label_3->raise();
-        heightLineEdit->raise();
         saveKeystoneButton->raise();
         label_4->raise();
         label_15->raise();
+        label_8->raise();
+        parallaxSlider->raise();
         setting2 = new QWidget();
         setting2->setObjectName(QString::fromUtf8("setting2"));
         setting2->setGeometry(QRect(0, 0, 400, 626));
@@ -654,6 +679,7 @@ public:
         actionSave_Scene->setText(QApplication::translate("MainWindow", "Save scene", 0, QApplication::UnicodeUTF8));
         actionSave_config->setText(QApplication::translate("MainWindow", "Save config", 0, QApplication::UnicodeUTF8));
         actionNew_gesture->setText(QApplication::translate("MainWindow", "New gesture", 0, QApplication::UnicodeUTF8));
+        label_8->setText(QApplication::translate("MainWindow", "Parallax:", 0, QApplication::UnicodeUTF8));
         label_15->setText(QApplication::translate("MainWindow", "Windows:", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("MainWindow", "Width:  ", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("MainWindow", "Height:", 0, QApplication::UnicodeUTF8));

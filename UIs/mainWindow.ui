@@ -55,6 +55,49 @@
         </attribute>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QLabel" name="label_8">
+             <property name="text">
+              <string>Parallax:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QSlider" name="parallaxSlider">
+             <property name="minimum">
+              <number>0</number>
+             </property>
+             <property name="maximum">
+              <number>100</number>
+             </property>
+             <property name="singleStep">
+              <number>5</number>
+             </property>
+             <property name="value">
+              <number>50</number>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
           <widget class="QLabel" name="label_15">
            <property name="text">
             <string>Windows:</string>
@@ -458,16 +501,12 @@
           </widget>
          </item>
         </layout>
-        <zorder>label_2</zorder>
-        <zorder>label_2</zorder>
-        <zorder>horizontalSpacer_2</zorder>
-        <zorder>widthLineEdit</zorder>
-        <zorder>label_3</zorder>
-        <zorder>horizontalSpacer_3</zorder>
-        <zorder>heightLineEdit</zorder>
         <zorder>saveKeystoneButton</zorder>
         <zorder>label_4</zorder>
         <zorder>label_15</zorder>
+        <zorder>label_8</zorder>
+        <zorder>parallaxSlider</zorder>
+        <zorder>horizontalSpacer_4</zorder>
        </widget>
        <widget class="QWidget" name="setting2">
         <property name="geometry">

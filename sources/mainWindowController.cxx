@@ -87,8 +87,15 @@ void MainWindowController::initConfigFile ()
 	//insert elements of OVR
 	tinyxml2::XMLElement* ovr = conf_xml->NewElement("OVR");
 	conf_xml->InsertAfterChild(holo_table, ovr);
+	conf_xml->SaveFile(CONFIGFILENAME);
+}
 
-	//conf_xml->SaveFile(CONFIGFILENAME);
+void MainWindowController::on_parallaxSlider_valueChanged(int value) {
+	for (int i = 0, n = subCameras.size(); i < n; ++i)
+	{
+		subCameras.at(i)->SetViewShear(i*value/1000.0, 0.1, 1);
+		subRenWindows.at(i)->Render();
+	}
 }
 
 void MainWindowController::on_saveKeystoneButton_clicked() {
@@ -96,11 +103,6 @@ void MainWindowController::on_saveKeystoneButton_clicked() {
 		return;
 	}
 	conf_xml->SaveFile("conf.xml");
-}
-
-void MainWindowController::setWindowConfigurations() 
-{
-	
 }
 
 void MainWindowController::on_setKeystoneButton_clicked() 
@@ -124,7 +126,7 @@ void MainWindowController::on_setKeystoneButton_clicked()
 	window->SetAttribute(("Keystone"+QString::number(index).toStdString()).c_str(), keystone_str.c_str());
 
 	index = index - 1;
-	subCameras.at(index)->SetViewShear(index*0.1, 0.1, 1);
+	//subCameras.at(index)->SetViewShear(index*0.1, 0.1, 1);
 	subRenWindows.at(index)->Render();
 }
 
@@ -145,7 +147,7 @@ void MainWindowController::refreshAllWindows() {
 	mainRenderer->ResetCamera();
 	mainRenderer->GetActiveCamera()->Zoom(0.8);
 	mainWindow->Render();
-	for (int i = 0, n = subRenWindows.size(); i < n; ++i)
+	for (int i = 0, n = subRenderers.size(); i < n; ++i)
 	{
 		//subRenderers.at(i)->GetActiveCamera()->SetViewShear(0, 0, 0);
 		subRenderers.at(i)->ResetCamera();
@@ -172,6 +174,7 @@ void MainWindowController::addAllLeapModels()
 	}
 	this->addActorsToScene(g_lmListener->getLeapDeviceModel()->getModelActor());
 	this->addActorsToScene(g_lmListener->getKeystoneFrameModel()->getModelActor());
+
 }
 
 void MainWindowController::removeAllLeapModels() 
@@ -314,11 +317,8 @@ void MainWindowController::keystoneSpinBoxCommon() {
 	double* matH = new double[16];
 	matH = calcKeystones();
 
-	//vtkSmartPointer<vtkHomogeneousTransform> keystone = vtkSmartPointer<vtkHomogeneousTransform>::New();
 	vtkSmartPointer<vtkTransform> keystone = vtkSmartPointer<vtkTransform>::New();
-	vtkSmartPointer<vtkMatrix4x4> mat = vtkSmartPointer<vtkMatrix4x4>::New();
 	keystone->SetMatrix(matH);
-	//vtkHomogeneousTransform* keystone = vtkHomogeneousTransform::New();
 	subCameras.at(index)->SetUserTransform(keystone);
 	subRenWindows.at(index)->Render();
 }
@@ -331,6 +331,10 @@ void MainWindowController::on_actionNew_triggered()
 
 void MainWindowController::on_actionOpen_Config_triggered()
 {
+	if (!createWindowButton->isEnabled()) {
+		return;
+	}
+
 	QString filename = QFileDialog::getOpenFileName(this, tr("Open config file"), ".", tr("XML files (*.xml *.XML)"));
 	if (filename.isEmpty()) {
 		return;
@@ -343,8 +347,7 @@ void MainWindowController::on_actionOpen_Config_triggered()
 	tinyxml2::XMLElement* holo_table = conf_xml->FirstChildElement();
 	tinyxml2::XMLElement* window = holo_table->FirstChildElement();
 
-	int width = 800;
-	int	height = 600;
+	int width(500), height(500);
 
 	const char* str = window->Attribute("Total");
 	int winNum = atoi(str);
@@ -357,6 +360,7 @@ void MainWindowController::on_actionOpen_Config_triggered()
 	subRenderers.reserve(winNum);
 	subRenWindows.reserve(winNum);
 	subCameras.reserve(winNum);
+	keystoneTsf.reserve(winNum);
 
 	for (int i = 0; i < winNum; ++i)
 	{
@@ -364,7 +368,9 @@ void MainWindowController::on_actionOpen_Config_triggered()
 	}
 	subInteractors.at(winNum-1)->Start();
 	createWindowButton->setEnabled(false);
-
+	this->refreshAllWindows();
+	
+	
 	double keystones[winNum][8];
 
 	for (int i = 0; i < winNum; ++i) {
@@ -388,23 +394,33 @@ void MainWindowController::on_actionOpen_Config_triggered()
 			++it;
 		}
 	}
-
+	double* ks_array = new double[8];
 	for (int i = 0; i < winNum; ++i)
 	{
-		X1 = keystones[i][0]; Y1 = keystones[i][1]; 
-		X2 = keystones[i][2]; Y2 = keystones[i][3];
-		X3 = keystones[i][4]; Y3 = keystones[i][5];
-		X4 = keystones[i][6]; Y4 = keystones[i][7];
-		double* matH = new double[16];
-		matH = calcKeystones();
-		vtkSmartPointer<vtkTransform> keystone = vtkSmartPointer<vtkTransform>::New();
-		vtkSmartPointer<vtkMatrix4x4> mat = vtkSmartPointer<vtkMatrix4x4>::New();
-		keystone->SetMatrix(matH);
-		subCameras.at(i)->SetUserTransform(keystone);
-		subCameras.at(i)->SetViewShear(i*0.1, 0.1, 1);
-		subRenWindows.at(i)->Render();
+		ks_array = keystones[i];
+		setKeystoneTransform(ks_array, i);
 	}
+	//this->refreshAllWindows();*/
 }
+
+void MainWindowController::setKeystoneTransform(double* ks_array, int index) 
+{
+	vtkSmartPointer<vtkTransform> keystone = vtkSmartPointer<vtkTransform>::New();
+	keystoneTsf.push_back(keystone);
+	double* matH = new double[16];	
+
+	this->X1 = ks_array[0]; this->Y1 = ks_array[1]; 
+	this->X2 = ks_array[2]; this->Y2 = ks_array[3];
+	this->X3 = ks_array[4]; this->Y3 = ks_array[5];
+	this->X4 = ks_array[6]; this->Y4 = ks_array[7];
+	std::cout << "keystone: " << X1 <<" "<< Y1 <<" "<< X2 <<" "<< Y2 <<" "<< X3 <<" "<< Y3 <<" "<< X4 <<" "<< Y4 <<std::endl;
+	matH = calcKeystones();
+	keystone->SetMatrix(matH);
+	subCameras.at(index)->SetUserTransform(keystone);
+	//delete matH;
+	//subCameras.at(index)->SetViewShear(i*0.1, 0.1, 1);
+}
+
 
 void MainWindowController::on_actionOpen_File_triggered() 
 {
@@ -461,8 +477,9 @@ void MainWindowController::on_leapActivateButton_clicked()
 		//vtk reaction
 		mainWindow->GetInteractor()->RemoveObserver(g_vtkCallback);
 	}
-	
+	std::cout<< "number of actors in window1: " << subRenderers.at(0)->GetActors()->GetNumberOfItems() << std::endl;
 	this->refreshAllWindows();
+	//subRenderers.at(0)->ResetCamera();
 	//mainWindow->Render();
 }
 
@@ -507,6 +524,7 @@ void MainWindowController::on_createWindowButton_clicked()
 void MainWindowController::createWindowFromConfig()
 {
 }
+
 
 
 /*
