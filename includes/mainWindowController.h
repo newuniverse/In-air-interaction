@@ -16,14 +16,18 @@
 #include "graphicalViewer.h"
 
 ////////////////
+#ifdef _APPLE_
 #include "OVR.h"
 #include <Kernel/OVR_SysFile.h>
 #include <Kernel/OVR_Log.h>
 #include <Kernel/OVR_Timer.h>
+using namespace OVR;
+#elif __linux
+#endif
 ////////////////
 
 #include "tinyxml2.h"
-using namespace OVR;
+
 class MainWindowController : public QMainWindow, private Ui::MainWindow
 {
 	Q_OBJECT
@@ -124,10 +128,12 @@ private://members
     std::chrono::high_resolution_clock::time_point lastTime;
 
 protected: //methods and members
+#ifdef _APPLE_
 	Ptr<DeviceManager>  pManager;
 	Ptr<HMDDevice>      pHMD;
-
+#endif
 	void initConfigFile();
+
 };
 
 

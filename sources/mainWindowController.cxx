@@ -13,7 +13,9 @@ MainWindowController::MainWindowController(QWidget *parent)
 {
 	setupUi(this);
 	//OVR for future use
+	#ifdef _APPLE_
 	pManager = *DeviceManager::Create();
+	#endif
 	//pHMD = *pManager->EnumerateDevices<HMDDevice>().CreateDevice();
 	this->initConfigFile();
 
