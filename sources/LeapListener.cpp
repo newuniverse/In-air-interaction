@@ -3,7 +3,7 @@
 #include <iostream>
 #include <deque>
 #include <string>
-#include "Shared.h"
+#include "Leap/Shared.h"
 
 using namespace Leap;
 

@@ -22,6 +22,9 @@
 
 #include <vtkActor.h>
 #include <vtkLODActor.h>
+#include <vtkAxisActor.h>
+#include <vtkAxesActor.h>
+#include <vtkOrientationMarkerWidget.h>
 #include <vtkVolume.h>
 
 #endif

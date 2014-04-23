@@ -39,7 +39,7 @@
         </size>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="setting1">
         <property name="geometry">
@@ -504,9 +504,6 @@
         <zorder>saveKeystoneButton</zorder>
         <zorder>label_4</zorder>
         <zorder>label_15</zorder>
-        <zorder>label_8</zorder>
-        <zorder>parallaxSlider</zorder>
-        <zorder>horizontalSpacer_4</zorder>
        </widget>
        <widget class="QWidget" name="setting2">
         <property name="geometry">
@@ -535,6 +532,16 @@
           </widget>
          </item>
          <item>
+          <widget class="QPushButton" name="robotActivateButton">
+           <property name="text">
+            <string>Enable Manipulator</string>
+           </property>
+           <property name="checkable">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QScrollArea" name="scrollArea_2">
            <property name="minimumSize">
             <size>
@@ -551,9 +558,309 @@
               <x>0</x>
               <y>0</y>
               <width>374</width>
-              <height>566</height>
+              <height>532</height>
              </rect>
             </property>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <widget class="QLabel" name="label_9">
+               <property name="text">
+                <string>Joints: DH</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <item>
+                <widget class="QLabel" name="label_16">
+                 <property name="text">
+                  <string> parameter:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_11">
+                 <property name="text">
+                  <string>d</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_12">
+                 <property name="text">
+                  <string>a</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_13">
+                 <property name="text">
+                  <string>alpha</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_14">
+                 <property name="text">
+                  <string>theta</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_6">
+               <item>
+                <widget class="QLabel" name="label_10">
+                 <property name="text">
+                  <string>1:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="j1d">
+                 <property name="text">
+                  <string>10</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="j1a">
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="j1alpha">
+                 <property name="text">
+                  <string>90</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDoubleSpinBox" name="j1theta">
+                 <property name="minimum">
+                  <double>-90.000000000000000</double>
+                 </property>
+                 <property name="maximum">
+                  <double>90.989999999999995</double>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_7">
+               <item>
+                <widget class="QLabel" name="label_17">
+                 <property name="text">
+                  <string>2:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="j2d">
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="j2a">
+                 <property name="text">
+                  <string>10</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="j2alpha">
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDoubleSpinBox" name="j2theta">
+                 <property name="minimum">
+                  <double>-90.000000000000000</double>
+                 </property>
+                 <property name="maximum">
+                  <double>90.989999999999995</double>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_8">
+               <item>
+                <widget class="QLabel" name="label_18">
+                 <property name="text">
+                  <string>3:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="j3d">
+                 <property name="text">
+                  <string>10</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="j3a">
+                 <property name="text">
+                  <string>10</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="j3alpha">
+                 <property name="text">
+                  <string>90</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDoubleSpinBox" name="j3theta">
+                 <property name="minimum">
+                  <double>-90.000000000000000</double>
+                 </property>
+                 <property name="maximum">
+                  <double>90.989999999999995</double>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_9">
+               <item>
+                <widget class="QLabel" name="label_19">
+                 <property name="text">
+                  <string>4:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="j4d">
+                 <property name="text">
+                  <string>10</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="j4a">
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="j4alpha">
+                 <property name="text">
+                  <string>90</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDoubleSpinBox" name="j4theta">
+                 <property name="minimum">
+                  <double>-90.000000000000000</double>
+                 </property>
+                 <property name="maximum">
+                  <double>90.989999999999995</double>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_10">
+               <item>
+                <widget class="QLabel" name="label_20">
+                 <property name="text">
+                  <string>5:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="j5d">
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="j5a">
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="j5alpha">
+                 <property name="text">
+                  <string>90</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDoubleSpinBox" name="j5theta">
+                 <property name="minimum">
+                  <double>-90.000000000000000</double>
+                 </property>
+                 <property name="maximum">
+                  <double>90.989999999999995</double>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_11">
+               <item>
+                <widget class="QLabel" name="label_21">
+                 <property name="text">
+                  <string>6:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="j6d">
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="j6a">
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="j6alpha">
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDoubleSpinBox" name="j6theta">
+                 <property name="minimum">
+                  <double>-90.000000000000000</double>
+                 </property>
+                 <property name="maximum">
+                  <double>90.989999999999995</double>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
            </widget>
           </widget>
          </item>
@@ -817,34 +1124,6 @@ p, li { white-space: pre-wrap; }
       </spacer>
      </item>
     </layout>
-   </widget>
-   <widget class="QSpinBox" name="windowNumSpinBox_2">
-    <property name="geometry">
-     <rect>
-      <x>560</x>
-      <y>730</y>
-      <width>53</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="wrapping">
-     <bool>false</bool>
-    </property>
-    <property name="readOnly">
-     <bool>false</bool>
-    </property>
-    <property name="buttonSymbols">
-     <enum>QAbstractSpinBox::UpDownArrows</enum>
-    </property>
-    <property name="keyboardTracking">
-     <bool>true</bool>
-    </property>
-    <property name="minimum">
-     <number>1</number>
-    </property>
-    <property name="maximum">
-     <number>11</number>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

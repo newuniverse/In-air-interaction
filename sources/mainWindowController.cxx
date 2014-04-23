@@ -2,15 +2,16 @@
 #include "mainWindowController.h"
 
 #include "graphicalModel.h"
-#include "Shared.h"
+
+#include "Leap/Shared.h"
 #include <boost/algorithm/string.hpp>
 #include <sstream>
 
-#define DELTATIME 30 //ms
+//#define DELTATIME 30 //ms
 #define CONFIGFILENAME "conf.xml"
 
 MainWindowController::MainWindowController(QWidget *parent)
-{
+{	
 	setupUi(this);
 	//OVR for future use
 	#ifdef _APPLE_
@@ -56,6 +57,7 @@ MainWindowController::MainWindowController(QWidget *parent)
 	g_lmController = new Leap::Controller;
 	g_lmController->addListener(*g_lmListener); 
 
+	robot = new RobotModel();
 	X1 = 1; Y1 = 1; X2 = -1; Y2 = 1; X3 = -1; Y3 = -1; X4 = 1; Y4 = -1;
 }
 
@@ -132,11 +134,39 @@ void MainWindowController::on_setKeystoneButton_clicked()
 	subRenWindows.at(index)->Render();
 }
 
+void MainWindowController::removeActorFromScenes(vtkSmartPointer<vtkActor> actor) 
+{
+	mainRenderer->RemoveActor(actor);
+	for (int i = 0, n = subRenderers.size(); i < n; ++i)
+	{
+		subRenderers.at(i)->RemoveActor(actor);
+	}
+}
 
-void MainWindowController::addActorsToScene(vtkSmartPointer<vtkActor> actor) 
+void MainWindowController::removeActorFromScenes(vtkSmartPointer<vtkAxesActor> actor) 
+{
+	mainRenderer->RemoveActor(actor);
+	for (int i = 0, n = subRenderers.size(); i < n; ++i)
+	{
+		subRenderers.at(i)->RemoveActor(actor);
+	}
+}
+
+
+void MainWindowController::addActorToScenes(vtkSmartPointer<vtkActor> actor) 
 {
 	mainRenderer->AddActor(actor);
-	std::cout<<"number of renderer: " << subRenderers.size() <<std::endl;
+	// std::cout<<"number of renderer: " << subRenderers.size() <<std::endl;
+	for (int i = 0, n = subRenderers.size(); i < n; ++i)
+	{
+		subRenderers.at(i)->AddActor(actor);
+	}
+}
+
+void MainWindowController::addActorToScenes(vtkSmartPointer<vtkAxesActor> actor) 
+{
+	mainRenderer->AddActor(actor);
+	// std::cout<<"number of renderer: " << subRenderers.size() <<std::endl;
 	for (int i = 0, n = subRenderers.size(); i < n; ++i)
 	{
 		subRenderers.at(i)->AddActor(actor);
@@ -146,8 +176,8 @@ void MainWindowController::addActorsToScene(vtkSmartPointer<vtkActor> actor)
 /*
 */
 void MainWindowController::refreshAllWindows() {
-	mainRenderer->ResetCamera();
-	mainRenderer->GetActiveCamera()->Zoom(0.8);
+	//mainRenderer->ResetCamera();
+	//mainRenderer->GetActiveCamera()->Zoom(0.8);
 	mainWindow->Render();
 	for (int i = 0, n = subRenderers.size(); i < n; ++i)
 	{
@@ -163,19 +193,19 @@ void MainWindowController::addAllLeapModels()
 	HandModel* rightHand = g_lmListener->getRightHand();
 	HandModel* leftHand  = g_lmListener->getLeftHand();
 
-	this->addActorsToScene(leftHand->getPalmModel()->getModelActor());
+	this->addActorToScenes(leftHand->getPalmModel()->getModelActor());
 	for (int i = 0, n = leftHand->getTipsModel().size(); i < n; ++i)
 	{
-		this->addActorsToScene(leftHand->getTipsModel().at(i)->getModelActor());
+		this->addActorToScenes(leftHand->getTipsModel().at(i)->getModelActor());
 	}
-	this->addActorsToScene(rightHand->getPalmModel()->getModelActor());
+	this->addActorToScenes(rightHand->getPalmModel()->getModelActor());
 
 	for (int i = 0, n = rightHand->getTipsModel().size(); i < n; ++i)
 	{
-		this->addActorsToScene(rightHand->getTipsModel().at(i)->getModelActor());
+		this->addActorToScenes(rightHand->getTipsModel().at(i)->getModelActor());
 	}
-	this->addActorsToScene(g_lmListener->getLeapDeviceModel()->getModelActor());
-	this->addActorsToScene(g_lmListener->getKeystoneFrameModel()->getModelActor());
+	this->addActorToScenes(g_lmListener->getLeapDeviceModel()->getModelActor());
+	this->addActorToScenes(g_lmListener->getKeystoneFrameModel()->getModelActor());
 
 }
 
@@ -184,44 +214,21 @@ void MainWindowController::removeAllLeapModels()
 	HandModel* rightHand = g_lmListener->getRightHand();
 	HandModel* leftHand  = g_lmListener->getLeftHand();
 
-	mainRenderer->RemoveActor(leftHand->getPalmModel()->getModelActor());
-		
-	for (int j = 0, m = subRenderers.size(); j < m; ++j)
-	{
-		subRenderers.at(j)->RemoveActor(leftHand->getPalmModel()->getModelActor());
-	}
+	this->removeActorFromScenes(leftHand->getPalmModel()->getModelActor());
 
 	for (int i = 0, n = leftHand->getTipsModel().size(); i < n; ++i)
 	{
-		mainRenderer->RemoveActor(leftHand->getTipsModel().at(i)->getModelActor());
-		for (int j = 0, m = subRenderers.size(); j < m; ++j)
-		{
-			subRenderers.at(j)->RemoveActor(leftHand->getTipsModel().at(i)->getModelActor());
-		}
+		this->removeActorFromScenes(leftHand->getTipsModel().at(i)->getModelActor());
 	}
 
-	mainRenderer->RemoveActor(rightHand->getPalmModel()->getModelActor());
-	for (int j = 0, m = subRenderers.size(); j < m; ++j)
-	{
-		subRenderers.at(j)->RemoveActor(rightHand->getPalmModel()->getModelActor());
-	}
+	this->removeActorFromScenes(rightHand->getPalmModel()->getModelActor());
 
 	for (int i = 0, n = rightHand->getTipsModel().size(); i < n; ++i)
 	{
-		mainRenderer->RemoveActor(rightHand->getTipsModel().at(i)->getModelActor());
-		for (int j = 0, m = subRenderers.size(); j < m; ++j)
-		{
-			subRenderers.at(j)->RemoveActor(rightHand->getTipsModel().at(i)->getModelActor());
-		}
+		this->removeActorFromScenes(rightHand->getTipsModel().at(i)->getModelActor());
 	}
-
-	mainRenderer->RemoveActor(g_lmListener->getLeapDeviceModel()->getModelActor());
-	mainRenderer->RemoveActor(g_lmListener->getKeystoneFrameModel()->getModelActor());
-	for (int j = 0, m = subRenderers.size(); j < m; ++j)
-	{
-		subRenderers.at(j)->RemoveActor(g_lmListener->getLeapDeviceModel()->getModelActor());
-		subRenderers.at(j)->RemoveActor(g_lmListener->getKeystoneFrameModel()->getModelActor());
-	}
+	this->removeActorFromScenes(g_lmListener->getLeapDeviceModel()->getModelActor());
+	this->removeActorFromScenes(g_lmListener->getKeystoneFrameModel()->getModelActor());
 }
 
 void MainWindowController::removeAllActorsFromScene() 
@@ -237,6 +244,40 @@ void MainWindowController::removeAllActorsFromScene()
 	}
 }
 
+float* MainWindowController::getDHparameters() 
+{
+	float* dh_parameter = new float[24];
+	dh_parameter[0] = j1d->text().toFloat();
+	dh_parameter[1] = j1a->text().toFloat();
+	dh_parameter[2] = j1alpha->text().toFloat();
+	dh_parameter[3] = j1theta->value();
+
+	dh_parameter[4] = j2d->text().toFloat();
+	dh_parameter[5] = j2a->text().toFloat();
+	dh_parameter[6] = j2alpha->text().toFloat();
+	dh_parameter[7] = j2theta->value();
+
+	dh_parameter[8] = j3d->text().toFloat();
+	dh_parameter[9] = j3a->text().toFloat();
+	dh_parameter[10] = j3alpha->text().toFloat();
+	dh_parameter[11] = j3theta->value();
+
+	dh_parameter[12] = j4d->text().toFloat();
+	dh_parameter[13] = j4a->text().toFloat();
+	dh_parameter[14] = j4alpha->text().toFloat();
+	dh_parameter[15] = j4theta->value();
+
+	dh_parameter[16] = j5d->text().toFloat();
+	dh_parameter[17] = j5a->text().toFloat();
+	dh_parameter[18] = j5alpha->text().toFloat();
+	dh_parameter[19] = j5theta->value();
+
+	dh_parameter[20] = j6d->text().toFloat();
+	dh_parameter[21] = j6a->text().toFloat();
+	dh_parameter[22] = j6alpha->text().toFloat();
+	dh_parameter[23] = j6theta->value();
+	return dh_parameter;
+}
 
 double* MainWindowController::calcKeystones() 
 {
@@ -448,9 +489,38 @@ void MainWindowController::on_actionOpen_File_triggered()
 		}
 		allActors.push_back(model->getModelActor());
 		statusbar->showMessage(filename);
-		this->addActorsToScene(model->getModelActor());
+		this->addActorToScenes(model->getModelActor());
 		this->refreshAllWindows();
 	}
+}
+
+/*
+	activate robot manipulator when button is pressed
+*/
+void MainWindowController::on_robotActivateButton_clicked()
+{
+	if (robotActivateButton->isCheckable() == false) {
+		robotActivateButton->setText(QString("Disable Manipulator"));
+		
+		for (int i = 0, l = robot->getModel().size(); i < l; ++i)
+		{
+			this->addActorToScenes(robot->getModel().at(i)->getModelActor()); 
+			this->addActorToScenes(robot->getModel().at(i)->getAxesActor()); 
+		} 
+		robot->setup(this->getDHparameters());
+		this->refreshAllWindows();
+		//this->addActorToScenes();
+		robotActivateButton->setCheckable(true);
+	} else {
+		robotActivateButton->setText(QString("Enable Manipulator"));
+		robotActivateButton->setCheckable(false);
+
+		for (int i = 0, l = robot->getModel().size(); i < l; ++i) {
+			this->removeActorFromScenes(robot->getModel().at(i)->getModelActor());
+		}
+		this->refreshAllWindows();
+	}
+	//delete robot;
 }
 
 
@@ -479,7 +549,8 @@ void MainWindowController::on_leapActivateButton_clicked()
 		//vtk reaction
 		mainWindow->GetInteractor()->RemoveObserver(g_vtkCallback);
 	}
-	std::cout<< "number of actors in window1: " << subRenderers.at(0)->GetActors()->GetNumberOfItems() << std::endl;
+	std::cout << "debug\n" << std::endl;
+	//std::cout<< "number of actors in window1: " << subRenderers.at(0)->GetActors()->GetNumberOfItems() << std::endl;
 	this->refreshAllWindows();
 	//subRenderers.at(0)->ResetCamera();
 	//mainWindow->Render();
@@ -526,8 +597,6 @@ void MainWindowController::on_createWindowButton_clicked()
 void MainWindowController::createWindowFromConfig()
 {
 }
-
-
 
 /*
 	Create new window for projector

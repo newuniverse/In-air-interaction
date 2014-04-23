@@ -1,9 +1,9 @@
 #ifndef LEAPLISTENER_H_
 #define LEAPLISTENER_H_
 
-#include "Leap.h"
+#include "Leap/Leap.h"
 #include "graphicalModel.h"
-#include "Shared.h"
+#include "Leap/Shared.h"
 
 #include <string>
 #include <chrono>

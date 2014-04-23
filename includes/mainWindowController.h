@@ -15,6 +15,8 @@
 
 #include "graphicalViewer.h"
 
+#include "robotModel.h"
+
 ////////////////
 #ifdef _APPLE_
 #include "OVR.h"
@@ -26,7 +28,7 @@ using namespace OVR;
 #endif
 ////////////////
 
-#include "tinyxml2.h"
+#include "tinyxml2/tinyxml2.h"
 
 class MainWindowController : public QMainWindow, private Ui::MainWindow
 {
@@ -38,6 +40,8 @@ public://methods
 private slots:
 	void on_createWindowButton_clicked();
 	void on_leapActivateButton_clicked();
+	void on_robotActivateButton_clicked();
+
 	void on_actionOpen_File_triggered();
 	void on_actionNew_triggered();
 	void on_actionOpen_Config_triggered();
@@ -56,7 +60,36 @@ private slots:
 		y4SpinBox->setValue(-1.0);
 	}
 
+	void on_j1d_editingFinished () { dhEdited(); }
+	void on_j1a_editingFinished () { dhEdited(); }
+	void on_j1alpha_editingFinished () { dhEdited(); }
+	void on_j1theta_valueChanged() { dhEdited(); }
 
+	void on_j2d_editingFinished () { dhEdited(); }
+	void on_j2a_editingFinished () { dhEdited(); }
+	void on_j2alpha_editingFinished () { dhEdited(); }
+	void on_j2theta_valueChanged() { dhEdited(); }
+
+	void on_j3d_editingFinished () { dhEdited(); }
+	void on_j3a_editingFinished () { dhEdited(); }
+	void on_j3alpha_editingFinished () { dhEdited(); }
+	void on_j3theta_valueChanged() { dhEdited(); }
+
+	void on_j4d_editingFinished () { dhEdited(); }
+	void on_j4a_editingFinished () { dhEdited(); }
+	void on_j4alpha_editingFinished () { dhEdited(); }
+	void on_j4theta_valueChanged() { dhEdited(); }
+
+	void on_j5d_editingFinished () { dhEdited(); }
+	void on_j5a_editingFinished () { dhEdited(); }
+	void on_j5alpha_editingFinished () { dhEdited(); }
+	void on_j5theta_valueChanged() { dhEdited(); }
+
+	void on_j6d_editingFinished () { dhEdited(); }
+	void on_j6a_editingFinished () { dhEdited(); }
+	void on_j6alpha_editingFinished () { dhEdited(); }
+	void on_j6theta_valueChanged() { dhEdited(); }
+	
 	void on_x1SpinBox_valueChanged(double d) {
 		X1 = d;
 		keystoneSpinBoxCommon();
@@ -95,23 +128,31 @@ private slots:
 private://methods
 	void createOne(int width, int height, int index);
 	void setKeystoneTransform(double* ks_array, int index);
-	void addActorsToScene(vtkSmartPointer<vtkActor> actor);
+	void addActorToScenes(vtkSmartPointer<vtkActor> actor);
+	void addActorToScenes(vtkSmartPointer<vtkAxesActor> actor);
+	void removeActorFromScenes(vtkSmartPointer<vtkActor> actor);
+	void removeActorFromScenes(vtkSmartPointer<vtkAxesActor> actor);
 	void removeAllActorsFromScene();
-
 	void refreshAllWindows();
 	void addAllLeapModels();
 	void removeAllLeapModels();
-
 	void createWindowFromConfig();
-
 	double* calcKeystones();
+	float* getDHparameters();
+	void dhEdited() {
+		robot->setup(this->getDHparameters());
+		this->refreshAllWindows();
+	}
 private://members
+	static const int DELTATIME = 30; //ms
 	double X1, X2, X3, X4, Y1, Y2, Y3, Y4;//keystones
 
 	tinyxml2::XMLDocument*   conf_xml;
 	LeapListener*     g_lmListener;
 	Leap::Controller* g_lmController;
 	
+	RobotModel* robot;
+
 	vtkSmartPointer<vtkRenderer> mainRenderer;
 	vtkSmartPointer<vtkRenderWindow> mainWindow;
 	vtkSmartPointer<vtkTimerCallback> g_vtkCallback;
@@ -133,7 +174,6 @@ protected: //methods and members
 	Ptr<HMDDevice>      pHMD;
 #endif
 	void initConfigFile();
-
 };
 
 

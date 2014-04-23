@@ -1,8 +1,8 @@
 #ifndef LEAPGESTURETRAINER_H_
 #define LEAPGESTURETRAINER_H_
 
-#include "Leap.h"
-#include "Shared.h"
+#include "Leap/Leap.h"
+#include "Leap/Shared.h"
 #include <list>
 #include <vector>
 #include <string>

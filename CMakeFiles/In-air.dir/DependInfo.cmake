@@ -34,10 +34,9 @@ SET(CMAKE_C_TARGET_INCLUDE_PATH
   "/usr/local/include/vtk-6.2"
   "."
   "includes"
-  "includesLM"
   "/Users/nEwUnivErsE/OculusSDK/LibOVR/Include"
   "/Users/nEwUnivErsE/OculusSDK/LibOVR/Src"
-  "ThirdParty/tinyxml2"
+  "ThirdParty"
   )
 SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
 SET(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

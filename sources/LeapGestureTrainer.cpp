@@ -1,6 +1,7 @@
 #include "LeapGestureTrainer.h"
 #include <fstream>
-#include <algorithm> 
+#include <algorithm>
+
 const float LeapGestureTrainer::inputMinRecordingVel  = 400.0f;
 const float LeapGestureTrainer::trainedMinRecordingVel = 200.0f;
 const int   LeapGestureTrainer::resamplePointNum = 20;

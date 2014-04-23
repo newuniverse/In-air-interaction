@@ -18,8 +18,14 @@ class GraphicalModel
 public://methods
 	GraphicalModel() {}
 
+	/*template<class T>
+	GraphicalModel(vtkSmartPointer<T> t, bool isActor) {
+		_modelActor = vtkActor::SafeDownCast(t);
+	}*/
+
 	template<class T>
 	GraphicalModel(vtkSmartPointer<T> t) {
+		//model from source
 		_modelSource = t;
 
 		_modelMapper = vtkSmartPointer<vtkPolyDataMapper>::New();
@@ -27,6 +33,9 @@ public://methods
 
 		_modelActor = vtkSmartPointer<vtkActor>::New();
 		_modelActor->SetMapper(_modelMapper);
+		//axis model
+		vtkSmartPointer<vtkAxesActor> axis = vtkSmartPointer<vtkAxesActor>::New();
+		_axesActor = axis;
 	}
 
 	template<class T>
@@ -45,22 +54,28 @@ public://methods
 		return myActor;
 	}
 
+	vtkSmartPointer<vtkAxesActor> getAxesActor() {
+		return _axesActor;
+	}
+
 	vtkSmartPointer<vtkPolyDataMapper> getModelMapper() {
 		return _modelMapper;
 	}
-	//template<class U>
+	// template<class U>
 	vtkSmartPointer<vtkPolyDataAlgorithm> getModelSource() {
 		return _modelSource;
 	}
 
 private://methods
 	
-public://arguments
-	
-private://arguments
+public://members
+
+private: //members
+protected://members
 	vtkSmartPointer<vtkPolyDataAlgorithm> _modelSource;
 	vtkSmartPointer<vtkPolyDataMapper> _modelMapper;
 	vtkSmartPointer<vtkActor> _modelActor;
+	vtkSmartPointer<vtkAxesActor> _axesActor;
 };
 
 #endif
