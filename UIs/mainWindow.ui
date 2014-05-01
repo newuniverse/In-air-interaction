@@ -47,7 +47,7 @@
           <x>0</x>
           <y>0</y>
           <width>400</width>
-          <height>626</height>
+          <height>595</height>
          </rect>
         </property>
         <attribute name="label">
@@ -510,8 +510,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>400</width>
-          <height>626</height>
+          <width>413</width>
+          <height>595</height>
          </rect>
         </property>
         <attribute name="label">
@@ -557,8 +557,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>374</width>
-              <height>532</height>
+              <width>387</width>
+              <height>501</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -620,7 +620,7 @@
                <item>
                 <widget class="QLineEdit" name="j1d">
                  <property name="text">
-                  <string>10</string>
+                  <string>50</string>
                  </property>
                 </widget>
                </item>
@@ -646,6 +646,9 @@
                  <property name="maximum">
                   <double>90.989999999999995</double>
                  </property>
+                 <property name="value">
+                  <double>20.000000000000000</double>
+                 </property>
                 </widget>
                </item>
               </layout>
@@ -662,21 +665,21 @@
                <item>
                 <widget class="QLineEdit" name="j2d">
                  <property name="text">
-                  <string>0</string>
+                  <string>25</string>
                  </property>
                 </widget>
                </item>
                <item>
                 <widget class="QLineEdit" name="j2a">
                  <property name="text">
-                  <string>10</string>
+                  <string>0</string>
                  </property>
                 </widget>
                </item>
                <item>
                 <widget class="QLineEdit" name="j2alpha">
                  <property name="text">
-                  <string>0</string>
+                  <string>90</string>
                  </property>
                 </widget>
                </item>
@@ -687,6 +690,9 @@
                  </property>
                  <property name="maximum">
                   <double>90.989999999999995</double>
+                 </property>
+                 <property name="value">
+                  <double>8.000000000000000</double>
                  </property>
                 </widget>
                </item>
@@ -704,14 +710,14 @@
                <item>
                 <widget class="QLineEdit" name="j3d">
                  <property name="text">
-                  <string>10</string>
+                  <string>-50</string>
                  </property>
                 </widget>
                </item>
                <item>
                 <widget class="QLineEdit" name="j3a">
                  <property name="text">
-                  <string>10</string>
+                  <string>0</string>
                  </property>
                 </widget>
                </item>
@@ -730,6 +736,9 @@
                  <property name="maximum">
                   <double>90.989999999999995</double>
                  </property>
+                 <property name="value">
+                  <double>15.000000000000000</double>
+                 </property>
                 </widget>
                </item>
               </layout>
@@ -746,14 +755,14 @@
                <item>
                 <widget class="QLineEdit" name="j4d">
                  <property name="text">
-                  <string>10</string>
+                  <string>0</string>
                  </property>
                 </widget>
                </item>
                <item>
                 <widget class="QLineEdit" name="j4a">
                  <property name="text">
-                  <string>0</string>
+                  <string>25</string>
                  </property>
                 </widget>
                </item>
@@ -772,6 +781,9 @@
                  <property name="maximum">
                   <double>90.989999999999995</double>
                  </property>
+                 <property name="value">
+                  <double>-56.000000000000000</double>
+                 </property>
                 </widget>
                </item>
               </layout>
@@ -788,7 +800,7 @@
                <item>
                 <widget class="QLineEdit" name="j5d">
                  <property name="text">
-                  <string>0</string>
+                  <string>-25</string>
                  </property>
                 </widget>
                </item>
@@ -814,6 +826,9 @@
                  <property name="maximum">
                   <double>90.989999999999995</double>
                  </property>
+                 <property name="value">
+                  <double>-90.000000000000000</double>
+                 </property>
                 </widget>
                </item>
               </layout>
@@ -830,7 +845,7 @@
                <item>
                 <widget class="QLineEdit" name="j6d">
                  <property name="text">
-                  <string>0</string>
+                  <string>50</string>
                  </property>
                 </widget>
                </item>
@@ -866,13 +881,110 @@
          </item>
         </layout>
        </widget>
+       <widget class="QWidget" name="setting5">
+        <attribute name="label">
+         <string>Monitoring</string>
+        </attribute>
+        <widget class="QVTKWidget" name="qvtkWidget_top">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>-10</y>
+           <width>161</width>
+           <height>141</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QVTKWidget" name="qvtkWidget_endoscope">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>330</y>
+           <width>361</width>
+           <height>251</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QVTKWidget" name="qvtkWidget_front">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>160</y>
+           <width>161</width>
+           <height>141</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QVTKWidget" name="qvtkWidget_side">
+         <property name="geometry">
+          <rect>
+           <x>210</x>
+           <y>160</y>
+           <width>161</width>
+           <height>141</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_22">
+         <property name="geometry">
+          <rect>
+           <x>200</x>
+           <y>130</y>
+           <width>71</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Front view</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_23">
+         <property name="geometry">
+          <rect>
+           <x>310</x>
+           <y>130</y>
+           <width>71</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Side view</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_24">
+         <property name="geometry">
+          <rect>
+           <x>200</x>
+           <y>50</y>
+           <width>71</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Top view</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_25">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>310</y>
+           <width>111</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Endoscopic view</string>
+         </property>
+        </widget>
+       </widget>
        <widget class="QWidget" name="setting3">
         <property name="geometry">
          <rect>
           <x>0</x>
           <y>0</y>
           <width>404</width>
-          <height>626</height>
+          <height>595</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1020,7 +1132,7 @@ p, li { white-space: pre-wrap; }
           <x>0</x>
           <y>0</y>
           <width>400</width>
-          <height>626</height>
+          <height>595</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1038,7 +1150,7 @@ p, li { white-space: pre-wrap; }
               <x>0</x>
               <y>0</y>
               <width>374</width>
-              <height>600</height>
+              <height>569</height>
              </rect>
             </property>
             <widget class="QVTKWidget" name="vtkChart1">

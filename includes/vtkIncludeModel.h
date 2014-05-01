@@ -5,10 +5,14 @@
 
 #include <vtkArrowSource.h>
 #include <vtkCylinderSource.h>
+#include <vtkLineSource.h>
 #include <vtkSphereSource.h>
 #include <vtkCubeSource.h>
 #include <vtkDiskSource.h>
 #include <vtkOutlineCornerSource.h>
+
+#include <vtkAlgorithm.h>
+#include <vtkAlgorithmOutput.h>
 
 #include <vtkOBJReader.h>
 #include <vtkSTLReader.h>

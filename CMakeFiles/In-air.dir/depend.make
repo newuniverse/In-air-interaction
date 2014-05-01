@@ -211,6 +211,7 @@ CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/includ
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkActor.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkActorCollection.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkAlgorithm.h
+CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkAlgorithmOutput.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkArrayIterator.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkArrayIteratorTemplate.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkArrayIteratorTemplate.txx
@@ -275,6 +276,7 @@ CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/includ
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkInteractionWidgetsModule.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkInteractorObserver.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkLODActor.h
+CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkLineSource.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkLinearTransform.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkMappedDataArray.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkMappedDataArray.txx
@@ -756,6 +758,7 @@ CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkAbstractVolumeMa
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkActor.h
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkActorCollection.h
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkAlgorithm.h
+CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkAlgorithmOutput.h
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkArrayIterator.h
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkArrayIteratorTemplate.h
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkArrayIteratorTemplate.txx
@@ -820,6 +823,7 @@ CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkInteractionStyle
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkInteractionWidgetsModule.h
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkInteractorObserver.h
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkLODActor.h
+CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkLineSource.h
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkLinearTransform.h
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkMappedDataArray.h
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkMappedDataArray.txx
@@ -1123,6 +1127,7 @@ CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtk
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkAbstractVolumeMapper.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkActor.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkAlgorithm.h
+CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkAlgorithmOutput.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkArrayIterator.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkArrayIteratorTemplate.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkArrayIteratorTemplate.txx
@@ -1175,6 +1180,7 @@ CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtk
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkInteractionWidgetsModule.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkInteractorObserver.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkLODActor.h
+CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkLineSource.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkLinearTransform.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkMappedDataArray.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkMappedDataArray.txx
@@ -2119,6 +2125,7 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkActor.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkActorCollection.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkAlgorithm.h
+CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkAlgorithmOutput.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkArrayIterator.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkArrayIteratorTemplate.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkArrayIteratorTemplate.txx
@@ -2183,6 +2190,7 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkInteractionWidgetsModule.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkInteractorObserver.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkLODActor.h
+CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkLineSource.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkLinearTransform.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkMappedDataArray.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkMappedDataArray.txx

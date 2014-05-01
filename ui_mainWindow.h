@@ -149,6 +149,15 @@ public:
     QLineEdit *j6a;
     QLineEdit *j6alpha;
     QDoubleSpinBox *j6theta;
+    QWidget *setting5;
+    QVTKWidget *qvtkWidget_top;
+    QVTKWidget *qvtkWidget_endoscope;
+    QVTKWidget *qvtkWidget_front;
+    QVTKWidget *qvtkWidget_side;
+    QLabel *label_22;
+    QLabel *label_23;
+    QLabel *label_24;
+    QLabel *label_25;
     QWidget *setting3;
     QVBoxLayout *verticalLayout_16;
     QLabel *label_5;
@@ -212,7 +221,7 @@ public:
         toolBox->setMinimumSize(QSize(400, 730));
         setting1 = new QWidget();
         setting1->setObjectName(QString::fromUtf8("setting1"));
-        setting1->setGeometry(QRect(0, 0, 400, 626));
+        setting1->setGeometry(QRect(0, 0, 400, 595));
         verticalLayout = new QVBoxLayout(setting1);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         horizontalLayout_2 = new QHBoxLayout();
@@ -504,7 +513,7 @@ public:
         label_15->raise();
         setting2 = new QWidget();
         setting2->setObjectName(QString::fromUtf8("setting2"));
-        setting2->setGeometry(QRect(0, 0, 400, 626));
+        setting2->setGeometry(QRect(0, 0, 413, 595));
         verticalLayout_15 = new QVBoxLayout(setting2);
         verticalLayout_15->setObjectName(QString::fromUtf8("verticalLayout_15"));
         leapActivateButton = new QPushButton(setting2);
@@ -525,7 +534,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 374, 532));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 387, 501));
         verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents_2);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         label_9 = new QLabel(scrollAreaWidgetContents_2);
@@ -589,6 +598,7 @@ public:
         j1theta->setObjectName(QString::fromUtf8("j1theta"));
         j1theta->setMinimum(-90);
         j1theta->setMaximum(90.99);
+        j1theta->setValue(20);
 
         horizontalLayout_6->addWidget(j1theta);
 
@@ -621,6 +631,7 @@ public:
         j2theta->setObjectName(QString::fromUtf8("j2theta"));
         j2theta->setMinimum(-90);
         j2theta->setMaximum(90.99);
+        j2theta->setValue(8);
 
         horizontalLayout_7->addWidget(j2theta);
 
@@ -653,6 +664,7 @@ public:
         j3theta->setObjectName(QString::fromUtf8("j3theta"));
         j3theta->setMinimum(-90);
         j3theta->setMaximum(90.99);
+        j3theta->setValue(15);
 
         horizontalLayout_8->addWidget(j3theta);
 
@@ -685,6 +697,7 @@ public:
         j4theta->setObjectName(QString::fromUtf8("j4theta"));
         j4theta->setMinimum(-90);
         j4theta->setMaximum(90.99);
+        j4theta->setValue(-56);
 
         horizontalLayout_9->addWidget(j4theta);
 
@@ -717,6 +730,7 @@ public:
         j5theta->setObjectName(QString::fromUtf8("j5theta"));
         j5theta->setMinimum(-90);
         j5theta->setMaximum(90.99);
+        j5theta->setValue(-90);
 
         horizontalLayout_10->addWidget(j5theta);
 
@@ -760,9 +774,36 @@ public:
         verticalLayout_15->addWidget(scrollArea_2);
 
         toolBox->addItem(setting2, QString::fromUtf8("Input Setting"));
+        setting5 = new QWidget();
+        setting5->setObjectName(QString::fromUtf8("setting5"));
+        qvtkWidget_top = new QVTKWidget(setting5);
+        qvtkWidget_top->setObjectName(QString::fromUtf8("qvtkWidget_top"));
+        qvtkWidget_top->setGeometry(QRect(20, -10, 161, 141));
+        qvtkWidget_endoscope = new QVTKWidget(setting5);
+        qvtkWidget_endoscope->setObjectName(QString::fromUtf8("qvtkWidget_endoscope"));
+        qvtkWidget_endoscope->setGeometry(QRect(20, 330, 361, 251));
+        qvtkWidget_front = new QVTKWidget(setting5);
+        qvtkWidget_front->setObjectName(QString::fromUtf8("qvtkWidget_front"));
+        qvtkWidget_front->setGeometry(QRect(20, 160, 161, 141));
+        qvtkWidget_side = new QVTKWidget(setting5);
+        qvtkWidget_side->setObjectName(QString::fromUtf8("qvtkWidget_side"));
+        qvtkWidget_side->setGeometry(QRect(210, 160, 161, 141));
+        label_22 = new QLabel(setting5);
+        label_22->setObjectName(QString::fromUtf8("label_22"));
+        label_22->setGeometry(QRect(200, 130, 71, 21));
+        label_23 = new QLabel(setting5);
+        label_23->setObjectName(QString::fromUtf8("label_23"));
+        label_23->setGeometry(QRect(310, 130, 71, 21));
+        label_24 = new QLabel(setting5);
+        label_24->setObjectName(QString::fromUtf8("label_24"));
+        label_24->setGeometry(QRect(200, 50, 71, 21));
+        label_25 = new QLabel(setting5);
+        label_25->setObjectName(QString::fromUtf8("label_25"));
+        label_25->setGeometry(QRect(20, 310, 111, 21));
+        toolBox->addItem(setting5, QString::fromUtf8("Monitoring"));
         setting3 = new QWidget();
         setting3->setObjectName(QString::fromUtf8("setting3"));
-        setting3->setGeometry(QRect(0, 0, 404, 626));
+        setting3->setGeometry(QRect(0, 0, 404, 595));
         verticalLayout_16 = new QVBoxLayout(setting3);
         verticalLayout_16->setObjectName(QString::fromUtf8("verticalLayout_16"));
         label_5 = new QLabel(setting3);
@@ -858,7 +899,7 @@ public:
         toolBox->addItem(setting3, QString::fromUtf8("Gesture Setting"));
         setting4 = new QWidget();
         setting4->setObjectName(QString::fromUtf8("setting4"));
-        setting4->setGeometry(QRect(0, 0, 400, 626));
+        setting4->setGeometry(QRect(0, 0, 400, 595));
         verticalLayout_17 = new QVBoxLayout(setting4);
         verticalLayout_17->setObjectName(QString::fromUtf8("verticalLayout_17"));
         scrollArea_4 = new QScrollArea(setting4);
@@ -866,7 +907,7 @@ public:
         scrollArea_4->setWidgetResizable(true);
         scrollAreaWidgetContents_4 = new QWidget();
         scrollAreaWidgetContents_4->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_4"));
-        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 374, 600));
+        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 374, 569));
         vtkChart1 = new QVTKWidget(scrollAreaWidgetContents_4);
         vtkChart1->setObjectName(QString::fromUtf8("vtkChart1"));
         vtkChart1->setGeometry(QRect(10, 40, 350, 161));
@@ -980,30 +1021,35 @@ public:
         label_13->setText(QApplication::translate("MainWindow", "alpha", 0, QApplication::UnicodeUTF8));
         label_14->setText(QApplication::translate("MainWindow", "theta", 0, QApplication::UnicodeUTF8));
         label_10->setText(QApplication::translate("MainWindow", "1:", 0, QApplication::UnicodeUTF8));
-        j1d->setText(QApplication::translate("MainWindow", "10", 0, QApplication::UnicodeUTF8));
+        j1d->setText(QApplication::translate("MainWindow", "50", 0, QApplication::UnicodeUTF8));
         j1a->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
         j1alpha->setText(QApplication::translate("MainWindow", "90", 0, QApplication::UnicodeUTF8));
         label_17->setText(QApplication::translate("MainWindow", "2:", 0, QApplication::UnicodeUTF8));
-        j2d->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
-        j2a->setText(QApplication::translate("MainWindow", "10", 0, QApplication::UnicodeUTF8));
-        j2alpha->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
+        j2d->setText(QApplication::translate("MainWindow", "25", 0, QApplication::UnicodeUTF8));
+        j2a->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
+        j2alpha->setText(QApplication::translate("MainWindow", "90", 0, QApplication::UnicodeUTF8));
         label_18->setText(QApplication::translate("MainWindow", "3:", 0, QApplication::UnicodeUTF8));
-        j3d->setText(QApplication::translate("MainWindow", "10", 0, QApplication::UnicodeUTF8));
-        j3a->setText(QApplication::translate("MainWindow", "10", 0, QApplication::UnicodeUTF8));
+        j3d->setText(QApplication::translate("MainWindow", "-50", 0, QApplication::UnicodeUTF8));
+        j3a->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
         j3alpha->setText(QApplication::translate("MainWindow", "90", 0, QApplication::UnicodeUTF8));
         label_19->setText(QApplication::translate("MainWindow", "4:", 0, QApplication::UnicodeUTF8));
-        j4d->setText(QApplication::translate("MainWindow", "10", 0, QApplication::UnicodeUTF8));
-        j4a->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
+        j4d->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
+        j4a->setText(QApplication::translate("MainWindow", "25", 0, QApplication::UnicodeUTF8));
         j4alpha->setText(QApplication::translate("MainWindow", "90", 0, QApplication::UnicodeUTF8));
         label_20->setText(QApplication::translate("MainWindow", "5:", 0, QApplication::UnicodeUTF8));
-        j5d->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
+        j5d->setText(QApplication::translate("MainWindow", "-25", 0, QApplication::UnicodeUTF8));
         j5a->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
         j5alpha->setText(QApplication::translate("MainWindow", "90", 0, QApplication::UnicodeUTF8));
         label_21->setText(QApplication::translate("MainWindow", "6:", 0, QApplication::UnicodeUTF8));
-        j6d->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
+        j6d->setText(QApplication::translate("MainWindow", "50", 0, QApplication::UnicodeUTF8));
         j6a->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
         j6alpha->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
         toolBox->setItemText(toolBox->indexOf(setting2), QApplication::translate("MainWindow", "Input Setting", 0, QApplication::UnicodeUTF8));
+        label_22->setText(QApplication::translate("MainWindow", "Front view", 0, QApplication::UnicodeUTF8));
+        label_23->setText(QApplication::translate("MainWindow", "Side view", 0, QApplication::UnicodeUTF8));
+        label_24->setText(QApplication::translate("MainWindow", "Top view", 0, QApplication::UnicodeUTF8));
+        label_25->setText(QApplication::translate("MainWindow", "Endoscopic view", 0, QApplication::UnicodeUTF8));
+        toolBox->setItemText(toolBox->indexOf(setting5), QApplication::translate("MainWindow", "Monitoring", 0, QApplication::UnicodeUTF8));
         label_5->setText(QApplication::translate("MainWindow", "Number of input gesture frames (sparse):", 0, QApplication::UnicodeUTF8));
         label_6->setText(QApplication::translate("MainWindow", "Number of recording gesture frames (dense):", 0, QApplication::UnicodeUTF8));
         recordGestureButton->setText(QApplication::translate("MainWindow", "Record New Gesture", 0, QApplication::UnicodeUTF8));

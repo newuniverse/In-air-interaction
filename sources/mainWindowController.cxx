@@ -12,30 +12,36 @@
 
 MainWindowController::MainWindowController(QWidget *parent)
 {	
-	setupUi(this);
 	//OVR for future use
+	//pHMD = *pManager->EnumerateDevices<HMDDevice>().CreateDevice();
 	#ifdef _APPLE_
 	pManager = *DeviceManager::Create();
 	#endif
-	//pHMD = *pManager->EnumerateDevices<HMDDevice>().CreateDevice();
+	setupUi(this);
 	this->initConfigFile();
-
-  	mainRenderer= vtkSmartPointer<vtkRenderer>::New();
-  	mainRenderer->SetBackground( 0.0, 0.0, 0.0 );
-
-  	mainWindow = vtkSmartPointer<vtkRenderWindow>::New();
-  	mainWindow->AddRenderer(mainRenderer);
-  	mainWindow->SetSize(300, 300);
-
-  	qvtkWidget->SetRenderWindow(mainWindow);
+	this->setupRenderAndWindow();
+	this->setupCharts();
   	
-  	mainWindow->SetInteractor(qvtkWidget->GetInteractor());
-  	g_vtkCallback = vtkSmartPointer<vtkTimerCallback>::New();
- 	 	
-  	//chart rendering example
+	g_lmListener   = new LeapListener;
+	g_lmController = new Leap::Controller;
+	g_lmController->addListener(*g_lmListener); 
+
+	robot = new RobotModel();
+	X1 = 1; Y1 = 1; X2 = -1; Y2 = 1; X3 = -1; Y3 = -1; X4 = 1; Y4 = -1;
+}
+
+MainWindowController::~MainWindowController() 
+{
+	delete g_lmListener;
+	delete g_lmController;
+	delete conf_xml;
+}
+
+void MainWindowController::setupCharts()
+{
+	//chart rendering example
   	vtkSmartPointer<vtkContextView> view = vtkSmartPointer<vtkContextView>::New();
   	vtkSmartPointer<vtkContextView> view2 = vtkSmartPointer<vtkContextView>::New();
-  	
 	vtkSmartPointer<vtkChartXY> chart = vtkSmartPointer<vtkChartXY>::New();
 	vtkSmartPointer<vtkChartXY> chart2 = vtkSmartPointer<vtkChartXY>::New();
 
@@ -52,19 +58,49 @@ MainWindowController::MainWindowController(QWidget *parent)
 	
 	vtkChart1->SetRenderWindow(view->GetRenderWindow());
 	vtkChart2->SetRenderWindow(view2->GetRenderWindow());
-
-	g_lmListener   = new LeapListener;
-	g_lmController = new Leap::Controller;
-	g_lmController->addListener(*g_lmListener); 
-
-	robot = new RobotModel();
-	X1 = 1; Y1 = 1; X2 = -1; Y2 = 1; X3 = -1; Y3 = -1; X4 = 1; Y4 = -1;
 }
 
-MainWindowController::~MainWindowController() {
-	delete g_lmListener;
-	delete g_lmController;
-	delete conf_xml;
+void MainWindowController::setupRenderAndWindow() 
+{
+	g_vtkCallback = vtkSmartPointer<vtkTimerCallback>::New();
+
+	mainRenderer = vtkSmartPointer<vtkRenderer>::New();
+	mainWindow = vtkSmartPointer<vtkRenderWindow>::New();
+	attachRendererToWindow(mainRenderer, mainWindow, qvtkWidget);
+	mainWindow->SetInteractor(qvtkWidget->GetInteractor());
+
+	
+	topViewRenderer = vtkSmartPointer<vtkRenderer>::New();
+	topViewCamera = vtkSmartPointer<vtkCamera>::New();
+	topViewRenderer->SetActiveCamera(topViewCamera);
+	topViewWindow = vtkSmartPointer<vtkRenderWindow>::New();
+	attachRendererToWindow(topViewRenderer, topViewWindow, qvtkWidget_top);
+
+	frontViewRenderer = vtkSmartPointer<vtkRenderer>::New();
+	frontViewCamera = vtkSmartPointer<vtkCamera>::New();
+	frontViewRenderer->SetActiveCamera(frontViewCamera);
+	frontViewWindow = vtkSmartPointer<vtkRenderWindow>::New();
+  	attachRendererToWindow(frontViewRenderer, frontViewWindow, qvtkWidget_front);
+
+  	sideViewRenderer = vtkSmartPointer<vtkRenderer>::New();
+  	sideViewCamera = vtkSmartPointer<vtkCamera>::New();
+	sideViewRenderer->SetActiveCamera(sideViewCamera);
+	sideViewWindow = vtkSmartPointer<vtkRenderWindow>::New();
+  	attachRendererToWindow(sideViewRenderer, sideViewWindow, qvtkWidget_side);
+
+  	endoscopeViewRenderer = vtkSmartPointer<vtkRenderer>::New();
+  	endoscopeViewCamera = vtkSmartPointer<vtkCamera>::New();
+	endoscopeViewRenderer->SetActiveCamera(endoscopeViewCamera);
+	endoscopeViewWindow = vtkSmartPointer<vtkRenderWindow>::New();
+  	attachRendererToWindow(endoscopeViewRenderer, endoscopeViewWindow, qvtkWidget_endoscope);
+}
+
+void MainWindowController::attachRendererToWindow(vtkSmartPointer<vtkRenderer> ren, 
+													vtkSmartPointer<vtkRenderWindow> win, QVTKWidget* widget)
+{
+	ren->SetBackground(0.0, 0.0, 0.0);
+	win->AddRenderer(ren);
+	widget->SetRenderWindow(win);
 }
 
 void MainWindowController::initConfigFile ()
@@ -156,6 +192,10 @@ void MainWindowController::removeActorFromScenes(vtkSmartPointer<vtkAxesActor> a
 void MainWindowController::addActorToScenes(vtkSmartPointer<vtkActor> actor) 
 {
 	mainRenderer->AddActor(actor);
+	topViewRenderer->AddActor(actor);
+	frontViewRenderer->AddActor(actor);
+	sideViewRenderer->AddActor(actor);
+	endoscopeViewRenderer->AddActor(actor);
 	// std::cout<<"number of renderer: " << subRenderers.size() <<std::endl;
 	for (int i = 0, n = subRenderers.size(); i < n; ++i)
 	{
@@ -166,6 +206,10 @@ void MainWindowController::addActorToScenes(vtkSmartPointer<vtkActor> actor)
 void MainWindowController::addActorToScenes(vtkSmartPointer<vtkAxesActor> actor) 
 {
 	mainRenderer->AddActor(actor);
+	topViewRenderer->AddActor(actor);
+	frontViewRenderer->AddActor(actor);
+	sideViewRenderer->AddActor(actor);
+	endoscopeViewRenderer->AddActor(actor);
 	// std::cout<<"number of renderer: " << subRenderers.size() <<std::endl;
 	for (int i = 0, n = subRenderers.size(); i < n; ++i)
 	{
@@ -173,17 +217,44 @@ void MainWindowController::addActorToScenes(vtkSmartPointer<vtkAxesActor> actor)
 	}
 }
 
+void MainWindowController::removeAllActorsFromScene() 
+{
+	for (int j = 0, m = allActors.size(); j < m; ++j)
+	{
+		mainRenderer->RemoveActor(allActors.at(j));
+		topViewRenderer->RemoveActor(allActors.at(j));
+		frontViewRenderer->RemoveActor(allActors.at(j));
+		sideViewRenderer->RemoveActor(allActors.at(j));
+		endoscopeViewRenderer->RemoveActor(allActors.at(j));
+		for (int i = 0, n = subRenderers.size(); i < n; ++i)
+		{
+			subRenderers.at(i)->RemoveActor(allActors.at(j));
+		}
+	}
+}
+
+
 /*
 */
-void MainWindowController::refreshAllWindows() {
-	//mainRenderer->ResetCamera();
-	//mainRenderer->GetActiveCamera()->Zoom(0.8);
+void MainWindowController::refreshAllWindows(bool resetCamera) {
+	if (resetCamera) {
+		mainRenderer->ResetCamera();
+		topViewRenderer->ResetCamera();
+		frontViewRenderer->ResetCamera();
+		sideViewRenderer->ResetCamera();
+		endoscopeViewRenderer->ResetCamera();
+	}
 	mainWindow->Render();
+	topViewWindow->Render();
+	frontViewWindow->Render();
+	sideViewWindow->Render();
+	endoscopeViewWindow->Render();
+
 	for (int i = 0, n = subRenderers.size(); i < n; ++i)
 	{
 		//subRenderers.at(i)->GetActiveCamera()->SetViewShear(0, 0, 0);
-		subRenderers.at(i)->ResetCamera();
-		subRenderers.at(i)->GetActiveCamera()->Zoom(0.8);
+		if (resetCamera) subRenderers.at(i)->ResetCamera();
+		//subRenderers.at(i)->GetActiveCamera()->Zoom(0.8);
 		subRenWindows.at(i)->Render();
 	}
 }
@@ -205,6 +276,7 @@ void MainWindowController::addAllLeapModels()
 		this->addActorToScenes(rightHand->getTipsModel().at(i)->getModelActor());
 	}
 	this->addActorToScenes(g_lmListener->getLeapDeviceModel()->getModelActor());
+	this->addActorToScenes(g_lmListener->getLeapDeviceModel()->getAxesActor());
 	this->addActorToScenes(g_lmListener->getKeystoneFrameModel()->getModelActor());
 
 }
@@ -228,21 +300,10 @@ void MainWindowController::removeAllLeapModels()
 		this->removeActorFromScenes(rightHand->getTipsModel().at(i)->getModelActor());
 	}
 	this->removeActorFromScenes(g_lmListener->getLeapDeviceModel()->getModelActor());
+	this->removeActorFromScenes(g_lmListener->getLeapDeviceModel()->getAxesActor());
 	this->removeActorFromScenes(g_lmListener->getKeystoneFrameModel()->getModelActor());
 }
 
-void MainWindowController::removeAllActorsFromScene() 
-{
-	for (int j = 0, m = allActors.size(); j < m; ++j)
-	{
-		mainRenderer->RemoveActor(allActors.at(j));
-
-		for (int i = 0, n = subRenderers.size(); i < n; ++i)
-		{
-			subRenderers.at(i)->RemoveActor(allActors.at(j));
-		}
-	}
-}
 
 float* MainWindowController::getDHparameters() 
 {
@@ -369,7 +430,7 @@ void MainWindowController::keystoneSpinBoxCommon() {
 void MainWindowController::on_actionNew_triggered() 
 {
 	this->removeAllActorsFromScene();
-	this->refreshAllWindows();
+	this->refreshAllWindows(true);
 }
 
 void MainWindowController::on_actionOpen_Config_triggered()
@@ -411,7 +472,7 @@ void MainWindowController::on_actionOpen_Config_triggered()
 	}
 	subInteractors.at(winNum-1)->Start();
 	createWindowButton->setEnabled(false);
-	this->refreshAllWindows();
+	this->refreshAllWindows(false);
 	
 	
 	double keystones[winNum][8];
@@ -490,7 +551,7 @@ void MainWindowController::on_actionOpen_File_triggered()
 		allActors.push_back(model->getModelActor());
 		statusbar->showMessage(filename);
 		this->addActorToScenes(model->getModelActor());
-		this->refreshAllWindows();
+		this->refreshAllWindows(true);
 	}
 }
 
@@ -508,8 +569,10 @@ void MainWindowController::on_robotActivateButton_clicked()
 			this->addActorToScenes(robot->getModel().at(i)->getAxesActor()); 
 		} 
 		robot->setup(this->getDHparameters());
-		this->refreshAllWindows();
-		//this->addActorToScenes();
+		//todo
+		//endoscopeViewCamera->GetProperty()->RotateX(90);
+		endoscopeViewCamera->SetUserTransform(robot->getEndEffectorTransform());
+		this->refreshAllWindows(true);
 		robotActivateButton->setCheckable(true);
 	} else {
 		robotActivateButton->setText(QString("Enable Manipulator"));
@@ -518,7 +581,7 @@ void MainWindowController::on_robotActivateButton_clicked()
 		for (int i = 0, l = robot->getModel().size(); i < l; ++i) {
 			this->removeActorFromScenes(robot->getModel().at(i)->getModelActor());
 		}
-		this->refreshAllWindows();
+		this->refreshAllWindows(false);
 	}
 	//delete robot;
 }
@@ -541,6 +604,13 @@ void MainWindowController::on_leapActivateButton_clicked()
 		//vtk reaction
 		mainWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
 		int timerId = mainWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
+		topViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
+		int timerIdTop = topViewWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
+		frontViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
+		int timerIdfront = frontViewWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
+		sideViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
+		int timerIdside = sideViewWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
+		this->refreshAllWindows(true);
 	} else {	//stop
 		//leap reaction 
 		this->removeAllLeapModels();
@@ -548,10 +618,9 @@ void MainWindowController::on_leapActivateButton_clicked()
 		leapActivateButton->setText(QString("Enable Leap Motion"));
 		//vtk reaction
 		mainWindow->GetInteractor()->RemoveObserver(g_vtkCallback);
+		this->refreshAllWindows(false);
 	}
-	std::cout << "debug\n" << std::endl;
 	//std::cout<< "number of actors in window1: " << subRenderers.at(0)->GetActors()->GetNumberOfItems() << std::endl;
-	this->refreshAllWindows();
 	//subRenderers.at(0)->ResetCamera();
 	//mainWindow->Render();
 }
@@ -584,7 +653,7 @@ void MainWindowController::on_createWindowButton_clicked()
 	}
 	subInteractors.at(winNum-1)->Start();
 	createWindowButton->setEnabled(false);
-	this->refreshAllWindows();
+	this->refreshAllWindows(true);
 
 	tinyxml2::XMLElement* holo_table = conf_xml->FirstChildElement();
 	tinyxml2::XMLElement* window = holo_table->FirstChildElement();

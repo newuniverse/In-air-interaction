@@ -89,7 +89,7 @@ private slots:
 	void on_j6a_editingFinished () { dhEdited(); }
 	void on_j6alpha_editingFinished () { dhEdited(); }
 	void on_j6theta_valueChanged() { dhEdited(); }
-	
+
 	void on_x1SpinBox_valueChanged(double d) {
 		X1 = d;
 		keystoneSpinBoxCommon();
@@ -126,6 +126,10 @@ private slots:
 	void keystoneSpinBoxCommon();
 
 private://methods
+	void setupRenderAndWindow();
+	void attachRendererToWindow(vtkSmartPointer<vtkRenderer> ren, vtkSmartPointer<vtkRenderWindow> win, QVTKWidget* widget);
+
+	void setupCharts();
 	void createOne(int width, int height, int index);
 	void setKeystoneTransform(double* ks_array, int index);
 	void addActorToScenes(vtkSmartPointer<vtkActor> actor);
@@ -133,7 +137,7 @@ private://methods
 	void removeActorFromScenes(vtkSmartPointer<vtkActor> actor);
 	void removeActorFromScenes(vtkSmartPointer<vtkAxesActor> actor);
 	void removeAllActorsFromScene();
-	void refreshAllWindows();
+	void refreshAllWindows(bool resetCamera);
 	void addAllLeapModels();
 	void removeAllLeapModels();
 	void createWindowFromConfig();
@@ -141,7 +145,7 @@ private://methods
 	float* getDHparameters();
 	void dhEdited() {
 		robot->setup(this->getDHparameters());
-		this->refreshAllWindows();
+		this->refreshAllWindows(false);
 	}
 private://members
 	static const int DELTATIME = 30; //ms
@@ -152,19 +156,35 @@ private://members
 	Leap::Controller* g_lmController;
 	
 	RobotModel* robot;
-
+	//main window
 	vtkSmartPointer<vtkRenderer> mainRenderer;
 	vtkSmartPointer<vtkRenderWindow> mainWindow;
 	vtkSmartPointer<vtkTimerCallback> g_vtkCallback;
-
+	//sub windows for holo-table 
 	std::vector<vtkSmartPointer<vtkRenderer> > subRenderers;
 	std::vector<vtkSmartPointer<vtkRenderWindow> > subRenWindows;
 	std::vector<vtkSmartPointer<vtkRenderWindowInteractor> > subInteractors;
 	std::vector<vtkSmartPointer<vtkCamera> > subCameras;
 	std::vector<vtkSmartPointer<vtkTransform> > keystoneTsf;
 
-	std::vector<vtkSmartPointer<vtkActor> > allActors;
+	//sub windows for endoscopic 
+	vtkSmartPointer<vtkRenderer> topViewRenderer;
+	vtkSmartPointer<vtkRenderWindow> topViewWindow;
+	vtkSmartPointer<vtkCamera> topViewCamera;
 
+	vtkSmartPointer<vtkRenderer> frontViewRenderer;
+	vtkSmartPointer<vtkRenderWindow> frontViewWindow;
+	vtkSmartPointer<vtkCamera> frontViewCamera;
+
+	vtkSmartPointer<vtkRenderer> sideViewRenderer;
+	vtkSmartPointer<vtkRenderWindow> sideViewWindow;
+	vtkSmartPointer<vtkCamera> sideViewCamera;
+
+	vtkSmartPointer<vtkRenderer> endoscopeViewRenderer;
+	vtkSmartPointer<vtkRenderWindow> endoscopeViewWindow;
+	vtkSmartPointer<vtkCamera> endoscopeViewCamera;
+
+	std::vector<vtkSmartPointer<vtkActor> > allActors;
 	std::chrono::high_resolution_clock::time_point currentTime;
     std::chrono::high_resolution_clock::time_point lastTime;
 

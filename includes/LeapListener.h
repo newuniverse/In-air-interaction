@@ -60,7 +60,8 @@ public://method
         cube->SetYLength(1);
         cube->SetZLength(3);
         leapDeviceModel = new GraphicalModel(cube);
-
+        leapDeviceModel->getAxesActor()->SetNormalizedShaftLength(8.0, 8.0, 8.0);
+        //leapDeviceModel->getModelActor()->RotateX(90.0);
         vtkSmartPointer<vtkOutlineCornerSource> corner = vtkSmartPointer<vtkOutlineCornerSource>::New();
         corner->SetBounds(-30.0, 30.0, -30.0, 30.0, -30.0, 30.0);
         keystoneFrame = new GraphicalModel(corner);
@@ -86,7 +87,6 @@ public://method
     float                 getFPS();
 
     //GraphicalObject*      getSelectedObject();
-    
     //LeapGestureTrainer*   gTrainer;
     //VirtualHand           virtualHand;
 
@@ -117,7 +117,7 @@ private://method
     void                  calcDataFPS();
     void                  createBresenhamLine();
     bool                  checkSameSign(float* nums, int size);
-    virtual void                  update(const Frame frame);
+    virtual void          update(const Frame frame);
     void                  updateHandModelProps(const Frame& frame);
 
     
