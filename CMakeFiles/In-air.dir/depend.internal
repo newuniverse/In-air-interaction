@@ -106,6 +106,7 @@ CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o
  /opt/local/include/QtGui/QHBoxLayout
  /opt/local/include/QtGui/QHeaderView
  /opt/local/include/QtGui/QLabel
+ /opt/local/include/QtGui/QLayout
  /opt/local/include/QtGui/QLineEdit
  /opt/local/include/QtGui/QMainWindow
  /opt/local/include/QtGui/QMenu
@@ -653,6 +654,7 @@ CMakeFiles/In-air.dir/main.cxx.o
  /opt/local/include/QtGui/QHBoxLayout
  /opt/local/include/QtGui/QHeaderView
  /opt/local/include/QtGui/QLabel
+ /opt/local/include/QtGui/QLayout
  /opt/local/include/QtGui/QLineEdit
  /opt/local/include/QtGui/QMainWindow
  /opt/local/include/QtGui/QMenu

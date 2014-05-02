@@ -1,8 +1,6 @@
 #include <QtGui>
 #include "mainWindowController.h"
-
 #include "graphicalModel.h"
-
 #include "Leap/Shared.h"
 #include <boost/algorithm/string.hpp>
 #include <sstream>
@@ -19,9 +17,10 @@ MainWindowController::MainWindowController(QWidget *parent)
 	#endif
 	setupUi(this);
 	this->initConfigFile();
-	this->setupRenderAndWindow();
+	this->setupRendererAndWindow();
 	this->setupCharts();
-  	
+
+  	dh_parameter = new float[24];
 	g_lmListener   = new LeapListener;
 	g_lmController = new Leap::Controller;
 	g_lmController->addListener(*g_lmListener); 
@@ -34,7 +33,9 @@ MainWindowController::~MainWindowController()
 {
 	delete g_lmListener;
 	delete g_lmController;
+	delete robot;
 	delete conf_xml;
+	delete dh_parameter;
 }
 
 void MainWindowController::setupCharts()
@@ -60,7 +61,7 @@ void MainWindowController::setupCharts()
 	vtkChart2->SetRenderWindow(view2->GetRenderWindow());
 }
 
-void MainWindowController::setupRenderAndWindow() 
+void MainWindowController::setupRendererAndWindow() 
 {
 	g_vtkCallback = vtkSmartPointer<vtkTimerCallback>::New();
 
@@ -69,7 +70,12 @@ void MainWindowController::setupRenderAndWindow()
 	attachRendererToWindow(mainRenderer, mainWindow, qvtkWidget);
 	mainWindow->SetInteractor(qvtkWidget->GetInteractor());
 
-	
+	endoscopeViewRenderer = vtkSmartPointer<vtkRenderer>::New();
+  	endoscopeViewCamera = vtkSmartPointer<vtkCamera>::New();
+	endoscopeViewRenderer->SetActiveCamera(endoscopeViewCamera);
+	endoscopeViewWindow = vtkSmartPointer<vtkRenderWindow>::New();
+  	attachRendererToWindow(endoscopeViewRenderer, endoscopeViewWindow, qvtkWidget_endoscope);
+	/*
 	topViewRenderer = vtkSmartPointer<vtkRenderer>::New();
 	topViewCamera = vtkSmartPointer<vtkCamera>::New();
 	topViewRenderer->SetActiveCamera(topViewCamera);
@@ -87,12 +93,7 @@ void MainWindowController::setupRenderAndWindow()
 	sideViewRenderer->SetActiveCamera(sideViewCamera);
 	sideViewWindow = vtkSmartPointer<vtkRenderWindow>::New();
   	attachRendererToWindow(sideViewRenderer, sideViewWindow, qvtkWidget_side);
-
-  	endoscopeViewRenderer = vtkSmartPointer<vtkRenderer>::New();
-  	endoscopeViewCamera = vtkSmartPointer<vtkCamera>::New();
-	endoscopeViewRenderer->SetActiveCamera(endoscopeViewCamera);
-	endoscopeViewWindow = vtkSmartPointer<vtkRenderWindow>::New();
-  	attachRendererToWindow(endoscopeViewRenderer, endoscopeViewWindow, qvtkWidget_endoscope);
+	*/
 }
 
 void MainWindowController::attachRendererToWindow(vtkSmartPointer<vtkRenderer> ren, 
@@ -173,6 +174,12 @@ void MainWindowController::on_setKeystoneButton_clicked()
 void MainWindowController::removeActorFromScenes(vtkSmartPointer<vtkActor> actor) 
 {
 	mainRenderer->RemoveActor(actor);
+	endoscopeViewRenderer->RemoveActor(actor);
+	/*
+	topViewRenderer->RemoveActor(actor);
+	frontViewRenderer->RemoveActor(actor);
+	sideViewRenderer->RemoveActor(actor);
+		*/
 	for (int i = 0, n = subRenderers.size(); i < n; ++i)
 	{
 		subRenderers.at(i)->RemoveActor(actor);
@@ -182,8 +189,11 @@ void MainWindowController::removeActorFromScenes(vtkSmartPointer<vtkActor> actor
 void MainWindowController::removeActorFromScenes(vtkSmartPointer<vtkAxesActor> actor) 
 {
 	mainRenderer->RemoveActor(actor);
-	for (int i = 0, n = subRenderers.size(); i < n; ++i)
-	{
+	endoscopeViewRenderer->RemoveActor(actor);
+	/*topViewRenderer->RemoveActor(actor);
+	frontViewRenderer->RemoveActor(actor);
+	sideViewRenderer->RemoveActor(actor);*/
+	for (int i = 0, n = subRenderers.size(); i < n; ++i) {
 		subRenderers.at(i)->RemoveActor(actor);
 	}
 }
@@ -192,13 +202,11 @@ void MainWindowController::removeActorFromScenes(vtkSmartPointer<vtkAxesActor> a
 void MainWindowController::addActorToScenes(vtkSmartPointer<vtkActor> actor) 
 {
 	mainRenderer->AddActor(actor);
-	topViewRenderer->AddActor(actor);
-	frontViewRenderer->AddActor(actor);
-	sideViewRenderer->AddActor(actor);
 	endoscopeViewRenderer->AddActor(actor);
-	// std::cout<<"number of renderer: " << subRenderers.size() <<std::endl;
-	for (int i = 0, n = subRenderers.size(); i < n; ++i)
-	{
+	/*topViewRenderer->AddActor(actor);
+	frontViewRenderer->AddActor(actor);
+	sideViewRenderer->AddActor(actor);*/
+	for (int i = 0, n = subRenderers.size(); i < n; ++i) {
 		subRenderers.at(i)->AddActor(actor);
 	}
 }
@@ -206,52 +214,46 @@ void MainWindowController::addActorToScenes(vtkSmartPointer<vtkActor> actor)
 void MainWindowController::addActorToScenes(vtkSmartPointer<vtkAxesActor> actor) 
 {
 	mainRenderer->AddActor(actor);
-	topViewRenderer->AddActor(actor);
-	frontViewRenderer->AddActor(actor);
-	sideViewRenderer->AddActor(actor);
 	endoscopeViewRenderer->AddActor(actor);
-	// std::cout<<"number of renderer: " << subRenderers.size() <<std::endl;
-	for (int i = 0, n = subRenderers.size(); i < n; ++i)
-	{
+	/*topViewRenderer->AddActor(actor);
+	frontViewRenderer->AddActor(actor);
+	sideViewRenderer->AddActor(actor);*/
+	for (int i = 0, n = subRenderers.size(); i < n; ++i) {
 		subRenderers.at(i)->AddActor(actor);
 	}
 }
 
 void MainWindowController::removeAllActorsFromScene() 
 {
-	for (int j = 0, m = allActors.size(); j < m; ++j)
-	{
+	for (int j = 0, m = allActors.size(); j < m; ++j) {
 		mainRenderer->RemoveActor(allActors.at(j));
-		topViewRenderer->RemoveActor(allActors.at(j));
-		frontViewRenderer->RemoveActor(allActors.at(j));
-		sideViewRenderer->RemoveActor(allActors.at(j));
 		endoscopeViewRenderer->RemoveActor(allActors.at(j));
-		for (int i = 0, n = subRenderers.size(); i < n; ++i)
-		{
+		/*topViewRenderer->RemoveActor(allActors.at(j));
+		frontViewRenderer->RemoveActor(allActors.at(j));
+		sideViewRenderer->RemoveActor(allActors.at(j));*/
+		for (int i = 0, n = subRenderers.size(); i < n; ++i) {
 			subRenderers.at(i)->RemoveActor(allActors.at(j));
 		}
 	}
 }
-
 
 /*
 */
 void MainWindowController::refreshAllWindows(bool resetCamera) {
 	if (resetCamera) {
 		mainRenderer->ResetCamera();
-		topViewRenderer->ResetCamera();
-		frontViewRenderer->ResetCamera();
-		sideViewRenderer->ResetCamera();
 		endoscopeViewRenderer->ResetCamera();
+		/*topViewRenderer->ResetCamera();
+		frontViewRenderer->ResetCamera();
+		sideViewRenderer->ResetCamera();*/
 	}
 	mainWindow->Render();
-	topViewWindow->Render();
-	frontViewWindow->Render();
-	sideViewWindow->Render();
 	endoscopeViewWindow->Render();
-
-	for (int i = 0, n = subRenderers.size(); i < n; ++i)
-	{
+	/*topViewWindow->Render();
+	frontViewWindow->Render();
+	sideViewWindow->Render();*/
+	
+	for (int i = 0, n = subRenderers.size(); i < n; ++i) {
 		//subRenderers.at(i)->GetActiveCamera()->SetViewShear(0, 0, 0);
 		if (resetCamera) subRenderers.at(i)->ResetCamera();
 		//subRenderers.at(i)->GetActiveCamera()->Zoom(0.8);
@@ -304,41 +306,56 @@ void MainWindowController::removeAllLeapModels()
 	this->removeActorFromScenes(g_lmListener->getKeystoneFrameModel()->getModelActor());
 }
 
-
 float* MainWindowController::getDHparameters() 
 {
-	float* dh_parameter = new float[24];
-	dh_parameter[0] = j1d->text().toFloat();
-	dh_parameter[1] = j1a->text().toFloat();
-	dh_parameter[2] = j1alpha->text().toFloat();
-	dh_parameter[3] = j1theta->value();
+	dh_parameter[0] = j1d->text().toFloat();     dh_parameter[1] = j1a->text().toFloat();
+	dh_parameter[2] = j1alpha->text().toFloat(); dh_parameter[3] = j1theta->value();
 
-	dh_parameter[4] = j2d->text().toFloat();
-	dh_parameter[5] = j2a->text().toFloat();
-	dh_parameter[6] = j2alpha->text().toFloat();
-	dh_parameter[7] = j2theta->value();
+	dh_parameter[4] = j2d->text().toFloat();     dh_parameter[5] = j2a->text().toFloat();
+	dh_parameter[6] = j2alpha->text().toFloat(); dh_parameter[7] = j2theta->value();
 
-	dh_parameter[8] = j3d->text().toFloat();
-	dh_parameter[9] = j3a->text().toFloat();
-	dh_parameter[10] = j3alpha->text().toFloat();
-	dh_parameter[11] = j3theta->value();
+	dh_parameter[8] = j3d->text().toFloat();     dh_parameter[9] = j3a->text().toFloat();
+	dh_parameter[10] = j3alpha->text().toFloat();dh_parameter[11] = j3theta->value();
 
-	dh_parameter[12] = j4d->text().toFloat();
-	dh_parameter[13] = j4a->text().toFloat();
-	dh_parameter[14] = j4alpha->text().toFloat();
-	dh_parameter[15] = j4theta->value();
+	dh_parameter[12] = j4d->text().toFloat();    dh_parameter[13] = j4a->text().toFloat();
+	dh_parameter[14] = j4alpha->text().toFloat();dh_parameter[15] = j4theta->value();
 
-	dh_parameter[16] = j5d->text().toFloat();
-	dh_parameter[17] = j5a->text().toFloat();
-	dh_parameter[18] = j5alpha->text().toFloat();
-	dh_parameter[19] = j5theta->value();
+	dh_parameter[16] = j5d->text().toFloat();    dh_parameter[17] = j5a->text().toFloat();
+	dh_parameter[18] = j5alpha->text().toFloat();dh_parameter[19] = j5theta->value();
 
-	dh_parameter[20] = j6d->text().toFloat();
-	dh_parameter[21] = j6a->text().toFloat();
-	dh_parameter[22] = j6alpha->text().toFloat();
-	dh_parameter[23] = j6theta->value();
+	dh_parameter[20] = j6d->text().toFloat();    dh_parameter[21] = j6a->text().toFloat();
+	dh_parameter[22] = j6alpha->text().toFloat();dh_parameter[23] = j6theta->value();
 	return dh_parameter;
 }
+
+void MainWindowController::dhParameterEditedCommonProcess() {
+	robot->setup(this->getDHparameters());
+	vtkSmartPointer<vtkMatrix4x4> endeffectorMat = robot->getEndEffectorMatrix();
+	nx->setText(QString::number((float)endeffectorMat->GetElement(0, 0)));	//nx, ny, ... is QLineEdit
+	ny->setText(QString::number((float)endeffectorMat->GetElement(1, 0)));
+	nz->setText(QString::number((float)endeffectorMat->GetElement(2, 0)));
+	nw->setText(QString::number((float)endeffectorMat->GetElement(3, 0)));
+
+	bx->setText(QString::number((float)endeffectorMat->GetElement(0, 1)));
+	by->setText(QString::number((float)endeffectorMat->GetElement(1, 1)));
+	bz->setText(QString::number((float)endeffectorMat->GetElement(2, 1)));
+	bw->setText(QString::number((float)endeffectorMat->GetElement(3, 1)));
+
+	tx->setText(QString::number((float)endeffectorMat->GetElement(0, 2)));
+	ty->setText(QString::number((float)endeffectorMat->GetElement(1, 2)));
+	tz->setText(QString::number((float)endeffectorMat->GetElement(2, 2)));
+	tw->setText(QString::number((float)endeffectorMat->GetElement(3, 2)));
+
+	px->setText(QString::number((float)endeffectorMat->GetElement(0, 3)));
+	py->setText(QString::number((float)endeffectorMat->GetElement(1, 3)));
+	pz->setText(QString::number((float)endeffectorMat->GetElement(2, 3)));
+	pw->setText(QString::number((float)endeffectorMat->GetElement(3, 3)));
+
+	endoscopeViewRenderer->GetActiveCamera()->SetPosition(endeffectorMat->GetElement(0, 3), endeffectorMat->GetElement(1, 3), endeffectorMat->GetElement(2, 3));
+	endoscopeViewRenderer->GetActiveCamera()->SetViewUp(endeffectorMat->GetElement(0, 0), endeffectorMat->GetElement(1, 0), endeffectorMat->GetElement(2, 0));
+	endoscopeViewRenderer->GetActiveCamera()->SetFocalPoint(endeffectorMat->GetElement(0, 3) + endeffectorMat->GetElement(0, 2)*10.0, endeffectorMat->GetElement(1, 3) + endeffectorMat->GetElement(1, 2)*10.0, endeffectorMat->GetElement(2, 3) + endeffectorMat->GetElement(2, 2)*10.0);
+}
+
 
 double* MainWindowController::calcKeystones() 
 {
@@ -362,27 +379,26 @@ double* MainWindowController::calcKeystones()
     double b[9] = { 0,0,0,0,0,0,0,0,1};
     
     /* Perform a Gauss Jordan to solve the system A h = b*/
-    for(int j=0;j<9;j++){
+    for (int j=0;j<9;j++) {
         int count = j;
-        while(count<9 && A[count][j]==0){
+        while (count<9 && A[count][j]==0) {
             count++;
         }
-        if(count == 9){
+        if (count == 9) {
            throw "InvalidKeystoneSettingException";
         }
-        for(int i=0;i<9;i++){
+        for (int i=0; i<9; i++) {
             double tmp;
             tmp=A[j][i];
             A[j][i]=A[count][i];
             A[count][i]=tmp;
         }
-        
         double divisor = A[j][j]; 
-        for(int i=0;i<9;i++){
+        for (int i=0; i<9; i++) {
             A[j][i] /= divisor;
         }
         
-        for(int i=j+1;i<9;i++){
+        for(int i=j+1; i<9; i++){
             double factor = -A[i][j];
             //Fixa rad i
             for(int k=0;k<9;k++){
@@ -390,13 +406,11 @@ double* MainWindowController::calcKeystones()
             }
         }
     }
-
-    for(int j=8;j>=0;j--){
-        for(int i=j+1;i<=8;i++){
+    for (int j=8;j>=0;j--) {
+        for (int i=j+1;i<=8;i++) {
             b[j] += -b[i]*A[j][i];
         }
     }
-
     double h33 = 1;
     if(b[6]>0)
         h33 -=b[6];
@@ -412,7 +426,7 @@ double* MainWindowController::calcKeystones()
     return h;
 }
 
-void MainWindowController::keystoneSpinBoxCommon() {
+void MainWindowController::keystoneSpinboxEditedCommonProcess() {
 	int index = windowIndexSpinBox->value();
 	if (index > subCameras.size())
 		return;
@@ -420,11 +434,11 @@ void MainWindowController::keystoneSpinBoxCommon() {
 	index = index - 1;
 	double* matH = new double[16];
 	matH = calcKeystones();
-
 	vtkSmartPointer<vtkTransform> keystone = vtkSmartPointer<vtkTransform>::New();
 	keystone->SetMatrix(matH);
 	subCameras.at(index)->SetUserTransform(keystone);
 	subRenWindows.at(index)->Render();
+	//delete matH;
 }
 
 void MainWindowController::on_actionNew_triggered() 
@@ -468,7 +482,7 @@ void MainWindowController::on_actionOpen_Config_triggered()
 
 	for (int i = 0; i < winNum; ++i)
 	{
-		createOne(width, height, i);
+		createSubWindow(width, height, i);
 	}
 	subInteractors.at(winNum-1)->Start();
 	createWindowButton->setEnabled(false);
@@ -504,6 +518,7 @@ void MainWindowController::on_actionOpen_Config_triggered()
 		ks_array = keystones[i];
 		setKeystoneTransform(ks_array, i);
 	}
+	//delete ks_array;
 	//this->refreshAllWindows();*/
 }
 
@@ -538,14 +553,12 @@ void MainWindowController::on_actionOpen_File_triggered()
 			vtkSmartPointer<vtkSTLReader> reader = vtkSmartPointer<vtkSTLReader>::New();
   			reader->SetFileName(filename.toStdString().c_str());
   			reader->Update();
-  			
   			model->setModel(reader);
 		}
 		if (extention.contains("obj", Qt::CaseInsensitive)) {
 			vtkSmartPointer<vtkOBJReader> reader = vtkSmartPointer<vtkOBJReader>::New();
   			reader->SetFileName(filename.toStdString().c_str());
   			reader->Update();
-
   			model->setModel(reader);
 		}
 		allActors.push_back(model->getModelActor());
@@ -568,10 +581,9 @@ void MainWindowController::on_robotActivateButton_clicked()
 			this->addActorToScenes(robot->getModel().at(i)->getModelActor()); 
 			this->addActorToScenes(robot->getModel().at(i)->getAxesActor()); 
 		} 
-		robot->setup(this->getDHparameters());
-		//todo
-		//endoscopeViewCamera->GetProperty()->RotateX(90);
-		endoscopeViewCamera->SetUserTransform(robot->getEndEffectorTransform());
+		this->dhParameterEditedCommonProcess();
+
+		std::cout << "\ndebug" << endoscopeViewCamera->GetFocalPoint()[0] << ", " << endoscopeViewCamera->GetFocalPoint()[1] << ", "<<endoscopeViewCamera->GetFocalPoint()[2] << std::endl;
 		this->refreshAllWindows(true);
 		robotActivateButton->setCheckable(true);
 	} else {
@@ -583,7 +595,6 @@ void MainWindowController::on_robotActivateButton_clicked()
 		}
 		this->refreshAllWindows(false);
 	}
-	//delete robot;
 }
 
 
@@ -604,12 +615,14 @@ void MainWindowController::on_leapActivateButton_clicked()
 		//vtk reaction
 		mainWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
 		int timerId = mainWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
-		topViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
+		endoscopeViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
+		int timerIdEndoscope = endoscopeViewWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
+		/*topViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
 		int timerIdTop = topViewWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
 		frontViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
 		int timerIdfront = frontViewWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
 		sideViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
-		int timerIdside = sideViewWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
+		int timerIdside = sideViewWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);*/
 		this->refreshAllWindows(true);
 	} else {	//stop
 		//leap reaction 
@@ -620,9 +633,6 @@ void MainWindowController::on_leapActivateButton_clicked()
 		mainWindow->GetInteractor()->RemoveObserver(g_vtkCallback);
 		this->refreshAllWindows(false);
 	}
-	//std::cout<< "number of actors in window1: " << subRenderers.at(0)->GetActors()->GetNumberOfItems() << std::endl;
-	//subRenderers.at(0)->ResetCamera();
-	//mainWindow->Render();
 }
 
 /*
@@ -645,11 +655,10 @@ void MainWindowController::on_createWindowButton_clicked()
 		if (!(widthLineEdit->text().isEmpty())) {
 			width = widthLineEdit->text().toInt();
 		}
-		//le = this->findChild<QLineEdit*>(QString("height"));
 		if (!(heightLineEdit->text().isEmpty())) {
 			height = heightLineEdit->text().toInt();
 		}
-		createOne(width, height, i);
+		createSubWindow(width, height, i);
 	}
 	subInteractors.at(winNum-1)->Start();
 	createWindowButton->setEnabled(false);
@@ -670,7 +679,7 @@ void MainWindowController::createWindowFromConfig()
 /*
 	Create new window for projector
 */
-void MainWindowController::createOne(int width, int height, int index = 0)
+void MainWindowController::createSubWindow(int width, int height, int index = 0)
 {	
 	vtkSmartPointer<vtkRenderer> renderer = vtkSmartPointer<vtkRenderer>::New();
   	renderer->SetBackground( 0.0, 0.0, 0.0 );

@@ -11107,6 +11107,8 @@ QtGui/QHeaderView
 -
 QtGui/QLabel
 -
+QtGui/QLayout
+-
 QtGui/QLineEdit
 -
 QtGui/QMainWindow

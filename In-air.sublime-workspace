@@ -1,0 +1,1468 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"endo",
+				"endoscopeViewRenderer"
+			],
+			[
+				"Set",
+				"SetPosition"
+			],
+			[
+				"_end",
+				"_endEffectorMatrix"
+			],
+			[
+				"_e",
+				"_endEffectorMatrix"
+			],
+			[
+				"vtk",
+				"vtkMatrix4x4"
+			],
+			[
+				"Re",
+				"RemoveActor"
+			],
+			[
+				"top",
+				"topViewRenderer"
+			],
+			[
+				"end",
+				"endEffectorTransform"
+			],
+			[
+				"Sma",
+				"vtkSmartPointer"
+			],
+			[
+				"set",
+				"setup"
+			],
+			[
+				"vtkRe",
+				"vtkRenderer"
+			],
+			[
+				"get",
+				"getAxesActor"
+			],
+			[
+				"ge",
+				"getAxesActor"
+			],
+			[
+				"axis",
+				"axisBase"
+			],
+			[
+				"GetP",
+				"GetProperty"
+			],
+			[
+				"ax",
+				"axesOn"
+			],
+			[
+				"joi",
+				"joints"
+			],
+			[
+				"al",
+				"algorithm"
+			],
+			[
+				"rese",
+				"resetCamera"
+			],
+			[
+				"getModel",
+				"getModelActor"
+			],
+			[
+				"removeAc",
+				"removeActorFromScenes"
+			],
+			[
+				"remove",
+				"removeActorFromScenes"
+			],
+			[
+				"_",
+				"_axesActor"
+			],
+			[
+				"vtkS",
+				"vtkSmartPointer"
+			],
+			[
+				"vtkA",
+				"vtkAxesActor"
+			],
+			[
+				"_a",
+				"_localAxisActor"
+			],
+			[
+				"pu",
+				"push_back"
+			],
+			[
+				"model",
+				"_modelActor"
+			],
+			[
+				"getM",
+				"getModelActor"
+			],
+			[
+				"jo",
+				"joint"
+			],
+			[
+				"join",
+				"joint3"
+			],
+			[
+				"Ma",
+				"MainWindowController"
+			],
+			[
+				"Graphical",
+				"GraphicalModel"
+			],
+			[
+				"robot",
+				"robotModel"
+			],
+			[
+				"add",
+				"addActorToScenes"
+			],
+			[
+				"robo",
+				"robotActivateButton"
+			],
+			[
+				"j",
+				"joint4"
+			],
+			[
+				"for",
+				"format"
+			],
+			[
+				"adm",
+				"admenu_frame"
+			],
+			[
+				"AD",
+				"ADMENU_STATUS_SETTING"
+			],
+			[
+				"send",
+				"send_email"
+			],
+			[
+				"conf",
+				"configs"
+			],
+			[
+				"ad",
+				"admenu_frame"
+			],
+			[
+				"mail",
+				"mail_subject"
+			],
+			[
+				"S",
+				"START_CHECK"
+			],
+			[
+				"process_f",
+				"process_for_end"
+			],
+			[
+				"process",
+				"process_for_end"
+			],
+			[
+				"res",
+				"result_array"
+			],
+			[
+				"En",
+				"END_CHECK"
+			],
+			[
+				"stat",
+				"status"
+			],
+			[
+				"new",
+				"new_message"
+			],
+			[
+				"cue",
+				"cuenote_gendama"
+			],
+			[
+				"mai",
+				"mail_magazine"
+			],
+			[
+				"adme",
+				"admenu_frame"
+			],
+			[
+				"admenu",
+				"admenu_frame"
+			],
+			[
+				"RE",
+				"REPORTED"
+			],
+			[
+				"dt_s",
+				"dt_start_report_status"
+			],
+			[
+				"REPO",
+				"REPORT_YES"
+			],
+			[
+				"deleted",
+				"deleted_cc_ids"
+			],
+			[
+				"cd",
+				"cd_client"
+			],
+			[
+				"str",
+				"str_ids"
+			],
+			[
+				"arr",
+				"arr_ids"
+			],
+			[
+				"ar",
+				"arr_ids"
+			],
+			[
+				"dele",
+				"deleted_ids"
+			],
+			[
+				"delete",
+				"delete_click_client"
+			],
+			[
+				"click",
+				"click_url"
+			],
+			[
+				"log",
+				"log_message"
+			],
+			[
+				"Y",
+				"Y-m-d"
+			],
+			[
+				"sta",
+				"status_css"
+			],
+			[
+				"clie",
+				"client_points"
+			],
+			[
+				"clien",
+				"client_points"
+			],
+			[
+				"validate_rules_",
+				"validate_rules_clickClient"
+			],
+			[
+				"dt",
+				"dt_url"
+			],
+			[
+				"cu",
+				"current_id"
+			],
+			[
+				"po",
+				"point_box"
+			],
+			[
+				"ur",
+				"url_box"
+			],
+			[
+				"cd_",
+				"cd_admenu_frame"
+			],
+			[
+				"da_de",
+				"da_delivery_start_time"
+			],
+			[
+				"cd_ad",
+				"cd_admenu_frame"
+			],
+			[
+				"str_re",
+				"str_replace"
+			],
+			[
+				"to",
+				"toStdString"
+			],
+			[
+				"con",
+				"conf_xml"
+			],
+			[
+				"createW",
+				"createWindowFromConfig"
+			],
+			[
+				"create",
+				"createWindowButton"
+			],
+			[
+				"win",
+				"winNum"
+			],
+			[
+				"Inser",
+				"InsertAfterChild"
+			],
+			[
+				"sub",
+				"subRenWindows"
+			],
+			[
+				"_mo",
+				"_modelActor"
+			],
+			[
+				"Se",
+				"SetOrientation"
+			],
+			[
+				"palmN",
+				"palmNormal"
+			],
+			[
+				"palm",
+				"palmDir"
+			],
+			[
+				"_vi",
+				"_viewerWindow"
+			],
+			[
+				"getRe",
+				"getViewerRenderer"
+			],
+			[
+				"_viw",
+				"_viewerCallBack"
+			],
+			[
+				"_win",
+				"_viewerWinInteractor"
+			],
+			[
+				"getVie",
+				"getViewerRenderer"
+			],
+			[
+				"view",
+				"viewer"
+			],
+			[
+				"_view",
+				"_viewerActor"
+			],
+			[
+				"vtkCa",
+				"vtkTimerCallback"
+			],
+			[
+				"_viewer",
+				"_viewerRenderWindow"
+			],
+			[
+				"_vier",
+				"_viewerRenderWindow"
+			],
+			[
+				"_viewe",
+				"_viewerRenderer"
+			],
+			[
+				"right",
+				"rightHand"
+			],
+			[
+				"finger",
+				"fingerCounter"
+			],
+			[
+				"fin",
+				"fingers"
+			],
+			[
+				"righ",
+				"rightHand"
+			],
+			[
+				"left",
+				"leftHand"
+			],
+			[
+				"tip",
+				"tipPos"
+			],
+			[
+				"liste",
+				"g_lmListener"
+			],
+			[
+				"rea",
+				"reader"
+			],
+			[
+				"Sm",
+				"vtkSmartPointer"
+			],
+			[
+				"_mode",
+				"_modelSource"
+			],
+			[
+				"_model",
+				"_modelActor"
+			],
+			[
+				"in",
+				"include"
+			],
+			[
+				"SetRe",
+				"SetRenderWindow"
+			],
+			[
+				"renwin",
+				"renWins"
+			],
+			[
+				"Le",
+				"Leap"
+			],
+			[
+				"In",
+				"Initialize"
+			],
+			[
+				"rende",
+				"renderWin"
+			],
+			[
+				"Lea",
+				"LeapInteractor"
+			],
+			[
+				"cone",
+				"coneActor"
+			],
+			[
+				"main",
+				"mainWindow"
+			],
+			[
+				"dt_cue",
+				"dt_cuenote_delivid"
+			],
+			[
+				"dt_c",
+				"dt_cuenote_mailid"
+			],
+			[
+				"tar",
+				"target_arr"
+			],
+			[
+				"imp",
+				"implode"
+			],
+			[
+				"cond",
+				"conditions"
+			],
+			[
+				"tem",
+				"template"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "sources/LeapInteractor.cxx",
+			"settings":
+			{
+				"buffer_size": 1140,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "includes/LeapInteractor.h",
+			"settings":
+			{
+				"buffer_size": 315,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "includes/robotModel.h",
+			"settings":
+			{
+				"buffer_size": 5495,
+				"line_ending": "Unix",
+				"name": "#ifndef ROBOTMODEL_H_"
+			}
+		},
+		{
+			"file": "CmakeLists.txt",
+			"settings":
+			{
+				"buffer_size": 1624,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sources/mainWindowController.cxx",
+			"settings":
+			{
+				"buffer_size": 22383,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "main.cxx",
+			"settings":
+			{
+				"buffer_size": 399,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "includes/mainWindowController.h",
+			"settings":
+			{
+				"buffer_size": 8423,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sources/graphicalModel.cxx",
+			"settings":
+			{
+				"buffer_size": 338,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "includes/graphicalModel.h",
+			"settings":
+			{
+				"buffer_size": 1935,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sources/LeapGestureTrainer.cpp",
+			"settings":
+			{
+				"buffer_size": 8480,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "includes/LeapGestureTrainer.h",
+			"settings":
+			{
+				"buffer_size": 712,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sources/LeapListener.cpp",
+			"settings":
+			{
+				"buffer_size": 13052,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "includes/LeapListener.h",
+			"settings":
+			{
+				"buffer_size": 5171,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/C++/C++.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"sublim",
+				"Preferences: SublimeClang Settings – Default"
+			],
+			[
+				"sublimecla",
+				"Preferences: SublimeClang Settings – User"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"snip pet  uni",
+				"Snippet: unity_template"
+			],
+			[
+				"snippet ca",
+				"Snippet: Color(r, g, b, a)"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			],
+			[
+				"s",
+				"Set Syntax: C#"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"i",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/nEwUnivErsE/In-air-interaction/In-air/includes/jointModel.h",
+		"/Users/nEwUnivErsE/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/nEwUnivErsE/In-air-interaction/In-air/ThirdParty/Eigen/Eigen",
+		"/Users/nEwUnivErsE/In-air-interaction/In-air/ThirdParty/Eigen/Dense",
+		"/Users/nEwUnivErsE/Downloads/InverseKinematics/src/linkedstructure.cpp",
+		"/Users/nEwUnivErsE/Downloads/InverseKinematics/src/link.h",
+		"/Users/nEwUnivErsE/Downloads/InverseKinematics/src/main.cpp",
+		"/Users/nEwUnivErsE/In-air-interaction/In-air/sources/graphicalModel.cxx",
+		"/Users/nEwUnivErsE/Downloads/InverseKinematics/src/color.h",
+		"/Users/nEwUnivErsE/Downloads/InverseKinematics/src/linkedstructure.h",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/controllers/Admenu_Notificator.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/controllers/Admenu_Notificator.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/controllers/client/item.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/libraries/Click_Client.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/views/click_client/item_input.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/controllers/click_client/item.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/views/mail_magazine/index.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/views/mail_magazine/form_documentation.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/views/mail_magazine/form_submission.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/views/mail_magazine/form_selection.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/views/click_client/item_confirm.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/web/admin/js/mail_magazine.js",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/config/client.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/config/client_constants.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/models/client_model.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/libraries/mail_magazine_address.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/controllers/mail_magazine/history.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/views/mail_magazine/history_viewer.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/config/mail_magazine.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/config/mail_magazine_constants.php",
+		"/Users/nEwUnivErsE/Desktop/Summons backup/Documents/adzcore_js_collector",
+		"/Users/nEwUnivErsE/Desktop/Summons backup/Documents/partytrack.sqlite",
+		"/Users/nEwUnivErsE/Desktop/Summons backup/Documents/DeckFile",
+		"/Users/nEwUnivErsE/Desktop/Summons backup/Documents/SaveFile.txt",
+		"/Users/nEwUnivErsE/Desktop/Summons backup/Documents/PermanentSaveFile.txt",
+		"/Users/nEwUnivErsE/In-air-interaction/In-air/conf.xml",
+		"/Users/nEwUnivErsE/In-air-interaction/In-air/ThirdParty/tinyxml2/xmltest.cpp",
+		"/Users/nEwUnivErsE/In-air-interaction/In-air/CmakeLists.txt",
+		"/Users/nEwUnivErsE/In-air-interaction/In-air/includes/graphicalViewer",
+		"/Users/nEwUnivErsE/In-air-interaction/In-air/includes/LeapInteractor.h",
+		"/Users/nEwUnivErsE/In-air-interaction/In-air/sources/LeapInteractor.cxx",
+		"/Users/nEwUnivErsE/In-air-interaction/In-air/includes/Mediator.h",
+		"/Users/nEwUnivErsE/In-air-interaction/In-air/sources/Mediator.cxx",
+		"/Users/nEwUnivErsE/Desktop/FrameRate/FrameRate.cxx",
+		"/Users/nEwUnivErsE/Desktop/FrameRate/CmakeLists.txt",
+		"/Users/nEwUnivErsE/Desktop/FrameRate.cxx",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/gendama-admin-mail-magazine.sublime-workspace",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/controllers/mail_magazine/mail_magazine.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/controllers/mail_magazine/mail_magazine_history.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/libraries/Cuenote.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/mailmagazine/models/mailmagazine_model.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/profile/models/mailmagazine_model.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/mailmagazine/models/mailmagazine_read_model.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/mailmagazine/models/magazine_01_model.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/models/afdata_summary/afdata_statistics_model.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/models/afdata_summary/afdata_summary_model.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/models/afdata_summary/sales_range_rate_model.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/config/campaign_total.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/config/config_mail_magazine.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/libraries/Cuenone_admin.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/web/admin/test.csv",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/views/mail_magazine/form.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/views/mail_magazine/form_confirm.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/gendama-admin-mail-magazine.sublime-project",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/controllers/mail_magazine/test.csv",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/views/mail_magazine/form_3_submission.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/views/mail_magazine/form_1_selection.php",
+		"/Users/nEwUnivErsE/RW project/gendama-vagrant/gendama.jp/application/modules/admin/views/mail_magazine/form_2_documentation.php",
+		"/Users/nEwUnivErsE/Desktop/mail_magagine.php",
+		"/Users/nEwUnivErsE/u.realworld.jp/application/modules/regist/config/gendama.php",
+		"/Users/nEwUnivErsE/u.realworld.jp/application/modules/regist/views/mailsend.php",
+		"/Users/nEwUnivErsE/u.realworld.jp/application/modules/regist/controllers/regist.php",
+		"/Users/nEwUnivErsE/Downloads/08.) Simple Lighting/source/08.) Simple Lighting/vertexBufferObject.h",
+		"/Users/nEwUnivErsE/Downloads/08.) Simple Lighting/source/08.) Simple Lighting/renderScene.cpp",
+		"/Users/nEwUnivErsE/holography-testbed/leap_dev/holography-api-release/src/Shader.cpp",
+		"/Users/nEwUnivErsE/holography-testbed/leap_dev/holography-api-release/src/X3DLoader.cpp",
+		"/Users/nEwUnivErsE/holography-testbed/leap_dev/holography-api-release/src/RawLoader.cpp",
+		"/Users/nEwUnivErsE/holography-testbed/leap_dev/holography-api-release/src/ObjLoader.cpp",
+		"/Users/nEwUnivErsE/holography-testbed/leap_dev/holography-api-release/src/Monitor.cpp",
+		"/Users/nEwUnivErsE/holography-testbed/leap_dev/holography-api-release/src/StlLoader.cpp",
+		"/Users/nEwUnivErsE/holography-testbed/leap_dev/holography-api-release/src/UniversalConfiguration.cpp",
+		"/Users/nEwUnivErsE/holography-testbed/leap_dev/holography-api-release/src/Configuration.cpp",
+		"/Users/nEwUnivErsE/holography-testbed/leap_dev/holography-api-release/src/ConfigurationHandler.cpp",
+		"/Users/nEwUnivErsE/holography-testbed/leap_dev/holography-api-release/src/FileLoader.cpp",
+		"/Users/nEwUnivErsE/holography-testbed/leap_dev/holography-api-release/src/ColorTranslator.cpp",
+		"/Users/nEwUnivErsE/holography-testbed/leap_dev/holography-api-release/src/TestColorTranslator.cpp",
+		"/Users/nEwUnivErsE/holography-testbed/leap_dev/holography-api-release/src/TestDisplay.cpp",
+		"/Users/nEwUnivErsE/holography-testbed/leap_dev/holography-api-release/src/TestConfiguration.cpp",
+		"/Users/nEwUnivErsE/holography-testbed/leap_dev/holography-api-release/src/TestFileLoader.cpp",
+		"/Users/nEwUnivErsE/holography-testbed/leap_dev/holography-api-release/src/TestFramework.cpp",
+		"/Users/nEwUnivErsE/holography-testbed/leap_dev/holography-api-release/src/TestMonitor.cpp",
+		"/Users/nEwUnivErsE/holography-testbed/leap_dev/holography-api-release/src/TestProjector.cpp",
+		"/Users/nEwUnivErsE/holography-testbed/leap_dev/holography-api-release/src/TestShader.cpp",
+		"/Users/nEwUnivErsE/Dropbox/stanford_bunny/bunny.obj",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/keystoneHOLOROOMSETUP",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/docs/README",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/include/TestCase.h",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/include/TestColorTranslator.h",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/include/TestConfiguration.h",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/include/TestDisplay.h",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/include/TestFileLoader.h",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/include/TestFramework.h",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/include/TestProjector.h",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/include/TestMonitor.h",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/include/TestShader.h",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/src/ThreeDSpace.cpp",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/src/TestShader.cpp",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/src/TestProjector.cpp",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/src/TestMonitor.cpp",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/src/TestFramework.cpp",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/src/TestFileLoader.cpp",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/src/TestDisplay.cpp",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/src/TestConfiguration.cpp",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/src/TestColorTranslator.cpp",
+		"/Users/nEwUnivErsE/KTH/holography-testbed/leap-testbed/holography-api-release/src/X3DLoader.cpp",
+		"/Users/nEwUnivErsE/Dropbox/KTH/temp/glsdk/freeglut/include/GL/freeglut_ext.h",
+		"/Users/nEwUnivErsE/Dropbox/KTH/temp/glsdk/freeglut/include/GL/freeglut_std.h",
+		"/Users/nEwUnivErsE/Dropbox/KTH/holography-api/holography-api/README",
+		"/Users/nEwUnivErsE/Desktop/README",
+		"/Users/nEwUnivErsE/Desktop/src/Makefile",
+		"/Users/nEwUnivErsE/Desktop/new.itermcolors",
+		"/Users/nEwUnivErsE/Dropbox/Course/computer vision/Photometric stereo/Object1.pgm",
+		"/Users/nEwUnivErsE/Dropbox/Course/computer vision/Photometric stereo/Object2.pgm",
+		"/Users/nEwUnivErsE/Dropbox/Course/computer vision/Photometric stereo/Object3.pgm",
+		"/Users/nEwUnivErsE/Dropbox/Course/computer vision/Photometric stereo/Object4.pgm",
+		"/Users/nEwUnivErsE/Dropbox/Course/computer vision/Object1.pgm",
+		"/Users/nEwUnivErsE/Dropbox/Course/computer vision/Photometric stereo/Ball1.txt",
+		"/Users/nEwUnivErsE/Downloads/pgm1.02/main.c"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"todo",
+			"createone",
+			"addactortos",
+			"dhEdited",
+			"robot->setup(",
+			"endoscopeViewCamera",
+			"lineedit",
+			"end_effector",
+			"DHs",
+			"components",
+			"endEffectorMatrix",
+			"endEffectorTransform",
+			"setusertrans",
+			"::New()",
+			"removeActorFromScenes",
+			"removeAllLeapModels",
+			"setup",
+			"top",
+			"setupr",
+			"setup",
+			"subcameras",
+			"Window",
+			"Render",
+			"refreshAllWindows",
+			"Top",
+			"top",
+			"Top",
+			"top",
+			"addAllLeapModels",
+			"removeAllLeapModels",
+			"actor",
+			"subcameras",
+			"subcamera",
+			"camera",
+			"side",
+			"	front",
+			"top",
+			"main",
+			"setupRenderAndWindow",
+			"top",
+			"mainWindow",
+			"qvtkw",
+			"createOne",
+			"qvtkw",
+			"qvtk",
+			"camera",
+			"srcRef",
+			"algorithm",
+			"Algorithm",
+			"algorithm",
+			"vtkCylinderSource",
+			"link_cylinder",
+			"addactors",
+			"vtkSmartPointer",
+			"norm",
+			"axesactor",
+			"SetNormalizedShaftLength",
+			"i",
+			"cylinder",
+			"Cylinder",
+			"cylinder",
+			"Cylinder",
+			"cylinder",
+			"Cylinder",
+			"cylinder",
+			"joint_cylinder",
+			"joints",
+			"joint",
+			"cylinder",
+			"Cylinder",
+			"cylinder",
+			"joint",
+			"joints",
+			"SetNormalizedShaftLength",
+			"todo",
+			"Interactor",
+			"interactor",
+			"refreshAllWindows()",
+			"refreshAllWindows(",
+			"refreshAllWindows()",
+			"refreshAllWindows",
+			"interactors.reserve",
+			"resetcamera",
+			"createBresenhamLine",
+			"leapmodel",
+			"leapDeviceModel",
+			"graphicalmodel",
+			"g_lmListener",
+			"leapmodels",
+			"->value()",
+			"->value*(",
+			"spinb",
+			"getDHparameters",
+			"getdh",
+			"getDHparameters",
+			"dhEdited",
+			"spinbox",
+			"axis",
+			"refreshAllWindows",
+			"RemoveActor",
+			"removeActor",
+			"RemoveActor",
+			"axes",
+			"getModel",
+			"setup",
+			"SETUSERTRANSFORM",
+			"SETUSERTRANFORM",
+			"vtkMatrix",
+			"getDHparameters",
+			"setup",
+			"set",
+			"setup",
+			"calcKeystones",
+			"getDHparameters",
+			" <<",
+			"getDHparameters",
+			"2",
+			"1",
+			"getModelActor()",
+			"calcKeystones",
+			"parameter",
+			" )",
+			"HEADERS",
+			"QT4_WRAP_CPP",
+			"robot",
+			"leap",
+			"remove",
+			"on_r"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "sources/LeapInteractor.cxx",
+					"settings":
+					{
+						"buffer_size": 1140,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 254.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "includes/LeapInteractor.h",
+					"settings":
+					{
+						"buffer_size": 315,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								314,
+								314
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "includes/robotModel.h",
+					"settings":
+					{
+						"buffer_size": 5495,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3108,
+								3108
+							]
+						],
+						"settings":
+						{
+							"auto_name": "#ifndef ROBOTMODEL_H_",
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 954.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "CmakeLists.txt",
+					"settings":
+					{
+						"buffer_size": 1624,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								750,
+								750
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 95.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "sources/mainWindowController.cxx",
+					"settings":
+					{
+						"buffer_size": 22383,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								22111,
+								22111
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 10086.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "main.cxx",
+					"settings":
+					{
+						"buffer_size": 399,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								259,
+								259
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "includes/mainWindowController.h",
+					"settings":
+					{
+						"buffer_size": 8423,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4900,
+								4900
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 2.0,
+						"translation.y": 2132.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 7,
+					"file": "sources/graphicalModel.cxx",
+					"settings":
+					{
+						"buffer_size": 338,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								28,
+								28
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "includes/graphicalModel.h",
+					"settings":
+					{
+						"buffer_size": 1935,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								454,
+								454
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 781.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "sources/LeapGestureTrainer.cpp",
+					"settings":
+					{
+						"buffer_size": 8480,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								72,
+								72
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 527.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "includes/LeapGestureTrainer.h",
+					"settings":
+					{
+						"buffer_size": 712,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								124,
+								124
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 11,
+					"file": "sources/LeapListener.cpp",
+					"settings":
+					{
+						"buffer_size": 13052,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4110,
+								4115
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 7.0,
+						"translation.y": 2220.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "includes/LeapListener.h",
+					"settings":
+					{
+						"buffer_size": 5171,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1581,
+								1581
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 708.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			],
+			[
+				0,
+				1,
+				1,
+				2
+			],
+			[
+				1,
+				1,
+				2,
+				2
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.483684476141,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			0.506150747868,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 27.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/Users/NewUniverse/Documents/Realms/mainWindow.hpp"
+			],
+			[
+				"sublimeclang",
+				"/Users/NewUniverse/Library/Application Support/Sublime Text 2/Packages/User/SublimeClang.sublime-settings"
+			],
+			[
+				"sub",
+				"/Users/NewUniverse/Library/Application Support/Sublime Text 2/Packages/User/SublimeClang.sublime-settings"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 202.0,
+	"status_bar_visible": true
+}

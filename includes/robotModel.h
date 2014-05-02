@@ -11,8 +11,8 @@ class RobotModel
 {
 public://methods
     RobotModel() {
-        endEffectorTransform = vtkSmartPointer<vtkTransform>::New();
-    	//joint_cylinder joints model
+        _endEffectorTransform = vtkSmartPointer<vtkTransform>::New();
+        
     	vtkSmartPointer<vtkCylinderSource> cylinder = vtkSmartPointer<vtkCylinderSource>::New();
         vtkSmartPointer<vtkCylinderSource> eef_cylinder = vtkSmartPointer<vtkCylinderSource>::New();
         eef_cylinder->SetRadius(ACTUATOR_SIZE/5);
@@ -25,24 +25,24 @@ public://methods
         for (int i = 0; i < NUM_JOINTS; ++i) {	
         	joints[i] = new GraphicalModel(cylinder);
         	joints[i]->getModelActor()->RotateX(-90.0);
-        	components.push_back(joints[i]);
+        	_components.push_back(joints[i]);
         }
         for (int i = 0; i < NUM_JOINTS-1; ++i)
         {
         	links[i] = new GraphicalModel(link_line);
         	links[i]->getModelActor()->RotateX(-90.0);
-        	components.push_back(links[i]);
+        	_components.push_back(links[i]);
         }
-        end_effector = new GraphicalModel(eef_cylinder);
-        end_effector->getModelActor()->RotateX(-90.0);
-        components.push_back(end_effector);
+        _end_Effector = new GraphicalModel(eef_cylinder);
+        _end_Effector->getModelActor()->RotateX(-90.0);
+        _components.push_back(_end_Effector);
     };
     ~RobotModel() {
     	delete joints;
     };
 
     std::vector<GraphicalModel* > getModel() {
-    	return components;
+    	return _components;
     };
 
     void setup (float* DHs) {
@@ -81,7 +81,7 @@ public://methods
             srcRef->SetResolution(12);
    		}
         //end-effector
-        algorithm = end_effector->getModelActor()->GetMapper()->GetInputConnection(0, 0)->GetProducer();
+        algorithm = _end_Effector->getModelActor()->GetMapper()->GetInputConnection(0, 0)->GetProducer();
         srcRef = vtkCylinderSource::SafeDownCast(algorithm);
         srcRef->SetCenter(0.0, ACTUATOR_SIZE*5.0, 0.0);
 
@@ -93,17 +93,20 @@ public://methods
                 mat->SetElement(k, j, axis_eef(k, j)); 
             }
         } 
+        _endEffectorMatrix = mat;
         transform->SetMatrix(mat);
-        endEffectorTransform = transform;
-        end_effector->getModelActor()->SetUserTransform(transform);
-        end_effector->getModelActor()->GetProperty()->SetColor(1.0, 0.0, 0.0);
-        end_effector->getAxesActor()->SetUserTransform(end_effector->getModelActor()->GetUserTransform());
-        end_effector->getAxesActor()->SetNormalizedShaftLength(ACTUATOR_SIZE*2.0, ACTUATOR_SIZE*2.0, ACTUATOR_SIZE*2.0);
+        _endEffectorTransform = transform;
+        _end_Effector->getModelActor()->SetUserTransform(transform);
+        _end_Effector->getModelActor()->GetProperty()->SetColor(1.0, 0.0, 0.0);
+        _end_Effector->getAxesActor()->SetUserTransform(_end_Effector->getModelActor()->GetUserTransform());
+        _end_Effector->getAxesActor()->SetNormalizedShaftLength(ACTUATOR_SIZE*2.0, ACTUATOR_SIZE*2.0, ACTUATOR_SIZE*2.0);
     };
     vtkSmartPointer<vtkTransform> getEndEffectorTransform() {
-        return endEffectorTransform;
+        return _endEffectorTransform;
     }
-
+    vtkSmartPointer<vtkMatrix4x4> getEndEffectorMatrix() {
+        return _endEffectorMatrix;
+    }
 private://methods
 	Eigen::Matrix4f homogenerousTransformMatrix(float d, float a, float alpha, float theta) 
 	{
@@ -117,11 +120,11 @@ private://methods
 public://members
 	
 private://members
-	std::vector<GraphicalModel* > components;
-	Eigen::MatrixXf  DHs;
-    vtkSmartPointer<vtkTransform> endEffectorTransform;
+	std::vector<GraphicalModel* > _components;
+    vtkSmartPointer<vtkTransform> _endEffectorTransform;
+    vtkSmartPointer<vtkMatrix4x4> _endEffectorMatrix;
 	GraphicalModel** joints;
-    GraphicalModel*  end_effector;
+    GraphicalModel*  _end_Effector;
 	GraphicalModel** links;
 
 protected: 

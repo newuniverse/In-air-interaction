@@ -105,6 +105,7 @@ CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /opt/local/includ
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /opt/local/include/QtGui/QHBoxLayout
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /opt/local/include/QtGui/QHeaderView
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /opt/local/include/QtGui/QLabel
+CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /opt/local/include/QtGui/QLayout
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /opt/local/include/QtGui/QLineEdit
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /opt/local/include/QtGui/QMainWindow
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /opt/local/include/QtGui/QMenu
@@ -652,6 +653,7 @@ CMakeFiles/In-air.dir/main.cxx.o: /opt/local/include/QtGui/QDoubleSpinBox
 CMakeFiles/In-air.dir/main.cxx.o: /opt/local/include/QtGui/QHBoxLayout
 CMakeFiles/In-air.dir/main.cxx.o: /opt/local/include/QtGui/QHeaderView
 CMakeFiles/In-air.dir/main.cxx.o: /opt/local/include/QtGui/QLabel
+CMakeFiles/In-air.dir/main.cxx.o: /opt/local/include/QtGui/QLayout
 CMakeFiles/In-air.dir/main.cxx.o: /opt/local/include/QtGui/QLineEdit
 CMakeFiles/In-air.dir/main.cxx.o: /opt/local/include/QtGui/QMainWindow
 CMakeFiles/In-air.dir/main.cxx.o: /opt/local/include/QtGui/QMenu

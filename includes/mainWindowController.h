@@ -50,87 +50,57 @@ private slots:
 	void on_parallaxSlider_valueChanged(int value);
 
 	void on_windowIndexSpinBox_valueChanged() {
-		x1SpinBox->setValue(1.0);
-		y1SpinBox->setValue(1.0);
-		x2SpinBox->setValue(-1.0);
-		y2SpinBox->setValue(1.0);
-		x3SpinBox->setValue(-1.0);
-		y3SpinBox->setValue(-1.0);
-		x4SpinBox->setValue(1.0);
-		y4SpinBox->setValue(-1.0);
+		x1SpinBox->setValue(1.0);  y1SpinBox->setValue(1.0);
+		x2SpinBox->setValue(-1.0); y2SpinBox->setValue(1.0);
+		x3SpinBox->setValue(-1.0); y3SpinBox->setValue(-1.0);
+		x4SpinBox->setValue(1.0);  y4SpinBox->setValue(-1.0);
 	}
 
-	void on_j1d_editingFinished () { dhEdited(); }
-	void on_j1a_editingFinished () { dhEdited(); }
-	void on_j1alpha_editingFinished () { dhEdited(); }
-	void on_j1theta_valueChanged() { dhEdited(); }
+	void on_j1d_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j1a_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j1alpha_editingFinished () { dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j1theta_valueChanged() {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
 
-	void on_j2d_editingFinished () { dhEdited(); }
-	void on_j2a_editingFinished () { dhEdited(); }
-	void on_j2alpha_editingFinished () { dhEdited(); }
-	void on_j2theta_valueChanged() { dhEdited(); }
+	void on_j2d_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j2a_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j2alpha_editingFinished () { dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j2theta_valueChanged() {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
 
-	void on_j3d_editingFinished () { dhEdited(); }
-	void on_j3a_editingFinished () { dhEdited(); }
-	void on_j3alpha_editingFinished () { dhEdited(); }
-	void on_j3theta_valueChanged() { dhEdited(); }
+	void on_j3d_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j3a_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j3alpha_editingFinished () { dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j3theta_valueChanged() {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
 
-	void on_j4d_editingFinished () { dhEdited(); }
-	void on_j4a_editingFinished () { dhEdited(); }
-	void on_j4alpha_editingFinished () { dhEdited(); }
-	void on_j4theta_valueChanged() { dhEdited(); }
+	void on_j4d_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j4a_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j4alpha_editingFinished () { dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j4theta_valueChanged() {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
 
-	void on_j5d_editingFinished () { dhEdited(); }
-	void on_j5a_editingFinished () { dhEdited(); }
-	void on_j5alpha_editingFinished () { dhEdited(); }
-	void on_j5theta_valueChanged() { dhEdited(); }
+	void on_j5d_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j5a_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j5alpha_editingFinished () { dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j5theta_valueChanged() {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
 
-	void on_j6d_editingFinished () { dhEdited(); }
-	void on_j6a_editingFinished () { dhEdited(); }
-	void on_j6alpha_editingFinished () { dhEdited(); }
-	void on_j6theta_valueChanged() { dhEdited(); }
+	void on_j6d_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j6a_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j6alpha_editingFinished () { dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j6theta_valueChanged() {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
 
-	void on_x1SpinBox_valueChanged(double d) {
-		X1 = d;
-		keystoneSpinBoxCommon();
-	}
-	void on_y1SpinBox_valueChanged(double d) {
-		Y1 = d;
-		keystoneSpinBoxCommon();
-	}
-	void on_x2SpinBox_valueChanged(double d){
-		X2 = d;
-		keystoneSpinBoxCommon();
-	}
-	void on_y2SpinBox_valueChanged(double d){
-		Y2 = d;
-		keystoneSpinBoxCommon();
-	}
-	void on_x3SpinBox_valueChanged(double d) {
-		X3 = d;
-		keystoneSpinBoxCommon();
-	}
-	void on_y3SpinBox_valueChanged(double d) {
-		Y3 = d;
-		keystoneSpinBoxCommon();
-	}
-	void on_x4SpinBox_valueChanged(double d) {
-		X4 = d;
-		keystoneSpinBoxCommon();
-	}
-	void on_y4SpinBox_valueChanged(double d) {
-		Y4 = d;
-		keystoneSpinBoxCommon();
-	}
-	
-	void keystoneSpinBoxCommon();
+	void on_x1SpinBox_valueChanged(double d) { X1 = d; keystoneSpinboxEditedCommonProcess();}
+	void on_y1SpinBox_valueChanged(double d) { Y1 = d; keystoneSpinboxEditedCommonProcess();}
+	void on_x2SpinBox_valueChanged(double d) { X2 = d; keystoneSpinboxEditedCommonProcess();}
+	void on_y2SpinBox_valueChanged(double d) { Y2 = d; keystoneSpinboxEditedCommonProcess();}
+	void on_x3SpinBox_valueChanged(double d) { X3 = d; keystoneSpinboxEditedCommonProcess();}
+	void on_y3SpinBox_valueChanged(double d) { Y3 = d; keystoneSpinboxEditedCommonProcess();}
+	void on_x4SpinBox_valueChanged(double d) { X4 = d; keystoneSpinboxEditedCommonProcess();}
+	void on_y4SpinBox_valueChanged(double d) { Y4 = d; keystoneSpinboxEditedCommonProcess();}
 
 private://methods
-	void setupRenderAndWindow();
+	void setupRendererAndWindow();
 	void attachRendererToWindow(vtkSmartPointer<vtkRenderer> ren, vtkSmartPointer<vtkRenderWindow> win, QVTKWidget* widget);
-
 	void setupCharts();
-	void createOne(int width, int height, int index);
+	
+	void createSubWindow(int width, int height, int index);
 	void setKeystoneTransform(double* ks_array, int index);
 	void addActorToScenes(vtkSmartPointer<vtkActor> actor);
 	void addActorToScenes(vtkSmartPointer<vtkAxesActor> actor);
@@ -141,15 +111,16 @@ private://methods
 	void addAllLeapModels();
 	void removeAllLeapModels();
 	void createWindowFromConfig();
-	double* calcKeystones();
+	
 	float* getDHparameters();
-	void dhEdited() {
-		robot->setup(this->getDHparameters());
-		this->refreshAllWindows(false);
-	}
+	void dhParameterEditedCommonProcess();
+	double* calcKeystones();
+	void keystoneSpinboxEditedCommonProcess();
 private://members
 	static const int DELTATIME = 30; //ms
 	double X1, X2, X3, X4, Y1, Y2, Y3, Y4;//keystones
+
+	float* dh_parameter;
 
 	tinyxml2::XMLDocument*   conf_xml;
 	LeapListener*     g_lmListener;

@@ -12,9 +12,7 @@
 int main(int argc, char** argv) 
 {
 	QApplication app(argc, argv);
-
 	MainWindowController *mainWindow = new MainWindowController();
 	mainWindow->show();
-
 	return app.exec();
 }
