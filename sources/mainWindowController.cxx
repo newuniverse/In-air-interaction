@@ -329,8 +329,21 @@ float* MainWindowController::getDHparameters()
 }
 
 void MainWindowController::dhParameterEditedCommonProcess() {
-	robot->setup(this->getDHparameters());
+	robot->updateDHs(this->getDHparameters());
+	robot->update();
 	vtkSmartPointer<vtkMatrix4x4> endeffectorMat = robot->getEndEffectorMatrix();
+	
+	//set endoscope camera position
+	endoscopeViewRenderer->GetActiveCamera()->
+		SetPosition(endeffectorMat->GetElement(0, 3), 
+			endeffectorMat->GetElement(1, 3), endeffectorMat->GetElement(2, 3));
+	endoscopeViewRenderer->GetActiveCamera()->
+		SetViewUp(endeffectorMat->GetElement(0, 0), 
+			endeffectorMat->GetElement(1, 0), endeffectorMat->GetElement(2, 0));
+	endoscopeViewRenderer->GetActiveCamera()->
+		SetFocalPoint(endeffectorMat->GetElement(0, 3) + endeffectorMat->GetElement(0, 2)*10.0, 
+			endeffectorMat->GetElement(1, 3) + endeffectorMat->GetElement(1, 2)*10.0, endeffectorMat->GetElement(2, 3) + endeffectorMat->GetElement(2, 2)*10.0);
+	//show pose matrix
 	nx->setText(QString::number((float)endeffectorMat->GetElement(0, 0)));	//nx, ny, ... is QLineEdit
 	ny->setText(QString::number((float)endeffectorMat->GetElement(1, 0)));
 	nz->setText(QString::number((float)endeffectorMat->GetElement(2, 0)));
@@ -350,10 +363,7 @@ void MainWindowController::dhParameterEditedCommonProcess() {
 	py->setText(QString::number((float)endeffectorMat->GetElement(1, 3)));
 	pz->setText(QString::number((float)endeffectorMat->GetElement(2, 3)));
 	pw->setText(QString::number((float)endeffectorMat->GetElement(3, 3)));
-
-	endoscopeViewRenderer->GetActiveCamera()->SetPosition(endeffectorMat->GetElement(0, 3), endeffectorMat->GetElement(1, 3), endeffectorMat->GetElement(2, 3));
-	endoscopeViewRenderer->GetActiveCamera()->SetViewUp(endeffectorMat->GetElement(0, 0), endeffectorMat->GetElement(1, 0), endeffectorMat->GetElement(2, 0));
-	endoscopeViewRenderer->GetActiveCamera()->SetFocalPoint(endeffectorMat->GetElement(0, 3) + endeffectorMat->GetElement(0, 2)*10.0, endeffectorMat->GetElement(1, 3) + endeffectorMat->GetElement(1, 2)*10.0, endeffectorMat->GetElement(2, 3) + endeffectorMat->GetElement(2, 2)*10.0);
+	
 }
 
 

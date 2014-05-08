@@ -234,6 +234,30 @@ sources/LeapListener.cpp.s:
 	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/sources/LeapListener.cpp.s
 .PHONY : sources/LeapListener.cpp.s
 
+sources/graphicalModel.o: sources/graphicalModel.cxx.o
+.PHONY : sources/graphicalModel.o
+
+# target to build an object file
+sources/graphicalModel.cxx.o:
+	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/sources/graphicalModel.cxx.o
+.PHONY : sources/graphicalModel.cxx.o
+
+sources/graphicalModel.i: sources/graphicalModel.cxx.i
+.PHONY : sources/graphicalModel.i
+
+# target to preprocess a source file
+sources/graphicalModel.cxx.i:
+	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/sources/graphicalModel.cxx.i
+.PHONY : sources/graphicalModel.cxx.i
+
+sources/graphicalModel.s: sources/graphicalModel.cxx.s
+.PHONY : sources/graphicalModel.s
+
+# target to generate assembly for a file
+sources/graphicalModel.cxx.s:
+	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/sources/graphicalModel.cxx.s
+.PHONY : sources/graphicalModel.cxx.s
+
 sources/mainWindowController.o: sources/mainWindowController.cxx.o
 .PHONY : sources/mainWindowController.o
 
@@ -257,6 +281,30 @@ sources/mainWindowController.s: sources/mainWindowController.cxx.s
 sources/mainWindowController.cxx.s:
 	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/sources/mainWindowController.cxx.s
 .PHONY : sources/mainWindowController.cxx.s
+
+sources/robotModel.o: sources/robotModel.cxx.o
+.PHONY : sources/robotModel.o
+
+# target to build an object file
+sources/robotModel.cxx.o:
+	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/sources/robotModel.cxx.o
+.PHONY : sources/robotModel.cxx.o
+
+sources/robotModel.i: sources/robotModel.cxx.i
+.PHONY : sources/robotModel.i
+
+# target to preprocess a source file
+sources/robotModel.cxx.i:
+	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/sources/robotModel.cxx.i
+.PHONY : sources/robotModel.cxx.i
+
+sources/robotModel.s: sources/robotModel.cxx.s
+.PHONY : sources/robotModel.s
+
+# target to generate assembly for a file
+sources/robotModel.cxx.s:
+	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/sources/robotModel.cxx.s
+.PHONY : sources/robotModel.cxx.s
 
 # Help Target
 help:
@@ -282,9 +330,15 @@ help:
 	@echo "... sources/LeapListener.o"
 	@echo "... sources/LeapListener.i"
 	@echo "... sources/LeapListener.s"
+	@echo "... sources/graphicalModel.o"
+	@echo "... sources/graphicalModel.i"
+	@echo "... sources/graphicalModel.s"
 	@echo "... sources/mainWindowController.o"
 	@echo "... sources/mainWindowController.i"
 	@echo "... sources/mainWindowController.s"
+	@echo "... sources/robotModel.o"
+	@echo "... sources/robotModel.i"
+	@echo "... sources/robotModel.s"
 .PHONY : help
 
 

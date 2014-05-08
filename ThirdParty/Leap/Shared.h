@@ -1,13 +1,12 @@
 #ifndef SHARED_H_
 #define SHARED_H_
 #include <cstring>
-//struct Configuration {};
 
 #include "Leap.h"
 
 #define TIP_SPHERE_SIZE 0.5//cm
 
-namespace Shared {
+namespace MathCommon {
 struct FINGERINFO {
     Leap::Vector tipPos;
     Leap::Vector tipDir;

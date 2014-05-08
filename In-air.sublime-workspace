@@ -539,7 +539,7 @@
 			"file": "includes/robotModel.h",
 			"settings":
 			{
-				"buffer_size": 5495,
+				"buffer_size": 5469,
 				"line_ending": "Unix",
 				"name": "#ifndef ROBOTMODEL_H_"
 			}
@@ -556,7 +556,7 @@
 			"file": "sources/mainWindowController.cxx",
 			"settings":
 			{
-				"buffer_size": 22383,
+				"buffer_size": 24608,
 				"line_ending": "Unix"
 			}
 		},
@@ -564,7 +564,7 @@
 			"file": "main.cxx",
 			"settings":
 			{
-				"buffer_size": 399,
+				"buffer_size": 397,
 				"line_ending": "Unix"
 			}
 		},
@@ -572,7 +572,7 @@
 			"file": "includes/mainWindowController.h",
 			"settings":
 			{
-				"buffer_size": 8423,
+				"buffer_size": 7104,
 				"line_ending": "Unix"
 			}
 		},
@@ -840,7 +840,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			""
@@ -851,6 +851,25 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"topViewRenderer",
+			"topViewWindow",
+			"sideViewRenderer",
+			"setupRenderAndWindow",
+			"delete",
+			"delete\\",
+			"new",
+			"initConfigFile",
+			"conf_xml",
+			"new",
+			"New",
+			"new",
+			"matH",
+			"this->",
+			"dhEdited",
+			"keystoneSpinBoxCommon",
+			"createOne",
+			"keystone",
+			"keystoneSpinBoxCommon",
 			"todo",
 			"createone",
 			"addactortos",
@@ -959,26 +978,7 @@
 			"SETUSERTRANSFORM",
 			"SETUSERTRANFORM",
 			"vtkMatrix",
-			"getDHparameters",
-			"setup",
-			"set",
-			"setup",
-			"calcKeystones",
-			"getDHparameters",
-			" <<",
-			"getDHparameters",
-			"2",
-			"1",
-			"getModelActor()",
-			"calcKeystones",
-			"parameter",
-			" )",
-			"HEADERS",
-			"QT4_WRAP_CPP",
-			"robot",
-			"leap",
-			"remove",
-			"on_r"
+			"getDHparameters"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1022,7 +1022,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 254.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1058,15 +1058,15 @@
 					"file": "includes/robotModel.h",
 					"settings":
 					{
-						"buffer_size": 5495,
+						"buffer_size": 5469,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3108,
-								3108
+								1558,
+								1558
 							]
 						],
 						"settings":
@@ -1077,7 +1077,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 954.0,
+						"translation.y": 1624.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1119,23 +1119,24 @@
 					"file": "sources/mainWindowController.cxx",
 					"settings":
 					{
-						"buffer_size": 22383,
+						"buffer_size": 24608,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								22111,
-								22111
+								7430,
+								7430
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.tmLanguage"
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 10086.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1145,15 +1146,15 @@
 					"file": "main.cxx",
 					"settings":
 					{
-						"buffer_size": 399,
+						"buffer_size": 397,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								259,
-								259
+								395,
+								395
 							]
 						],
 						"settings":
@@ -1171,15 +1172,15 @@
 					"file": "includes/mainWindowController.h",
 					"settings":
 					{
-						"buffer_size": 8423,
+						"buffer_size": 7104,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4900,
-								4900
+								4602,
+								4602
 							]
 						],
 						"settings":
@@ -1187,8 +1188,8 @@
 							"syntax": "Packages/C++/C++.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 2.0,
-						"translation.y": 2132.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1196,7 +1197,7 @@
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -1274,7 +1275,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 527.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1301,7 +1302,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1335,7 +1336,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 7.0,
-						"translation.y": 2220.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1352,8 +1353,8 @@
 						"selection":
 						[
 							[
-								1581,
-								1581
+								1148,
+								1148
 							]
 						],
 						"settings":
@@ -1363,7 +1364,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 708.0,
+						"translation.y": 623.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

@@ -1,7 +1,6 @@
 #include <QtGui>
 #include "LeapInteractor.h"
 
-
 void LeapInteractor::on_leapActivateButton_clicked()
 {
 	switchListener();
