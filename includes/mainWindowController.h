@@ -95,6 +95,48 @@ private slots:
 	void on_x4SpinBox_valueChanged(double d) { X4 = d; keystoneSpinboxEditedCommonProcess();}
 	void on_y4SpinBox_valueChanged(double d) { Y4 = d; keystoneSpinboxEditedCommonProcess();}
 
+	void on_xPlusButton_clicked() 
+	{
+		Eigen::VectorXf goal(6);
+		goal << 10.0, 0.0, 0.0, 0.0, 0.0, 0.0;
+		robot->calcInverseKinematics(goal);
+	}
+
+	void on_xMinusButton_clicked() 
+	{
+		Eigen::VectorXf goal(6);
+		goal << -10.0, 0.0, 0.0, 0.0, 0.0, 0.0;
+		robot->calcInverseKinematics(goal);
+	}
+
+	void on_yPlusButton_clicked() 
+	{
+		Eigen::VectorXf goal(6);
+		goal << 0.0, 10.0, 0.0, 0.0, 0.0, 0.0;
+		robot->calcInverseKinematics(goal);
+	}
+
+	void on_yMinusButton_clicked() 
+	{
+		Eigen::VectorXf goal(6);
+		goal << 0.0, -10.0, 0.0, 0.0, 0.0, 0.0;
+		robot->calcInverseKinematics(goal);
+	}
+
+	void on_zPlusButton_clicked() 
+	{
+		Eigen::VectorXf goal(6);
+		goal << 0.0, 0.0, 10.0, 0.0, 0.0, 0.0;
+		robot->calcInverseKinematics(goal);
+	}
+
+	void on_zMinusButton_clicked() 
+	{
+		Eigen::VectorXf goal(6);
+		goal << 0.0, 0.0, -10.0, 0.0, 0.0, 0.0;
+		robot->calcInverseKinematics(goal);
+	}
+
 private://methods
 	void setupRendererAndWindow();
 	void attachRendererToWindow(vtkSmartPointer<vtkRenderer> ren, vtkSmartPointer<vtkRenderWindow> win, QVTKWidget* widget);
@@ -160,6 +202,7 @@ private://members
     std::chrono::high_resolution_clock::time_point lastTime;
 
 protected: //methods and members
+
 #ifdef _APPLE_
 	Ptr<DeviceManager>  pManager;
 	Ptr<HMDDevice>      pHMD;

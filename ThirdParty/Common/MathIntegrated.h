@@ -31,6 +31,22 @@ static void convertMatrixFromTo(vtkSmartPointer<vtkMatrix4x4> from, Eigen::Matri
     } 
 }
 
+static Eigen::Vector3f extractZBase(const Eigen::MatrixXf& mat)
+{
+    if (mat.cols() < 3 || mat.rows() < 3) return Eigen::Vector3f::Zero();
+    Eigen::Vector3f zBase;
+    zBase << mat(0, 2), mat(1, 2), mat(2, 2);
+    return zBase;
+}
+
+static Eigen::Vector3f extractPBase(const Eigen::MatrixXf& mat)
+{
+    if (mat.cols() < 4 || mat.rows() < 4) return Eigen::Vector3f::Zero();
+    Eigen::Vector3f pBase;
+    pBase << mat(0, 3), mat(1, 3), mat(2, 3);
+    return pBase;
+}
+
 static void convertMatrixFromTo(Leap::Matrix& from, vtkSmartPointer<vtkMatrix4x4> to)
 {
     return;
@@ -49,6 +65,7 @@ static float radToDegree(float rad)
 {
     return rad * 180.0 / M_PI;
 }
+
 
 }
 #endif

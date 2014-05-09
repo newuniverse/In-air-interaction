@@ -15,9 +15,11 @@ public://methods
     std::vector<GraphicalModel* > getModel();
     vtkSmartPointer<vtkTransform> getEndEffectorTransform();
     vtkSmartPointer<vtkMatrix4x4> getEndEffectorMatrix();
-    void calcInverseKinematics(Eigen::VectorXf goal);
+    void calcInverseKinematics(const Eigen::VectorXf& goal);
 private://methods
 	Eigen::Matrix4f calcHomoTransMatrix(float d, float a, float alpha, float theta);
+    Eigen::Matrix3f calcRotTransMatrix(float d, float a, float alpha, float theta);
+    Eigen::MatrixXf calcJacobian();
 
 public://members
 	
@@ -29,8 +31,8 @@ private://members
 	GraphicalModel** _links;
     GraphicalModel*  _end_Effector;
     float** _dh_parameters;
+    Eigen::VectorXf _current;
 
-    
 protected: 
 
 };

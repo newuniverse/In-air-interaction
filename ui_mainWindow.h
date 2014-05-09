@@ -196,6 +196,12 @@ public:
     QVTKWidget *vtkChart2;
     QLabel *label_7;
     QLabel *label_38;
+    QPushButton *zPlusButton;
+    QPushButton *xMinusButton;
+    QPushButton *zMinusButton;
+    QPushButton *xPlusButton;
+    QPushButton *yPlusButton;
+    QPushButton *yMinusButton;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuEdit;
@@ -606,7 +612,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(-50, 0, 375, 486));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 375, 486));
         verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents_2);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         horizontalLayout_3 = new QHBoxLayout();
@@ -973,26 +979,29 @@ public:
         verticalLayout_17->addWidget(scrollArea_4);
 
         toolBox->addItem(setting4, QString::fromUtf8("Resoning Setting"));
+        zPlusButton = new QPushButton(centralwidget);
+        zPlusButton->setObjectName(QString::fromUtf8("zPlusButton"));
+        zPlusButton->setGeometry(QRect(1230, 510, 110, 32));
+        xMinusButton = new QPushButton(centralwidget);
+        xMinusButton->setObjectName(QString::fromUtf8("xMinusButton"));
+        xMinusButton->setGeometry(QRect(1140, 590, 110, 32));
+        zMinusButton = new QPushButton(centralwidget);
+        zMinusButton->setObjectName(QString::fromUtf8("zMinusButton"));
+        zMinusButton->setGeometry(QRect(1230, 670, 110, 32));
+        xPlusButton = new QPushButton(centralwidget);
+        xPlusButton->setObjectName(QString::fromUtf8("xPlusButton"));
+        xPlusButton->setGeometry(QRect(1320, 590, 110, 32));
+        yPlusButton = new QPushButton(centralwidget);
+        yPlusButton->setObjectName(QString::fromUtf8("yPlusButton"));
+        yPlusButton->setGeometry(QRect(1310, 540, 110, 32));
+        yMinusButton = new QPushButton(centralwidget);
+        yMinusButton->setObjectName(QString::fromUtf8("yMinusButton"));
+        yMinusButton->setGeometry(QRect(1160, 630, 110, 32));
         MainWindow->setCentralWidget(centralwidget);
-        toolBox->raise();
-        qvtkWidget_top->raise();
+        qvtkWidget->raise();
         toolBox->raise();
         qvtkWidget_endoscope->raise();
         label_26->raise();
-        tw->raise();
-        by->raise();
-        bw->raise();
-        nz->raise();
-        bx->raise();
-        nx->raise();
-        tx->raise();
-        ny->raise();
-        nw->raise();
-        ty->raise();
-        bz->raise();
-        tz->raise();
-        nx->raise();
-        bx->raise();
         pw->raise();
         by->raise();
         bw->raise();
@@ -1010,6 +1019,12 @@ public:
         bz->raise();
         tz->raise();
         label_25->raise();
+        zPlusButton->raise();
+        xMinusButton->raise();
+        zMinusButton->raise();
+        xPlusButton->raise();
+        yPlusButton->raise();
+        yMinusButton->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 1433, 22));
@@ -1039,7 +1054,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        toolBox->setCurrentIndex(2);
+        toolBox->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -1126,6 +1141,12 @@ public:
         label_7->setText(QApplication::translate("MainWindow", "Chart 1:", 0, QApplication::UnicodeUTF8));
         label_38->setText(QApplication::translate("MainWindow", "Chart 2:", 0, QApplication::UnicodeUTF8));
         toolBox->setItemText(toolBox->indexOf(setting4), QApplication::translate("MainWindow", "Resoning Setting", 0, QApplication::UnicodeUTF8));
+        zPlusButton->setText(QApplication::translate("MainWindow", "Up", 0, QApplication::UnicodeUTF8));
+        xMinusButton->setText(QApplication::translate("MainWindow", "Left", 0, QApplication::UnicodeUTF8));
+        zMinusButton->setText(QApplication::translate("MainWindow", "Down", 0, QApplication::UnicodeUTF8));
+        xPlusButton->setText(QApplication::translate("MainWindow", "Right", 0, QApplication::UnicodeUTF8));
+        yPlusButton->setText(QApplication::translate("MainWindow", "Forward", 0, QApplication::UnicodeUTF8));
+        yMinusButton->setText(QApplication::translate("MainWindow", "Backward", 0, QApplication::UnicodeUTF8));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0, QApplication::UnicodeUTF8));
         menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", 0, QApplication::UnicodeUTF8));
     } // retranslateUi

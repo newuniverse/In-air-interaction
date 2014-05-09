@@ -718,3 +718,6 @@ void MainWindowController::createSubWindow(int width, int height, int index = 0)
 	renderer->SetActiveCamera(camera);
 	//std::cout << "window " << index <<": diplayid = " << renWindow->GetGenericDisplayId() << std::endl;
 }
+
+
+

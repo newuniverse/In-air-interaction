@@ -22,7 +22,7 @@ static const uint qt_meta_data_MainWindowController[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      42,   14, // methods
+      48,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -72,6 +72,12 @@ static const uint qt_meta_data_MainWindowController[] = {
     1152, 1014,   53,   53, 0x08,
     1186, 1014,   53,   53, 0x08,
     1220, 1014,   53,   53, 0x08,
+    1254,   53,   53,   53, 0x08,
+    1279,   53,   53,   53, 0x08,
+    1305,   53,   53,   53, 0x08,
+    1330,   53,   53,   53, 0x08,
+    1356,   53,   53,   53, 0x08,
+    1381,   53,   53,   53, 0x08,
 
        0        // eod
 };
@@ -120,6 +126,12 @@ static const char qt_meta_stringdata_MainWindowController[] = {
     "on_y3SpinBox_valueChanged(double)\0"
     "on_x4SpinBox_valueChanged(double)\0"
     "on_y4SpinBox_valueChanged(double)\0"
+    "on_xPlusButton_clicked()\0"
+    "on_xMinusButton_clicked()\0"
+    "on_yPlusButton_clicked()\0"
+    "on_yMinusButton_clicked()\0"
+    "on_zPlusButton_clicked()\0"
+    "on_zMinusButton_clicked()\0"
 };
 
 void MainWindowController::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -170,6 +182,12 @@ void MainWindowController::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
         case 39: _t->on_y3SpinBox_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
         case 40: _t->on_x4SpinBox_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
         case 41: _t->on_y4SpinBox_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 42: _t->on_xPlusButton_clicked(); break;
+        case 43: _t->on_xMinusButton_clicked(); break;
+        case 44: _t->on_yPlusButton_clicked(); break;
+        case 45: _t->on_yMinusButton_clicked(); break;
+        case 46: _t->on_zPlusButton_clicked(); break;
+        case 47: _t->on_zMinusButton_clicked(); break;
         default: ;
         }
     }
@@ -207,9 +225,9 @@ int MainWindowController::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 42)
+        if (_id < 48)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 42;
+        _id -= 48;
     }
     return _id;
 }

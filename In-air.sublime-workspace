@@ -4,16 +4,28 @@
 		"selected_items":
 		[
 			[
+				"NUM",
+				"NUM_JOINTS-1"
+			],
+			[
+				"_end",
+				"_end_Effector"
+			],
+			[
+				"Mat",
+				"MathIntegrated"
+			],
+			[
+				"RO",
+				"RobotModel"
+			],
+			[
 				"endo",
 				"endoscopeViewRenderer"
 			],
 			[
 				"Set",
 				"SetPosition"
-			],
-			[
-				"_end",
-				"_endEffectorMatrix"
 			],
 			[
 				"_e",
@@ -502,18 +514,6 @@
 			[
 				"tar",
 				"target_arr"
-			],
-			[
-				"imp",
-				"implode"
-			],
-			[
-				"cond",
-				"conditions"
-			],
-			[
-				"tem",
-				"template"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "sources/LeapInteractor.cxx",
 			"settings":
 			{
-				"buffer_size": 1140,
+				"buffer_size": 1139,
 				"line_ending": "Unix"
 			}
 		},
@@ -539,7 +539,7 @@
 			"file": "includes/robotModel.h",
 			"settings":
 			{
-				"buffer_size": 5469,
+				"buffer_size": 921,
 				"line_ending": "Unix",
 				"name": "#ifndef ROBOTMODEL_H_"
 			}
@@ -548,7 +548,15 @@
 			"file": "CmakeLists.txt",
 			"settings":
 			{
-				"buffer_size": 1624,
+				"buffer_size": 1662,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sources/robotModel.cxx",
+			"settings":
+			{
+				"buffer_size": 5776,
 				"line_ending": "Unix"
 			}
 		},
@@ -556,7 +564,7 @@
 			"file": "sources/mainWindowController.cxx",
 			"settings":
 			{
-				"buffer_size": 24608,
+				"buffer_size": 24707,
 				"line_ending": "Unix"
 			}
 		},
@@ -569,26 +577,10 @@
 			}
 		},
 		{
-			"file": "includes/mainWindowController.h",
-			"settings":
-			{
-				"buffer_size": 7104,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "sources/graphicalModel.cxx",
 			"settings":
 			{
 				"buffer_size": 338,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "includes/graphicalModel.h",
-			"settings":
-			{
-				"buffer_size": 1935,
 				"line_ending": "Unix"
 			}
 		},
@@ -605,6 +597,22 @@
 			"settings":
 			{
 				"buffer_size": 712,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "includes/mainWindowController.h",
+			"settings":
+			{
+				"buffer_size": 7104,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "includes/graphicalModel.h",
+			"settings":
+			{
+				"buffer_size": 1935,
 				"line_ending": "Unix"
 			}
 		},
@@ -840,7 +848,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 			""
@@ -851,6 +859,29 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"dhParameterEditedCommonProcess",
+			"setup(",
+			"DHs",
+			"calcHomoTransMatrix",
+			"DHs",
+			"NUM_JOINTS",
+			"ACTUATOR_SIZE",
+			"_endEffectorMatrix",
+			"_endEffectorTransform",
+			"PI",
+			"axis_eef",
+			"homogenerousTransformMatrix",
+			"shared",
+			"links",
+			" joints",
+			"joints",
+			"joints[",
+			"joints",
+			"dhParameterEditedCommonProcess",
+			"getDHparameters",
+			"dhParameterEditedCommonProcess",
+			"robot->setup",
+			"setup",
 			"topViewRenderer",
 			"topViewWindow",
 			"sideViewRenderer",
@@ -955,30 +986,7 @@
 			"resetcamera",
 			"createBresenhamLine",
 			"leapmodel",
-			"leapDeviceModel",
-			"graphicalmodel",
-			"g_lmListener",
-			"leapmodels",
-			"->value()",
-			"->value*(",
-			"spinb",
-			"getDHparameters",
-			"getdh",
-			"getDHparameters",
-			"dhEdited",
-			"spinbox",
-			"axis",
-			"refreshAllWindows",
-			"RemoveActor",
-			"removeActor",
-			"RemoveActor",
-			"axes",
-			"getModel",
-			"setup",
-			"SETUSERTRANSFORM",
-			"SETUSERTRANFORM",
-			"vtkMatrix",
-			"getDHparameters"
+			"leapDeviceModel"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1004,15 +1012,15 @@
 					"file": "sources/LeapInteractor.cxx",
 					"settings":
 					{
-						"buffer_size": 1140,
+						"buffer_size": 1139,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								691,
+								691
 							]
 						],
 						"settings":
@@ -1021,7 +1029,7 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
+						"translation.x": 5.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -1039,8 +1047,8 @@
 						"selection":
 						[
 							[
-								314,
-								314
+								222,
+								222
 							]
 						],
 						"settings":
@@ -1058,15 +1066,15 @@
 					"file": "includes/robotModel.h",
 					"settings":
 					{
-						"buffer_size": 5469,
+						"buffer_size": 921,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1558,
-								1558
+								897,
+								897
 							]
 						],
 						"settings":
@@ -1077,7 +1085,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1624.0,
+						"translation.y": 96.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1087,15 +1095,15 @@
 					"file": "CmakeLists.txt",
 					"settings":
 					{
-						"buffer_size": 1624,
+						"buffer_size": 1662,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								750,
-								750
+								788,
+								788
 							]
 						],
 						"settings":
@@ -1103,7 +1111,7 @@
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 95.0,
+						"translation.y": 122.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1116,18 +1124,44 @@
 			[
 				{
 					"buffer": 4,
-					"file": "sources/mainWindowController.cxx",
+					"file": "sources/robotModel.cxx",
 					"settings":
 					{
-						"buffer_size": 24608,
+						"buffer_size": 5776,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7430,
-								7430
+								5719,
+								5719
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1926.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "sources/mainWindowController.cxx",
+					"settings":
+					{
+						"buffer_size": 24707,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								20278,
+								20278
 							]
 						],
 						"settings":
@@ -1136,13 +1170,13 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 8712.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "main.cxx",
 					"settings":
 					{
@@ -1166,38 +1200,11 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "includes/mainWindowController.h",
-					"settings":
-					{
-						"buffer_size": 7104,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4602,
-								4602
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1212,8 +1219,8 @@
 						"selection":
 						[
 							[
-								28,
-								28
+								338,
+								338
 							]
 						],
 						"settings":
@@ -1228,33 +1235,6 @@
 				},
 				{
 					"buffer": 8,
-					"file": "includes/graphicalModel.h",
-					"settings":
-					{
-						"buffer_size": 1935,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								454,
-								454
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 781.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
 					"file": "sources/LeapGestureTrainer.cpp",
 					"settings":
 					{
@@ -1281,7 +1261,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 9,
 					"file": "includes/LeapGestureTrainer.h",
 					"settings":
 					{
@@ -1292,8 +1272,8 @@
 						"selection":
 						[
 							[
-								124,
-								124
+								182,
+								182
 							]
 						],
 						"settings":
@@ -1302,7 +1282,34 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "includes/mainWindowController.h",
+					"settings":
+					{
+						"buffer_size": 7104,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5528,
+								5533
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1637.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1310,11 +1317,38 @@
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 11,
+					"file": "includes/graphicalModel.h",
+					"settings":
+					{
+						"buffer_size": 1935,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								879,
+								879
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
 					"file": "sources/LeapListener.cpp",
 					"settings":
 					{
@@ -1342,7 +1376,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 13,
 					"file": "includes/LeapListener.h",
 					"settings":
 					{
@@ -1353,8 +1387,8 @@
 						"selection":
 						[
 							[
-								1148,
-								1148
+								121,
+								121
 							]
 						],
 						"settings":
@@ -1364,7 +1398,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 623.0,
+						"translation.y": 2296.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
