@@ -11,6 +11,7 @@ public://methods
     ~RobotModel();
     void update();
     void updateDHs(float* DHS);
+    float* getThetas();
     void setup (float* DHs);
     std::vector<GraphicalModel* > getModel();
     vtkSmartPointer<vtkTransform> getEndEffectorTransform();
@@ -29,12 +30,11 @@ private://members
     vtkSmartPointer<vtkMatrix4x4> _endEffectorMatrix;
 	GraphicalModel** _joints;
 	GraphicalModel** _links;
-    GraphicalModel*  _end_Effector;
     float** _dh_parameters;
     Eigen::VectorXf _current;
-
+    float _lastDeltaPos;
 protected: 
-
+    
 };
 
 #endif

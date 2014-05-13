@@ -20,20 +20,24 @@ MainWindowController::MainWindowController(QWidget *parent)
 	this->setupRendererAndWindow();
 	this->setupCharts();
 
-  	dh_parameter = new float[24];
-	g_lmListener   = new LeapListener;
-	g_lmController = new Leap::Controller;
-	g_lmController->addListener(*g_lmListener); 
-
 	robot = new RobotModel();
+	controller = new LeapControllerModel();
+
+  	dh_parameter = new float[24];
+	listener = new LeapListener(*controller);
+	g_lmController = new Leap::Controller;
+	g_lmController->addListener(*listener); 
+
+	
 	X1 = 1; Y1 = 1; X2 = -1; Y2 = 1; X3 = -1; Y3 = -1; X4 = 1; Y4 = -1;
 }
 
 MainWindowController::~MainWindowController() 
 {
-	delete g_lmListener;
+	delete listener;
 	delete g_lmController;
 	delete robot;
+	delete controller;
 	delete conf_xml;
 	delete dh_parameter;
 }
@@ -75,6 +79,13 @@ void MainWindowController::setupRendererAndWindow()
 	endoscopeViewRenderer->SetActiveCamera(endoscopeViewCamera);
 	endoscopeViewWindow = vtkSmartPointer<vtkRenderWindow>::New();
   	attachRendererToWindow(endoscopeViewRenderer, endoscopeViewWindow, qvtkWidget_endoscope);
+	
+  	leapControllerViewRenderer = vtkSmartPointer<vtkRenderer>::New();
+  	leapControllerViewCamera = vtkSmartPointer<vtkCamera>::New();
+	leapControllerViewRenderer->SetActiveCamera(leapControllerViewCamera);
+	leapControllerViewWindow = vtkSmartPointer<vtkRenderWindow>::New();
+  	attachRendererToWindow(leapControllerViewRenderer, leapControllerViewWindow, qvtkWidget_leapController);
+
 	/*
 	topViewRenderer = vtkSmartPointer<vtkRenderer>::New();
 	topViewCamera = vtkSmartPointer<vtkCamera>::New();
@@ -171,55 +182,116 @@ void MainWindowController::on_setKeystoneButton_clicked()
 	subRenWindows.at(index)->Render();
 }
 
-void MainWindowController::removeActorFromScenes(vtkSmartPointer<vtkActor> actor) 
+void MainWindowController::removeActorFromScenes(vtkSmartPointer<vtkActor> actor, WINDOWNAME name) 
 {
-	mainRenderer->RemoveActor(actor);
-	endoscopeViewRenderer->RemoveActor(actor);
-	/*
-	topViewRenderer->RemoveActor(actor);
-	frontViewRenderer->RemoveActor(actor);
-	sideViewRenderer->RemoveActor(actor);
-		*/
-	for (int i = 0, n = subRenderers.size(); i < n; ++i)
-	{
-		subRenderers.at(i)->RemoveActor(actor);
+	switch (name) {
+		case MAIN_AND_ENDOSCOPE:
+			mainRenderer->RemoveActor(actor);
+			for (int i = 0, n = subRenderers.size(); i < n; ++i) {
+				subRenderers.at(i)->RemoveActor(actor);
+			}
+			endoscopeViewRenderer->RemoveActor(actor);
+			break;
+		case CONTROLLER:
+			leapControllerViewRenderer->RemoveActor(actor);
+			break;
+		case MAIN:
+			mainRenderer->RemoveActor(actor);
+			for (int i = 0, n = subRenderers.size(); i < n; ++i) {
+				subRenderers.at(i)->RemoveActor(actor);
+			}	
+			break;
+		case ENDOSCOPE:
+			endoscopeViewRenderer->RemoveActor(actor);
+			break;
+		default:
+			mainRenderer->RemoveActor(actor);
+			break;
 	}
 }
 
-void MainWindowController::removeActorFromScenes(vtkSmartPointer<vtkAxesActor> actor) 
+void MainWindowController::removeActorFromScenes(vtkSmartPointer<vtkAxesActor> actor, WINDOWNAME name) 
 {
-	mainRenderer->RemoveActor(actor);
-	endoscopeViewRenderer->RemoveActor(actor);
-	/*topViewRenderer->RemoveActor(actor);
-	frontViewRenderer->RemoveActor(actor);
-	sideViewRenderer->RemoveActor(actor);*/
-	for (int i = 0, n = subRenderers.size(); i < n; ++i) {
-		subRenderers.at(i)->RemoveActor(actor);
+	switch (name) {
+		case MAIN_AND_ENDOSCOPE:
+			mainRenderer->RemoveActor(actor);
+			for (int i = 0, n = subRenderers.size(); i < n; ++i) {
+				subRenderers.at(i)->RemoveActor(actor);
+			}
+			endoscopeViewRenderer->RemoveActor(actor);
+			break;
+		case CONTROLLER:
+			leapControllerViewRenderer->RemoveActor(actor);
+			break;
+		case MAIN:
+			mainRenderer->RemoveActor(actor);
+			for (int i = 0, n = subRenderers.size(); i < n; ++i) {
+				subRenderers.at(i)->RemoveActor(actor);
+			}	
+			break;
+		case ENDOSCOPE:
+			endoscopeViewRenderer->RemoveActor(actor);
+			break;
+		default:
+			mainRenderer->RemoveActor(actor);
+			break;
 	}
 }
 
 
-void MainWindowController::addActorToScenes(vtkSmartPointer<vtkActor> actor) 
+void MainWindowController::addActorToScenes(vtkSmartPointer<vtkActor> actor, WINDOWNAME name) 
 {
-	mainRenderer->AddActor(actor);
-	endoscopeViewRenderer->AddActor(actor);
-	/*topViewRenderer->AddActor(actor);
-	frontViewRenderer->AddActor(actor);
-	sideViewRenderer->AddActor(actor);*/
-	for (int i = 0, n = subRenderers.size(); i < n; ++i) {
-		subRenderers.at(i)->AddActor(actor);
+	switch (name) {
+		case MAIN_AND_ENDOSCOPE:
+			mainRenderer->AddActor(actor);
+			for (int i = 0, n = subRenderers.size(); i < n; ++i) {
+				subRenderers.at(i)->AddActor(actor);
+			}
+			endoscopeViewRenderer->AddActor(actor);
+			break;
+		case CONTROLLER:
+			leapControllerViewRenderer->AddActor(actor);
+			break;
+		case MAIN:
+			mainRenderer->AddActor(actor);
+			for (int i = 0, n = subRenderers.size(); i < n; ++i) {
+				subRenderers.at(i)->AddActor(actor);
+			}	
+			break;
+		case ENDOSCOPE:
+			endoscopeViewRenderer->AddActor(actor);
+			break;
+		default:
+			mainRenderer->AddActor(actor);
+			break;
 	}
 }
 
-void MainWindowController::addActorToScenes(vtkSmartPointer<vtkAxesActor> actor) 
+void MainWindowController::addActorToScenes(vtkSmartPointer<vtkAxesActor> actor, WINDOWNAME name) 
 {
-	mainRenderer->AddActor(actor);
-	endoscopeViewRenderer->AddActor(actor);
-	/*topViewRenderer->AddActor(actor);
-	frontViewRenderer->AddActor(actor);
-	sideViewRenderer->AddActor(actor);*/
-	for (int i = 0, n = subRenderers.size(); i < n; ++i) {
-		subRenderers.at(i)->AddActor(actor);
+	switch (name) {
+		case MAIN_AND_ENDOSCOPE:
+			mainRenderer->AddActor(actor);
+			for (int i = 0, n = subRenderers.size(); i < n; ++i) {
+				subRenderers.at(i)->AddActor(actor);
+			}
+			endoscopeViewRenderer->AddActor(actor);
+			break;
+		case CONTROLLER:
+			leapControllerViewRenderer->AddActor(actor);
+			break;
+		case MAIN:
+			mainRenderer->AddActor(actor);
+			for (int i = 0, n = subRenderers.size(); i < n; ++i) {
+				subRenderers.at(i)->AddActor(actor);
+			}	
+			break;
+		case ENDOSCOPE:
+			endoscopeViewRenderer->AddActor(actor);
+			break;
+		default:
+			mainRenderer->AddActor(actor);
+			break;
 	}
 }
 
@@ -228,9 +300,7 @@ void MainWindowController::removeAllActorsFromScene()
 	for (int j = 0, m = allActors.size(); j < m; ++j) {
 		mainRenderer->RemoveActor(allActors.at(j));
 		endoscopeViewRenderer->RemoveActor(allActors.at(j));
-		/*topViewRenderer->RemoveActor(allActors.at(j));
-		frontViewRenderer->RemoveActor(allActors.at(j));
-		sideViewRenderer->RemoveActor(allActors.at(j));*/
+		
 		for (int i = 0, n = subRenderers.size(); i < n; ++i) {
 			subRenderers.at(i)->RemoveActor(allActors.at(j));
 		}
@@ -243,15 +313,11 @@ void MainWindowController::refreshAllWindows(bool resetCamera) {
 	if (resetCamera) {
 		mainRenderer->ResetCamera();
 		endoscopeViewRenderer->ResetCamera();
-		/*topViewRenderer->ResetCamera();
-		frontViewRenderer->ResetCamera();
-		sideViewRenderer->ResetCamera();*/
+		leapControllerViewRenderer->ResetCamera();
 	}
 	mainWindow->Render();
 	endoscopeViewWindow->Render();
-	/*topViewWindow->Render();
-	frontViewWindow->Render();
-	sideViewWindow->Render();*/
+	leapControllerViewWindow->Render();
 	
 	for (int i = 0, n = subRenderers.size(); i < n; ++i) {
 		//subRenderers.at(i)->GetActiveCamera()->SetViewShear(0, 0, 0);
@@ -263,47 +329,47 @@ void MainWindowController::refreshAllWindows(bool resetCamera) {
 
 void MainWindowController::addAllLeapModels() 
 {
-	HandModel* rightHand = g_lmListener->getRightHand();
-	HandModel* leftHand  = g_lmListener->getLeftHand();
+	HandModel* rightHand = listener->getRightHand();
+	HandModel* leftHand  = listener->getLeftHand();
 
-	this->addActorToScenes(leftHand->getPalmModel()->getModelActor());
+	this->addActorToScenes(leftHand->getPalmModel()->getModelActor(), CONTROLLER);
 	for (int i = 0, n = leftHand->getTipsModel().size(); i < n; ++i)
 	{
-		this->addActorToScenes(leftHand->getTipsModel().at(i)->getModelActor());
+		this->addActorToScenes(leftHand->getTipsModel().at(i)->getModelActor(), CONTROLLER);
 	}
-	this->addActorToScenes(rightHand->getPalmModel()->getModelActor());
+	this->addActorToScenes(rightHand->getPalmModel()->getModelActor(), CONTROLLER);
 
 	for (int i = 0, n = rightHand->getTipsModel().size(); i < n; ++i)
 	{
-		this->addActorToScenes(rightHand->getTipsModel().at(i)->getModelActor());
+		this->addActorToScenes(rightHand->getTipsModel().at(i)->getModelActor(), CONTROLLER);
 	}
-	this->addActorToScenes(g_lmListener->getLeapDeviceModel()->getModelActor());
-	this->addActorToScenes(g_lmListener->getLeapDeviceModel()->getAxesActor());
-	this->addActorToScenes(g_lmListener->getKeystoneFrameModel()->getModelActor());
+	this->addActorToScenes(listener->getLeapDeviceModel()->getModelActor(), CONTROLLER);
+	this->addActorToScenes(listener->getLeapDeviceModel()->getAxesActor(), CONTROLLER);
+	this->addActorToScenes(listener->getKeystoneFrameModel()->getModelActor(), CONTROLLER);
 
 }
 
 void MainWindowController::removeAllLeapModels() 
 {
-	HandModel* rightHand = g_lmListener->getRightHand();
-	HandModel* leftHand  = g_lmListener->getLeftHand();
+	HandModel* rightHand = listener->getRightHand();
+	HandModel* leftHand  = listener->getLeftHand();
 
-	this->removeActorFromScenes(leftHand->getPalmModel()->getModelActor());
+	this->removeActorFromScenes(leftHand->getPalmModel()->getModelActor(), CONTROLLER);
 
 	for (int i = 0, n = leftHand->getTipsModel().size(); i < n; ++i)
 	{
-		this->removeActorFromScenes(leftHand->getTipsModel().at(i)->getModelActor());
+		this->removeActorFromScenes(leftHand->getTipsModel().at(i)->getModelActor(), CONTROLLER);
 	}
 
-	this->removeActorFromScenes(rightHand->getPalmModel()->getModelActor());
+	this->removeActorFromScenes(rightHand->getPalmModel()->getModelActor(), CONTROLLER);
 
 	for (int i = 0, n = rightHand->getTipsModel().size(); i < n; ++i)
 	{
-		this->removeActorFromScenes(rightHand->getTipsModel().at(i)->getModelActor());
+		this->removeActorFromScenes(rightHand->getTipsModel().at(i)->getModelActor(), CONTROLLER);
 	}
-	this->removeActorFromScenes(g_lmListener->getLeapDeviceModel()->getModelActor());
-	this->removeActorFromScenes(g_lmListener->getLeapDeviceModel()->getAxesActor());
-	this->removeActorFromScenes(g_lmListener->getKeystoneFrameModel()->getModelActor());
+	this->removeActorFromScenes(listener->getLeapDeviceModel()->getModelActor(), CONTROLLER);
+	this->removeActorFromScenes(listener->getLeapDeviceModel()->getAxesActor(), CONTROLLER);
+	this->removeActorFromScenes(listener->getKeystoneFrameModel()->getModelActor(), CONTROLLER);
 }
 
 float* MainWindowController::getDHparameters() 
@@ -573,7 +639,7 @@ void MainWindowController::on_actionOpen_File_triggered()
 		}
 		allActors.push_back(model->getModelActor());
 		statusbar->showMessage(filename);
-		this->addActorToScenes(model->getModelActor());
+		this->addActorToScenes(model->getModelActor(), MAIN_AND_ENDOSCOPE);
 		this->refreshAllWindows(true);
 	}
 }
@@ -588,8 +654,8 @@ void MainWindowController::on_robotActivateButton_clicked()
 		
 		for (int i = 0, l = robot->getModel().size(); i < l; ++i)
 		{
-			this->addActorToScenes(robot->getModel().at(i)->getModelActor()); 
-			this->addActorToScenes(robot->getModel().at(i)->getAxesActor()); 
+			this->addActorToScenes(robot->getModel().at(i)->getModelActor(), MAIN_AND_ENDOSCOPE); 
+			this->addActorToScenes(robot->getModel().at(i)->getAxesActor(), MAIN); 
 		} 
 		this->dhParameterEditedCommonProcess();
 
@@ -601,12 +667,12 @@ void MainWindowController::on_robotActivateButton_clicked()
 		robotActivateButton->setCheckable(false);
 
 		for (int i = 0, l = robot->getModel().size(); i < l; ++i) {
-			this->removeActorFromScenes(robot->getModel().at(i)->getModelActor());
+			this->removeActorFromScenes(robot->getModel().at(i)->getModelActor(), MAIN_AND_ENDOSCOPE);
+			this->removeActorFromScenes(robot->getModel().at(i)->getAxesActor(), MAIN);
 		}
 		this->refreshAllWindows(false);
 	}
 }
-
 
 /*
 	activate Leap Motion when button is pressed
@@ -614,19 +680,26 @@ void MainWindowController::on_robotActivateButton_clicked()
 void MainWindowController::on_leapActivateButton_clicked()
 {
 	//enable or disable leap
-	g_lmListener->switchListener();
+	listener->switchListener();
 	
-	if (g_lmListener->getStatus() == 1) { //running
+	if (listener->getStatus() == LeapListener::RUNNING) { //running
 		//leap reaction 
 		this->addAllLeapModels();
 		//qt reaction
 		leapActivateButton->setText(QString("Disable Leap Motion"));
-		statusbar->showMessage(QString("FPS: ") + QString::number(g_lmListener->getFPS()));
+		statusbar->showMessage(QString("FPS: ") + QString::number(listener->getFPS()));
 		//vtk reaction
-		mainWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
-		int timerId = mainWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
-		endoscopeViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
-		int timerIdEndoscope = endoscopeViewWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
+		leapControllerViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
+		int timerIdLeap = leapControllerViewWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
+
+		for (int i = 0, l = controller->getModel().size(); i < l; ++i) {
+			this->addActorToScenes(controller->getModel().at(i)->getModelActor(), CONTROLLER); 
+			this->addActorToScenes(controller->getModel().at(i)->getAxesActor(), CONTROLLER); 
+		} 
+		// mainWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
+		// int timerId = mainWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
+		// endoscopeViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
+		// int timerIdEndoscope = endoscopeViewWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
 		/*topViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
 		int timerIdTop = topViewWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
 		frontViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
@@ -640,10 +713,18 @@ void MainWindowController::on_leapActivateButton_clicked()
 		//qt reaction
 		leapActivateButton->setText(QString("Enable Leap Motion"));
 		//vtk reaction
-		mainWindow->GetInteractor()->RemoveObserver(g_vtkCallback);
+		leapControllerViewWindow->GetInteractor()->RemoveObserver(g_vtkCallback);
+		// mainWindow->GetInteractor()->RemoveObserver(g_vtkCallback);
+		for (int i = 0, l = controller->getModel().size(); i < l; ++i)
+		{
+			this->removeActorFromScenes(controller->getModel().at(i)->getModelActor(), CONTROLLER); 
+			this->removeActorFromScenes(controller->getModel().at(i)->getAxesActor(), CONTROLLER); 
+		} 
 		this->refreshAllWindows(false);
 	}
 }
+
+
 
 /*
 	Creating new windows is triggered when createWindowbutton is clicked
@@ -718,6 +799,7 @@ void MainWindowController::createSubWindow(int width, int height, int index = 0)
 	renderer->SetActiveCamera(camera);
 	//std::cout << "window " << index <<": diplayid = " << renWindow->GetGenericDisplayId() << std::endl;
 }
+
 
 
 

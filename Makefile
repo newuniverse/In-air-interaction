@@ -210,6 +210,30 @@ moc_ui_mainWindow.cxx.s:
 	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/moc_ui_mainWindow.cxx.s
 .PHONY : moc_ui_mainWindow.cxx.s
 
+sources/LeapControllerModel.o: sources/LeapControllerModel.cxx.o
+.PHONY : sources/LeapControllerModel.o
+
+# target to build an object file
+sources/LeapControllerModel.cxx.o:
+	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o
+.PHONY : sources/LeapControllerModel.cxx.o
+
+sources/LeapControllerModel.i: sources/LeapControllerModel.cxx.i
+.PHONY : sources/LeapControllerModel.i
+
+# target to preprocess a source file
+sources/LeapControllerModel.cxx.i:
+	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.i
+.PHONY : sources/LeapControllerModel.cxx.i
+
+sources/LeapControllerModel.s: sources/LeapControllerModel.cxx.s
+.PHONY : sources/LeapControllerModel.s
+
+# target to generate assembly for a file
+sources/LeapControllerModel.cxx.s:
+	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.s
+.PHONY : sources/LeapControllerModel.cxx.s
+
 sources/LeapListener.o: sources/LeapListener.cpp.o
 .PHONY : sources/LeapListener.o
 
@@ -327,6 +351,9 @@ help:
 	@echo "... moc_ui_mainWindow.o"
 	@echo "... moc_ui_mainWindow.i"
 	@echo "... moc_ui_mainWindow.s"
+	@echo "... sources/LeapControllerModel.o"
+	@echo "... sources/LeapControllerModel.i"
+	@echo "... sources/LeapControllerModel.s"
 	@echo "... sources/LeapListener.o"
 	@echo "... sources/LeapListener.i"
 	@echo "... sources/LeapListener.s"

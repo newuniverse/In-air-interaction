@@ -251,6 +251,29 @@ CMakeFiles/In-air.dir/sources/graphicalModel.cxx.o.provides: CMakeFiles/In-air.d
 
 CMakeFiles/In-air.dir/sources/graphicalModel.cxx.o.provides.build: CMakeFiles/In-air.dir/sources/graphicalModel.cxx.o
 
+CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o: CMakeFiles/In-air.dir/flags.make
+CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o: sources/LeapControllerModel.cxx
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/nEwUnivErsE/In-air-interaction/In-air/CMakeFiles $(CMAKE_PROGRESS_12)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o -c /Users/nEwUnivErsE/In-air-interaction/In-air/sources/LeapControllerModel.cxx
+
+CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/nEwUnivErsE/In-air-interaction/In-air/sources/LeapControllerModel.cxx > CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.i
+
+CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/nEwUnivErsE/In-air-interaction/In-air/sources/LeapControllerModel.cxx -o CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.s
+
+CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o.requires:
+.PHONY : CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o.requires
+
+CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o.provides: CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o.requires
+	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o.provides.build
+.PHONY : CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o.provides
+
+CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o.provides.build: CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o
+
 # Object files for target In-air
 In__air_OBJECTS = \
 "CMakeFiles/In-air.dir/main.cxx.o" \
@@ -260,7 +283,8 @@ In__air_OBJECTS = \
 "CMakeFiles/In-air.dir/sources/LeapListener.cpp.o" \
 "CMakeFiles/In-air.dir/ThirdParty/tinyxml2/tinyxml2.cpp.o" \
 "CMakeFiles/In-air.dir/sources/robotModel.cxx.o" \
-"CMakeFiles/In-air.dir/sources/graphicalModel.cxx.o"
+"CMakeFiles/In-air.dir/sources/graphicalModel.cxx.o" \
+"CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o"
 
 # External object files for target In-air
 In__air_EXTERNAL_OBJECTS =
@@ -273,6 +297,7 @@ In-air: CMakeFiles/In-air.dir/sources/LeapListener.cpp.o
 In-air: CMakeFiles/In-air.dir/ThirdParty/tinyxml2/tinyxml2.cpp.o
 In-air: CMakeFiles/In-air.dir/sources/robotModel.cxx.o
 In-air: CMakeFiles/In-air.dir/sources/graphicalModel.cxx.o
+In-air: CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o
 In-air: CMakeFiles/In-air.dir/build.make
 In-air: /opt/local/lib/libQtGui.dylib
 In-air: /opt/local/lib/libQtCore.dylib
@@ -486,6 +511,7 @@ CMakeFiles/In-air.dir/requires: CMakeFiles/In-air.dir/sources/LeapListener.cpp.o
 CMakeFiles/In-air.dir/requires: CMakeFiles/In-air.dir/ThirdParty/tinyxml2/tinyxml2.cpp.o.requires
 CMakeFiles/In-air.dir/requires: CMakeFiles/In-air.dir/sources/robotModel.cxx.o.requires
 CMakeFiles/In-air.dir/requires: CMakeFiles/In-air.dir/sources/graphicalModel.cxx.o.requires
+CMakeFiles/In-air.dir/requires: CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o.requires
 .PHONY : CMakeFiles/In-air.dir/requires
 
 CMakeFiles/In-air.dir/clean:

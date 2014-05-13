@@ -4,6 +4,7 @@
 #include "Leap/Leap.h"
 #include "graphicalModel.h"
 #include "Leap/Shared.h"
+#include "LeapControllerModel.h"
 
 #include <string>
 #include <chrono>
@@ -13,62 +14,12 @@
 #include <deque>
 
 using namespace Leap;
-
-class HandModel {
-public://functions
-    HandModel() {
-        vtkSmartPointer<vtkSphereSource> sphere = vtkSmartPointer<vtkSphereSource>::New();
-        sphere->SetRadius(TIP_SPHERE_SIZE);//0.5cm
-        
-        palm = new GraphicalModel(sphere);
-        tips.reserve(5);
-        for (int i = 0; i < 5; ++i)
-        {
-            GraphicalModel* tip = new GraphicalModel(sphere);
-            tips.push_back(tip);
-        }
-    }
-
-    void initTransforms() {
-        palm->getModelActor()->SetPosition(0.0, 0.0, 0.0);
-        for (int i = 0, n = tips.size(); i < n; ++i)
-        {
-            tips.at(i)->getModelActor()->SetPosition(0.0, 0.0, 0.0);
-        }
-    }
-
-    GraphicalModel* getPalmModel() {
-        return palm;
-    }
-
-    std::vector<GraphicalModel*> getTipsModel() {
-        return tips;
-    }
-
-private: //members
-    GraphicalModel* palm;
-    std::vector<GraphicalModel*> tips;
-};
+class HandModel;
 
 class LeapListener : public Listener 
 {
 public://method 
-    LeapListener() {
-        vtkSmartPointer<vtkCubeSource> cube = vtkSmartPointer<vtkCubeSource>::New();
-        cube->SetCenter(0, 0, 0);
-        cube->SetXLength(8);
-        cube->SetYLength(1);
-        cube->SetZLength(3);
-        leapDeviceModel = new GraphicalModel(cube);
-        leapDeviceModel->getAxesActor()->SetNormalizedShaftLength(8.0, 8.0, 8.0);
-        //leapDeviceModel->getModelActor()->RotateX(90.0);
-        vtkSmartPointer<vtkOutlineCornerSource> corner = vtkSmartPointer<vtkOutlineCornerSource>::New();
-        corner->SetBounds(-30.0, 30.0, -30.0, 30.0, -30.0, 30.0);
-        keystoneFrame = new GraphicalModel(corner);
-
-        leftHand = new HandModel;
-        rightHand = new HandModel;
-    }
+    LeapListener(LeapControllerModel& controller);
     virtual void         onInit(const Controller&);
     virtual void         onConnect(const Controller&);
     virtual void         onDisconnect(const Controller&);
@@ -149,7 +100,8 @@ public://arguments
     
 
     
-private://arguments
+private://members
+    LeapControllerModel& controllerModel;
     HandModel* leftHand;
     HandModel* rightHand;
     GraphicalModel* leapDeviceModel;
@@ -177,5 +129,39 @@ private://arguments
     float                          avg_numFingers;
 };
 
+class HandModel {
+public://functions
+    HandModel() {
+        vtkSmartPointer<vtkSphereSource> sphere = vtkSmartPointer<vtkSphereSource>::New();
+        sphere->SetRadius(TIP_SPHERE_SIZE);//0.5cm
+        
+        palm = new GraphicalModel(sphere);
+        tips.reserve(5);
+        for (int i = 0; i < 5; ++i)
+        {
+            GraphicalModel* tip = new GraphicalModel(sphere);
+            tips.push_back(tip);
+        }
+    }
 
+    void initTransforms() {
+        palm->getModelActor()->SetPosition(0.0, 0.0, 0.0);
+        for (int i = 0, n = tips.size(); i < n; ++i)
+        {
+            tips.at(i)->getModelActor()->SetPosition(0.0, 0.0, 0.0);
+        }
+    }
+
+    GraphicalModel* getPalmModel() {
+        return palm;
+    }
+
+    std::vector<GraphicalModel*> getTipsModel() {
+        return tips;
+    }
+
+private: //members
+    GraphicalModel* palm;
+    std::vector<GraphicalModel*> tips;
+};
 #endif

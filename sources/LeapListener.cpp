@@ -5,11 +5,31 @@
 #include <string>
 #include "Leap/Shared.h"
 
+
 using namespace Leap;
 
 std::deque<int>         LeapListener::handNum;
 std::deque<int>         LeapListener::fingerNum;
 #define HAND_AND_FINGER_MAX_NUM 12
+
+ LeapListener::LeapListener(LeapControllerModel& controller) : controllerModel(controller)
+ {
+    vtkSmartPointer<vtkCubeSource> cube = vtkSmartPointer<vtkCubeSource>::New();
+    cube->SetCenter(0, 0, 0);
+    cube->SetXLength(8);
+    cube->SetYLength(1);
+    cube->SetZLength(3);
+    leapDeviceModel = new GraphicalModel(cube);
+    leapDeviceModel->getAxesActor()->SetNormalizedShaftLength(8.0, 8.0, 8.0);
+    //leapDeviceModel->getModelActor()->RotateX(90.0);
+    vtkSmartPointer<vtkOutlineCornerSource> corner = vtkSmartPointer<vtkOutlineCornerSource>::New();
+    corner->SetBounds(-30.0, 30.0, -30.0, 30.0, -30.0, 30.0);
+    keystoneFrame = new GraphicalModel(corner);
+
+    leftHand = new HandModel;
+    rightHand = new HandModel;
+}
+
 
 Leap::Vector LeapListener::getTranslation() 
 {
@@ -190,12 +210,15 @@ void LeapListener::updateParameters(const Frame& frame)
 void LeapListener::updateHandModelProps(const Frame& frame) 
 {
     currentTime = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> time_span =  std::chrono::duration_cast< std::chrono::duration<double> > (currentTime - lastTime);
+    std::chrono::duration<double> time_span = std::chrono::duration_cast< std::chrono::duration<double> > (currentTime - lastTime);
     lastTime = currentTime; 
 
     if (time_span.count() < 1 / 60)
         return;
 
+    controllerModel.updateHandProps(frame.hands());
+
+    /*
     int handNum = frame.hands().count();
 
     leftHand->initTransforms();
@@ -235,7 +258,7 @@ void LeapListener::updateHandModelProps(const Frame& frame)
         Vector tipPos = finger.stabilizedTipPosition();
         rightHand->getTipsModel().at(counter)->getModelActor()->SetPosition(tipPos.x/10, tipPos.y/10, tipPos.z/10);
         counter++;
-    }      
+    }*/      
 }
 
 

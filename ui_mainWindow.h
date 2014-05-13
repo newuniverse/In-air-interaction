@@ -202,6 +202,8 @@ public:
     QPushButton *xPlusButton;
     QPushButton *yPlusButton;
     QPushButton *yMinusButton;
+    QVTKWidget *qvtkWidget_leapController;
+    QLabel *label_27;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuEdit;
@@ -211,7 +213,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1433, 818);
+        MainWindow->resize(1439, 827);
         MainWindow->setMinimumSize(QSize(1330, 800));
         actionNew = new QAction(MainWindow);
         actionNew->setObjectName(QString::fromUtf8("actionNew"));
@@ -229,61 +231,61 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         qvtkWidget_endoscope = new QVTKWidget(centralwidget);
         qvtkWidget_endoscope->setObjectName(QString::fromUtf8("qvtkWidget_endoscope"));
-        qvtkWidget_endoscope->setGeometry(QRect(1140, 0, 290, 290));
+        qvtkWidget_endoscope->setGeometry(QRect(1140, 0, 290, 261));
         label_26 = new QLabel(centralwidget);
         label_26->setObjectName(QString::fromUtf8("label_26"));
-        label_26->setGeometry(QRect(1140, 340, 81, 16));
+        label_26->setGeometry(QRect(1140, 290, 81, 16));
         pw = new QLineEdit(centralwidget);
         pw->setObjectName(QString::fromUtf8("pw"));
-        pw->setGeometry(QRect(1360, 460, 61, 21));
+        pw->setGeometry(QRect(1360, 370, 61, 21));
         by = new QLineEdit(centralwidget);
         by->setObjectName(QString::fromUtf8("by"));
-        by->setGeometry(QRect(1220, 400, 61, 21));
+        by->setGeometry(QRect(1220, 330, 61, 21));
         bw = new QLineEdit(centralwidget);
         bw->setObjectName(QString::fromUtf8("bw"));
-        bw->setGeometry(QRect(1220, 460, 61, 21));
+        bw->setGeometry(QRect(1220, 370, 61, 21));
         nz = new QLineEdit(centralwidget);
         nz->setObjectName(QString::fromUtf8("nz"));
-        nz->setGeometry(QRect(1150, 430, 61, 21));
+        nz->setGeometry(QRect(1150, 350, 61, 21));
         bx = new QLineEdit(centralwidget);
         bx->setObjectName(QString::fromUtf8("bx"));
-        bx->setGeometry(QRect(1220, 370, 61, 21));
+        bx->setGeometry(QRect(1220, 310, 61, 21));
         px = new QLineEdit(centralwidget);
         px->setObjectName(QString::fromUtf8("px"));
-        px->setGeometry(QRect(1360, 370, 61, 21));
+        px->setGeometry(QRect(1360, 310, 61, 21));
         py = new QLineEdit(centralwidget);
         py->setObjectName(QString::fromUtf8("py"));
-        py->setGeometry(QRect(1360, 400, 61, 21));
+        py->setGeometry(QRect(1360, 330, 61, 21));
         nx = new QLineEdit(centralwidget);
         nx->setObjectName(QString::fromUtf8("nx"));
-        nx->setGeometry(QRect(1150, 370, 61, 21));
+        nx->setGeometry(QRect(1150, 310, 61, 21));
         tx = new QLineEdit(centralwidget);
         tx->setObjectName(QString::fromUtf8("tx"));
-        tx->setGeometry(QRect(1290, 370, 61, 21));
+        tx->setGeometry(QRect(1290, 310, 61, 21));
         ny = new QLineEdit(centralwidget);
         ny->setObjectName(QString::fromUtf8("ny"));
-        ny->setGeometry(QRect(1150, 400, 61, 21));
+        ny->setGeometry(QRect(1150, 330, 61, 21));
         nw = new QLineEdit(centralwidget);
         nw->setObjectName(QString::fromUtf8("nw"));
-        nw->setGeometry(QRect(1150, 460, 61, 21));
+        nw->setGeometry(QRect(1150, 370, 61, 21));
         ty = new QLineEdit(centralwidget);
         ty->setObjectName(QString::fromUtf8("ty"));
-        ty->setGeometry(QRect(1290, 400, 61, 21));
+        ty->setGeometry(QRect(1290, 330, 61, 21));
         pz = new QLineEdit(centralwidget);
         pz->setObjectName(QString::fromUtf8("pz"));
-        pz->setGeometry(QRect(1360, 430, 61, 21));
+        pz->setGeometry(QRect(1360, 350, 61, 21));
         tw = new QLineEdit(centralwidget);
         tw->setObjectName(QString::fromUtf8("tw"));
-        tw->setGeometry(QRect(1290, 460, 61, 21));
+        tw->setGeometry(QRect(1290, 370, 61, 21));
         bz = new QLineEdit(centralwidget);
         bz->setObjectName(QString::fromUtf8("bz"));
-        bz->setGeometry(QRect(1220, 430, 61, 21));
+        bz->setGeometry(QRect(1220, 350, 61, 21));
         tz = new QLineEdit(centralwidget);
         tz->setObjectName(QString::fromUtf8("tz"));
-        tz->setGeometry(QRect(1290, 430, 61, 21));
+        tz->setGeometry(QRect(1290, 350, 61, 21));
         label_25 = new QLabel(centralwidget);
         label_25->setObjectName(QString::fromUtf8("label_25"));
-        label_25->setGeometry(QRect(1230, 300, 111, 21));
+        label_25->setGeometry(QRect(1230, 270, 111, 21));
         qvtkWidget = new QVTKWidget(centralwidget);
         qvtkWidget->setObjectName(QString::fromUtf8("qvtkWidget"));
         qvtkWidget->setGeometry(QRect(380, 0, 750, 750));
@@ -656,7 +658,7 @@ public:
         j1theta->setObjectName(QString::fromUtf8("j1theta"));
         j1theta->setMinimum(-180);
         j1theta->setMaximum(180);
-        j1theta->setValue(20);
+        j1theta->setValue(10);
 
         horizontalLayout_6->addWidget(j1theta);
 
@@ -689,7 +691,7 @@ public:
         j2theta->setObjectName(QString::fromUtf8("j2theta"));
         j2theta->setMinimum(-180);
         j2theta->setMaximum(180);
-        j2theta->setValue(8);
+        j2theta->setValue(0);
 
         horizontalLayout_7->addWidget(j2theta);
 
@@ -722,7 +724,7 @@ public:
         j3theta->setObjectName(QString::fromUtf8("j3theta"));
         j3theta->setMinimum(-180);
         j3theta->setMaximum(180);
-        j3theta->setValue(15);
+        j3theta->setValue(0);
 
         horizontalLayout_8->addWidget(j3theta);
 
@@ -755,7 +757,7 @@ public:
         j4theta->setObjectName(QString::fromUtf8("j4theta"));
         j4theta->setMinimum(-180);
         j4theta->setMaximum(180);
-        j4theta->setValue(-56);
+        j4theta->setValue(0);
 
         horizontalLayout_9->addWidget(j4theta);
 
@@ -788,7 +790,7 @@ public:
         j5theta->setObjectName(QString::fromUtf8("j5theta"));
         j5theta->setMinimum(-180);
         j5theta->setMaximum(180);
-        j5theta->setValue(-90);
+        j5theta->setValue(90);
 
         horizontalLayout_10->addWidget(j5theta);
 
@@ -981,22 +983,28 @@ public:
         toolBox->addItem(setting4, QString::fromUtf8("Resoning Setting"));
         zPlusButton = new QPushButton(centralwidget);
         zPlusButton->setObjectName(QString::fromUtf8("zPlusButton"));
-        zPlusButton->setGeometry(QRect(1230, 510, 110, 32));
+        zPlusButton->setGeometry(QRect(1230, 680, 110, 32));
         xMinusButton = new QPushButton(centralwidget);
         xMinusButton->setObjectName(QString::fromUtf8("xMinusButton"));
-        xMinusButton->setGeometry(QRect(1140, 590, 110, 32));
+        xMinusButton->setGeometry(QRect(1130, 700, 110, 32));
         zMinusButton = new QPushButton(centralwidget);
         zMinusButton->setObjectName(QString::fromUtf8("zMinusButton"));
-        zMinusButton->setGeometry(QRect(1230, 670, 110, 32));
+        zMinusButton->setGeometry(QRect(1230, 750, 110, 32));
         xPlusButton = new QPushButton(centralwidget);
         xPlusButton->setObjectName(QString::fromUtf8("xPlusButton"));
-        xPlusButton->setGeometry(QRect(1320, 590, 110, 32));
+        xPlusButton->setGeometry(QRect(1320, 730, 110, 32));
         yPlusButton = new QPushButton(centralwidget);
         yPlusButton->setObjectName(QString::fromUtf8("yPlusButton"));
-        yPlusButton->setGeometry(QRect(1310, 540, 110, 32));
+        yPlusButton->setGeometry(QRect(1320, 700, 110, 32));
         yMinusButton = new QPushButton(centralwidget);
         yMinusButton->setObjectName(QString::fromUtf8("yMinusButton"));
-        yMinusButton->setGeometry(QRect(1160, 630, 110, 32));
+        yMinusButton->setGeometry(QRect(1130, 730, 110, 32));
+        qvtkWidget_leapController = new QVTKWidget(centralwidget);
+        qvtkWidget_leapController->setObjectName(QString::fromUtf8("qvtkWidget_leapController"));
+        qvtkWidget_leapController->setGeometry(QRect(1140, 400, 290, 261));
+        label_27 = new QLabel(centralwidget);
+        label_27->setObjectName(QString::fromUtf8("label_27"));
+        label_27->setGeometry(QRect(1200, 670, 171, 16));
         MainWindow->setCentralWidget(centralwidget);
         qvtkWidget->raise();
         toolBox->raise();
@@ -1025,9 +1033,11 @@ public:
         xPlusButton->raise();
         yPlusButton->raise();
         yMinusButton->raise();
+        qvtkWidget_leapController->raise();
+        label_27->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1433, 22));
+        menubar->setGeometry(QRect(0, 0, 1439, 22));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuEdit = new QMenu(menubar);
@@ -1100,23 +1110,23 @@ public:
         label_16->setText(QApplication::translate("MainWindow", " parameter:", 0, QApplication::UnicodeUTF8));
         label_11->setText(QApplication::translate("MainWindow", "d                      a                  alpha               theta", 0, QApplication::UnicodeUTF8));
         label_10->setText(QApplication::translate("MainWindow", "1:", 0, QApplication::UnicodeUTF8));
-        j1d->setText(QApplication::translate("MainWindow", "50", 0, QApplication::UnicodeUTF8));
+        j1d->setText(QApplication::translate("MainWindow", "75", 0, QApplication::UnicodeUTF8));
         j1a->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
         j1alpha->setText(QApplication::translate("MainWindow", "90", 0, QApplication::UnicodeUTF8));
         label_17->setText(QApplication::translate("MainWindow", "2:", 0, QApplication::UnicodeUTF8));
-        j2d->setText(QApplication::translate("MainWindow", "25", 0, QApplication::UnicodeUTF8));
-        j2a->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
-        j2alpha->setText(QApplication::translate("MainWindow", "90", 0, QApplication::UnicodeUTF8));
+        j2d->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
+        j2a->setText(QApplication::translate("MainWindow", "43.18", 0, QApplication::UnicodeUTF8));
+        j2alpha->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
         label_18->setText(QApplication::translate("MainWindow", "3:", 0, QApplication::UnicodeUTF8));
-        j3d->setText(QApplication::translate("MainWindow", "-50", 0, QApplication::UnicodeUTF8));
-        j3a->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
+        j3d->setText(QApplication::translate("MainWindow", "-14.91", 0, QApplication::UnicodeUTF8));
+        j3a->setText(QApplication::translate("MainWindow", "2.03", 0, QApplication::UnicodeUTF8));
         j3alpha->setText(QApplication::translate("MainWindow", "90", 0, QApplication::UnicodeUTF8));
         label_19->setText(QApplication::translate("MainWindow", "4:", 0, QApplication::UnicodeUTF8));
-        j4d->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
-        j4a->setText(QApplication::translate("MainWindow", "25", 0, QApplication::UnicodeUTF8));
+        j4d->setText(QApplication::translate("MainWindow", "43.31", 0, QApplication::UnicodeUTF8));
+        j4a->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
         j4alpha->setText(QApplication::translate("MainWindow", "90", 0, QApplication::UnicodeUTF8));
         label_20->setText(QApplication::translate("MainWindow", "5:", 0, QApplication::UnicodeUTF8));
-        j5d->setText(QApplication::translate("MainWindow", "-25", 0, QApplication::UnicodeUTF8));
+        j5d->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
         j5a->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
         j5alpha->setText(QApplication::translate("MainWindow", "90", 0, QApplication::UnicodeUTF8));
         label_21->setText(QApplication::translate("MainWindow", "6:", 0, QApplication::UnicodeUTF8));
@@ -1141,12 +1151,13 @@ public:
         label_7->setText(QApplication::translate("MainWindow", "Chart 1:", 0, QApplication::UnicodeUTF8));
         label_38->setText(QApplication::translate("MainWindow", "Chart 2:", 0, QApplication::UnicodeUTF8));
         toolBox->setItemText(toolBox->indexOf(setting4), QApplication::translate("MainWindow", "Resoning Setting", 0, QApplication::UnicodeUTF8));
-        zPlusButton->setText(QApplication::translate("MainWindow", "Up", 0, QApplication::UnicodeUTF8));
-        xMinusButton->setText(QApplication::translate("MainWindow", "Left", 0, QApplication::UnicodeUTF8));
-        zMinusButton->setText(QApplication::translate("MainWindow", "Down", 0, QApplication::UnicodeUTF8));
-        xPlusButton->setText(QApplication::translate("MainWindow", "Right", 0, QApplication::UnicodeUTF8));
-        yPlusButton->setText(QApplication::translate("MainWindow", "Forward", 0, QApplication::UnicodeUTF8));
-        yMinusButton->setText(QApplication::translate("MainWindow", "Backward", 0, QApplication::UnicodeUTF8));
+        zPlusButton->setText(QApplication::translate("MainWindow", "Up: +z", 0, QApplication::UnicodeUTF8));
+        xMinusButton->setText(QApplication::translate("MainWindow", "Left: -x", 0, QApplication::UnicodeUTF8));
+        zMinusButton->setText(QApplication::translate("MainWindow", "Down: -z", 0, QApplication::UnicodeUTF8));
+        xPlusButton->setText(QApplication::translate("MainWindow", "Right: +x", 0, QApplication::UnicodeUTF8));
+        yPlusButton->setText(QApplication::translate("MainWindow", "Forward: +y", 0, QApplication::UnicodeUTF8));
+        yMinusButton->setText(QApplication::translate("MainWindow", "Backward: -y", 0, QApplication::UnicodeUTF8));
+        label_27->setText(QApplication::translate("MainWindow", "Leap controller visualization", 0, QApplication::UnicodeUTF8));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0, QApplication::UnicodeUTF8));
         menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", 0, QApplication::UnicodeUTF8));
     } // retranslateUi

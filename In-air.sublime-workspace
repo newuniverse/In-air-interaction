@@ -4,16 +4,84 @@
 		"selected_items":
 		[
 			[
-				"NUM",
-				"NUM_JOINTS-1"
+				"delta",
+				"deltaPos"
 			],
 			[
-				"_end",
-				"_end_Effector"
+				"NUm",
+				"NUM_JOINTS"
+			],
+			[
+				"de",
+				"degreeToRad"
+			],
+			[
+				"DEL",
+				"deltaPos"
+			],
+			[
+				"del",
+				"deltaPos"
+			],
+			[
+				"leg",
+				"lengh_norm"
+			],
+			[
+				"rob",
+				"robot"
+			],
+			[
+				"_c",
+				"_current"
+			],
+			[
+				"Ma",
+				"MainWindowController"
+			],
+			[
+				"z",
+				"zBase_eef"
+			],
+			[
+				"pose",
+				"poseMat_eef"
+			],
+			[
+				"NU",
+				"NUM_JOINTS-1"
 			],
 			[
 				"Mat",
 				"MathIntegrated"
+			],
+			[
+				"Vec",
+				"Vector3f"
+			],
+			[
+				"NUM",
+				"NUM_JOINTS"
+			],
+			[
+				"Ve",
+				"Vector3f"
+			],
+			[
+				"calc",
+				"calcHomoTransMatrix"
+			],
+			[
+				"Get",
+				"GetElement"
+			],
+			[
+				"_endo",
+				"_endEffectorTransform"
+			],
+			[
+				"_end",
+				"_end_Effector"
 			],
 			[
 				"RO",
@@ -138,10 +206,6 @@
 			[
 				"join",
 				"joint3"
-			],
-			[
-				"Ma",
-				"MainWindowController"
 			],
 			[
 				"Graphical",
@@ -450,70 +514,6 @@
 			[
 				"liste",
 				"g_lmListener"
-			],
-			[
-				"rea",
-				"reader"
-			],
-			[
-				"Sm",
-				"vtkSmartPointer"
-			],
-			[
-				"_mode",
-				"_modelSource"
-			],
-			[
-				"_model",
-				"_modelActor"
-			],
-			[
-				"in",
-				"include"
-			],
-			[
-				"SetRe",
-				"SetRenderWindow"
-			],
-			[
-				"renwin",
-				"renWins"
-			],
-			[
-				"Le",
-				"Leap"
-			],
-			[
-				"In",
-				"Initialize"
-			],
-			[
-				"rende",
-				"renderWin"
-			],
-			[
-				"Lea",
-				"LeapInteractor"
-			],
-			[
-				"cone",
-				"coneActor"
-			],
-			[
-				"main",
-				"mainWindow"
-			],
-			[
-				"dt_cue",
-				"dt_cuenote_delivid"
-			],
-			[
-				"dt_c",
-				"dt_cuenote_mailid"
-			],
-			[
-				"tar",
-				"target_arr"
 			]
 		]
 	},
@@ -539,32 +539,16 @@
 			"file": "includes/robotModel.h",
 			"settings":
 			{
-				"buffer_size": 921,
+				"buffer_size": 1085,
 				"line_ending": "Unix",
 				"name": "#ifndef ROBOTMODEL_H_"
-			}
-		},
-		{
-			"file": "CmakeLists.txt",
-			"settings":
-			{
-				"buffer_size": 1662,
-				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "sources/robotModel.cxx",
 			"settings":
 			{
-				"buffer_size": 5776,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "sources/mainWindowController.cxx",
-			"settings":
-			{
-				"buffer_size": 24707,
+				"buffer_size": 10363,
 				"line_ending": "Unix"
 			}
 		},
@@ -604,7 +588,7 @@
 			"file": "includes/mainWindowController.h",
 			"settings":
 			{
-				"buffer_size": 7104,
+				"buffer_size": 8234,
 				"line_ending": "Unix"
 			}
 		},
@@ -613,6 +597,22 @@
 			"settings":
 			{
 				"buffer_size": 1935,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ThirdParty/Common/MathIntegrated.h",
+			"settings":
+			{
+				"buffer_size": 1744,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sources/mainWindowController.cxx",
+			"settings":
+			{
+				"buffer_size": 24711,
 				"line_ending": "Unix"
 			}
 		},
@@ -713,6 +713,7 @@
 	},
 	"file_history":
 	[
+		"/Users/nEwUnivErsE/In-air-interaction/In-air/CmakeLists.txt",
 		"/Users/nEwUnivErsE/In-air-interaction/In-air/includes/jointModel.h",
 		"/Users/nEwUnivErsE/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/Users/nEwUnivErsE/In-air-interaction/In-air/ThirdParty/Eigen/Eigen",
@@ -750,7 +751,6 @@
 		"/Users/nEwUnivErsE/Desktop/Summons backup/Documents/PermanentSaveFile.txt",
 		"/Users/nEwUnivErsE/In-air-interaction/In-air/conf.xml",
 		"/Users/nEwUnivErsE/In-air-interaction/In-air/ThirdParty/tinyxml2/xmltest.cpp",
-		"/Users/nEwUnivErsE/In-air-interaction/In-air/CmakeLists.txt",
 		"/Users/nEwUnivErsE/In-air-interaction/In-air/includes/graphicalViewer",
 		"/Users/nEwUnivErsE/In-air-interaction/In-air/includes/LeapInteractor.h",
 		"/Users/nEwUnivErsE/In-air-interaction/In-air/sources/LeapInteractor.cxx",
@@ -848,7 +848,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			""
@@ -859,6 +859,50 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"deltaPos",
+			"j1theta",
+			"Matrix6x6",
+			"calcRotTransMatrix",
+			"_dh_parameters",
+			"degreetorad",
+			"degreetora",
+			"extractZBase",
+			"calcHomoTransMatrix",
+			"calcRotTransMatrix",
+			"calcHomoTransMatrix",
+			"calcJacobian",
+			"_end_Ef",
+			"_end_E",
+			"_end_Effector",
+			"_endEffectorMatrix",
+			"_end_Effector",
+			"_joints",
+			"_end_Effector",
+			"axis[",
+			"axis",
+			"TEST_DELTA",
+			"degreeToRad",
+			"90",
+			"goal",
+			"calcJacobian",
+			"update",
+			"STEP",
+			"10.0",
+			"robot->cac",
+			"dhParameterEditedCommonProcess",
+			"update",
+			"STEP",
+			"UPSILON",
+			"calcInverseKinematics",
+			"g_lml",
+			"gm",
+			"gl",
+			"glm_",
+			"leap",
+			"goal",
+			"_current",
+			"i",
+			"axis",
 			"dhParameterEditedCommonProcess",
 			"setup(",
 			"DHs",
@@ -942,51 +986,7 @@
 			"setupRenderAndWindow",
 			"top",
 			"mainWindow",
-			"qvtkw",
-			"createOne",
-			"qvtkw",
-			"qvtk",
-			"camera",
-			"srcRef",
-			"algorithm",
-			"Algorithm",
-			"algorithm",
-			"vtkCylinderSource",
-			"link_cylinder",
-			"addactors",
-			"vtkSmartPointer",
-			"norm",
-			"axesactor",
-			"SetNormalizedShaftLength",
-			"i",
-			"cylinder",
-			"Cylinder",
-			"cylinder",
-			"Cylinder",
-			"cylinder",
-			"Cylinder",
-			"cylinder",
-			"joint_cylinder",
-			"joints",
-			"joint",
-			"cylinder",
-			"Cylinder",
-			"cylinder",
-			"joint",
-			"joints",
-			"SetNormalizedShaftLength",
-			"todo",
-			"Interactor",
-			"interactor",
-			"refreshAllWindows()",
-			"refreshAllWindows(",
-			"refreshAllWindows()",
-			"refreshAllWindows",
-			"interactors.reserve",
-			"resetcamera",
-			"createBresenhamLine",
-			"leapmodel",
-			"leapDeviceModel"
+			"qvtkw"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1066,15 +1066,15 @@
 					"file": "includes/robotModel.h",
 					"settings":
 					{
-						"buffer_size": 921,
+						"buffer_size": 1085,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								897,
-								897
+								673,
+								673
 							]
 						],
 						"settings":
@@ -1085,33 +1085,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 96.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "CmakeLists.txt",
-					"settings":
-					{
-						"buffer_size": 1662,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								788,
-								788
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 122.0,
+						"translation.y": 141.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1123,60 +1097,35 @@
 			"sheets":
 			[
 				{
-					"buffer": 4,
+					"buffer": 3,
 					"file": "sources/robotModel.cxx",
 					"settings":
 					{
-						"buffer_size": 5776,
+						"buffer_size": 10363,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5719,
-								5719
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1926.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "sources/mainWindowController.cxx",
-					"settings":
-					{
-						"buffer_size": 24707,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								20278,
-								20278
+								3960,
+								3960
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 8712.0,
+						"translation.y": 1233.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 4,
 					"file": "main.cxx",
 					"settings":
 					{
@@ -1204,11 +1153,11 @@
 			]
 		},
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
-					"buffer": 7,
+					"buffer": 5,
 					"file": "sources/graphicalModel.cxx",
 					"settings":
 					{
@@ -1234,7 +1183,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 6,
 					"file": "sources/LeapGestureTrainer.cpp",
 					"settings":
 					{
@@ -1261,7 +1210,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 7,
 					"file": "includes/LeapGestureTrainer.h",
 					"settings":
 					{
@@ -1288,19 +1237,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 8,
 					"file": "includes/mainWindowController.h",
 					"settings":
 					{
-						"buffer_size": 7104,
+						"buffer_size": 8234,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5528,
-								5533
+								649,
+								649
 							]
 						],
 						"settings":
@@ -1309,7 +1258,62 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1637.0,
+						"translation.y": 275.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "includes/graphicalModel.h",
+					"settings":
+					{
+						"buffer_size": 1935,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								456,
+								473
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 161.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "ThirdParty/Common/MathIntegrated.h",
+					"settings":
+					{
+						"buffer_size": 1744,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1492,
+								1492
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 670.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1322,18 +1326,18 @@
 			[
 				{
 					"buffer": 11,
-					"file": "includes/graphicalModel.h",
+					"file": "sources/mainWindowController.cxx",
 					"settings":
 					{
-						"buffer_size": 1935,
+						"buffer_size": 24711,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								879,
-								879
+								10393,
+								10409
 							]
 						],
 						"settings":
@@ -1341,8 +1345,8 @@
 							"syntax": "Packages/C++/C++.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": 90.0,
+						"translation.y": 4440.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

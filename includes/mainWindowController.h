@@ -17,6 +17,8 @@
 
 #include "robotModel.h"
 
+#include "LeapControllerModel.h"
+
 ////////////////
 #ifdef _APPLE_
 #include "OVR.h"
@@ -29,7 +31,7 @@ using namespace OVR;
 ////////////////
 
 #include "tinyxml2/tinyxml2.h"
-
+#define TEST_DELTA 0.1
 class MainWindowController : public QMainWindow, private Ui::MainWindow
 {
 	Q_OBJECT
@@ -98,56 +100,68 @@ private slots:
 	void on_xPlusButton_clicked() 
 	{
 		Eigen::VectorXf goal(6);
-		goal << 10.0, 0.0, 0.0, 0.0, 0.0, 0.0;
+		goal << TEST_DELTA, 0.0, 0.0, 0.0, 0.0, 0.0;
 		robot->calcInverseKinematics(goal);
+		refreshAllWindows(false);
 	}
 
 	void on_xMinusButton_clicked() 
 	{
 		Eigen::VectorXf goal(6);
-		goal << -10.0, 0.0, 0.0, 0.0, 0.0, 0.0;
+		goal << -TEST_DELTA, 0.0, 0.0, 0.0, 0.0, 0.0;
 		robot->calcInverseKinematics(goal);
+		refreshAllWindows(false);
 	}
 
 	void on_yPlusButton_clicked() 
 	{
 		Eigen::VectorXf goal(6);
-		goal << 0.0, 10.0, 0.0, 0.0, 0.0, 0.0;
+		goal << 0.0, TEST_DELTA, 0.0, 0.0, 0.0, 0.0;
 		robot->calcInverseKinematics(goal);
+		refreshAllWindows(false);
 	}
 
 	void on_yMinusButton_clicked() 
 	{
 		Eigen::VectorXf goal(6);
-		goal << 0.0, -10.0, 0.0, 0.0, 0.0, 0.0;
+		goal << 0.0, -TEST_DELTA, 0.0, 0.0, 0.0, 0.0;
 		robot->calcInverseKinematics(goal);
+		refreshAllWindows(false);
 	}
 
 	void on_zPlusButton_clicked() 
 	{
 		Eigen::VectorXf goal(6);
-		goal << 0.0, 0.0, 10.0, 0.0, 0.0, 0.0;
+		goal << 0.0, 0.0, TEST_DELTA, 0.0, 0.0, 0.0;
 		robot->calcInverseKinematics(goal);
+		refreshAllWindows(false);
 	}
 
 	void on_zMinusButton_clicked() 
 	{
 		Eigen::VectorXf goal(6);
-		goal << 0.0, 0.0, -10.0, 0.0, 0.0, 0.0;
+		goal << 0.0, 0.0, -TEST_DELTA, 0.0, 0.0, 0.0;
 		robot->calcInverseKinematics(goal);
+		refreshAllWindows(false);
 	}
-
+public: //members
+	enum WINDOWNAME {
+		MAIN, ENDOSCOPE, CONTROLLER, MAIN_AND_ENDOSCOPE,
+	};
 private://methods
+	void updateThetas() {
+
+	}
 	void setupRendererAndWindow();
 	void attachRendererToWindow(vtkSmartPointer<vtkRenderer> ren, vtkSmartPointer<vtkRenderWindow> win, QVTKWidget* widget);
 	void setupCharts();
 	
 	void createSubWindow(int width, int height, int index);
 	void setKeystoneTransform(double* ks_array, int index);
-	void addActorToScenes(vtkSmartPointer<vtkActor> actor);
-	void addActorToScenes(vtkSmartPointer<vtkAxesActor> actor);
-	void removeActorFromScenes(vtkSmartPointer<vtkActor> actor);
-	void removeActorFromScenes(vtkSmartPointer<vtkAxesActor> actor);
+	void addActorToScenes(vtkSmartPointer<vtkActor> actor, WINDOWNAME name);
+	void addActorToScenes(vtkSmartPointer<vtkAxesActor> actor, WINDOWNAME name);
+	void removeActorFromScenes(vtkSmartPointer<vtkActor> actor, WINDOWNAME name);
+	void removeActorFromScenes(vtkSmartPointer<vtkAxesActor> actor, WINDOWNAME name);
 	void removeAllActorsFromScene();
 	void refreshAllWindows(bool resetCamera);
 	void addAllLeapModels();
@@ -165,10 +179,12 @@ private://members
 	float* dh_parameter;
 
 	tinyxml2::XMLDocument*   conf_xml;
-	LeapListener*     g_lmListener;
+	LeapListener*     listener;
 	Leap::Controller* g_lmController;
-	
+	// manipulator
 	RobotModel* robot;
+	// leap controller visual
+	LeapControllerModel* controller;
 	//main window
 	vtkSmartPointer<vtkRenderer> mainRenderer;
 	vtkSmartPointer<vtkRenderWindow> mainWindow;
@@ -180,29 +196,21 @@ private://members
 	std::vector<vtkSmartPointer<vtkCamera> > subCameras;
 	std::vector<vtkSmartPointer<vtkTransform> > keystoneTsf;
 
-	//sub windows for endoscopic 
-	vtkSmartPointer<vtkRenderer> topViewRenderer;
-	vtkSmartPointer<vtkRenderWindow> topViewWindow;
-	vtkSmartPointer<vtkCamera> topViewCamera;
-
-	vtkSmartPointer<vtkRenderer> frontViewRenderer;
-	vtkSmartPointer<vtkRenderWindow> frontViewWindow;
-	vtkSmartPointer<vtkCamera> frontViewCamera;
-
-	vtkSmartPointer<vtkRenderer> sideViewRenderer;
-	vtkSmartPointer<vtkRenderWindow> sideViewWindow;
-	vtkSmartPointer<vtkCamera> sideViewCamera;
-
 	vtkSmartPointer<vtkRenderer> endoscopeViewRenderer;
 	vtkSmartPointer<vtkRenderWindow> endoscopeViewWindow;
 	vtkSmartPointer<vtkCamera> endoscopeViewCamera;
+
+	vtkSmartPointer<vtkRenderer> leapControllerViewRenderer;
+	vtkSmartPointer<vtkRenderWindow> leapControllerViewWindow;
+	vtkSmartPointer<vtkCamera> leapControllerViewCamera;
 
 	std::vector<vtkSmartPointer<vtkActor> > allActors;
 	std::chrono::high_resolution_clock::time_point currentTime;
     std::chrono::high_resolution_clock::time_point lastTime;
 
+    //WINDOWNAME windowName;
 protected: //methods and members
-
+	
 #ifdef _APPLE_
 	Ptr<DeviceManager>  pManager;
 	Ptr<HMDDevice>      pHMD;

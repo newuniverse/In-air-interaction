@@ -10,6 +10,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/In-air.dir/ThirdParty/tinyxml2/tinyxml2.cpp.o"
   "CMakeFiles/In-air.dir/sources/robotModel.cxx.o"
   "CMakeFiles/In-air.dir/sources/graphicalModel.cxx.o"
+  "CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o"
   "In-air.pdb"
   "In-air"
 )
