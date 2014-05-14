@@ -7,7 +7,7 @@
 
 //#define DELTATIME 30 //ms
 #define CONFIGFILENAME "conf.xml"
-
+#define ENDOSCOPE_FOCAL_DISTANCE 1.0
 MainWindowController::MainWindowController(QWidget *parent)
 {	
 	//OVR for future use
@@ -407,8 +407,9 @@ void MainWindowController::dhParameterEditedCommonProcess() {
 		SetViewUp(endeffectorMat->GetElement(0, 0), 
 			endeffectorMat->GetElement(1, 0), endeffectorMat->GetElement(2, 0));
 	endoscopeViewRenderer->GetActiveCamera()->
-		SetFocalPoint(endeffectorMat->GetElement(0, 3) + endeffectorMat->GetElement(0, 2)*10.0, 
-			endeffectorMat->GetElement(1, 3) + endeffectorMat->GetElement(1, 2)*10.0, endeffectorMat->GetElement(2, 3) + endeffectorMat->GetElement(2, 2)*10.0);
+		SetFocalPoint(endeffectorMat->GetElement(0, 3) + endeffectorMat->GetElement(0, 2)*ENDOSCOPE_FOCAL_DISTANCE, 
+			endeffectorMat->GetElement(1, 3) + endeffectorMat->GetElement(1, 2)*ENDOSCOPE_FOCAL_DISTANCE, 
+			endeffectorMat->GetElement(2, 3) + endeffectorMat->GetElement(2, 2)*ENDOSCOPE_FOCAL_DISTANCE);
 	//show pose matrix
 	nx->setText(QString::number((float)endeffectorMat->GetElement(0, 0)));	//nx, ny, ... is QLineEdit
 	ny->setText(QString::number((float)endeffectorMat->GetElement(1, 0)));

@@ -807,7 +807,7 @@
             <item>
              <widget class="QLineEdit" name="j1d">
               <property name="text">
-               <string>75</string>
+               <string>28.0</string>
               </property>
              </widget>
             </item>
@@ -821,7 +821,7 @@
             <item>
              <widget class="QLineEdit" name="j1alpha">
               <property name="text">
-               <string>90</string>
+               <string>-90</string>
               </property>
              </widget>
             </item>
@@ -834,7 +834,7 @@
                <double>180.000000000000000</double>
               </property>
               <property name="value">
-               <double>10.000000000000000</double>
+               <double>90.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -859,7 +859,7 @@
             <item>
              <widget class="QLineEdit" name="j2a">
               <property name="text">
-               <string>43.18</string>
+               <string>21.0</string>
               </property>
              </widget>
             </item>
@@ -879,7 +879,7 @@
                <double>180.000000000000000</double>
               </property>
               <property name="value">
-               <double>0.000000000000000</double>
+               <double>-30.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -897,21 +897,21 @@
             <item>
              <widget class="QLineEdit" name="j3d">
               <property name="text">
-               <string>-14.91</string>
+               <string>0</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QLineEdit" name="j3a">
               <property name="text">
-               <string>2.03</string>
+               <string>7.5</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QLineEdit" name="j3alpha">
               <property name="text">
-               <string>90</string>
+               <string>-90</string>
               </property>
              </widget>
             </item>
@@ -942,7 +942,7 @@
             <item>
              <widget class="QLineEdit" name="j4d">
               <property name="text">
-               <string>43.31</string>
+               <string>21.0</string>
               </property>
              </widget>
             </item>
@@ -1001,7 +1001,7 @@
             <item>
              <widget class="QLineEdit" name="j5alpha">
               <property name="text">
-               <string>90</string>
+               <string>-90</string>
               </property>
              </widget>
             </item>
@@ -1014,7 +1014,7 @@
                <double>180.000000000000000</double>
               </property>
               <property name="value">
-               <double>90.000000000000000</double>
+               <double>0.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -1032,7 +1032,7 @@
             <item>
              <widget class="QLineEdit" name="j6d">
               <property name="text">
-               <string>50</string>
+               <string>7.0</string>
               </property>
              </widget>
             </item>

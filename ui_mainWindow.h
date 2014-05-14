@@ -658,7 +658,7 @@ public:
         j1theta->setObjectName(QString::fromUtf8("j1theta"));
         j1theta->setMinimum(-180);
         j1theta->setMaximum(180);
-        j1theta->setValue(10);
+        j1theta->setValue(90);
 
         horizontalLayout_6->addWidget(j1theta);
 
@@ -691,7 +691,7 @@ public:
         j2theta->setObjectName(QString::fromUtf8("j2theta"));
         j2theta->setMinimum(-180);
         j2theta->setMaximum(180);
-        j2theta->setValue(0);
+        j2theta->setValue(-30);
 
         horizontalLayout_7->addWidget(j2theta);
 
@@ -790,7 +790,7 @@ public:
         j5theta->setObjectName(QString::fromUtf8("j5theta"));
         j5theta->setMinimum(-180);
         j5theta->setMaximum(180);
-        j5theta->setValue(90);
+        j5theta->setValue(0);
 
         horizontalLayout_10->addWidget(j5theta);
 
@@ -1110,27 +1110,27 @@ public:
         label_16->setText(QApplication::translate("MainWindow", " parameter:", 0, QApplication::UnicodeUTF8));
         label_11->setText(QApplication::translate("MainWindow", "d                      a                  alpha               theta", 0, QApplication::UnicodeUTF8));
         label_10->setText(QApplication::translate("MainWindow", "1:", 0, QApplication::UnicodeUTF8));
-        j1d->setText(QApplication::translate("MainWindow", "75", 0, QApplication::UnicodeUTF8));
+        j1d->setText(QApplication::translate("MainWindow", "28.0", 0, QApplication::UnicodeUTF8));
         j1a->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
-        j1alpha->setText(QApplication::translate("MainWindow", "90", 0, QApplication::UnicodeUTF8));
+        j1alpha->setText(QApplication::translate("MainWindow", "-90", 0, QApplication::UnicodeUTF8));
         label_17->setText(QApplication::translate("MainWindow", "2:", 0, QApplication::UnicodeUTF8));
         j2d->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
-        j2a->setText(QApplication::translate("MainWindow", "43.18", 0, QApplication::UnicodeUTF8));
+        j2a->setText(QApplication::translate("MainWindow", "21.0", 0, QApplication::UnicodeUTF8));
         j2alpha->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
         label_18->setText(QApplication::translate("MainWindow", "3:", 0, QApplication::UnicodeUTF8));
-        j3d->setText(QApplication::translate("MainWindow", "-14.91", 0, QApplication::UnicodeUTF8));
-        j3a->setText(QApplication::translate("MainWindow", "2.03", 0, QApplication::UnicodeUTF8));
-        j3alpha->setText(QApplication::translate("MainWindow", "90", 0, QApplication::UnicodeUTF8));
+        j3d->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
+        j3a->setText(QApplication::translate("MainWindow", "7.5", 0, QApplication::UnicodeUTF8));
+        j3alpha->setText(QApplication::translate("MainWindow", "-90", 0, QApplication::UnicodeUTF8));
         label_19->setText(QApplication::translate("MainWindow", "4:", 0, QApplication::UnicodeUTF8));
-        j4d->setText(QApplication::translate("MainWindow", "43.31", 0, QApplication::UnicodeUTF8));
+        j4d->setText(QApplication::translate("MainWindow", "21.0", 0, QApplication::UnicodeUTF8));
         j4a->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
         j4alpha->setText(QApplication::translate("MainWindow", "90", 0, QApplication::UnicodeUTF8));
         label_20->setText(QApplication::translate("MainWindow", "5:", 0, QApplication::UnicodeUTF8));
         j5d->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
         j5a->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
-        j5alpha->setText(QApplication::translate("MainWindow", "90", 0, QApplication::UnicodeUTF8));
+        j5alpha->setText(QApplication::translate("MainWindow", "-90", 0, QApplication::UnicodeUTF8));
         label_21->setText(QApplication::translate("MainWindow", "6:", 0, QApplication::UnicodeUTF8));
-        j6d->setText(QApplication::translate("MainWindow", "50", 0, QApplication::UnicodeUTF8));
+        j6d->setText(QApplication::translate("MainWindow", "7.0", 0, QApplication::UnicodeUTF8));
         j6a->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
         j6alpha->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
         toolBox->setItemText(toolBox->indexOf(setting2), QApplication::translate("MainWindow", "Input Setting", 0, QApplication::UnicodeUTF8));

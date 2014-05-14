@@ -44,32 +44,28 @@ LeapControllerModel::LeapControllerModel()
 
 void LeapControllerModel::updateHandProps(HandList hands)
 {
+	if (hands.isEmpty()) {
+		_palm->getModelActor()->SetPosition(0,0,0);
+		for (int i = 0; i < NUM_FINGERS; ++i) {
+			_tips[i]->getModelActor()->SetPosition(0, 0, 0);
+		}
+		return;
+	}
+
 	Hand* hand = new Hand(hands.leftmost());
 	Finger** fingers = new Finger*[hand->fingers().count()];
 	for (int i = 0; i < hand->fingers().count(); ++i) {
 		fingers[i] = new Finger(hand->fingers()[i]);
 	}
-	std::cout << "debug1\n" << std::endl;
+
 	_palm->getModelActor()->SetPosition(hand->palmPosition().x/10, hand->palmPosition().y/10, hand->palmPosition().z/10);
-	// _palm->getModelActor()->SetOrientation(0, 0, 0);
-	// _palm->getModelActor()->SetOrientation(,0,0);
-	_palm->getModelActor()->RotateX(hand->palmNormal().pitch());
-	// _palm->getModelActor()->RotateY(hand->palmNormal().yaw());
-	// _palm->getModelActor()->RotateZ(hand->palmNormal().roll());
-	std::cout << "debug2\n" << std::endl;
-	if (hand->fingers().count() <= 1) return; 
-	std::cout << "debug3\n" << std::endl;
+	if (hand->fingers().isEmpty()) return; 
 
 	for (int i = 0, l = hand->fingers().count(); i < l; ++i) {
 		_tips[i]->getModelActor()->SetPosition(fingers[i]->tipPosition().x/10, fingers[i]->tipPosition().y/10, fingers[i]->tipPosition().z/10);
-		// _tips[i]->getModelActor()->SetOrientation(0, 0, 0);
-		 _tips[i]->getModelActor()->RotateX(fingers[i]->direction().pitch());
-		// _tips[i]->getModelActor()->RotateY(fingers[i]->direction().yaw());
-		// _tips[i]->getModelActor()->RotateZ(fingers[i]->direction().roll());
-		
 	}
 	if (hand->fingers().count() >= NUM_FINGERS) return;
-	
+
 	for (int i = hand->fingers().count(); i < NUM_FINGERS; ++i) {
 		_tips[i]->getModelActor()->SetPosition(0, 0, 0);
 	}
@@ -78,8 +74,6 @@ void LeapControllerModel::updateHandProps(HandList hands)
 		delete fingers[i];
 	}
 	delete hand;
-	//delete fingers;
-	std::cout << "debug4\n" << std::endl;
 }
 
 LeapControllerModel::~LeapControllerModel() 

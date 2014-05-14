@@ -1,7 +1,7 @@
 #include "vtkInclude.h"
 #include "robotModel.h"
 
-#define ACTUATOR_SIZE 5//cm
+#define ACTUATOR_SIZE 2//cm
 #define NUM_JOINTS 6
 #define DOF        6
 #define STEP 10.0; //todo
@@ -21,15 +21,16 @@ RobotModel::RobotModel()
 
    	vtkSmartPointer<vtkCylinderSource> cylinder = vtkSmartPointer<vtkCylinderSource>::New();
     vtkSmartPointer<vtkCylinderSource> eef_cylinder = vtkSmartPointer<vtkCylinderSource>::New();
-    eef_cylinder->SetRadius(ACTUATOR_SIZE/5);
-    eef_cylinder->SetHeight(ACTUATOR_SIZE*10);
-    eef_cylinder->SetResolution(12);
+    // eef_cylinder->SetRadius(ACTUATOR_SIZE/5);
+    // eef_cylinder->SetHeight(ACTUATOR_SIZE*10);
+    // eef_cylinder->SetResolution(12);
     vtkSmartPointer<vtkLineSource> link_line = vtkSmartPointer<vtkLineSource>::New();
     
     _joints = new GraphicalModel*[NUM_JOINTS+1];
     _links = new GraphicalModel*[NUM_JOINTS-1];
     
     for (int i = 0; i < NUM_JOINTS+1; ++i) {
+        
         if (i == NUM_JOINTS) {  //end-effector
             _joints[i] = new GraphicalModel(eef_cylinder);
         } else {
@@ -207,21 +208,20 @@ void RobotModel::update()
         //set source property
         //end-effector
         algorithm = _joints[i]->getModelActor()->GetMapper()->GetInputConnection(0, 0)->GetProducer();
+        // _joints[i]->getModelActor()->GetProperty()->SetCenter(0,0,_dh_parameters[i][0]/2.0);
         srcRef = vtkCylinderSource::SafeDownCast(algorithm);
         if (i == NUM_JOINTS) {
+            srcRef->SetCenter(0,_dh_parameters[5][0]/2.0, 0 );
             _endEffectorMatrix = mat;
-            srcRef->SetCenter(0.0, ACTUATOR_SIZE*5.0, 0.0);
             Leap::Vector endEffectorZAxis = Leap::Vector(_endEffectorMatrix->GetElement(0, 2), 
-                                                 _endEffectorMatrix->GetElement(1, 2), _endEffectorMatrix->GetElement(2, 2));
+                                                  _endEffectorMatrix->GetElement(1, 2), _endEffectorMatrix->GetElement(2, 2));
     
-            _current << _endEffectorMatrix->GetElement(0, 3), _endEffectorMatrix->GetElement(1, 3), _endEffectorMatrix->GetElement(2, 3),
-                endEffectorZAxis.roll(), endEffectorZAxis.pitch(), endEffectorZAxis.yaw();
-        } else {
-            //joint 
-            srcRef->SetRadius(ACTUATOR_SIZE);
-            srcRef->SetHeight(ACTUATOR_SIZE*2);
-            srcRef->SetResolution(12);
+             _current << _endEffectorMatrix->GetElement(0, 3), _endEffectorMatrix->GetElement(1, 3), _endEffectorMatrix->GetElement(2, 3),
+                         endEffectorZAxis.roll(), endEffectorZAxis.pitch(), endEffectorZAxis.yaw();
         }
+        srcRef->SetRadius(ACTUATOR_SIZE);
+        srcRef->SetHeight(ACTUATOR_SIZE*2);
+        srcRef->SetResolution(12);
    	}
 }
 
