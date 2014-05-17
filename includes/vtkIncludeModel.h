@@ -3,6 +3,10 @@
 
 #include <vtkSmartPointer.h>
 
+
+#include <vtkInteractorStyleTrackballCamera.h>
+#include <vtkInteractorStyleTrackballActor.h>
+#include <vtkInteractorStyleTerrain.h>
 #include <vtkArrowSource.h>
 #include <vtkCylinderSource.h>
 #include <vtkLineSource.h>
@@ -13,7 +17,7 @@
 
 #include <vtkAlgorithm.h>
 #include <vtkAlgorithmOutput.h>
-
+#include <vtkTubeFilter.h>
 #include <vtkOBJReader.h>
 #include <vtkSTLReader.h>
 

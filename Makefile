@@ -330,6 +330,30 @@ sources/robotModel.cxx.s:
 	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/sources/robotModel.cxx.s
 .PHONY : sources/robotModel.cxx.s
 
+sources/toolModel.o: sources/toolModel.cxx.o
+.PHONY : sources/toolModel.o
+
+# target to build an object file
+sources/toolModel.cxx.o:
+	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/sources/toolModel.cxx.o
+.PHONY : sources/toolModel.cxx.o
+
+sources/toolModel.i: sources/toolModel.cxx.i
+.PHONY : sources/toolModel.i
+
+# target to preprocess a source file
+sources/toolModel.cxx.i:
+	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/sources/toolModel.cxx.i
+.PHONY : sources/toolModel.cxx.i
+
+sources/toolModel.s: sources/toolModel.cxx.s
+.PHONY : sources/toolModel.s
+
+# target to generate assembly for a file
+sources/toolModel.cxx.s:
+	$(MAKE) -f CMakeFiles/In-air.dir/build.make CMakeFiles/In-air.dir/sources/toolModel.cxx.s
+.PHONY : sources/toolModel.cxx.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -366,6 +390,9 @@ help:
 	@echo "... sources/robotModel.o"
 	@echo "... sources/robotModel.i"
 	@echo "... sources/robotModel.s"
+	@echo "... sources/toolModel.o"
+	@echo "... sources/toolModel.i"
+	@echo "... sources/toolModel.s"
 .PHONY : help
 
 

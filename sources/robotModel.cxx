@@ -21,9 +21,7 @@ RobotModel::RobotModel()
 
    	vtkSmartPointer<vtkCylinderSource> cylinder = vtkSmartPointer<vtkCylinderSource>::New();
     vtkSmartPointer<vtkCylinderSource> eef_cylinder = vtkSmartPointer<vtkCylinderSource>::New();
-    // eef_cylinder->SetRadius(ACTUATOR_SIZE/5);
-    // eef_cylinder->SetHeight(ACTUATOR_SIZE*10);
-    // eef_cylinder->SetResolution(12);
+
     vtkSmartPointer<vtkLineSource> link_line = vtkSmartPointer<vtkLineSource>::New();
     
     _joints = new GraphicalModel*[NUM_JOINTS+1];
@@ -54,11 +52,6 @@ RobotModel::~RobotModel()
 
 }
 
-std::vector<GraphicalModel* > RobotModel::getModel() 
-{
-	return _components;
-}
-
 void RobotModel::updateDHs (float* DHs)
 {
 	for (int i = 0; i < NUM_JOINTS; ++i) {
@@ -70,7 +63,7 @@ void RobotModel::updateDHs (float* DHs)
 }
 
 
-void RobotModel::calcInverseKinematics(const Eigen::VectorXf& pg) 
+void RobotModel::calcInverseKinematics(const Eigen::Matrix< float , 6 , 1>& pg) 
 {
     if (pg.rows() != NUM_JOINTS) {
         return;
@@ -118,7 +111,7 @@ Eigen::MatrixXf RobotModel::calcJacobian()
     Eigen::Vector3f zBase[NUM_JOINTS+1];
     Eigen::Vector3f pBase[NUM_JOINTS+1];
 
-    poseMat[0] << 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1;
+    poseMat[0] << 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 30.0, 100.0, 0, 1;
     zBase[0] = MathIntegrated::extractZBase(poseMat[0]);
     pBase[0] = MathIntegrated::extractPBase(poseMat[0]);
  
@@ -211,7 +204,7 @@ void RobotModel::update()
         // _joints[i]->getModelActor()->GetProperty()->SetCenter(0,0,_dh_parameters[i][0]/2.0);
         srcRef = vtkCylinderSource::SafeDownCast(algorithm);
         if (i == NUM_JOINTS) {
-            srcRef->SetCenter(0,_dh_parameters[5][0]/2.0, 0 );
+            srcRef->SetCenter(0, ACTUATOR_SIZE, 0);
             _endEffectorMatrix = mat;
             Leap::Vector endEffectorZAxis = Leap::Vector(_endEffectorMatrix->GetElement(0, 2), 
                                                   _endEffectorMatrix->GetElement(1, 2), _endEffectorMatrix->GetElement(2, 2));

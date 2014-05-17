@@ -1,33 +1,32 @@
 #ifndef _LEAPCONTROLLERMODEL_
 #define _LEAPCONTROLLERMODEL_
 
-#include "graphicalModel.h"
-#include "Common/MathIntegrated.h"
+#include "baseModel.h"
+// #include "graphicalModel.h"
+// #include "Common/MathIntegrated.h"
 
 using namespace Leap;
-class LeapControllerModel 
+class LeapControllerModel : public BaseModel
 {
 public://methods
     LeapControllerModel();
     ~LeapControllerModel();
 
     void setup();
-    void update();
+    
     void updateHandProps(HandList hands);
-
-    std::vector<GraphicalModel* > getModel();
+    void update(){return;};
 private://methods
 	
 public://members
 	
 private://members
-	std::vector<GraphicalModel* > _components;
 	GraphicalModel** _tips;
 	GraphicalModel*  _palm;
 	GraphicalModel* _innerSphere;
 	GraphicalModel* _outerSphere;
 protected: 
-
+	
 };
 
 #endif

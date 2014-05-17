@@ -7,7 +7,10 @@
 
 //#define DELTATIME 30 //ms
 #define CONFIGFILENAME "conf.xml"
-#define ENDOSCOPE_FOCAL_DISTANCE 1.0
+#define PATH_TO_3D_MODEL "../3D-models/human_body_finest.obj"
+#define ENDOSCOPE_FOCAL_DISTANCE 1.0 //cm
+#define ROBOT_X_DISPLACEMENT 30.0 //cm
+#define ROBOT_Y_DISPLACEMENT 20.0 //cm
 MainWindowController::MainWindowController(QWidget *parent)
 {	
 	//OVR for future use
@@ -22,6 +25,7 @@ MainWindowController::MainWindowController(QWidget *parent)
 
 	robot = new RobotModel();
 	controller = new LeapControllerModel();
+	surgicalTool = new ToolModel();
 
   	dh_parameter = new float[24];
 	listener = new LeapListener(*controller);
@@ -30,6 +34,15 @@ MainWindowController::MainWindowController(QWidget *parent)
 
 	
 	X1 = 1; Y1 = 1; X2 = -1; Y2 = 1; X3 = -1; Y3 = -1; X4 = 1; Y4 = -1;
+
+	worldAxes = vtkSmartPointer<vtkAxesActor>::New();
+ 	axesWidget = vtkSmartPointer<vtkOrientationMarkerWidget>::New();
+ 	axesWidget->SetOutlineColor( 0.9300, 0.5700, 0.1300 );
+  	axesWidget->SetInteractor( mainWindow->GetInteractor() );
+  	axesWidget->SetOrientationMarker( worldAxes );
+  	axesWidget->SetViewport( 0.0, 0.0, 0.2, 0.2 );
+  	axesWidget->SetEnabled( 1 );
+  	axesWidget->InteractiveOff();
 }
 
 MainWindowController::~MainWindowController() 
@@ -38,6 +51,7 @@ MainWindowController::~MainWindowController()
 	delete g_lmController;
 	delete robot;
 	delete controller;
+	delete surgicalTool;
 	delete conf_xml;
 	delete dh_parameter;
 }
@@ -70,9 +84,19 @@ void MainWindowController::setupRendererAndWindow()
 	g_vtkCallback = vtkSmartPointer<vtkTimerCallback>::New();
 
 	mainRenderer = vtkSmartPointer<vtkRenderer>::New();
+
+	
+	// mainRenderer->GetActiveCamera()->SetFocalPoint(0,0,+10.0);
+	// mainRenderer->GetActiveCamera()->Elevation(90);
+	// mainRenderer->GetActiveCamera()->Pitch(90);
+	mainRenderer->ResetCamera();
 	mainWindow = vtkSmartPointer<vtkRenderWindow>::New();
 	attachRendererToWindow(mainRenderer, mainWindow, qvtkWidget);
+	vtkSmartPointer<vtkInteractorStyleTrackballCamera> style = 
+    vtkSmartPointer<vtkInteractorStyleTrackballCamera>::New(); //like paraview
+ 	qvtkWidget->GetInteractor()->SetInteractorStyle(style);
 	mainWindow->SetInteractor(qvtkWidget->GetInteractor());
+	// mainRenderer->GetActiveCamera()->SetViewUp(0, 0, 1);
 
 	endoscopeViewRenderer = vtkSmartPointer<vtkRenderer>::New();
   	endoscopeViewCamera = vtkSmartPointer<vtkCamera>::New();
@@ -85,26 +109,6 @@ void MainWindowController::setupRendererAndWindow()
 	leapControllerViewRenderer->SetActiveCamera(leapControllerViewCamera);
 	leapControllerViewWindow = vtkSmartPointer<vtkRenderWindow>::New();
   	attachRendererToWindow(leapControllerViewRenderer, leapControllerViewWindow, qvtkWidget_leapController);
-
-	/*
-	topViewRenderer = vtkSmartPointer<vtkRenderer>::New();
-	topViewCamera = vtkSmartPointer<vtkCamera>::New();
-	topViewRenderer->SetActiveCamera(topViewCamera);
-	topViewWindow = vtkSmartPointer<vtkRenderWindow>::New();
-	attachRendererToWindow(topViewRenderer, topViewWindow, qvtkWidget_top);
-
-	frontViewRenderer = vtkSmartPointer<vtkRenderer>::New();
-	frontViewCamera = vtkSmartPointer<vtkCamera>::New();
-	frontViewRenderer->SetActiveCamera(frontViewCamera);
-	frontViewWindow = vtkSmartPointer<vtkRenderWindow>::New();
-  	attachRendererToWindow(frontViewRenderer, frontViewWindow, qvtkWidget_front);
-
-  	sideViewRenderer = vtkSmartPointer<vtkRenderer>::New();
-  	sideViewCamera = vtkSmartPointer<vtkCamera>::New();
-	sideViewRenderer->SetActiveCamera(sideViewCamera);
-	sideViewWindow = vtkSmartPointer<vtkRenderWindow>::New();
-  	attachRendererToWindow(sideViewRenderer, sideViewWindow, qvtkWidget_side);
-	*/
 }
 
 void MainWindowController::attachRendererToWindow(vtkSmartPointer<vtkRenderer> ren, 
@@ -312,9 +316,16 @@ void MainWindowController::removeAllActorsFromScene()
 void MainWindowController::refreshAllWindows(bool resetCamera) {
 	if (resetCamera) {
 		mainRenderer->ResetCamera();
+		// mainRenderer->GetActiveCamera()->Roll(90);
+		std::cout << "focal point:\n" << mainRenderer->GetActiveCamera()->GetFocalPoint()[0]
+
+		<<" "<<mainRenderer->GetActiveCamera()->GetFocalPoint()[1]
+		<<" "<<mainRenderer->GetActiveCamera()->GetFocalPoint()[2]
+		<< std::endl;
 		endoscopeViewRenderer->ResetCamera();
 		leapControllerViewRenderer->ResetCamera();
 	}
+
 	mainWindow->Render();
 	endoscopeViewWindow->Render();
 	leapControllerViewWindow->Render();
@@ -394,11 +405,9 @@ float* MainWindowController::getDHparameters()
 	return dh_parameter;
 }
 
-void MainWindowController::dhParameterEditedCommonProcess() {
-	robot->updateDHs(this->getDHparameters());
-	robot->update();
+void MainWindowController::updateEndoscopeCamera()
+{
 	vtkSmartPointer<vtkMatrix4x4> endeffectorMat = robot->getEndEffectorMatrix();
-	
 	//set endoscope camera position
 	endoscopeViewRenderer->GetActiveCamera()->
 		SetPosition(endeffectorMat->GetElement(0, 3), 
@@ -410,7 +419,16 @@ void MainWindowController::dhParameterEditedCommonProcess() {
 		SetFocalPoint(endeffectorMat->GetElement(0, 3) + endeffectorMat->GetElement(0, 2)*ENDOSCOPE_FOCAL_DISTANCE, 
 			endeffectorMat->GetElement(1, 3) + endeffectorMat->GetElement(1, 2)*ENDOSCOPE_FOCAL_DISTANCE, 
 			endeffectorMat->GetElement(2, 3) + endeffectorMat->GetElement(2, 2)*ENDOSCOPE_FOCAL_DISTANCE);
+	// refreshAllWindows(false);
+}
+
+void MainWindowController::dhParameterEditedCommonProcess() 
+{
+	robot->updateDHs(this->getDHparameters());
+	robot->update();
+	updateEndoscopeCamera();
 	//show pose matrix
+	vtkSmartPointer<vtkMatrix4x4> endeffectorMat = robot->getEndEffectorMatrix();
 	nx->setText(QString::number((float)endeffectorMat->GetElement(0, 0)));	//nx, ny, ... is QLineEdit
 	ny->setText(QString::number((float)endeffectorMat->GetElement(1, 0)));
 	nz->setText(QString::number((float)endeffectorMat->GetElement(2, 0)));
@@ -430,7 +448,7 @@ void MainWindowController::dhParameterEditedCommonProcess() {
 	py->setText(QString::number((float)endeffectorMat->GetElement(1, 3)));
 	pz->setText(QString::number((float)endeffectorMat->GetElement(2, 3)));
 	pw->setText(QString::number((float)endeffectorMat->GetElement(3, 3)));
-	
+	refreshAllWindows(false);
 }
 
 
@@ -617,27 +635,25 @@ void MainWindowController::setKeystoneTransform(double* ks_array, int index)
 	//subCameras.at(index)->SetViewShear(i*0.1, 0.1, 1);
 }
 
-
-void MainWindowController::on_actionOpen_File_triggered() 
+void MainWindowController::read3DModel(QString filename) 
 {
-	QString filename = QFileDialog::getOpenFileName(this, tr("Open graphical model"), ".", tr("STL files (*.stl *.STL)\n" "OBJ files (*.obj *.OBJ)"));
 	if (!filename.isEmpty()) {
 		int lastPoint = filename.lastIndexOf(".");
 		QString extention = filename.right(lastPoint);
 		GraphicalModel* model = new GraphicalModel();
-
+		vtkSmartPointer<vtkPolyDataAlgorithm> reader;
 		if (extention.contains("stl", Qt::CaseInsensitive)) {
-			vtkSmartPointer<vtkSTLReader> reader = vtkSmartPointer<vtkSTLReader>::New();
-  			reader->SetFileName(filename.toStdString().c_str());
-  			reader->Update();
-  			model->setModel(reader);
+			reader = vtkSmartPointer<vtkSTLReader>::New();
+			vtkSTLReader::SafeDownCast(reader)->SetFileName(filename.toStdString().c_str());
 		}
 		if (extention.contains("obj", Qt::CaseInsensitive)) {
-			vtkSmartPointer<vtkOBJReader> reader = vtkSmartPointer<vtkOBJReader>::New();
-  			reader->SetFileName(filename.toStdString().c_str());
-  			reader->Update();
-  			model->setModel(reader);
+			reader = vtkSmartPointer<vtkOBJReader>::New();
+			vtkOBJReader::SafeDownCast(reader)->SetFileName(filename.toStdString().c_str());
 		}
+  		reader->Update();
+  		model->setModel(reader);
+  		model->getModelActor()->AddPosition(ROBOT_X_DISPLACEMENT - model->getModelActor()->GetCenter()[0], 
+  				ROBOT_X_DISPLACEMENT-model->getModelActor()->GetCenter()[1], -model->getModelActor()->GetCenter()[2]);
 		allActors.push_back(model->getModelActor());
 		statusbar->showMessage(filename);
 		this->addActorToScenes(model->getModelActor(), MAIN_AND_ENDOSCOPE);
@@ -645,11 +661,18 @@ void MainWindowController::on_actionOpen_File_triggered()
 	}
 }
 
+void MainWindowController::on_actionOpen_File_triggered() 
+{
+	QString filename = QFileDialog::getOpenFileName(this, tr("Open graphical model"), ".", tr("STL files (*.stl *.STL)\n" "OBJ files (*.obj *.OBJ)"));
+	read3DModel(filename);
+}
+
 /*
 	activate robot manipulator when button is pressed
 */
 void MainWindowController::on_robotActivateButton_clicked()
 {
+	read3DModel(PATH_TO_3D_MODEL);
 	if (robotActivateButton->isCheckable() == false) {
 		robotActivateButton->setText(QString("Disable Manipulator"));
 		
@@ -658,10 +681,16 @@ void MainWindowController::on_robotActivateButton_clicked()
 			this->addActorToScenes(robot->getModel().at(i)->getModelActor(), MAIN_AND_ENDOSCOPE); 
 			this->addActorToScenes(robot->getModel().at(i)->getAxesActor(), MAIN); 
 		} 
+
+		for (int i = 0, l = surgicalTool->getModel().size(); i < l; ++i)
+		{
+			this->addActorToScenes(surgicalTool->getModel().at(i)->getModelActor(), MAIN_AND_ENDOSCOPE);
+			this->addActorToScenes(surgicalTool->getModel().at(i)->getAxesActor(), MAIN);
+		}
 		this->dhParameterEditedCommonProcess();
 
 		std::cout << "\ndebug" << endoscopeViewCamera->GetFocalPoint()[0] << ", " << endoscopeViewCamera->GetFocalPoint()[1] << ", "<<endoscopeViewCamera->GetFocalPoint()[2] << std::endl;
-		this->refreshAllWindows(true);
+		// this->refreshAllWindows(false);
 		robotActivateButton->setCheckable(true);
 	} else {
 		robotActivateButton->setText(QString("Enable Manipulator"));
@@ -701,12 +730,6 @@ void MainWindowController::on_leapActivateButton_clicked()
 		// int timerId = mainWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
 		// endoscopeViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
 		// int timerIdEndoscope = endoscopeViewWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
-		/*topViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
-		int timerIdTop = topViewWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
-		frontViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
-		int timerIdfront = frontViewWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
-		sideViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
-		int timerIdside = sideViewWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);*/
 		this->refreshAllWindows(true);
 	} else {	//stop
 		//leap reaction 

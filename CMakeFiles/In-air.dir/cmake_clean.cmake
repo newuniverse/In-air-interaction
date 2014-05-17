@@ -11,6 +11,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/In-air.dir/sources/robotModel.cxx.o"
   "CMakeFiles/In-air.dir/sources/graphicalModel.cxx.o"
   "CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o"
+  "CMakeFiles/In-air.dir/sources/toolModel.cxx.o"
   "In-air.pdb"
   "In-air"
 )

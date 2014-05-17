@@ -2,7 +2,6 @@
 #define VTKINCLUDE_H
 
 #include <vtkSmartPointer.h>
-
 #include <vtkCallbackCommand.h>
 #include <vtkTransformPolyDataFilter.h>
 #include <vtkTransform.h>

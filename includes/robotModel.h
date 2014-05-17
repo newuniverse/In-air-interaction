@@ -1,22 +1,23 @@
 #ifndef ROBOTMODEL_H_
 #define ROBOTMODEL_H_
 
-#include "graphicalModel.h"
-#include "Common/MathIntegrated.h"
+#include "baseModel.h"
+// #include "Common/MathIntegrated.h"
 
-class RobotModel 
+class RobotModel : public BaseModel
 {
 public://methods
     RobotModel();
     ~RobotModel();
-    void update();
+    
     void updateDHs(float* DHS);
     float* getThetas();
     void setup (float* DHs);
-    std::vector<GraphicalModel* > getModel();
+    void update();
+
     vtkSmartPointer<vtkTransform> getEndEffectorTransform();
     vtkSmartPointer<vtkMatrix4x4> getEndEffectorMatrix();
-    void calcInverseKinematics(const Eigen::VectorXf& goal);
+    void calcInverseKinematics(const Eigen::Matrix< float , 6 , 1>& goal);
 private://methods
 	Eigen::Matrix4f calcHomoTransMatrix(float d, float a, float alpha, float theta);
     Eigen::Matrix3f calcRotTransMatrix(float d, float a, float alpha, float theta);
@@ -25,7 +26,6 @@ private://methods
 public://members
 	
 private://members
-	std::vector<GraphicalModel* > _components;
     vtkSmartPointer<vtkTransform> _endEffectorTransform;
     vtkSmartPointer<vtkMatrix4x4> _endEffectorMatrix;
 	GraphicalModel** _joints;

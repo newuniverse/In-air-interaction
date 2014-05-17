@@ -658,7 +658,7 @@ public:
         j1theta->setObjectName(QString::fromUtf8("j1theta"));
         j1theta->setMinimum(-180);
         j1theta->setMaximum(180);
-        j1theta->setValue(90);
+        j1theta->setValue(80);
 
         horizontalLayout_6->addWidget(j1theta);
 
@@ -691,7 +691,7 @@ public:
         j2theta->setObjectName(QString::fromUtf8("j2theta"));
         j2theta->setMinimum(-180);
         j2theta->setMaximum(180);
-        j2theta->setValue(-30);
+        j2theta->setValue(-60);
 
         horizontalLayout_7->addWidget(j2theta);
 
@@ -724,7 +724,7 @@ public:
         j3theta->setObjectName(QString::fromUtf8("j3theta"));
         j3theta->setMinimum(-180);
         j3theta->setMaximum(180);
-        j3theta->setValue(0);
+        j3theta->setValue(11);
 
         horizontalLayout_8->addWidget(j3theta);
 
@@ -757,7 +757,7 @@ public:
         j4theta->setObjectName(QString::fromUtf8("j4theta"));
         j4theta->setMinimum(-180);
         j4theta->setMaximum(180);
-        j4theta->setValue(0);
+        j4theta->setValue(-11);
 
         horizontalLayout_9->addWidget(j4theta);
 
@@ -790,7 +790,7 @@ public:
         j5theta->setObjectName(QString::fromUtf8("j5theta"));
         j5theta->setMinimum(-180);
         j5theta->setMaximum(180);
-        j5theta->setValue(0);
+        j5theta->setValue(9);
 
         horizontalLayout_10->addWidget(j5theta);
 
@@ -823,6 +823,7 @@ public:
         j6theta->setObjectName(QString::fromUtf8("j6theta"));
         j6theta->setMinimum(-180);
         j6theta->setMaximum(180);
+        j6theta->setValue(13);
 
         horizontalLayout_11->addWidget(j6theta);
 

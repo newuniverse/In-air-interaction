@@ -1,4 +1,3 @@
-#include "vtkInclude.h"
 #include "LeapControllerModel.h"
 
 #define INNER_RANGE 10
@@ -80,9 +79,4 @@ LeapControllerModel::~LeapControllerModel()
 {
     delete _innerSphere;
     delete _outerSphere;
-}
-
-std::vector<GraphicalModel* > LeapControllerModel::getModel() 
-{
-	return _components;
 }

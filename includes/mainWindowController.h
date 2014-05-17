@@ -19,6 +19,7 @@
 
 #include "LeapControllerModel.h"
 
+#include "ToolModel.h"
 ////////////////
 #ifdef _APPLE_
 #include "OVR.h"
@@ -58,35 +59,35 @@ private slots:
 		x4SpinBox->setValue(1.0);  y4SpinBox->setValue(-1.0);
 	}
 
-	void on_j1d_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
-	void on_j1a_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
-	void on_j1alpha_editingFinished () { dhParameterEditedCommonProcess(); refreshAllWindows(false);}
-	void on_j1theta_valueChanged() {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j1d_editingFinished () {     dhParameterEditedCommonProcess(); }
+	void on_j1a_editingFinished () {     dhParameterEditedCommonProcess(); }
+	void on_j1alpha_editingFinished () { dhParameterEditedCommonProcess(); }
+	void on_j1theta_valueChanged() {     dhParameterEditedCommonProcess(); }
 
-	void on_j2d_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
-	void on_j2a_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
-	void on_j2alpha_editingFinished () { dhParameterEditedCommonProcess(); refreshAllWindows(false);}
-	void on_j2theta_valueChanged() {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j2d_editingFinished () {     dhParameterEditedCommonProcess(); }
+	void on_j2a_editingFinished () {     dhParameterEditedCommonProcess(); }
+	void on_j2alpha_editingFinished () { dhParameterEditedCommonProcess(); }
+	void on_j2theta_valueChanged() {     dhParameterEditedCommonProcess(); }
 
-	void on_j3d_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
-	void on_j3a_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
-	void on_j3alpha_editingFinished () { dhParameterEditedCommonProcess(); refreshAllWindows(false);}
-	void on_j3theta_valueChanged() {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j3d_editingFinished () {     dhParameterEditedCommonProcess(); }
+	void on_j3a_editingFinished () {     dhParameterEditedCommonProcess(); }
+	void on_j3alpha_editingFinished () { dhParameterEditedCommonProcess(); }
+	void on_j3theta_valueChanged() {     dhParameterEditedCommonProcess(); }
 
-	void on_j4d_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
-	void on_j4a_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
-	void on_j4alpha_editingFinished () { dhParameterEditedCommonProcess(); refreshAllWindows(false);}
-	void on_j4theta_valueChanged() {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j4d_editingFinished () {     dhParameterEditedCommonProcess(); }
+	void on_j4a_editingFinished () {     dhParameterEditedCommonProcess(); }
+	void on_j4alpha_editingFinished () { dhParameterEditedCommonProcess(); }
+	void on_j4theta_valueChanged() {     dhParameterEditedCommonProcess(); }
 
-	void on_j5d_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
-	void on_j5a_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
-	void on_j5alpha_editingFinished () { dhParameterEditedCommonProcess(); refreshAllWindows(false);}
-	void on_j5theta_valueChanged() {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j5d_editingFinished () {     dhParameterEditedCommonProcess(); }
+	void on_j5a_editingFinished () {     dhParameterEditedCommonProcess(); }
+	void on_j5alpha_editingFinished () { dhParameterEditedCommonProcess(); }
+	void on_j5theta_valueChanged() {     dhParameterEditedCommonProcess(); }
 
-	void on_j6d_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
-	void on_j6a_editingFinished () {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
-	void on_j6alpha_editingFinished () { dhParameterEditedCommonProcess(); refreshAllWindows(false);}
-	void on_j6theta_valueChanged() {     dhParameterEditedCommonProcess(); refreshAllWindows(false);}
+	void on_j6d_editingFinished () {     dhParameterEditedCommonProcess(); }
+	void on_j6a_editingFinished () {     dhParameterEditedCommonProcess(); }
+	void on_j6alpha_editingFinished () { dhParameterEditedCommonProcess(); }
+	void on_j6theta_valueChanged() {     dhParameterEditedCommonProcess(); }
 
 	void on_x1SpinBox_valueChanged(double d) { X1 = d; keystoneSpinboxEditedCommonProcess();}
 	void on_y1SpinBox_valueChanged(double d) { Y1 = d; keystoneSpinboxEditedCommonProcess();}
@@ -99,7 +100,7 @@ private slots:
 
 	void on_xPlusButton_clicked() 
 	{
-		Eigen::VectorXf goal(6);
+		Eigen::Matrix< float , 6 , 1> goal(6);
 		goal << TEST_DELTA, 0.0, 0.0, 0.0, 0.0, 0.0;
 		robot->calcInverseKinematics(goal);
 		refreshAllWindows(false);
@@ -107,7 +108,7 @@ private slots:
 
 	void on_xMinusButton_clicked() 
 	{
-		Eigen::VectorXf goal(6);
+		Eigen::Matrix< float , 6 , 1> goal(6);
 		goal << -TEST_DELTA, 0.0, 0.0, 0.0, 0.0, 0.0;
 		robot->calcInverseKinematics(goal);
 		refreshAllWindows(false);
@@ -115,7 +116,7 @@ private slots:
 
 	void on_yPlusButton_clicked() 
 	{
-		Eigen::VectorXf goal(6);
+		Eigen::Matrix< float , 6 , 1> goal(6);
 		goal << 0.0, TEST_DELTA, 0.0, 0.0, 0.0, 0.0;
 		robot->calcInverseKinematics(goal);
 		refreshAllWindows(false);
@@ -123,7 +124,7 @@ private slots:
 
 	void on_yMinusButton_clicked() 
 	{
-		Eigen::VectorXf goal(6);
+		Eigen::Matrix< float , 6 , 1> goal(6);
 		goal << 0.0, -TEST_DELTA, 0.0, 0.0, 0.0, 0.0;
 		robot->calcInverseKinematics(goal);
 		refreshAllWindows(false);
@@ -131,7 +132,7 @@ private slots:
 
 	void on_zPlusButton_clicked() 
 	{
-		Eigen::VectorXf goal(6);
+		Eigen::Matrix< float , 6 , 1> goal(6);
 		goal << 0.0, 0.0, TEST_DELTA, 0.0, 0.0, 0.0;
 		robot->calcInverseKinematics(goal);
 		refreshAllWindows(false);
@@ -139,7 +140,7 @@ private slots:
 
 	void on_zMinusButton_clicked() 
 	{
-		Eigen::VectorXf goal(6);
+		Eigen::Matrix< float , 6 , 1> goal(6);
 		goal << 0.0, 0.0, -TEST_DELTA, 0.0, 0.0, 0.0;
 		robot->calcInverseKinematics(goal);
 		refreshAllWindows(false);
@@ -167,9 +168,10 @@ private://methods
 	void addAllLeapModels();
 	void removeAllLeapModels();
 	void createWindowFromConfig();
-	
+	void read3DModel(QString filename);
 	float* getDHparameters();
 	void dhParameterEditedCommonProcess();
+	void updateEndoscopeCamera();
 	double* calcKeystones();
 	void keystoneSpinboxEditedCommonProcess();
 private://members
@@ -185,6 +187,11 @@ private://members
 	RobotModel* robot;
 	// leap controller visual
 	LeapControllerModel* controller;
+	// forcept
+	ToolModel* surgicalTool;
+
+
+
 	//main window
 	vtkSmartPointer<vtkRenderer> mainRenderer;
 	vtkSmartPointer<vtkRenderWindow> mainWindow;
@@ -203,6 +210,9 @@ private://members
 	vtkSmartPointer<vtkRenderer> leapControllerViewRenderer;
 	vtkSmartPointer<vtkRenderWindow> leapControllerViewWindow;
 	vtkSmartPointer<vtkCamera> leapControllerViewCamera;
+
+	vtkSmartPointer<vtkAxesActor> worldAxes;
+	vtkSmartPointer<vtkOrientationMarkerWidget> axesWidget;
 
 	std::vector<vtkSmartPointer<vtkActor> > allActors;
 	std::chrono::high_resolution_clock::time_point currentTime;
