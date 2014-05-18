@@ -74,5 +74,34 @@ static bool withinRange(float min, float max, float target)
         return false;
     }
 }
+
+static std::vector<float> poseMatToRPYAngleRad(const Eigen::Matrix4f& poseMat)
+{
+    std::vector<float> rpyAngles;
+    rpyAngles.resize(3);
+    float minusSinPitch = poseMat(2, 0);
+    if (minusSinPitch == 1) {
+        rpyAngles.push_back( atan2(-poseMat(0, 1), poseMat(1, 1)) - 0.0 );
+        rpyAngles.push_back(-M_PI/2.0);
+        rpyAngles.push_back(0.0);
+        return rpyAngles;
+    }
+    if (minusSinPitch == -1) {
+        rpyAngles.push_back( atan2(-poseMat(0, 1), poseMat(1, 1)) + 0.0 );
+        rpyAngles.push_back(M_PI/2.0);
+        rpyAngles.push_back(0.0);
+        return rpyAngles;
+    }
+    float beta1 = atan2(-poseMat(2, 0), sqrtf(1.0 - poseMat(2, 0)*poseMat(2, 0)));
+    float beta2 = atan2(-poseMat(2, 0), -sqrtf(1.0 - poseMat(2, 0)*poseMat(2, 0)));
+    float beta;
+    abs(beta1) < abs(beta2) ? beta = beta1 : beta = beta2;
+    float cosBeta = cos(beta);
+    rpyAngles.push_back(atan2(poseMat(2, 1)/cosBeta, poseMat(2, 2)/cosBeta));
+    rpyAngles.push_back(beta);
+    rpyAngles.push_back(atan2(poseMat(1, 0)/cosBeta, poseMat(0, 0)/cosBeta));
+    return rpyAngles;
+}
+
 }
 #endif

@@ -213,7 +213,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1439, 827);
+        MainWindow->resize(1439, 856);
         MainWindow->setMinimumSize(QSize(1330, 800));
         actionNew = new QAction(MainWindow);
         actionNew->setObjectName(QString::fromUtf8("actionNew"));

@@ -11,7 +11,6 @@
 
 RobotModel::RobotModel() 
 {
-    _current.resize(6);
 	_endEffectorTransform = vtkSmartPointer<vtkTransform>::New();
     _endEffectorMatrix    = vtkSmartPointer<vtkMatrix4x4>::New();
     _dh_parameters        = new float*[NUM_JOINTS];
@@ -70,22 +69,22 @@ void RobotModel::calcInverseKinematics(const Eigen::Matrix< float , 6 , 1>& pg)
     }
     //temporary
     Eigen::VectorXf goal(6);
-    goal = _current + pg;
+    goal = _twistVector + pg;
 
     Eigen::VectorXf deltaP(DOF);
     Eigen::VectorXf deltaTheta(NUM_JOINTS);
     float deltaPos;
     _lastDeltaPos = std::numeric_limits<float>::max();
     int count(0);
-    std::cout << "start Position: \n" << _current(0) <<", " << _current(1) <<", " << _current(2) <<", " << _current(3) <<", " << _current(4) <<", " << _current(5) <<std::endl;
+    std::cout << "start Position: \n" << _twistVector(0) <<", " << _twistVector(1) <<", " << _twistVector(2) <<", " << _twistVector(3) <<", " << _twistVector(4) <<", " << _twistVector(5) <<std::endl;
     std::cout << "goal Position: \n" << goal(0) <<", " << goal(1) <<", " << goal(2) <<", " << goal(3) <<", " << goal(4) <<", " << goal(5) <<std::endl;
 
     do {
         _lastDeltaPos = deltaPos;
         for (int i = 3; i < DOF; ++i) {
-            goal(i) = _current(i);
+            goal(i) = _twistVector(i);
         }
-        deltaP = (goal - _current);
+        deltaP = (goal - _twistVector);
         std::cout << count <<":\n"<<"delta Position: \n" << deltaP(0) <<", " << deltaP(1) <<", " << deltaP(2) <<", " << deltaP(3) <<", " << deltaP(4) <<", " << deltaP(5) <<std::endl;
         // deltaP /= STEP; //deltaP.norm();
         //deltaP *= STEP;
@@ -95,8 +94,8 @@ void RobotModel::calcInverseKinematics(const Eigen::Matrix< float , 6 , 1>& pg)
             _dh_parameters[i][3] += deltaTheta(i);
         }
         update();
-        std::cout << "updated start Position: \n" << _current(0) <<", " << _current(1) <<", " << _current(2) <<", " << _current(3) <<", " << _current(4) <<", " << _current(5) <<std::endl;
-        deltaP = (goal - _current);
+        std::cout << "updated start Position: \n" << _twistVector(0) <<", " << _twistVector(1) <<", " << _twistVector(2) <<", " << _twistVector(3) <<", " << _twistVector(4) <<", " << _twistVector(5) <<std::endl;
+        deltaP = (goal - _twistVector);
         deltaPos = sqrtf(deltaP(0)*deltaP(0) + deltaP(1)*deltaP(1) + deltaP(2)*deltaP(2));
         std::cout <<count <<": delta length\n" <<deltaPos<< std::endl;
         count++;
@@ -197,7 +196,8 @@ void RobotModel::update()
    		_joints[i]->getModelActor()->SetUserTransform(transform);
    		_joints[i]->getModelActor()->GetProperty()->SetColor(1.0, 0.0, 0.0);
         _joints[i]->getAxesActor()->SetUserTransform(transform);
-        _joints[i]->getAxesActor()->SetNormalizedShaftLength(ACTUATOR_SIZE*2.0, ACTUATOR_SIZE*2.0, ACTUATOR_SIZE*2.0);
+        _joints[i]->getAxesActor()->SetNormalizedShaftLength(ACTUATOR_SIZE*2.0,
+                                         ACTUATOR_SIZE*2.0, ACTUATOR_SIZE*2.0);
         //set source property
         //end-effector
         algorithm = _joints[i]->getModelActor()->GetMapper()->GetInputConnection(0, 0)->GetProducer();
@@ -206,11 +206,12 @@ void RobotModel::update()
         if (i == NUM_JOINTS) {
             srcRef->SetCenter(0, ACTUATOR_SIZE, 0);
             _endEffectorMatrix = mat;
-            Leap::Vector endEffectorZAxis = Leap::Vector(_endEffectorMatrix->GetElement(0, 2), 
-                                                  _endEffectorMatrix->GetElement(1, 2), _endEffectorMatrix->GetElement(2, 2));
-    
-             _current << _endEffectorMatrix->GetElement(0, 3), _endEffectorMatrix->GetElement(1, 3), _endEffectorMatrix->GetElement(2, 3),
-                         endEffectorZAxis.roll(), endEffectorZAxis.pitch(), endEffectorZAxis.yaw();
+            std::vector<float> rpyAngleRad;
+            rpyAngleRad = MathIntegrated::poseMatToRPYAngleRad(poseMat[i]);
+            
+             _twistVector << _endEffectorMatrix->GetElement(0, 3), _endEffectorMatrix->GetElement(1, 3), 
+                             _endEffectorMatrix->GetElement(2, 3),
+                              rpyAngleRad.at(0), rpyAngleRad.at(1), rpyAngleRad.at(2);
         }
         srcRef->SetRadius(ACTUATOR_SIZE);
         srcRef->SetHeight(ACTUATOR_SIZE*2);
@@ -242,8 +243,7 @@ Eigen::Matrix4f RobotModel::calcHomoTransMatrix(float d, float a, float alpha, f
 		   sin(theta), cos(alpha)*cos(theta), -sin(alpha)*cos(theta), a*sin(theta),
 		   0,          sin(alpha),            cos(alpha),             d,
 		   0,          0,                     0,                      1;
-    // std::cout << "dh parameters"<<": \n"<<d<<" "<<a<<" "<<alpha<<" "<<theta<<std::endl;
-    // std::cout<<"homogenerous mat:\n"<<htm<<std::endl; 
+
 	return htm; 
 }
 
@@ -257,12 +257,13 @@ Eigen::Matrix3f RobotModel::calcRotTransMatrix(float d, float a, float alpha, fl
     return rtm;
 }
 
-float* RobotModel::getThetas() 
+std::vector<float> RobotModel::getThetas() 
 {
-    float thetas[NUM_JOINTS];
+    std::vector<float> thetas;
+    thetas.resize(NUM_JOINTS);
     for (int i = 0; i < NUM_JOINTS; ++i)
     {
-        thetas[i] = _dh_parameters[i][3];
+        thetas.push_back( _dh_parameters[i][3] );
     }
     return thetas;
 }

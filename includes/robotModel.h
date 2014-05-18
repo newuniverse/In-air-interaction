@@ -11,7 +11,7 @@ public://methods
     ~RobotModel();
     
     void updateDHs(float* DHS);
-    float* getThetas();
+    std::vector<float> getThetas();
     void setup (float* DHs);
     void update();
 
@@ -31,7 +31,7 @@ private://members
 	GraphicalModel** _joints;
 	GraphicalModel** _links;
     float** _dh_parameters;
-    Eigen::VectorXf _current;
+    Eigen::Matrix< float , 6 , 1> _twistVector;
     float _lastDeltaPos;
 protected: 
     

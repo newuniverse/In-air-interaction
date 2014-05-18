@@ -53,12 +53,20 @@ ToolModel::~ToolModel()
 Eigen::Matrix< float , 6 , 1> ToolModel::getToolsHandlePos(Eigen::Vector3f deltaPos)
 {
 	Eigen::Matrix<float, 6, 1> targetPos; //start of forcept and end of end-effector
+	Eigen::Matrix4f poseMat;
 	_tipPos += deltaPos;	//end of forcept
 	_deltaOrientation = FORCEPT_LENGTH * (Leap::Vector(CONSTRAIN_POINT_POS_X, CONSTRAIN_POINT_POS_Y, CONSTRAIN_POINT_POS_Z) 
 							- Leap::Vector(_tipPos(0), _tipPos(1), _tipPos(2))).normalized();
-	targetPos << _tipPos(0) + _deltaOrientation.x,  _tipPos(1) + _deltaOrientation.y, _tipPos(0) + _deltaOrientation.x, 
-				_deltaOrientation.
-}
+
+	Eigen::Vector4f pPos, zAxis, yAxis, xAxis;
+	pPos << _tipPos, 1.0;
+	zAxis << _deltaOrientation.x, _deltaOrientation.y, _deltaOrientation.z, 0;
+	yAxis << _deltaOrientation.x, _deltaOrientation.y, _deltaOrientation.z, 0;
+	xAxis << _deltaOrientation.x, _deltaOrientation.y, _deltaOrientation.z, 0;
+	
+	targetPos << _tipPos(0) + _deltaOrientation.x,  _tipPos(1) + _deltaOrientation.y, _tipPos(0) + _deltaOrientation.x;
+				
+}	
 
 void ToolModel::update() 
 {
