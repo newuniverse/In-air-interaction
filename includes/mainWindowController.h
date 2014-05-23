@@ -12,6 +12,7 @@
 
 //Leap listener class wrapper
 #include "LeapListener.h"
+// #include "LeapController.h"
 
 #include "graphicalViewer.h"
 
@@ -100,49 +101,49 @@ private slots:
 
 	void on_xPlusButton_clicked() 
 	{
-		Eigen::Matrix< float , 6 , 1> goal(6);
+		Eigen::Matrix< double , 6 , 1> goal(6);
 		goal << TEST_DELTA, 0.0, 0.0, 0.0, 0.0, 0.0;
-		robot->calcInverseKinematics(goal);
+		_robotModel->calcInverseKinematics(goal);
 		refreshAllWindows(false);
 	}
 
 	void on_xMinusButton_clicked() 
 	{
-		Eigen::Matrix< float , 6 , 1> goal(6);
+		Eigen::Matrix< double , 6 , 1> goal(6);
 		goal << -TEST_DELTA, 0.0, 0.0, 0.0, 0.0, 0.0;
-		robot->calcInverseKinematics(goal);
+		_robotModel->calcInverseKinematics(goal);
 		refreshAllWindows(false);
 	}
 
 	void on_yPlusButton_clicked() 
 	{
-		Eigen::Matrix< float , 6 , 1> goal(6);
+		Eigen::Matrix< double , 6 , 1> goal(6);
 		goal << 0.0, TEST_DELTA, 0.0, 0.0, 0.0, 0.0;
-		robot->calcInverseKinematics(goal);
+		_robotModel->calcInverseKinematics(goal);
 		refreshAllWindows(false);
 	}
 
 	void on_yMinusButton_clicked() 
 	{
-		Eigen::Matrix< float , 6 , 1> goal(6);
+		Eigen::Matrix< double , 6 , 1> goal(6);
 		goal << 0.0, -TEST_DELTA, 0.0, 0.0, 0.0, 0.0;
-		robot->calcInverseKinematics(goal);
+		_robotModel->calcInverseKinematics(goal);
 		refreshAllWindows(false);
 	}
 
 	void on_zPlusButton_clicked() 
 	{
-		Eigen::Matrix< float , 6 , 1> goal(6);
+		Eigen::Matrix< double , 6 , 1> goal(6);
 		goal << 0.0, 0.0, TEST_DELTA, 0.0, 0.0, 0.0;
-		robot->calcInverseKinematics(goal);
+		_robotModel->calcInverseKinematics(goal);
 		refreshAllWindows(false);
 	}
 
 	void on_zMinusButton_clicked() 
 	{
-		Eigen::Matrix< float , 6 , 1> goal(6);
+		Eigen::Matrix< double , 6 , 1> goal(6);
 		goal << 0.0, 0.0, -TEST_DELTA, 0.0, 0.0, 0.0;
-		robot->calcInverseKinematics(goal);
+		_robotModel->calcInverseKinematics(goal);
 		refreshAllWindows(false);
 	}
 public: //members
@@ -169,7 +170,7 @@ private://methods
 	void removeAllLeapModels();
 	void createWindowFromConfig();
 	void read3DModel(QString filename);
-	float* getDHparameters();
+	double* getDHparameters();
 	void dhParameterEditedCommonProcess();
 	void updateEndoscopeCamera();
 	double* calcKeystones();
@@ -178,17 +179,17 @@ private://members
 	static const int DELTATIME = 30; //ms
 	double X1, X2, X3, X4, Y1, Y2, Y3, Y4;//keystones
 
-	float* dh_parameter;
+	double* dh_parameter;
 
-	tinyxml2::XMLDocument*   conf_xml;
-	LeapListener*     listener;
-	Leap::Controller* g_lmController;
+	tinyxml2::XMLDocument   _confXML;
+	LeapListener*     _lmListener;
+	Leap::Controller* _lmController;
 	// manipulator
-	RobotModel* robot;
+	RobotModel* _robotModel;
 	// leap controller visual
-	LeapControllerModel* controller;
+	LeapControllerModel* _uiModel;
 	// forcept
-	ToolModel* surgicalTool;
+	ToolModel* _surgicalToolModel;
 
 
 

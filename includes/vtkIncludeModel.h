@@ -2,8 +2,7 @@
 #define VTKINCLUDEMODEL_H
 
 #include <vtkSmartPointer.h>
-
-
+#include <vtkCamera.h>
 #include <vtkInteractorStyleTrackballCamera.h>
 #include <vtkInteractorStyleTrackballActor.h>
 #include <vtkInteractorStyleTerrain.h>

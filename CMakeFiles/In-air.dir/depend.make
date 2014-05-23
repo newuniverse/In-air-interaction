@@ -6,6 +6,7 @@ CMakeFiles/In-air.dir/ThirdParty/tinyxml2/tinyxml2.cpp.o: ThirdParty/tinyxml2/ti
 
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: includes/LeapControllerModel.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: includes/LeapListener.h
+CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: includes/RobotModel.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: includes/ToolModel.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: includes/baseModel.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: includes/graphicalModel.h
@@ -363,6 +364,7 @@ CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/includ
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkWeakPointerBase.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkWin32Header.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkWindow.h
+CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: ThirdParty/Common/ConfigIntegrated.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: ThirdParty/Common/MathIntegrated.h
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: ThirdParty/Eigen/Cholesky
 CMakeFiles/In-air.dir/includes/moc_mainWindowController.cxx.o: ThirdParty/Eigen/Core
@@ -918,6 +920,7 @@ CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkWeakPointer.h
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkWeakPointerBase.h
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkWin32Header.h
 CMakeFiles/In-air.dir/main.cxx.o: /usr/local/include/vtk-6.2/vtkWindow.h
+CMakeFiles/In-air.dir/main.cxx.o: ThirdParty/Common/ConfigIntegrated.h
 CMakeFiles/In-air.dir/main.cxx.o: ThirdParty/Common/MathIntegrated.h
 CMakeFiles/In-air.dir/main.cxx.o: ThirdParty/Eigen/Cholesky
 CMakeFiles/In-air.dir/main.cxx.o: ThirdParty/Eigen/Core
@@ -1127,6 +1130,7 @@ CMakeFiles/In-air.dir/main.cxx.o: ThirdParty/Leap/Shared.h
 CMakeFiles/In-air.dir/main.cxx.o: ThirdParty/tinyxml2/tinyxml2.h
 CMakeFiles/In-air.dir/main.cxx.o: includes/LeapControllerModel.h
 CMakeFiles/In-air.dir/main.cxx.o: includes/LeapListener.h
+CMakeFiles/In-air.dir/main.cxx.o: includes/RobotModel.h
 CMakeFiles/In-air.dir/main.cxx.o: includes/ToolModel.h
 CMakeFiles/In-air.dir/main.cxx.o: includes/baseModel.h
 CMakeFiles/In-air.dir/main.cxx.o: includes/graphicalModel.h
@@ -1161,6 +1165,7 @@ CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o: /usr/local/include/vtk-
 CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o: /usr/local/include/vtk-6.2/vtkAxesActor.h
 CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o: /usr/local/include/vtk-6.2/vtkAxisActor.h
 CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o: /usr/local/include/vtk-6.2/vtkCallbackCommand.h
+CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o: /usr/local/include/vtk-6.2/vtkCamera.h
 CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o: /usr/local/include/vtk-6.2/vtkCell.h
 CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o: /usr/local/include/vtk-6.2/vtkCellLinks.h
 CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o: /usr/local/include/vtk-6.2/vtkCellType.h
@@ -1284,6 +1289,7 @@ CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o: /usr/local/include/vtk-
 CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o: /usr/local/include/vtk-6.2/vtkWeakPointer.h
 CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o: /usr/local/include/vtk-6.2/vtkWeakPointerBase.h
 CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o: /usr/local/include/vtk-6.2/vtkWin32Header.h
+CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o: ThirdParty/Common/ConfigIntegrated.h
 CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o: ThirdParty/Common/MathIntegrated.h
 CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o: ThirdParty/Eigen/Cholesky
 CMakeFiles/In-air.dir/sources/LeapControllerModel.cxx.o: ThirdParty/Eigen/Core
@@ -1516,6 +1522,7 @@ CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtk
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkAxesActor.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkAxisActor.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkCallbackCommand.h
+CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkCamera.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkCell.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkCellLinks.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkCellType.h
@@ -1639,6 +1646,7 @@ CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtk
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkWeakPointer.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkWeakPointerBase.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: /usr/local/include/vtk-6.2/vtkWin32Header.h
+CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: ThirdParty/Common/ConfigIntegrated.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: ThirdParty/Common/MathIntegrated.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: ThirdParty/Eigen/Cholesky
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: ThirdParty/Eigen/Core
@@ -1847,6 +1855,8 @@ CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: ThirdParty/Leap/LeapMath.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: ThirdParty/Leap/Shared.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: includes/LeapControllerModel.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: includes/LeapListener.h
+CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: includes/RobotModel.h
+CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: includes/ToolModel.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: includes/baseModel.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: includes/graphicalModel.h
 CMakeFiles/In-air.dir/sources/LeapListener.cpp.o: includes/vtkInclude.h
@@ -1871,6 +1881,7 @@ CMakeFiles/In-air.dir/sources/graphicalModel.cxx.o: /usr/local/include/vtk-6.2/v
 CMakeFiles/In-air.dir/sources/graphicalModel.cxx.o: /usr/local/include/vtk-6.2/vtkAutoInit.h
 CMakeFiles/In-air.dir/sources/graphicalModel.cxx.o: /usr/local/include/vtk-6.2/vtkAxesActor.h
 CMakeFiles/In-air.dir/sources/graphicalModel.cxx.o: /usr/local/include/vtk-6.2/vtkAxisActor.h
+CMakeFiles/In-air.dir/sources/graphicalModel.cxx.o: /usr/local/include/vtk-6.2/vtkCamera.h
 CMakeFiles/In-air.dir/sources/graphicalModel.cxx.o: /usr/local/include/vtk-6.2/vtkCell.h
 CMakeFiles/In-air.dir/sources/graphicalModel.cxx.o: /usr/local/include/vtk-6.2/vtkCellLinks.h
 CMakeFiles/In-air.dir/sources/graphicalModel.cxx.o: /usr/local/include/vtk-6.2/vtkCellType.h
@@ -3009,6 +3020,7 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkWeakPointerBase.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkWin32Header.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: /usr/local/include/vtk-6.2/vtkWindow.h
+CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: ThirdParty/Common/ConfigIntegrated.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: ThirdParty/Common/MathIntegrated.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: ThirdParty/Eigen/Cholesky
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: ThirdParty/Eigen/Core
@@ -3218,6 +3230,7 @@ CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: ThirdParty/Leap/Shared
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: ThirdParty/tinyxml2/tinyxml2.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includes/LeapControllerModel.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includes/LeapListener.h
+CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includes/RobotModel.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includes/ToolModel.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includes/baseModel.h
 CMakeFiles/In-air.dir/sources/mainWindowController.cxx.o: includes/graphicalModel.h
@@ -3250,6 +3263,7 @@ CMakeFiles/In-air.dir/sources/robotModel.cxx.o: /usr/local/include/vtk-6.2/vtkAu
 CMakeFiles/In-air.dir/sources/robotModel.cxx.o: /usr/local/include/vtk-6.2/vtkAxesActor.h
 CMakeFiles/In-air.dir/sources/robotModel.cxx.o: /usr/local/include/vtk-6.2/vtkAxisActor.h
 CMakeFiles/In-air.dir/sources/robotModel.cxx.o: /usr/local/include/vtk-6.2/vtkCallbackCommand.h
+CMakeFiles/In-air.dir/sources/robotModel.cxx.o: /usr/local/include/vtk-6.2/vtkCamera.h
 CMakeFiles/In-air.dir/sources/robotModel.cxx.o: /usr/local/include/vtk-6.2/vtkCell.h
 CMakeFiles/In-air.dir/sources/robotModel.cxx.o: /usr/local/include/vtk-6.2/vtkCellLinks.h
 CMakeFiles/In-air.dir/sources/robotModel.cxx.o: /usr/local/include/vtk-6.2/vtkCellType.h
@@ -3373,6 +3387,7 @@ CMakeFiles/In-air.dir/sources/robotModel.cxx.o: /usr/local/include/vtk-6.2/vtkVo
 CMakeFiles/In-air.dir/sources/robotModel.cxx.o: /usr/local/include/vtk-6.2/vtkWeakPointer.h
 CMakeFiles/In-air.dir/sources/robotModel.cxx.o: /usr/local/include/vtk-6.2/vtkWeakPointerBase.h
 CMakeFiles/In-air.dir/sources/robotModel.cxx.o: /usr/local/include/vtk-6.2/vtkWin32Header.h
+CMakeFiles/In-air.dir/sources/robotModel.cxx.o: ThirdParty/Common/ConfigIntegrated.h
 CMakeFiles/In-air.dir/sources/robotModel.cxx.o: ThirdParty/Common/MathIntegrated.h
 CMakeFiles/In-air.dir/sources/robotModel.cxx.o: ThirdParty/Eigen/Cholesky
 CMakeFiles/In-air.dir/sources/robotModel.cxx.o: ThirdParty/Eigen/Core
@@ -3605,6 +3620,7 @@ CMakeFiles/In-air.dir/sources/toolModel.cxx.o: /usr/local/include/vtk-6.2/vtkAut
 CMakeFiles/In-air.dir/sources/toolModel.cxx.o: /usr/local/include/vtk-6.2/vtkAxesActor.h
 CMakeFiles/In-air.dir/sources/toolModel.cxx.o: /usr/local/include/vtk-6.2/vtkAxisActor.h
 CMakeFiles/In-air.dir/sources/toolModel.cxx.o: /usr/local/include/vtk-6.2/vtkCallbackCommand.h
+CMakeFiles/In-air.dir/sources/toolModel.cxx.o: /usr/local/include/vtk-6.2/vtkCamera.h
 CMakeFiles/In-air.dir/sources/toolModel.cxx.o: /usr/local/include/vtk-6.2/vtkCell.h
 CMakeFiles/In-air.dir/sources/toolModel.cxx.o: /usr/local/include/vtk-6.2/vtkCellLinks.h
 CMakeFiles/In-air.dir/sources/toolModel.cxx.o: /usr/local/include/vtk-6.2/vtkCellType.h
@@ -3728,6 +3744,7 @@ CMakeFiles/In-air.dir/sources/toolModel.cxx.o: /usr/local/include/vtk-6.2/vtkVol
 CMakeFiles/In-air.dir/sources/toolModel.cxx.o: /usr/local/include/vtk-6.2/vtkWeakPointer.h
 CMakeFiles/In-air.dir/sources/toolModel.cxx.o: /usr/local/include/vtk-6.2/vtkWeakPointerBase.h
 CMakeFiles/In-air.dir/sources/toolModel.cxx.o: /usr/local/include/vtk-6.2/vtkWin32Header.h
+CMakeFiles/In-air.dir/sources/toolModel.cxx.o: ThirdParty/Common/ConfigIntegrated.h
 CMakeFiles/In-air.dir/sources/toolModel.cxx.o: ThirdParty/Common/MathIntegrated.h
 CMakeFiles/In-air.dir/sources/toolModel.cxx.o: ThirdParty/Eigen/Cholesky
 CMakeFiles/In-air.dir/sources/toolModel.cxx.o: ThirdParty/Eigen/Core

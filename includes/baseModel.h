@@ -4,6 +4,7 @@
 #include "vtkInclude.h"
 #include "graphicalModel.h"
 #include "Common/MathIntegrated.h"
+#include "Common/ConfigIntegrated.h"
 
 class BaseModel 
 {

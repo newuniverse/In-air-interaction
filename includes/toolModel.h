@@ -7,17 +7,18 @@ class ToolModel : public BaseModel
 public://methods
     ToolModel();
     ~ToolModel();
-    Eigen::Matrix< float , 6 , 1> getToolsHandlePos(Eigen::Vector3f deltaPos);
-    void update();
+    void update(vtkSmartPointer<vtkMatrix4x4> mat);
 private://methods
-	
+	Eigen::Vector3d getToolsHandlePos(Eigen::Vector3d deltaPos);
 public://members
 	
 private://members
 	GraphicalModel* 			 _constrainPoint;
 	GraphicalModel* 			 _forcept;
-	Eigen::Vector3f              _tipPos;
-	Leap::Vector _deltaOrientation;
+	Eigen::Vector3d              _tipPos;
+	Eigen::Vector3d 			 _constrainPointPos;
+	Eigen::Vector3d 			 _deltaOrientation;
+	// Leap::Vector _deltaOrientation;
 protected: 
 
 };

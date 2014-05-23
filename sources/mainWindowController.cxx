@@ -8,9 +8,8 @@
 //#define DELTATIME 30 //ms
 #define CONFIGFILENAME "conf.xml"
 #define PATH_TO_3D_MODEL "../3D-models/human_body_finest.obj"
-#define ENDOSCOPE_FOCAL_DISTANCE 1.0 //cm
-#define ROBOT_X_DISPLACEMENT 30.0 //cm
-#define ROBOT_Y_DISPLACEMENT 20.0 //cm
+
+using namespace ConfigIntegrated;
 MainWindowController::MainWindowController(QWidget *parent)
 {	
 	//OVR for future use
@@ -23,14 +22,14 @@ MainWindowController::MainWindowController(QWidget *parent)
 	this->setupRendererAndWindow();
 	this->setupCharts();
 
-	robot = new RobotModel();
-	controller = new LeapControllerModel();
-	surgicalTool = new ToolModel();
+	_robotModel = new RobotModel();
+	_uiModel = new LeapControllerModel();
+	_surgicalToolModel = new ToolModel();
 
-  	dh_parameter = new float[24];
-	listener = new LeapListener(*controller);
-	g_lmController = new Leap::Controller;
-	g_lmController->addListener(*listener); 
+  	dh_parameter = new double[24];
+	_lmListener = new LeapListener(*_uiModel, *_surgicalToolModel, *_robotModel, endoscopeViewCamera);
+	_lmController = new Leap::Controller();
+	_lmController->addListener(*_lmListener); 
 
 	
 	X1 = 1; Y1 = 1; X2 = -1; Y2 = 1; X3 = -1; Y3 = -1; X4 = 1; Y4 = -1;
@@ -47,13 +46,18 @@ MainWindowController::MainWindowController(QWidget *parent)
 
 MainWindowController::~MainWindowController() 
 {
-	delete listener;
-	delete g_lmController;
-	delete robot;
-	delete controller;
-	delete surgicalTool;
-	delete conf_xml;
+	delete _lmController;
+	delete _lmListener;
+	delete _robotModel;
+
+	delete _uiModel;
+
+	delete _surgicalToolModel;
+
+	// delete _confXML;
+	std::cout << "mainWindow destructor called\n" << std::endl;
 	delete dh_parameter;
+
 }
 
 void MainWindowController::setupCharts()
@@ -61,22 +65,24 @@ void MainWindowController::setupCharts()
 	//chart rendering example
   	vtkSmartPointer<vtkContextView> view = vtkSmartPointer<vtkContextView>::New();
   	vtkSmartPointer<vtkContextView> view2 = vtkSmartPointer<vtkContextView>::New();
-	vtkSmartPointer<vtkChartXY> chart = vtkSmartPointer<vtkChartXY>::New();
-	vtkSmartPointer<vtkChartXY> chart2 = vtkSmartPointer<vtkChartXY>::New();
+	// vtkSmartPointer<vtkChartXY> chart = vtkSmartPointer<vtkChartXY>::New();
+	vtkChartXY* chart = vtkChartXY::New();
+	// vtkSmartPointer<vtkChartXY> chart2 = vtkSmartPointer<vtkChartXY>::New();
+	vtkChartXY* chart2 = vtkChartXY::New();
 
 	chart->SetRenderEmpty(true);
 	chart->SetAutoAxes(false);
 	chart2->SetRenderEmpty(true);
 	chart2->SetAutoAxes(false);
 
-	view->GetScene()->AddItem(chart.GetPointer());
-	view2->GetScene()->AddItem(chart2.GetPointer());
+	view->GetScene()->AddItem(chart);
+	view2->GetScene()->AddItem(chart2);
 
 	view->SetInteractor(vtkChart1->GetInteractor());
 	view2->SetInteractor(vtkChart2->GetInteractor());
-	
+	/*
 	vtkChart1->SetRenderWindow(view->GetRenderWindow());
-	vtkChart2->SetRenderWindow(view2->GetRenderWindow());
+	vtkChart2->SetRenderWindow(view2->GetRenderWindow());*/
 }
 
 void MainWindowController::setupRendererAndWindow() 
@@ -121,29 +127,28 @@ void MainWindowController::attachRendererToWindow(vtkSmartPointer<vtkRenderer> r
 
 void MainWindowController::initConfigFile ()
 {
-	conf_xml = new tinyxml2::XMLDocument();
-	if (conf_xml->LoadFile(CONFIGFILENAME) == 0) {
+	if (_confXML.LoadFile(CONFIGFILENAME) == 0) {
 		return;
 	}
 
 	//create new config file if there is not
-	tinyxml2::XMLDeclaration* decl = conf_xml->NewDeclaration();
-	conf_xml->InsertFirstChild(decl);
-	tinyxml2::XMLComment* comment = conf_xml->NewComment("Configuration for MyApp");
-	conf_xml->InsertAfterChild(decl, comment);
+	tinyxml2::XMLDeclaration* decl = _confXML.NewDeclaration();
+	_confXML.InsertFirstChild(decl);
+	tinyxml2::XMLComment* comment = _confXML.NewComment("Configuration for MyApp");
+	_confXML.InsertAfterChild(decl, comment);
 
 	//insert elements of holo-table
-	tinyxml2::XMLElement* holo_table = conf_xml->NewElement("Holo_table");
-	conf_xml->InsertAfterChild(comment, holo_table);
-	tinyxml2::XMLElement* windows = conf_xml->NewElement("Windows");
+	tinyxml2::XMLElement* holo_table = _confXML.NewElement("Holo_table");
+	_confXML.InsertAfterChild(comment, holo_table);
+	tinyxml2::XMLElement* windows = _confXML.NewElement("Windows");
 	holo_table->InsertFirstChild(windows);
 	/*
 		insert new elements 
 	*/	
 	//insert elements of OVR
-	tinyxml2::XMLElement* ovr = conf_xml->NewElement("OVR");
-	conf_xml->InsertAfterChild(holo_table, ovr);
-	conf_xml->SaveFile(CONFIGFILENAME);
+	tinyxml2::XMLElement* ovr = _confXML.NewElement("OVR");
+	_confXML.InsertAfterChild(holo_table, ovr);
+	_confXML.SaveFile(CONFIGFILENAME);
 }
 
 void MainWindowController::on_parallaxSlider_valueChanged(int value) {
@@ -158,7 +163,7 @@ void MainWindowController::on_saveKeystoneButton_clicked() {
 	if (createWindowButton->isEnabled()) {
 		return;
 	}
-	conf_xml->SaveFile("conf.xml");
+	_confXML.SaveFile("conf.xml");
 }
 
 void MainWindowController::on_setKeystoneButton_clicked() 
@@ -177,7 +182,7 @@ void MainWindowController::on_setKeystoneButton_clicked()
 							   QString::number(X4).toStdString() + "," +
 							   QString::number(Y4).toStdString();
 
-	tinyxml2::XMLElement* holo_table = conf_xml->FirstChildElement();
+	tinyxml2::XMLElement* holo_table = _confXML.FirstChildElement();
 	tinyxml2::XMLElement* window = holo_table->FirstChildElement();
 	window->SetAttribute(("Keystone"+QString::number(index).toStdString()).c_str(), keystone_str.c_str());
 
@@ -340,8 +345,8 @@ void MainWindowController::refreshAllWindows(bool resetCamera) {
 
 void MainWindowController::addAllLeapModels() 
 {
-	HandModel* rightHand = listener->getRightHand();
-	HandModel* leftHand  = listener->getLeftHand();
+	HandModel* rightHand = _lmListener->getRightHand();
+	HandModel* leftHand  = _lmListener->getLeftHand();
 
 	this->addActorToScenes(leftHand->getPalmModel()->getModelActor(), CONTROLLER);
 	for (int i = 0, n = leftHand->getTipsModel().size(); i < n; ++i)
@@ -354,16 +359,16 @@ void MainWindowController::addAllLeapModels()
 	{
 		this->addActorToScenes(rightHand->getTipsModel().at(i)->getModelActor(), CONTROLLER);
 	}
-	this->addActorToScenes(listener->getLeapDeviceModel()->getModelActor(), CONTROLLER);
-	this->addActorToScenes(listener->getLeapDeviceModel()->getAxesActor(), CONTROLLER);
-	this->addActorToScenes(listener->getKeystoneFrameModel()->getModelActor(), CONTROLLER);
+	this->addActorToScenes(_lmListener->getLeapDeviceModel()->getModelActor(), CONTROLLER);
+	this->addActorToScenes(_lmListener->getLeapDeviceModel()->getAxesActor(), CONTROLLER);
+	this->addActorToScenes(_lmListener->getKeystoneFrameModel()->getModelActor(), CONTROLLER);
 
 }
 
 void MainWindowController::removeAllLeapModels() 
 {
-	HandModel* rightHand = listener->getRightHand();
-	HandModel* leftHand  = listener->getLeftHand();
+	HandModel* rightHand = _lmListener->getRightHand();
+	HandModel* leftHand  = _lmListener->getLeftHand();
 
 	this->removeActorFromScenes(leftHand->getPalmModel()->getModelActor(), CONTROLLER);
 
@@ -378,36 +383,36 @@ void MainWindowController::removeAllLeapModels()
 	{
 		this->removeActorFromScenes(rightHand->getTipsModel().at(i)->getModelActor(), CONTROLLER);
 	}
-	this->removeActorFromScenes(listener->getLeapDeviceModel()->getModelActor(), CONTROLLER);
-	this->removeActorFromScenes(listener->getLeapDeviceModel()->getAxesActor(), CONTROLLER);
-	this->removeActorFromScenes(listener->getKeystoneFrameModel()->getModelActor(), CONTROLLER);
+	this->removeActorFromScenes(_lmListener->getLeapDeviceModel()->getModelActor(), CONTROLLER);
+	this->removeActorFromScenes(_lmListener->getLeapDeviceModel()->getAxesActor(), CONTROLLER);
+	this->removeActorFromScenes(_lmListener->getKeystoneFrameModel()->getModelActor(), CONTROLLER);
 }
 
-float* MainWindowController::getDHparameters() 
+double* MainWindowController::getDHparameters() 
 {
-	dh_parameter[0] = j1d->text().toFloat();     dh_parameter[1] = j1a->text().toFloat();
-	dh_parameter[2] = j1alpha->text().toFloat(); dh_parameter[3] = j1theta->value();
+	dh_parameter[0] = j1d->text().toDouble();     dh_parameter[1] = j1a->text().toDouble();
+	dh_parameter[2] = j1alpha->text().toDouble(); dh_parameter[3] = j1theta->value();
 
-	dh_parameter[4] = j2d->text().toFloat();     dh_parameter[5] = j2a->text().toFloat();
-	dh_parameter[6] = j2alpha->text().toFloat(); dh_parameter[7] = j2theta->value();
+	dh_parameter[4] = j2d->text().toDouble();     dh_parameter[5] = j2a->text().toDouble();
+	dh_parameter[6] = j2alpha->text().toDouble(); dh_parameter[7] = j2theta->value();
 
-	dh_parameter[8] = j3d->text().toFloat();     dh_parameter[9] = j3a->text().toFloat();
-	dh_parameter[10] = j3alpha->text().toFloat();dh_parameter[11] = j3theta->value();
+	dh_parameter[8] = j3d->text().toDouble();     dh_parameter[9] = j3a->text().toDouble();
+	dh_parameter[10] = j3alpha->text().toDouble();dh_parameter[11] = j3theta->value();
 
-	dh_parameter[12] = j4d->text().toFloat();    dh_parameter[13] = j4a->text().toFloat();
-	dh_parameter[14] = j4alpha->text().toFloat();dh_parameter[15] = j4theta->value();
+	dh_parameter[12] = j4d->text().toDouble();    dh_parameter[13] = j4a->text().toDouble();
+	dh_parameter[14] = j4alpha->text().toDouble();dh_parameter[15] = j4theta->value();
 
-	dh_parameter[16] = j5d->text().toFloat();    dh_parameter[17] = j5a->text().toFloat();
-	dh_parameter[18] = j5alpha->text().toFloat();dh_parameter[19] = j5theta->value();
+	dh_parameter[16] = j5d->text().toDouble();    dh_parameter[17] = j5a->text().toDouble();
+	dh_parameter[18] = j5alpha->text().toDouble();dh_parameter[19] = j5theta->value();
 
-	dh_parameter[20] = j6d->text().toFloat();    dh_parameter[21] = j6a->text().toFloat();
-	dh_parameter[22] = j6alpha->text().toFloat();dh_parameter[23] = j6theta->value();
+	dh_parameter[20] = j6d->text().toDouble();    dh_parameter[21] = j6a->text().toDouble();
+	dh_parameter[22] = j6alpha->text().toDouble();dh_parameter[23] = j6theta->value();
 	return dh_parameter;
 }
 
 void MainWindowController::updateEndoscopeCamera()
 {
-	vtkSmartPointer<vtkMatrix4x4> endeffectorMat = robot->getEndEffectorMatrix();
+	vtkSmartPointer<vtkMatrix4x4> endeffectorMat = _robotModel->getEndEffectorMatrix();
 	//set endoscope camera position
 	endoscopeViewRenderer->GetActiveCamera()->
 		SetPosition(endeffectorMat->GetElement(0, 3), 
@@ -424,30 +429,30 @@ void MainWindowController::updateEndoscopeCamera()
 
 void MainWindowController::dhParameterEditedCommonProcess() 
 {
-	robot->updateDHs(this->getDHparameters());
-	robot->update();
+	_robotModel->updateDHs(this->getDHparameters());
+	_robotModel->update();
 	updateEndoscopeCamera();
 	//show pose matrix
-	vtkSmartPointer<vtkMatrix4x4> endeffectorMat = robot->getEndEffectorMatrix();
-	nx->setText(QString::number((float)endeffectorMat->GetElement(0, 0)));	//nx, ny, ... is QLineEdit
-	ny->setText(QString::number((float)endeffectorMat->GetElement(1, 0)));
-	nz->setText(QString::number((float)endeffectorMat->GetElement(2, 0)));
-	nw->setText(QString::number((float)endeffectorMat->GetElement(3, 0)));
+	vtkSmartPointer<vtkMatrix4x4> endeffectorMat = _robotModel->getEndEffectorMatrix();
+	nx->setText(QString::number((double)endeffectorMat->GetElement(0, 0)));	//nx, ny, ... is QLineEdit
+	ny->setText(QString::number((double)endeffectorMat->GetElement(1, 0)));
+	nz->setText(QString::number((double)endeffectorMat->GetElement(2, 0)));
+	nw->setText(QString::number((double)endeffectorMat->GetElement(3, 0)));
 
-	bx->setText(QString::number((float)endeffectorMat->GetElement(0, 1)));
-	by->setText(QString::number((float)endeffectorMat->GetElement(1, 1)));
-	bz->setText(QString::number((float)endeffectorMat->GetElement(2, 1)));
-	bw->setText(QString::number((float)endeffectorMat->GetElement(3, 1)));
+	bx->setText(QString::number((double)endeffectorMat->GetElement(0, 1)));
+	by->setText(QString::number((double)endeffectorMat->GetElement(1, 1)));
+	bz->setText(QString::number((double)endeffectorMat->GetElement(2, 1)));
+	bw->setText(QString::number((double)endeffectorMat->GetElement(3, 1)));
 
-	tx->setText(QString::number((float)endeffectorMat->GetElement(0, 2)));
-	ty->setText(QString::number((float)endeffectorMat->GetElement(1, 2)));
-	tz->setText(QString::number((float)endeffectorMat->GetElement(2, 2)));
-	tw->setText(QString::number((float)endeffectorMat->GetElement(3, 2)));
+	tx->setText(QString::number((double)endeffectorMat->GetElement(0, 2)));
+	ty->setText(QString::number((double)endeffectorMat->GetElement(1, 2)));
+	tz->setText(QString::number((double)endeffectorMat->GetElement(2, 2)));
+	tw->setText(QString::number((double)endeffectorMat->GetElement(3, 2)));
 
-	px->setText(QString::number((float)endeffectorMat->GetElement(0, 3)));
-	py->setText(QString::number((float)endeffectorMat->GetElement(1, 3)));
-	pz->setText(QString::number((float)endeffectorMat->GetElement(2, 3)));
-	pw->setText(QString::number((float)endeffectorMat->GetElement(3, 3)));
+	px->setText(QString::number((double)endeffectorMat->GetElement(0, 3)));
+	py->setText(QString::number((double)endeffectorMat->GetElement(1, 3)));
+	pz->setText(QString::number((double)endeffectorMat->GetElement(2, 3)));
+	pw->setText(QString::number((double)endeffectorMat->GetElement(3, 3)));
 	refreshAllWindows(false);
 }
 
@@ -553,11 +558,11 @@ void MainWindowController::on_actionOpen_Config_triggered()
 		return;
 	}
 
-	if (conf_xml->LoadFile(filename.toStdString().c_str()) != 0) {
+	if (_confXML.LoadFile(filename.toStdString().c_str()) != 0) {
 		return;
 	}
 
-	tinyxml2::XMLElement* holo_table = conf_xml->FirstChildElement();
+	tinyxml2::XMLElement* holo_table = _confXML.FirstChildElement();
 	tinyxml2::XMLElement* window = holo_table->FirstChildElement();
 
 	int width(500), height(500);
@@ -641,13 +646,14 @@ void MainWindowController::read3DModel(QString filename)
 		int lastPoint = filename.lastIndexOf(".");
 		QString extention = filename.right(lastPoint);
 		GraphicalModel* model = new GraphicalModel();
-		vtkSmartPointer<vtkPolyDataAlgorithm> reader;
+		// vtkSmartPointer<vtkPolyDataAlgorithm> reader;
+		vtkPolyDataAlgorithm* reader; 
 		if (extention.contains("stl", Qt::CaseInsensitive)) {
-			reader = vtkSmartPointer<vtkSTLReader>::New();
+			reader = vtkSTLReader::New();
 			vtkSTLReader::SafeDownCast(reader)->SetFileName(filename.toStdString().c_str());
 		}
 		if (extention.contains("obj", Qt::CaseInsensitive)) {
-			reader = vtkSmartPointer<vtkOBJReader>::New();
+			reader = vtkOBJReader::New();
 			vtkOBJReader::SafeDownCast(reader)->SetFileName(filename.toStdString().c_str());
 		}
   		reader->Update();
@@ -676,16 +682,16 @@ void MainWindowController::on_robotActivateButton_clicked()
 	if (robotActivateButton->isCheckable() == false) {
 		robotActivateButton->setText(QString("Disable Manipulator"));
 		
-		for (int i = 0, l = robot->getModel().size(); i < l; ++i)
+		for (int i = 0, l = _robotModel->getModel().size(); i < l; ++i)
 		{
-			this->addActorToScenes(robot->getModel().at(i)->getModelActor(), MAIN_AND_ENDOSCOPE); 
-			this->addActorToScenes(robot->getModel().at(i)->getAxesActor(), MAIN); 
+			this->addActorToScenes(_robotModel->getModel().at(i)->getModelActor(), MAIN_AND_ENDOSCOPE); 
+			this->addActorToScenes(_robotModel->getModel().at(i)->getAxesActor(), MAIN); 
 		} 
 
-		for (int i = 0, l = surgicalTool->getModel().size(); i < l; ++i)
+		for (int i = 0, l = _surgicalToolModel->getModel().size(); i < l; ++i)
 		{
-			this->addActorToScenes(surgicalTool->getModel().at(i)->getModelActor(), MAIN_AND_ENDOSCOPE);
-			this->addActorToScenes(surgicalTool->getModel().at(i)->getAxesActor(), MAIN);
+			this->addActorToScenes(_surgicalToolModel->getModel().at(i)->getModelActor(), MAIN_AND_ENDOSCOPE);
+			this->addActorToScenes(_surgicalToolModel->getModel().at(i)->getAxesActor(), MAIN);
 		}
 		this->dhParameterEditedCommonProcess();
 
@@ -696,9 +702,9 @@ void MainWindowController::on_robotActivateButton_clicked()
 		robotActivateButton->setText(QString("Enable Manipulator"));
 		robotActivateButton->setCheckable(false);
 
-		for (int i = 0, l = robot->getModel().size(); i < l; ++i) {
-			this->removeActorFromScenes(robot->getModel().at(i)->getModelActor(), MAIN_AND_ENDOSCOPE);
-			this->removeActorFromScenes(robot->getModel().at(i)->getAxesActor(), MAIN);
+		for (int i = 0, l = _robotModel->getModel().size(); i < l; ++i) {
+			this->removeActorFromScenes(_robotModel->getModel().at(i)->getModelActor(), MAIN_AND_ENDOSCOPE);
+			this->removeActorFromScenes(_robotModel->getModel().at(i)->getAxesActor(), MAIN);
 		}
 		this->refreshAllWindows(false);
 	}
@@ -710,26 +716,27 @@ void MainWindowController::on_robotActivateButton_clicked()
 void MainWindowController::on_leapActivateButton_clicked()
 {
 	//enable or disable leap
-	listener->switchListener();
+	_lmListener->switchListener();
 	
-	if (listener->getStatus() == LeapListener::RUNNING) { //running
+	if (_lmListener->getStatus() == LeapListener::RUNNING) { //running
 		//leap reaction 
 		this->addAllLeapModels();
 		//qt reaction
 		leapActivateButton->setText(QString("Disable Leap Motion"));
-		statusbar->showMessage(QString("FPS: ") + QString::number(listener->getFPS()));
+		statusbar->showMessage(QString("FPS: ") + QString::number(_lmListener->getFPS()));
 		//vtk reaction
 		leapControllerViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
 		int timerIdLeap = leapControllerViewWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
 
-		for (int i = 0, l = controller->getModel().size(); i < l; ++i) {
-			this->addActorToScenes(controller->getModel().at(i)->getModelActor(), CONTROLLER); 
-			this->addActorToScenes(controller->getModel().at(i)->getAxesActor(), CONTROLLER); 
+		for (int i = 0, l = _uiModel->getModel().size(); i < l; ++i) {
+			this->addActorToScenes(_uiModel->getModel().at(i)->getModelActor(), CONTROLLER); 
+			this->addActorToScenes(_uiModel->getModel().at(i)->getAxesActor(), CONTROLLER); 
 		} 
-		// mainWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
-		// int timerId = mainWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
-		// endoscopeViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
-		// int timerIdEndoscope = endoscopeViewWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
+		mainWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
+		int timerId = mainWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
+		endoscopeViewWindow->GetInteractor()->AddObserver(vtkCommand::TimerEvent, g_vtkCallback);
+		int timerIdEndoscope = endoscopeViewWindow->GetInteractor()->CreateRepeatingTimer(DELTATIME);
+		updateEndoscopeCamera();
 		this->refreshAllWindows(true);
 	} else {	//stop
 		//leap reaction 
@@ -738,11 +745,12 @@ void MainWindowController::on_leapActivateButton_clicked()
 		leapActivateButton->setText(QString("Enable Leap Motion"));
 		//vtk reaction
 		leapControllerViewWindow->GetInteractor()->RemoveObserver(g_vtkCallback);
-		// mainWindow->GetInteractor()->RemoveObserver(g_vtkCallback);
-		for (int i = 0, l = controller->getModel().size(); i < l; ++i)
+		mainWindow->GetInteractor()->RemoveObserver(g_vtkCallback);
+		endoscopeViewWindow->GetInteractor()->RemoveObserver(g_vtkCallback);
+		for (int i = 0, l = _uiModel->getModel().size(); i < l; ++i)
 		{
-			this->removeActorFromScenes(controller->getModel().at(i)->getModelActor(), CONTROLLER); 
-			this->removeActorFromScenes(controller->getModel().at(i)->getAxesActor(), CONTROLLER); 
+			this->removeActorFromScenes(_uiModel->getModel().at(i)->getModelActor(), CONTROLLER); 
+			this->removeActorFromScenes(_uiModel->getModel().at(i)->getAxesActor(), CONTROLLER); 
 		} 
 		this->refreshAllWindows(false);
 	}
@@ -779,7 +787,7 @@ void MainWindowController::on_createWindowButton_clicked()
 	createWindowButton->setEnabled(false);
 	this->refreshAllWindows(true);
 
-	tinyxml2::XMLElement* holo_table = conf_xml->FirstChildElement();
+	tinyxml2::XMLElement* holo_table = _confXML.FirstChildElement();
 	tinyxml2::XMLElement* window = holo_table->FirstChildElement();
 	window->SetAttribute("Total", winNum);
 	window->SetAttribute("Width", width);

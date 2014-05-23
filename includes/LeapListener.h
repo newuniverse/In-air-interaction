@@ -4,7 +4,10 @@
 #include "Leap/Leap.h"
 #include "graphicalModel.h"
 #include "Leap/Shared.h"
+
 #include "LeapControllerModel.h"
+#include "ToolModel.h"
+#include "RobotModel.h"
 
 #include <string>
 #include <chrono>
@@ -19,7 +22,7 @@ class HandModel;
 class LeapListener : public Listener 
 {
 public://method 
-    LeapListener(LeapControllerModel& controller);
+    LeapListener(LeapControllerModel& controller, ToolModel& tool, RobotModel& robot, vtkSmartPointer<vtkCamera> camera);
     virtual void         onInit(const Controller&);
     virtual void         onConnect(const Controller&);
     virtual void         onDisconnect(const Controller&);
@@ -34,8 +37,8 @@ public://method
     int                   getMode();
     Vector                getTranslation();
     Matrix                getRotation();
-    float                 getScaleFactor();
-    float                 getFPS();
+    double                 getScaleFactor();
+    double                 getFPS();
 
     //GraphicalObject*      getSelectedObject();
     //LeapGestureTrainer*   gTrainer;
@@ -67,7 +70,7 @@ private://method
     void                  getHandInfo(const Frame& frame);
     void                  calcDataFPS();
     void                  createBresenhamLine();
-    bool                  checkSameSign(float* nums, int size);
+    bool                  checkSameSign(double* nums, int size);
     virtual void          update(const Frame frame);
     void                  updateHandModelProps(const Frame& frame);
 
@@ -101,7 +104,10 @@ public://arguments
 
     
 private://members
+    vtkSmartPointer<vtkCamera> _camera;
     LeapControllerModel& controllerModel;
+    ToolModel&           toolModel;
+    RobotModel&          robotModel;
     HandModel* leftHand;
     HandModel* rightHand;
     GraphicalModel* leapDeviceModel;
@@ -119,20 +125,21 @@ private://members
     bool                  enableLeap;
     Matrix                mtxTotalMotionRotation;
     Vector                vTotalMotionTranslation;
-    float                 fTotalMotionScale;
+    double                 fTotalMotionScale;
     Vector                vRotationAngle;
 
-    float                 fUpdateFPS;    
+    double                 fUpdateFPS;    
     static std::deque<int>         handNum;
     static std::deque<int>         fingerNum;
-    float                          avg_numHands;
-    float                          avg_numFingers;
+    double                          avg_numHands;
+    double                          avg_numFingers;
 };
 
 class HandModel {
 public://functions
     HandModel() {
-        vtkSmartPointer<vtkSphereSource> sphere = vtkSmartPointer<vtkSphereSource>::New();
+        // vtkSmartPointer<vtkSphereSource> sphere = vtkSmartPointer<vtkSphereSource>::New();
+        vtkSphereSource* sphere = vtkSphereSource::New();
         sphere->SetRadius(TIP_SPHERE_SIZE);//0.5cm
         
         palm = new GraphicalModel(sphere);

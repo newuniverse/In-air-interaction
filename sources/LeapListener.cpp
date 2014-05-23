@@ -12,9 +12,11 @@ std::deque<int>         LeapListener::handNum;
 std::deque<int>         LeapListener::fingerNum;
 #define HAND_AND_FINGER_MAX_NUM 12
 
- LeapListener::LeapListener(LeapControllerModel& controller) : controllerModel(controller)
+ LeapListener::LeapListener(LeapControllerModel& controller, ToolModel& tool, RobotModel& robot, vtkSmartPointer<vtkCamera> camera) 
+ : controllerModel(controller), toolModel(tool), robotModel(robot), _camera(camera)
  {
-    vtkSmartPointer<vtkCubeSource> cube = vtkSmartPointer<vtkCubeSource>::New();
+    // vtkSmartPointer<vtkCubeSource> cube = vtkSmartPointer<vtkCubeSource>::New();
+    vtkCubeSource* cube = vtkCubeSource::New();
     cube->SetCenter(0, 0, 0);
     cube->SetXLength(8);
     cube->SetYLength(1);
@@ -22,7 +24,8 @@ std::deque<int>         LeapListener::fingerNum;
     leapDeviceModel = new GraphicalModel(cube);
     leapDeviceModel->getAxesActor()->SetNormalizedShaftLength(8.0, 8.0, 8.0);
     //leapDeviceModel->getModelActor()->RotateX(90.0);
-    vtkSmartPointer<vtkOutlineCornerSource> corner = vtkSmartPointer<vtkOutlineCornerSource>::New();
+    // vtkSmartPointer<vtkOutlineCornerSource> corner = vtkSmartPointer<vtkOutlineCornerSource>::New();
+    vtkOutlineCornerSource* corner = vtkOutlineCornerSource::New();
     corner->SetBounds(-30.0, 30.0, -30.0, 30.0, -30.0, 30.0);
     keystoneFrame = new GraphicalModel(corner);
 
@@ -39,7 +42,7 @@ Leap::Matrix LeapListener::getRotation()
 {
     return mtxTotalMotionRotation;
 } 
-float LeapListener::getScaleFactor()
+double LeapListener::getScaleFactor()
 {
     return fTotalMotionScale;
 }
@@ -48,6 +51,7 @@ void LeapListener::onFrame(const Leap::Controller& controller)
 {
     if ( enableLeap )
     {
+        // std::cout << "onframe start" << std::endl;
         const Leap::Frame frame = controller.frame();
         
         if(handNum.size() >= 10) {
@@ -63,17 +67,19 @@ void LeapListener::onFrame(const Leap::Controller& controller)
 
         for (int i = 0; i < handNum.size(); ++i)
         {
-            avg_numHands    += (float)handNum.at(i);
-            avg_numFingers  += (float)fingerNum.at(i);   
+            avg_numHands    += (double)handNum.at(i);
+            avg_numFingers  += (double)fingerNum.at(i);   
         }
         if(handNum.size() > 0) {
-            avg_numHands /= (float)handNum.size();
-            avg_numFingers /= (float)handNum.size();
+            avg_numHands /= (double)handNum.size();
+            avg_numFingers /= (double)handNum.size();
         }
-
         update(frame);
+        
         lastFrame = frame;
+        // std::cout << "onframe end" << std::endl;
     }
+    
 }
 
 void  LeapListener::onInit(const Leap::Controller&)
@@ -119,7 +125,7 @@ int LeapListener::getMode()
     return mode;
 }
 
-float LeapListener::getFPS()
+double LeapListener::getFPS()
 {
     return this->fUpdateFPS;
 }
@@ -209,15 +215,53 @@ void LeapListener::updateParameters(const Frame& frame)
 */
 void LeapListener::updateHandModelProps(const Frame& frame) 
 {
+    using namespace ConfigIntegrated;
     currentTime = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> time_span = std::chrono::duration_cast< std::chrono::duration<double> > (currentTime - lastTime);
+    
+    // std::cout << "timespan count:\n" <<time_span.count()<< std::endl;
+    // std::cout << "Entire frame id:\n" <<frame.id()<< std::endl;
+
+    if (time_span.count() < 1 / ConfigIntegrated::FPS) { //30FPS
+        // std::cout << "returned"<< std::endl;
+        return;
+    }
     lastTime = currentTime; 
 
-    if (time_span.count() < 1 / 60)
-        return;
+    // std::cout << "updateHandProps start" << std::endl;
 
     controllerModel.updateHandProps(frame.hands());
 
+    Vector xBasis = Vector(1, 0, 0);
+    Vector yBasis = Vector(0, cos(M_PI/2.0), sin(M_PI/2.0));
+    Vector zBasis = Vector(0, -sin(M_PI/2.0), cos(M_PI/2.0));
+    Matrix xRot = Matrix(xBasis, yBasis, zBasis);
+    Matrix trans = xRot * mtxTotalMotionRotation * frame.rotationMatrix(lastFrame);
+
+    vtkSmartPointer<vtkMatrix4x4> mat = vtkSmartPointer<vtkMatrix4x4>::New();
+    MathIntegrated::convertMatrixFromTo(trans, mat);
+
+    if (frame.hands().leftmost().fingers().count() > 4) {
+        Eigen::Matrix< double , 6 , 1> goal(6);
+        goal << DELTA_MOVE, 0.0, 0.0, 0.0, 0.0, 0.0;
+        
+        robotModel.calcInverseKinematics(goal);
+
+        vtkSmartPointer<vtkMatrix4x4> endeffectorMat = robotModel.getEndEffectorMatrix();
+        //set endoscope camera position
+        _camera->SetPosition(endeffectorMat->GetElement(0, 3), 
+            endeffectorMat->GetElement(1, 3), endeffectorMat->GetElement(2, 3));
+        _camera->SetViewUp(endeffectorMat->GetElement(0, 0), 
+            endeffectorMat->GetElement(1, 0), endeffectorMat->GetElement(2, 0));
+        _camera->SetFocalPoint(endeffectorMat->GetElement(0, 3) + endeffectorMat->GetElement(0, 2)*ENDOSCOPE_FOCAL_DISTANCE, 
+            endeffectorMat->GetElement(1, 3) + endeffectorMat->GetElement(1, 2)*ENDOSCOPE_FOCAL_DISTANCE, 
+            endeffectorMat->GetElement(2, 3) + endeffectorMat->GetElement(2, 2)*ENDOSCOPE_FOCAL_DISTANCE);
+        
+    }
+    // toolModel.update(mat);
+
+
+        // std::cout << "updateHandProps end" << std::endl;
     /*
     int handNum = frame.hands().count();
 
@@ -299,7 +343,7 @@ void LeapListener::calcDataFPS()
     
     lastTime = currentTime;    
 
-    float fUpdateDT = time_span.count();
+    double fUpdateDT = time_span.count();
     this->fUpdateFPS = (fUpdateDT > 0) ? 1.0/fUpdateDT : 0.0;
     std::cout << "data FPS: " << fUpdateFPS <<std::endl;
 }
@@ -308,7 +352,7 @@ void LeapListener::calcDataFPS()
 
 
 
-bool LeapListener::checkSameSign(float* nums, int size){
+bool LeapListener::checkSameSign(double* nums, int size){
     if(nums[0] > 0.0)
         if(nums[1] > 0.0)
             if(nums[3] > 0.0)
@@ -340,7 +384,7 @@ void LeapListener::updateRayHitObject(const Frame& frame)
         {
             vec[i] = go[i] - tipPos;
         }
-        float sign[4];
+        double sign[4];
         sign[0] = (vec[0].cross(vec[3])).dot(tipDir);
         sign[1] = (vec[3].cross(vec[7])).dot(tipDir);
         sign[2] = (vec[7].cross(vec[4])).dot(tipDir);

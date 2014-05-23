@@ -1,28 +1,31 @@
 #include "vtkInclude.h"
 #include "robotModel.h"
 
-#define ACTUATOR_SIZE 2//cm
-#define NUM_JOINTS 6
-#define DOF        6
-#define STEP 10.0; //todo
-#define UPSILON 0.01
-#define ROTATION_AJUST -90
-
-
+using namespace ConfigIntegrated;
 RobotModel::RobotModel() 
 {
 	_endEffectorTransform = vtkSmartPointer<vtkTransform>::New();
     _endEffectorMatrix    = vtkSmartPointer<vtkMatrix4x4>::New();
-    _dh_parameters        = new float*[NUM_JOINTS];
+    _dh_parameters        = new double*[NUM_JOINTS];
     for (int i = 0; i < NUM_JOINTS; ++i) {
-    	_dh_parameters[i] = new float[4];
+    	_dh_parameters[i] = new double[4];
     }
 
-   	vtkSmartPointer<vtkCylinderSource> cylinder = vtkSmartPointer<vtkCylinderSource>::New();
-    vtkSmartPointer<vtkCylinderSource> eef_cylinder = vtkSmartPointer<vtkCylinderSource>::New();
+   	// vtkSmartPointer<vtkCylinderSource> cylinder = vtkSmartPointer<vtkCylinderSource>::New();
+    vtkCylinderSource* cylinder = vtkCylinderSource::New();
+    // vtkSmartPointer<vtkCylinderSource> eef_cylinder = vtkSmartPointer<vtkCylinderSource>::New();
+    vtkCylinderSource* eef_cylinder = vtkCylinderSource::New();
+    // vtkSmartPointer<vtkLineSource> link_line = vtkSmartPointer<vtkLineSource>::New();
+    vtkLineSource* link_line = vtkLineSource::New();
 
-    vtkSmartPointer<vtkLineSource> link_line = vtkSmartPointer<vtkLineSource>::New();
-    
+     // Create a tube (cylinder) around the line
+    vtkTubeFilter* tubeFilter = vtkTubeFilter::New();
+    tubeFilter->SetInputConnection(link_line->GetOutputPort());
+    tubeFilter->SetRadius(1.0); //default is .5
+    tubeFilter->SetNumberOfSides(PRIMITIVE_RESOLUTION);
+    tubeFilter->Update();
+
+
     _joints = new GraphicalModel*[NUM_JOINTS+1];
     _links = new GraphicalModel*[NUM_JOINTS-1];
     
@@ -37,7 +40,7 @@ RobotModel::RobotModel()
        	_components.push_back(_joints[i]);
     }
     for (int i = 0; i < NUM_JOINTS-1; ++i) {
-        _links[i] = new GraphicalModel(link_line);
+        _links[i] = new GraphicalModel(tubeFilter);
        	_links[i]->getModelActor()->RotateX(ROTATION_AJUST);
        	//_components.push_back(_links[i]); //hide links
     }
@@ -45,13 +48,26 @@ RobotModel::RobotModel()
 
 RobotModel::~RobotModel() 
 {
+    for (int i = 0; i < NUM_JOINTS+1; ++i)
+    {
+        delete _joints[i];
+    }
     delete _joints;
-    delete _links;
-    delete _dh_parameters;
 
+    for (int i = 0; i < NUM_JOINTS-1; ++i)
+    {
+        delete _links[i];
+    }
+    delete _links;
+
+    for (int i = 0; i < NUM_JOINTS; ++i) {
+        delete _dh_parameters[i];
+    }
+    delete _dh_parameters;
+    std::cout << "robotModel destructor called" << std::endl;
 }
 
-void RobotModel::updateDHs (float* DHs)
+void RobotModel::updateDHs (double* DHs)
 {
 	for (int i = 0; i < NUM_JOINTS; ++i) {
 		_dh_parameters[i][0] = DHs[i*4];
@@ -62,22 +78,24 @@ void RobotModel::updateDHs (float* DHs)
 }
 
 
-void RobotModel::calcInverseKinematics(const Eigen::Matrix< float , 6 , 1>& pg) 
+void RobotModel::calcInverseKinematics(const Eigen::Matrix< double , 6 , 1>& pg) 
 {
     if (pg.rows() != NUM_JOINTS) {
         return;
     }
     //temporary
-    Eigen::VectorXf goal(6);
+    Eigen::VectorXd goal(6);
     goal = _twistVector + pg;
 
-    Eigen::VectorXf deltaP(DOF);
-    Eigen::VectorXf deltaTheta(NUM_JOINTS);
-    float deltaPos;
-    _lastDeltaPos = std::numeric_limits<float>::max();
+    Eigen::VectorXd deltaP(DOF);
+    Eigen::VectorXd deltaTheta(NUM_JOINTS);
+    double deltaPos;
+    _lastDeltaPos = std::numeric_limits<double>::max();
     int count(0);
-    std::cout << "start Position: \n" << _twistVector(0) <<", " << _twistVector(1) <<", " << _twistVector(2) <<", " << _twistVector(3) <<", " << _twistVector(4) <<", " << _twistVector(5) <<std::endl;
-    std::cout << "goal Position: \n" << goal(0) <<", " << goal(1) <<", " << goal(2) <<", " << goal(3) <<", " << goal(4) <<", " << goal(5) <<std::endl;
+    std::cout << "start Position: \n" << _twistVector(0) <<", " << _twistVector(1) <<", " << _twistVector(2) 
+              <<", " << _twistVector(3) <<", " << _twistVector(4) <<", " << _twistVector(5) <<std::endl;
+    std::cout << "goal Position: \n" << goal(0) <<", " << goal(1) <<", " << goal(2) 
+              <<", " << goal(3) <<", " << goal(4) <<", " << goal(5) <<std::endl;
 
     do {
         _lastDeltaPos = deltaPos;
@@ -99,34 +117,34 @@ void RobotModel::calcInverseKinematics(const Eigen::Matrix< float , 6 , 1>& pg)
         deltaPos = sqrtf(deltaP(0)*deltaP(0) + deltaP(1)*deltaP(1) + deltaP(2)*deltaP(2));
         std::cout <<count <<": delta length\n" <<deltaPos<< std::endl;
         count++;
-        if(_lastDeltaPos+UPSILON+1 < deltaPos) break;
+        // if(_lastDeltaPos+UPSILON < deltaPos) break;
     } while (deltaPos > UPSILON);
 }
 
-Eigen::MatrixXf RobotModel::calcJacobian() 
+Eigen::MatrixXd RobotModel::calcJacobian() 
 {
-    Eigen::MatrixXf jacobian(NUM_JOINTS, NUM_JOINTS);
-    Eigen::Matrix4f poseMat[NUM_JOINTS+1];
-    Eigen::Vector3f zBase[NUM_JOINTS+1];
-    Eigen::Vector3f pBase[NUM_JOINTS+1];
+    Eigen::MatrixXd jacobian(NUM_JOINTS, NUM_JOINTS);
+    Eigen::Matrix4d poseMat[NUM_JOINTS+1];
+    Eigen::Vector3d zBase[NUM_JOINTS+1];
+    Eigen::Vector3d pBase[NUM_JOINTS+1];
 
     poseMat[0] << 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 30.0, 100.0, 0, 1;
     zBase[0] = MathIntegrated::extractZBase(poseMat[0]);
     pBase[0] = MathIntegrated::extractPBase(poseMat[0]);
  
     for (int i = 1; i < NUM_JOINTS+1; ++i) {
-        float d = _dh_parameters[i-1][0]; 
-        float a = _dh_parameters[i-1][1];
-        float alpha = _dh_parameters[i-1][2];
-        float theta = _dh_parameters[i-1][3];
+        double d = _dh_parameters[i-1][0]; 
+        double a = _dh_parameters[i-1][1];
+        double alpha = _dh_parameters[i-1][2];
+        double theta = _dh_parameters[i-1][3];
         // std::cout << "dh parameters"<<i<<": \n"<<d<<" "<<a<<" "<<alpha<<" "<<theta<<std::endl;
         poseMat[i] = poseMat[i-1] * calcHomoTransMatrix(d, a, alpha, theta);
         zBase[i] = MathIntegrated::extractZBase(poseMat[i]);
         pBase[i] = MathIntegrated::extractPBase(poseMat[i]);
     }
 
-    Eigen::Vector3f zTemp[NUM_JOINTS+1];
-    Eigen::Vector3f pTemp[NUM_JOINTS+1];
+    Eigen::Vector3d zTemp[NUM_JOINTS+1];
+    Eigen::Vector3d pTemp[NUM_JOINTS+1];
     for (int i = 0; i < NUM_JOINTS+1; ++i) {
         zTemp[i] = zBase[i];
         pTemp[i] = pBase[i];
@@ -160,7 +178,7 @@ Eigen::MatrixXf RobotModel::calcJacobian()
     }
     std::cout << "Jacobian =\n" << std::endl;
     cout << jacobian << std::endl;
-    Eigen::FullPivLU< Eigen::Matrix<float, 6, 6> > lu(jacobian);
+    Eigen::FullPivLU< Eigen::Matrix<double, 6, 6> > lu(jacobian);
 
     try {
         std::cout << "Jacobian* =\n" << std::endl;
@@ -175,20 +193,20 @@ Eigen::MatrixXf RobotModel::calcJacobian()
 
 void RobotModel::update() 
 {
-	Eigen::Matrix4f poseMat[NUM_JOINTS+1];
-    Eigen::Matrix4f axis_eef;
+	Eigen::Matrix4d poseMat[NUM_JOINTS+1];
+    Eigen::Matrix4d axis_eef;
   	poseMat[0] << 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1;
-   	_joints[0]->getAxesActor()->SetNormalizedShaftLength(ACTUATOR_SIZE*2.0, ACTUATOR_SIZE*2.0, ACTUATOR_SIZE*2.0);
+   	_joints[0]->getAxesActor()->SetNormalizedShaftLength(ACTUATOR_SCALE*2.0, ACTUATOR_SCALE*2.0, ACTUATOR_SCALE*2.0);
 
     vtkSmartPointer<vtkAlgorithm> algorithm = vtkSmartPointer<vtkAlgorithm>::New();
     vtkSmartPointer<vtkCylinderSource> srcRef = vtkSmartPointer<vtkCylinderSource>::New();
     for (int i = 1; i < NUM_JOINTS+1; ++i) {
         vtkSmartPointer<vtkMatrix4x4> mat = vtkSmartPointer<vtkMatrix4x4>::New();
         vtkSmartPointer<vtkTransform> transform = vtkSmartPointer<vtkTransform>::New();
-        float d     = _dh_parameters[i-1][0]; 
-        float a     = _dh_parameters[i-1][1];
-        float alpha = _dh_parameters[i-1][2];
-        float theta = _dh_parameters[i-1][3];
+        double d     = _dh_parameters[i-1][0]; 
+        double a     = _dh_parameters[i-1][1];
+        double alpha = _dh_parameters[i-1][2];
+        double theta = _dh_parameters[i-1][3];
    		poseMat[i] = poseMat[i-1] * calcHomoTransMatrix(d, a, alpha, theta);
 
         MathIntegrated::convertMatrixFromTo(poseMat[i], mat);
@@ -196,30 +214,30 @@ void RobotModel::update()
    		_joints[i]->getModelActor()->SetUserTransform(transform);
    		_joints[i]->getModelActor()->GetProperty()->SetColor(1.0, 0.0, 0.0);
         _joints[i]->getAxesActor()->SetUserTransform(transform);
-        _joints[i]->getAxesActor()->SetNormalizedShaftLength(ACTUATOR_SIZE*2.0,
-                                         ACTUATOR_SIZE*2.0, ACTUATOR_SIZE*2.0);
+        _joints[i]->getAxesActor()->SetNormalizedShaftLength(ACTUATOR_SCALE*2.0,
+                                         ACTUATOR_SCALE*2.0, ACTUATOR_SCALE*2.0);
         //set source property
         //end-effector
         algorithm = _joints[i]->getModelActor()->GetMapper()->GetInputConnection(0, 0)->GetProducer();
         // _joints[i]->getModelActor()->GetProperty()->SetCenter(0,0,_dh_parameters[i][0]/2.0);
         srcRef = vtkCylinderSource::SafeDownCast(algorithm);
         if (i == NUM_JOINTS) {
-            srcRef->SetCenter(0, ACTUATOR_SIZE, 0);
+            srcRef->SetCenter(0, ACTUATOR_SCALE, 0);
             _endEffectorMatrix = mat;
-            std::vector<float> rpyAngleRad;
+            std::vector<double> rpyAngleRad;
             rpyAngleRad = MathIntegrated::poseMatToRPYAngleRad(poseMat[i]);
             
              _twistVector << _endEffectorMatrix->GetElement(0, 3), _endEffectorMatrix->GetElement(1, 3), 
                              _endEffectorMatrix->GetElement(2, 3),
-                              rpyAngleRad.at(0), rpyAngleRad.at(1), rpyAngleRad.at(2);
+                              0,0,0;// rpyAngleRad.at(0), rpyAngleRad.at(1), rpyAngleRad.at(2);
         }
-        srcRef->SetRadius(ACTUATOR_SIZE);
-        srcRef->SetHeight(ACTUATOR_SIZE*2);
+        srcRef->SetRadius(ACTUATOR_SCALE);
+        srcRef->SetHeight(ACTUATOR_SCALE*2);
         srcRef->SetResolution(12);
    	}
 }
 
-void RobotModel::setup (float* DHs) 
+void RobotModel::setup (double* DHs) 
 {
 	updateDHs(DHs);
 	update();
@@ -236,9 +254,9 @@ vtkSmartPointer<vtkMatrix4x4> RobotModel::getEndEffectorMatrix()
     return _endEffectorMatrix;
 }
 
-Eigen::Matrix4f RobotModel::calcHomoTransMatrix(float d, float a, float alpha, float theta) 
+Eigen::Matrix4d RobotModel::calcHomoTransMatrix(double d, double a, double alpha, double theta) 
 {
-	Eigen::Matrix4f htm;
+	Eigen::Matrix4d htm;
 	htm << cos(theta), -cos(alpha)*sin(theta), sin(theta)*sin(alpha), a*cos(theta),
 		   sin(theta), cos(alpha)*cos(theta), -sin(alpha)*cos(theta), a*sin(theta),
 		   0,          sin(alpha),            cos(alpha),             d,
@@ -247,9 +265,9 @@ Eigen::Matrix4f RobotModel::calcHomoTransMatrix(float d, float a, float alpha, f
 	return htm; 
 }
 
-Eigen::Matrix3f RobotModel::calcRotTransMatrix(float d, float a, float alpha, float theta) 
+Eigen::Matrix3d RobotModel::calcRotTransMatrix(double d, double a, double alpha, double theta) 
 {
-    Eigen::Matrix3f rtm;
+    Eigen::Matrix3d rtm;
     rtm << cos(theta), -cos(alpha)*sin(theta), sin(theta)*sin(alpha),
            sin(theta), cos(alpha)*cos(theta), -sin(alpha)*cos(theta), 
            0,          sin(alpha),            cos(alpha),             
@@ -257,9 +275,9 @@ Eigen::Matrix3f RobotModel::calcRotTransMatrix(float d, float a, float alpha, fl
     return rtm;
 }
 
-std::vector<float> RobotModel::getThetas() 
+std::vector<double> RobotModel::getThetas() 
 {
-    std::vector<float> thetas;
+    std::vector<double> thetas;
     thetas.resize(NUM_JOINTS);
     for (int i = 0; i < NUM_JOINTS; ++i)
     {

@@ -22,9 +22,16 @@ public://members
 	
 private://members
 	GraphicalModel** _tips;
+	std::vector<Leap::Vector> _tipsDir;
+	std::vector<int> _tipIDs;
 	GraphicalModel*  _palm;
+	int _palmId;
+	Leap::Vector     _palmDir;
+	Leap::FingerList _fingers;
 	GraphicalModel* _innerSphere;
 	GraphicalModel* _outerSphere;
+
+
 protected: 
 	
 };

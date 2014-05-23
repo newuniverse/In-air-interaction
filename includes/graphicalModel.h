@@ -17,9 +17,11 @@ class GraphicalModel
 {
 public://methods
 	GraphicalModel() {}
+	~GraphicalModel() {std::cout << "graphicalModel destructor called" << std::endl;}
 	template<class T>
-	GraphicalModel(vtkSmartPointer<T> t) {
+	GraphicalModel(T *t) {
 		//model from source
+		_modelSource = vtkSmartPointer<vtkPolyDataAlgorithm>::New();
 		_modelSource = t;
 
 		_modelMapper = vtkSmartPointer<vtkPolyDataMapper>::New();
@@ -28,13 +30,12 @@ public://methods
 		_modelActor = vtkSmartPointer<vtkActor>::New();
 		_modelActor->SetMapper(_modelMapper);
 		//axis model
-		vtkSmartPointer<vtkAxesActor> axis = vtkSmartPointer<vtkAxesActor>::New();
-		_axesActor = axis;
-		axesOn = true;
+		_axesActor = vtkSmartPointer<vtkAxesActor>::New();
 	}
 
 	template<class T>
-	void setModel(vtkSmartPointer<T> t) {
+	void setModel(T *t) {
+		_modelSource = vtkSmartPointer<vtkPolyDataAlgorithm>::New();
 		_modelSource = t;
 
 		_modelMapper = vtkSmartPointer<vtkPolyDataMapper>::New();
@@ -42,6 +43,7 @@ public://methods
 
 		_modelActor = vtkSmartPointer<vtkActor>::New();
 		_modelActor->SetMapper(_modelMapper);
+		_axesActor = vtkSmartPointer<vtkAxesActor>::New();
 	}
 
 	vtkSmartPointer<vtkActor> getModelActor() {
@@ -63,14 +65,9 @@ public://methods
 private://methods
 	
 public://members
-	bool getAxesVisibility() {
-		return axesOn;
-	};
-	void setAxesVisibility(bool flag) {
-		axesOn = flag;
-	};
+
 private: //members
-	bool axesOn;
+
 protected://members
 	vtkSmartPointer<vtkPolyDataAlgorithm> _modelSource;
 	vtkSmartPointer<vtkPolyDataMapper> _modelMapper;
